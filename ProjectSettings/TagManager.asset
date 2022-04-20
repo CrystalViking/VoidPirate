@@ -9,7 +9,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Top
   - Water
   - UI
   - Blocking Layer
@@ -50,4 +50,7 @@ TagManager:
     locked: 0
   - name: Enemies
     uniqueID: 87052025
+    locked: 0
+  - name: Top
+    uniqueID: 2869036127
     locked: 0

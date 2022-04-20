@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0, g: 0.7725491, b: 0.6862745, a: 1}
-    m_PressedColor: {r: 0.6886792, g: 0.04223035, b: 0.13646263, a: 1}
+    m_PressedColor: {r: 0.043137256, g: 0.62352943, b: 0.6901961, a: 1}
     m_SelectedColor: {r: 0, g: 0.7725491, b: 0.6862745, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 120687741}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 136973927}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &120687741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bbb7f4dde41164385788ebcc16a7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstLevel: LobbyScene
 --- !u!1 &504906402
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +435,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0, g: 0.7725491, b: 0.6862745, a: 1}
-    m_PressedColor: {r: 0.6886792, g: 0.04223035, b: 0.13646263, a: 1}
+    m_PressedColor: {r: 0.043137256, g: 0.62395096, b: 0.6901961, a: 1}
     m_SelectedColor: {r: 0, g: 0.7725491, b: 0.6862745, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -442,7 +455,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 504906405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 136973927}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: OpenOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &504906405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,6 +1235,46 @@ PrefabInstance:
     - target: {fileID: 7725008787246943024, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.6901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.043137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 136973927}
+    - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7725008787246943031, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_Name

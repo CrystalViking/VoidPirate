@@ -39,20 +39,25 @@ public class PlayerMovement : MonoBehaviour
         {
             direction += Vector2.up;
         }
+
         if (Input.GetKey(KeyCode.A))
         {
             direction += Vector2.left;
+            transform.localScale = new Vector3(-6, 6, 6);
         }
+
         if (Input.GetKey(KeyCode.S))
         {
             direction += Vector2.down;
         }
+
         if (Input.GetKey(KeyCode.D))
         {
             direction += Vector2.right;
+            transform.localScale = new Vector3(6, 6, 6);
         }
     }
-   private void SetAnimatorMovement(Vector2 direction)
+    private void SetAnimatorMovement(Vector2 direction)
     {
         animator.SetLayerWeight(1, 1);
         animator.SetFloat("xDir", direction.x);

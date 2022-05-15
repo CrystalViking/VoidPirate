@@ -8,6 +8,7 @@ public class TestProjectile : MonoBehaviour
     public float damage;
     private float delay = 5;
 
+
     void WaitAndDestroy()
     {
         Destroy(gameObject, delay);

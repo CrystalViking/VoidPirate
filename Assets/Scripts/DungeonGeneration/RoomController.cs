@@ -23,10 +23,10 @@ public class RoomController : MonoBehaviour
 
     private void Start()
     {
-        LoadRoom("Main", 0, 0);
-        LoadRoom("Main", 1, 0);
-        LoadRoom("Main", -1, 0);
-        LoadRoom("Main", -2, 0);
+        // LoadRoom("Test", 0, 0);
+        // LoadRoom("Test", 1, 0);
+        // LoadRoom("Test", -1, 0);
+        // LoadRoom("Test", -2, 0);
     }
 
     private void Update()

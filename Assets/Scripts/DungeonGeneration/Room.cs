@@ -23,13 +23,13 @@ public class Room : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Debug.Log(transform.position);
+
         Gizmos.DrawWireCube(transform.position, new Vector3(Width, Height, 0));
     }
 
     public Vector3 GetRoomCentre()
     {
-        return new Vector3(X * Width, Y * Height, 0);
+        return new Vector3(X * Width, Y * Height);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

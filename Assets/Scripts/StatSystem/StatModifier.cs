@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 public enum StatModType
 {
-    Flat,
-    Percent,
+    Flat = 100,
+    PercentAdd = 200,
+    PercentMult = 300,
 }
 
 
@@ -13,13 +14,17 @@ public class StatModifier
     public readonly float Value;
     public readonly StatModType Type;
     public readonly int Order;
-    public StatModifier(float value, StatModType type, int order)
+    public readonly object Source; // can hold any type
+    public StatModifier(float value, StatModType type, int order, object source)
     {
         Value = value;
         Type = type;
         Order = order;
+        Source = source;
     }
 
-    public StatModifier(float value, StatModType type): this (value, type, (int)type) { }
+    public StatModifier(float value, StatModType type): this (value, type, (int)type, null) { }
+    public StatModifier(float value, StatModType type, int order): this(value, type, order, null) { }
+    public StatModifier(float value, StatModType type, object source) : this(value, type, (int)type, source) { }
 
 }

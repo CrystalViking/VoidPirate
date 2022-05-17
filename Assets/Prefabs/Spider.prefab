@@ -216,7 +216,7 @@ RectTransform:
   m_GameObject: {fileID: 4947738713951186821}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5318088832790256518}
@@ -225,8 +225,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.3, y: -1.4}
-  m_SizeDelta: {x: 1101, y: 514}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1101, y: 519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2476708384625587438
 Canvas:
@@ -318,7 +318,7 @@ Transform:
   m_GameObject: {fileID: 5795759043171648832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.03, y: -0.03, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1161411072948456165}
@@ -335,7 +335,7 @@ Animator:
   m_GameObject: {fileID: 5795759043171648832}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 22d7d984802b0094eb83f0c9adf8d91a, type: 2}
+  m_Controller: {fileID: 9100000, guid: e0a05b81ea327ab4ea11b3ed8b2922c2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -386,7 +386,7 @@ SpriteRenderer:
   m_SortingLayerID: -1425931169
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 183531515, guid: be1a9164051c2a6488cd4dd2bd53a088, type: 3}
+  m_Sprite: {fileID: 873458962, guid: 5b15c84c88427f841aeb18d67b782b7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -410,18 +410,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004510522, y: 0.0036752075}
+  m_Offset: {x: 0.0020304918, y: 0.025477916}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15985656, y: 0.15622821}
+  m_Size: {x: 1.0712087, y: 0.5486769}
   m_EdgeRadius: 0
 --- !u!114 &7745005393517775815
 MonoBehaviour:
@@ -473,7 +473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 750, y: -915}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8249778110884415442

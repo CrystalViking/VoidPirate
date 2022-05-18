@@ -16,6 +16,8 @@ public enum WeaponType
 [CreateAssetMenu(fileName = "new Weapon", menuName = "Items/Weapon")]
 public class Weapon : Item
 {
+    public GameObject prefab;
+
     public int damage;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap;

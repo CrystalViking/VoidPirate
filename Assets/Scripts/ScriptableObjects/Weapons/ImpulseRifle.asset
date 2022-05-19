@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemName: Impulse Rifle
   ItemDescription: A cool-looking impulse rifle
   Icon: {fileID: 21300000, guid: 6501d55aa82e379459ac12cd69d6f912, type: 3}
-  prefab: {fileID: 3599050088876489653, guid: 43ec3904b988a6a4d8de763df3013b93, type: 3}
+  prefab: {fileID: 6787399960490140412, guid: f78fabc36acffa144986682a502916f1, type: 3}
   damage: 69
   timeBetweenShooting: 0
   spread: 0
@@ -23,6 +23,7 @@ MonoBehaviour:
   reloadTime: 0
   timeBetweenShots: 0
   magazineSize: 45
-  bulletsPerTap: 0
+  bulletsPerTap: 1
   allowButtonHold: 0
   weaponType: 2
+  weaponSlot: 0

@@ -12,6 +12,11 @@ public enum WeaponType
     Special
 }
 
+public enum WeaponSlot
+{
+    Primary, Secondary, Melee
+}
+
 
 [CreateAssetMenu(fileName = "new Weapon", menuName = "Items/Weapon")]
 public class Weapon : Item
@@ -24,6 +29,7 @@ public class Weapon : Item
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
     public WeaponType weaponType;
+    public WeaponSlot weaponSlot;
 
     bool shooting, readyToShoot, reloading;
 

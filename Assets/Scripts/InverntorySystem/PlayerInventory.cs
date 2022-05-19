@@ -4,20 +4,41 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public Item[] weapons;
+    [SerializeField] private Weapon[] weapons;
+
+  
 
     private void Start()
     {
         InitVariables();
     }
 
-    public void AddItem(Item newItem)
+    private void Update()
     {
+        
+    }
 
+    public void AddItem(Weapon newItem)
+    {
+        if(weapons[(int)newItem.weaponSlot] != null)
+        {
+            RemoveItem((int)newItem.weaponSlot);
+        }
+        weapons[(int)newItem.weaponSlot] = newItem;
+    }
+
+    public void RemoveItem(int index)
+    {
+        weapons[index] = null;
+    }
+
+    public Weapon GetItem(int index)
+    {
+        return weapons[index];
     }
 
     private void InitVariables()
     {
-        weapons = new Item[3];
+        weapons = new Weapon[3];
     }
 }

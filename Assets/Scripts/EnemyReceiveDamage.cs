@@ -7,11 +7,12 @@ public class EnemyReceiveDamage : MonoBehaviour
 {
     public float health;
     public float maxHealth;
-
+    private Animator anim;
     public GameObject healthBar;
     public Slider healthBarSlider;
     void Start()
     {
+        anim = GetComponent<Animator>();
         health = maxHealth;
     }
 
@@ -19,15 +20,25 @@ public class EnemyReceiveDamage : MonoBehaviour
     {
         healthBar.SetActive(true);
         health -= damage;
-        CheckDeath();
         healthBarSlider.value = CalculateHealthPercentage();
+        CheckDeath();
     }
    
     private void CheckDeath()
     {
-        if(health <= 0)
+        if (health <= 0)
         {
-            Destroy(gameObject);
+            healthBar.SetActive(false);
+            anim.SetBool("IsDead", true);
+            if ((gameObject.GetComponent("FollowEnemy") as FollowEnemy) != null)
+            {
+                GetComponent<FollowEnemy>().enabled = false;
+            }
+            else if ((gameObject.GetComponent("ShootingEnemy") as ShootingEnemy) != null)
+            {
+                GetComponent<ShootingEnemy>().enabled = false;
+            }
+            Destroy(gameObject, 10f);
         }
     }
 

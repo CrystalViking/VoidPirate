@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3945749038620377063}
   - component: {fileID: 3945749038620377060}
   - component: {fileID: 6753662791081115698}
-  - component: {fileID: 6753662791947485630}
+  - component: {fileID: 6552666055960957204}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -169,7 +169,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6753662791947485630
+--- !u!114 &6552666055960957204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94335444b7a41f49a0a63a9936efbe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7030676788894008369, guid: c2c98ed91c79f8240aa3770b75a0e729, type: 3}
-  minDamage: 20
-  maxDamage: 30
-  projectileForce: 10
+  projectile: {fileID: 0}
+  minDamage: 0
+  maxDamage: 0
+  projectileForce: 0

@@ -15,11 +15,11 @@ public class TestProjectile : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name != "Player")
+        if (collision.tag == "Enemy")
         {
-            if(collision.GetComponent<EnemyReceiveDamage>() != null)
+            if(collision.GetComponent<EnemyController>() != null)
             {
-                collision.GetComponent<EnemyReceiveDamage>().DealDamage(damage);
+                collision.GetComponent<EnemyController>().DealDamage(damage);
             }
             Destroy(gameObject);
         }

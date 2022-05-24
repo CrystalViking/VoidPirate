@@ -41,6 +41,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        health = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -116,8 +117,11 @@ public class EnemyController : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 break;
             case (EnemyType.Ranged):
-                anim.SetBool("IsAttacking", false);
-                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                if(distanceFromPlayer > attackRange)
+                {
+                    anim.SetBool("IsAttacking", false);
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                }
                 break;
         }
     }
@@ -145,7 +149,7 @@ public class EnemyController : MonoBehaviour
 
     private bool IsInAttackRange()
     {
-        return distanceFromPlayer < attackRange;
+        return distanceFromPlayer <= attackRange;
     }
 
     private bool IsItTimeToAttack()
@@ -179,14 +183,11 @@ public class EnemyController : MonoBehaviour
         {
             healthBar.SetActive(false);
             anim.SetBool("IsDead", true);
-            if ((gameObject.GetComponent("FollowEnemy") as FollowEnemy) != null)
+            if ((gameObject.GetComponent("EnemyController") as EnemyController) != null)
             {
-                GetComponent<FollowEnemy>().enabled = false;
+                GetComponent<EnemyController>().enabled = false;
             }
-            else if ((gameObject.GetComponent("ShootingEnemy") as ShootingEnemy) != null)
-            {
-                GetComponent<ShootingEnemy>().enabled = false;
-            }
+            
             currState = EnemyState.Die;
             Destroy(gameObject, 10f);
         }

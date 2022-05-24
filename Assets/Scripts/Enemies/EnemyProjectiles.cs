@@ -17,7 +17,8 @@ public class EnemyProjectiles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Enemy")
+        Debug.Log(collision.tag);
+        if (collision.tag == "Player")
         {
             Destroy(gameObject);
         }

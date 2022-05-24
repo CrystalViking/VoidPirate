@@ -102,7 +102,6 @@ public class EnemyController : MonoBehaviour
                 anim.SetBool("IsAttacking", true);
                 Instantiate(bullet, transform.position, Quaternion.identity);
                 nextAttackTime = Time.time + timeBetweenAttacks;
-
                 break;
         }
     }
@@ -115,7 +114,6 @@ public class EnemyController : MonoBehaviour
                 anim.SetBool("IsMoving", true);
                 anim.SetBool("IsAttacking", false);
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-
                 break;
             case (EnemyType.Ranged):
                 anim.SetBool("IsAttacking", false);
@@ -130,6 +128,7 @@ public class EnemyController : MonoBehaviour
         {
             case (EnemyType.Melee):
                 anim.SetBool("IsMoving", false);
+                anim.SetBool("IsAttacking", false);
                 break;
 
             case (EnemyType.Ranged):

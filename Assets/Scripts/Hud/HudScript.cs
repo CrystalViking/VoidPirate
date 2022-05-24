@@ -8,6 +8,7 @@ public class HudScript : MonoBehaviour
 {
     [SerializeField] private TMP_Text currentHealthText;
     [SerializeField] private TMP_Text maxHealthText;
+    [SerializeField] private WeaponUI weaponUI;
 
     public void UpdateHealth(float currentHealth, float maxHealth)
     {
@@ -15,5 +16,9 @@ public class HudScript : MonoBehaviour
         maxHealthText.text = maxHealth.ToString();
     }
 
+    public void UpdateWeaponUI(Weapon newWeapon)
+    {
+        weaponUI.UpdateInfo(newWeapon.Icon, newWeapon.magazineSize, 300);
+    }
    
 }

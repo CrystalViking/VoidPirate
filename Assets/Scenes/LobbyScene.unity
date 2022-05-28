@@ -283,7 +283,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1400778, y: 1}
+    m_SensorSize: {x: 2.1420233, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -40806,22 +40806,6 @@ PrefabInstance:
     - target: {fileID: 3945749038620377061, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6552666055960957204, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
-      propertyPath: maxDamage
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6552666055960957204, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
-      propertyPath: minDamage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6552666055960957204, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 7030676788894008369, guid: c2c98ed91c79f8240aa3770b75a0e729, type: 3}
-    - target: {fileID: 6552666055960957204, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
-      propertyPath: projectileForce
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}

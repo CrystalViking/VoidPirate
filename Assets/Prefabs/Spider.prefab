@@ -34,7 +34,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -302,9 +302,10 @@ GameObject:
   - component: {fileID: 5795759043171648835}
   - component: {fileID: 5795759043171648839}
   - component: {fileID: 7745005393517775815}
+  - component: {fileID: 1780139901}
   m_Layer: 3
   m_Name: Spider
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -439,6 +440,21 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 8249778110884415442}
   healthBarSlider: {fileID: 7548932861836233004}
+--- !u!114 &1780139901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795759043171648832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a7c6b0fc0c4d8469d693a649d4c45e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  lineOfSight: 7.44
+  meleeRange: 0.38
 --- !u!1 &6787852211158795022
 GameObject:
   m_ObjectHideFlags: 0

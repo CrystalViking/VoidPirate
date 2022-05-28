@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectiles : MonoBehaviour
+public class PlayerProjectiles : MonoBehaviour
 {
     public GameObject projectile;
     public float minDamage;
@@ -30,9 +30,6 @@ public class Projectiles : MonoBehaviour
             spell.GetComponent<Rigidbody2D>().velocity = direction * projectileForce;
             spell.GetComponent<TestProjectile>().damage = Random.Range(minDamage, maxDamage);
             spell.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(mousePos - myPos));
-            
-
-
         }
     }
 }

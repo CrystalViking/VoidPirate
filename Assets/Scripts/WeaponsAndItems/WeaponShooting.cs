@@ -40,8 +40,16 @@ public class WeaponShooting : MonoBehaviour
     {
         canShoot = true;
         GetReferences();
+
+        //StartCoroutine(LetOthersCatchUp());
+
         currentWeapon = inventory.GetItem(manager.CurrentlyEquippedWeapon());
 
+    }
+
+    IEnumerator LetOthersCatchUp()
+    {
+        yield return new WaitForSeconds(1);
     }
 
 

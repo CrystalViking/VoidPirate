@@ -10,6 +10,11 @@ public class PlayerInventory : MonoBehaviour
 
     private EquipmentManager equipmentManager;
 
+    private void InitVariables()
+    {
+        weapons = new Weapon[3];
+    }
+
 
     private void Start()
     {
@@ -48,10 +53,7 @@ public class PlayerInventory : MonoBehaviour
         return weapons[index];
     }
 
-    private void InitVariables()
-    {
-        weapons = new Weapon[3];
-    }
+    
 
     private void GetReferences()
     {

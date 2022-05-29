@@ -10,6 +10,8 @@ public class WeaponUI : MonoBehaviour
     [SerializeField] private TMP_Text magazineSizeText;
     [SerializeField] private TMP_Text ammoLeftText;
 
+    
+
     public void UpdateInfo(Sprite weaponIcon, int magazineSize, int ammoLeft)
     {
         icon.sprite = weaponIcon;
@@ -17,4 +19,6 @@ public class WeaponUI : MonoBehaviour
         ammoLeftText.text = ammoLeft.ToString();
     }
 
+
+   
 }

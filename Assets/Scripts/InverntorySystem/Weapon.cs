@@ -22,14 +22,25 @@ public enum WeaponSlot
 public class Weapon : Item
 {
     public GameObject prefab;
+    public GameObject projectilePrefab;
 
-    public int damage;
-    public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
-    public int magazineSize, bulletsPerTap;
+    public float minDamage;
+    public float maxDamage;
+    public float spread, range, reloadTime, timeBetweenShots;
+    public int magazineSize; 
+    public float bulletsPerTap;
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
     public WeaponType weaponType;
     public WeaponSlot weaponSlot;
+
+    public float projectileVelocity;
+    public float weaponScreenShake;
+    public float projectileForce;
+
+
+    public float fireRate;
+    
 
     bool shooting, readyToShoot, reloading;
 

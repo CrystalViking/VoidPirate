@@ -8,6 +8,9 @@ public class PlayerInventory : MonoBehaviour
 
     private HudScript hud;
 
+    private EquipmentManager equipmentManager;
+
+
     private void Start()
     {
         GetReferences();
@@ -28,7 +31,9 @@ public class PlayerInventory : MonoBehaviour
         weapons[(int)newItem.weaponSlot] = newItem;
 
         // Update weaponUI
-        hud.UpdateWeaponUI(newItem);
+        //hud.UpdateWeaponUI(newItem);
+        // Update EquipmentManager
+        equipmentManager.EquipPickup((int)newItem.weaponSlot);
     }
 
     public void RemoveItem(int index)
@@ -49,5 +54,8 @@ public class PlayerInventory : MonoBehaviour
     private void GetReferences()
     {
         hud = GetComponent<HudScript>();
+        equipmentManager = GetComponent<EquipmentManager>();
     }
+
+   
 }

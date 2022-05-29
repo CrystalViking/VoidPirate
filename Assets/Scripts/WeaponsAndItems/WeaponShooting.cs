@@ -24,6 +24,8 @@ public class WeaponShooting : MonoBehaviour
     private PlayerInventory inventory;
     private EquipmentManager manager;
 
+    private HudScript hud;
+
     public static float GetAngleFromVectorFloat(Vector3 dir)
     {
         dir = dir.normalized;
@@ -133,6 +135,7 @@ public class WeaponShooting : MonoBehaviour
             {
                 primaryCurrentAmmo -= currentAmmoUsed;
                 primaryCurrentAmmoStorage -= currentStoredAmmoUsed;
+                hud.UpdateWeaponAmmoInfo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
             }
             
         }
@@ -150,10 +153,28 @@ public class WeaponShooting : MonoBehaviour
             {
                 secondaryCurrentAmmo -= currentAmmoUsed;
                 secondaryCurrentAmmoStorage -= currentStoredAmmoUsed;
+                hud.UpdateWeaponAmmoInfo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
             }
         }
     }
 
+
+    private void AddAmmo(int slot, int currentAmmoAdded, int currentStoredAmmoAdded)
+    {
+        if(slot == 0)
+        {
+            primaryCurrentAmmo -= currentAmmoAdded;
+            primaryCurrentAmmoStorage -= currentStoredAmmoAdded;
+            hud.UpdateWeaponAmmoInfo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
+        }
+        if(slot == 1)
+        {
+            secondaryCurrentAmmo -= currentAmmoAdded;
+            secondaryCurrentAmmoStorage -= currentStoredAmmoAdded;
+            hud.UpdateWeaponAmmoInfo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
+        }
+        
+    }
 
     private void Reload(int slot)
     {
@@ -177,6 +198,7 @@ public class WeaponShooting : MonoBehaviour
         }
 
         int ammoToReplenish = mag - currentSlotAmmo;
+        int ammoReplenished = 0;
 
         if(currentSlotAmmoLeft > 0)
         {
@@ -186,6 +208,8 @@ public class WeaponShooting : MonoBehaviour
                 {
                     currentSlotAmmo = mag;
                     currentSlotAmmoLeft -= mag;
+
+                    ammoReplenished = mag;
                 }
                 else if (
                         (currentSlotAmmoLeft <= mag)
@@ -197,11 +221,17 @@ public class WeaponShooting : MonoBehaviour
                         currentSlotAmmo = mag;
                         currentSlotAmmoLeft -= ammoToReplenish;
 
+                        ammoReplenished = ammoToReplenish;
+
                     }
                     else
                     {
+                        ammoReplenished = currentSlotAmmoLeft;
+
                         currentSlotAmmo += currentSlotAmmoLeft;
                         currentSlotAmmoLeft = 0;
+
+                       
                     }
                 }
             }
@@ -213,9 +243,13 @@ public class WeaponShooting : MonoBehaviour
                     {
                         currentSlotAmmo = inventory.GetItem(slot).magazineSize;
                         currentSlotAmmoLeft -= ammoToReplenish;
+
+                        ammoReplenished = ammoToReplenish;
                     }
                     else if (currentSlotAmmoLeft <= ammoToReplenish)
                     {
+                        ammoReplenished = currentSlotAmmoLeft;
+
                         currentSlotAmmo += currentSlotAmmoLeft;
                         currentSlotAmmoLeft = 0;
                     }
@@ -223,24 +257,36 @@ public class WeaponShooting : MonoBehaviour
                 }
             }
             currentMagIsEmpty = false;
+            //UseAmmo(slot, 0, ammoReplenished);
+            //AddAmmo(slot, ammoReplenished, 0);
         }
         else
         {          
             Debug.Log("no stored ammo left");            
         }
 
+        
+
         if (slot == 0)
         {
             primaryCurrentAmmo = currentSlotAmmo;
             primaryCurrentAmmoStorage = currentSlotAmmoLeft;
             primaryMagIsEmpty = currentMagIsEmpty;
+
+            UseAmmo(slot, 0, Mathf.Abs(primaryCurrentAmmoStorage - currentSlotAmmoLeft));
+            AddAmmo(slot, Mathf.Abs(primaryCurrentAmmo - currentSlotAmmo), 0);
         }
         if (slot == 1)
         {
             secondaryCurrentAmmo = currentSlotAmmo;
             secondaryCurrentAmmoStorage = currentSlotAmmoLeft;
             secondaryMagIsEmpty = currentMagIsEmpty;
+
+            UseAmmo(slot, 0, Mathf.Abs(secondaryCurrentAmmoStorage - currentSlotAmmoLeft));
+            AddAmmo(slot, Mathf.Abs(secondaryCurrentAmmo - currentSlotAmmo), 0);
         }
+
+        
 
     }
 
@@ -277,5 +323,6 @@ public class WeaponShooting : MonoBehaviour
     {
         inventory = GetComponent<PlayerInventory>();
         manager = GetComponent<EquipmentManager>();
+        hud = GetComponent<HudScript>();
     }
 }

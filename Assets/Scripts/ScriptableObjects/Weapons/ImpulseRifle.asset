@@ -23,7 +23,7 @@ MonoBehaviour:
   range: 0
   reloadTime: 0
   timeBetweenShots: 0
-  magazineSize: 45
+  magazineSize: 69
   bulletsPerTap: 1
   allowButtonHold: 0
   weaponType: 2
@@ -31,4 +31,5 @@ MonoBehaviour:
   projectileVelocity: 0
   weaponScreenShake: 0
   projectileForce: 10
-  fireRate: 0
+  storedAmmo: 100
+  fireRate: 0.1

@@ -17,16 +17,18 @@ public class WeaponPickup : MonoBehaviour
         {
             playerInventory.AddItem(weapon);
         }
-       
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isInRange = true;
+        if(collision.name == "Player")
+            isInRange = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isInRange = false;
+        if(collision.name == "Player")
+            isInRange = false;
     }
 }

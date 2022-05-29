@@ -39,6 +39,8 @@ public class Weapon : Item
     public float projectileForce;
 
 
+    public int storedAmmo;
+
     public float fireRate;
     
 

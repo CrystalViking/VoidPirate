@@ -6,7 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private Weapon[] weapons;
 
-    private HudScript hud;
+    private WeaponShooting shooting;
 
     private EquipmentManager equipmentManager;
 
@@ -29,6 +29,8 @@ public class PlayerInventory : MonoBehaviour
             RemoveItem((int)newItem.weaponSlot);
         }
         weapons[(int)newItem.weaponSlot] = newItem;
+
+        shooting.InitAmmo((int)newItem.weaponSlot, newItem);
 
         // Update weaponUI
         //hud.UpdateWeaponUI(newItem);
@@ -53,8 +55,8 @@ public class PlayerInventory : MonoBehaviour
 
     private void GetReferences()
     {
-        hud = GetComponent<HudScript>();
         equipmentManager = GetComponent<EquipmentManager>();
+        shooting = GetComponent<WeaponShooting>();
     }
 
    

@@ -20,7 +20,7 @@ public class HudScript : MonoBehaviour
 
     public void UpdateWeaponUI(Weapon newWeapon)
     {
-        weaponUI.UpdateInfo(newWeapon.Icon, newWeapon.magazineSize, 300);
+        weaponUI.UpdateInfo(newWeapon.Icon, newWeapon.magazineSize, newWeapon.storedAmmo);
     }
 
     

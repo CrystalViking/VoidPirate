@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 4422908962904095648}
   - component: {fileID: 2271933765131339704}
   - component: {fileID: 7516329696809463188}
-  - component: {fileID: -3562504271087042931}
   - component: {fileID: 5224202030746181346}
+  - component: {fileID: 8776950568383046529}
   m_Layer: 0
   m_Name: Test Spell 1
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,19 +125,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-3562504271087042931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4828550350657439305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f22951f6576c4e6469d4ea0b7352048d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
 --- !u!95 &5224202030746181346
 Animator:
   serializedVersion: 4
@@ -158,3 +145,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8776950568383046529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828550350657439305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf84d0f750d64747ac0765f7d5639e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5

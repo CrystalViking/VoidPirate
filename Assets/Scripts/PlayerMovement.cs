@@ -63,4 +63,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("xDir", direction.x);
         animator.SetFloat("yDir", direction.y);
     }
+
+    public void SetSpeed(float speedX)
+    {
+        speed = speedX;
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
+    }
 }

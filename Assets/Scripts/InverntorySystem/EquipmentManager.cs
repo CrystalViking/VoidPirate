@@ -16,9 +16,17 @@ public class EquipmentManager : MonoBehaviour
     void Start()
     {
         GetReferences();
-        inventory.AddItem(defaultMeleeWeapon);
+        StartCoroutine(LetOthersCatchUp());
+        
         EquipWeapon(defaultMeleeWeapon);
         
+    }
+
+    IEnumerator LetOthersCatchUp()
+    {
+        yield return new WaitForSeconds(1);
+        inventory.AddItem(defaultMeleeWeapon);
+
     }
 
     // Update is called once per frame

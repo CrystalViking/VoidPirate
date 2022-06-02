@@ -158,7 +158,7 @@ public class RoomController : MonoBehaviour
     {
         string[] possibleRooms = new string[]
         {
-            "Empty",
+            //"Empty",
             "Basic1"
         };
 
@@ -170,10 +170,17 @@ public class RoomController : MonoBehaviour
         CameraController.instance.currRoom = room;
         currRoom = room;
 
+        StartCoroutine(RoomCorutine());
+    }
+
+    public IEnumerator RoomCorutine()
+    {
+        yield return new WaitForSeconds(0.2f);
         UpdateRooms();
     }
 
-    private void UpdateRooms()
+
+    public void UpdateRooms()
     {
         foreach (Room room in loadedRooms)
         {
@@ -188,16 +195,43 @@ public class RoomController : MonoBehaviour
                         enemy.isInRoom = false;
                     }
                 }
+
+                foreach (Door door in room.GetComponentsInChildren<Door>())
+                {
+                    door.doorCollider.SetActive(false);
+                }
             }
             else
             {
                 EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
 
-                if (enemies != null)
+                bool areAllEnemiesDead = true;
+
+                foreach (EnemyController enemy in enemies)
+                {
+                    if (enemy.currState != EnemyState.Die)
+                    {
+                        areAllEnemiesDead = false;
+                    }
+                }
+
+                if (enemies.Length > 0 && !areAllEnemiesDead)
                 {
                     foreach (EnemyController enemy in enemies)
                     {
                         enemy.isInRoom = true;
+                    }
+
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(true);
+                    }
+                }
+                else
+                {
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(false);
                     }
                 }
             }

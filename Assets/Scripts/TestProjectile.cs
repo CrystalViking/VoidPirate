@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TestProjectile : MonoBehaviour
 {
-    
+
     public float damage;
-    private float delay = 5;
+    private float delay = 1;
 
 
     void WaitAndDestroy()
@@ -15,11 +15,17 @@ public class TestProjectile : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name != "Player")
+
+        if (collision.tag == "Wall" | collision.tag == "Door")
         {
-            if(collision.GetComponent<EnemyReceiveDamage>() != null)
+            Destroy(gameObject);
+        }
+
+        if (collision.tag == "Enemy" | collision.tag == "Boss")
+        {
+            if (collision.GetComponent<EnemyController>() != null)
             {
-                collision.GetComponent<EnemyReceiveDamage>().DealDamage(damage);
+                collision.GetComponent<EnemyController>().DealDamage(damage);
             }
             if (collision.GetComponent<EstrellaController>() != null)
             {

@@ -35,13 +35,14 @@ public class EnemyController : MonoBehaviour
     public Slider healthBarSlider;
     public EnemyState currState = EnemyState.Idle;
     public EnemyType enemyType;
-    public bool isInRoom = true;
+    public bool isInRoom = false;
     float distanceFromPlayer;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        health = maxHealth;
     }
 
     void Update()
@@ -130,6 +131,7 @@ public class EnemyController : MonoBehaviour
         {
             case (EnemyType.Melee):
                 anim.SetBool("IsMoving", false);
+                anim.SetBool("IsAttacking", false);
                 break;
 
             case (EnemyType.Ranged):
@@ -180,15 +182,11 @@ public class EnemyController : MonoBehaviour
         {
             healthBar.SetActive(false);
             anim.SetBool("IsDead", true);
-            if ((gameObject.GetComponent("FollowEnemy") as FollowEnemy) != null)
-            {
-                GetComponent<FollowEnemy>().enabled = false;
-            }
-            else if ((gameObject.GetComponent("ShootingEnemy") as ShootingEnemy) != null)
-            {
-                GetComponent<ShootingEnemy>().enabled = false;
-            }
+ 
+            this.enabled = false;
+
             currState = EnemyState.Die;
+            RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
             Destroy(gameObject, 10f);
         }
     }

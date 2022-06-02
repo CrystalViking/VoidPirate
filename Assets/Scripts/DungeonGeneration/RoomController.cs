@@ -184,9 +184,12 @@ public class RoomController : MonoBehaviour
     {
         foreach (Room room in loadedRooms)
         {
+            EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
+            EstrellaController boss = room.GetComponentInChildren<EstrellaController>();
+            Debug.Log(room.name);
+
             if (currRoom != room)
             {
-                EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
 
                 if (enemies != null)
                 {
@@ -196,6 +199,11 @@ public class RoomController : MonoBehaviour
                     }
                 }
 
+                if (boss)
+                {
+                    boss.isInRoom = false;
+                }
+
                 foreach (Door door in room.GetComponentsInChildren<Door>())
                 {
                     door.doorCollider.SetActive(false);
@@ -203,7 +211,6 @@ public class RoomController : MonoBehaviour
             }
             else
             {
-                EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
 
                 bool areAllEnemiesDead = true;
 
@@ -213,6 +220,18 @@ public class RoomController : MonoBehaviour
                     {
                         areAllEnemiesDead = false;
                     }
+                }
+
+
+
+
+                if (boss)
+                {
+                    if (boss.currState == EstrellaController.BossState.Death)
+                    {
+                        areAllEnemiesDead = false;
+                    }
+                    boss.isInRoom = true;
                 }
 
                 if (enemies.Length > 0 && !areAllEnemiesDead)

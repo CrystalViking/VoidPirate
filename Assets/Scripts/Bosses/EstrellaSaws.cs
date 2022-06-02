@@ -18,7 +18,7 @@ public class EstrellaSaws : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Enemy" && collision.tag != "Boss" && collision.tag != "Projectile" && collision.tag != "PlayerProjectile")
+        if (collision.tag == "Player")
         {
             Destroy(gameObject);
         }

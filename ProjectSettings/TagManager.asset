@@ -12,6 +12,7 @@ TagManager:
   - Boss
   - Projectile
   - PlayerProjectile
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -63,4 +64,10 @@ TagManager:
     locked: 0
   - name: Item
     uniqueID: 2243441277
+    locked: 0
+  - name: Door
+    uniqueID: 3613609851
+    locked: 0
+  - name: Wall
+    uniqueID: 1474003349
     locked: 0

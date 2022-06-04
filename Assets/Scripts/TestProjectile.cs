@@ -19,11 +19,11 @@ public class TestProjectile : MonoBehaviour
         {
             if(collision.GetComponent<EnemyReceiveDamage>() != null)
             {
-                collision.GetComponent<EnemyReceiveDamage>().DealDamage(damage);
+                collision.GetComponent<EnemyReceiveDamage>().TakeDamage(damage);
             }
             if (collision.GetComponent<EstrellaController>() != null)
             {
-                collision.GetComponent<EstrellaController>().DealDamage(damage);
+                collision.GetComponent<EstrellaController>().TakeDamage(damage);
             }
             Destroy(gameObject);
         }

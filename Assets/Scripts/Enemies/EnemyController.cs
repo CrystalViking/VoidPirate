@@ -166,7 +166,7 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-    public void DealDamage(float damage)
+    public void TakeDamage(float damage)
     {
         healthBar.SetActive(true);
         health -= damage;

@@ -8,14 +8,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new Projectile", menuName = "Items/Projectile")]
 public class ScriptableProjectile : Item
 {
-    public GameObject prefab;
-    public Weapon weapon = null;
-    //private BaseProjectile projectileStats;
-
-    
-    
-
-
-
+    public float speed;
+    public float damage;
+    public float projectileDestroyTime;
 }
 

@@ -2,36 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EstrellaProjectiles : MonoBehaviour
+public class EstellaProjectiles_v1_1 : BaseEnemyProjectile
 {
-    public GameObject target;
-    public float speed;
-    Rigidbody2D bullet;
+    // Start is called before the first frame update
     void Start()
     {
-        bullet = GetComponent<Rigidbody2D>();
+        InitProjectile();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        OnTriggerBehavior(collision);
+    }
+
+    public override void InitProjectile()
+    {
+        base.InitProjectile();
+
         target = GameObject.FindGameObjectWithTag("Player");
         Vector2 moveDir = (target.transform.position - transform.position).normalized * speed;
         bullet.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(target.transform.position - transform.position));
         bullet.velocity = new Vector2(moveDir.x, moveDir.y);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public override void OnTriggerBehavior(Collider2D collision)
     {
-        if (collision.tag != "Enemy" && collision.tag != "Boss" && collision.tag != "Projectile" && collision.name != "Player")
+        if (!(collision.CompareTag("Enemy") ||
+            collision.CompareTag("Boss") || 
+            collision.CompareTag("Projectile") || 
+            collision.CompareTag("Player")))
         {
             Destroy(gameObject);
         }
-        else if (collision.name == "Player")
+        else if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerStats>().TakeDamage(15);
+            collision.GetComponent<PlayerStats>().TakeDamage(damage);
             Destroy(gameObject);
         }
         else
         {
-            Destroy(gameObject, 5);
+            Destroy(gameObject, projectileDestroyTime);
         }
     }
+
 
     public static float GetAngleFromVectorFloat(Vector3 dir)
     {
@@ -41,4 +54,6 @@ public class EstrellaProjectiles : MonoBehaviour
 
         return n;
     }
+
+
 }

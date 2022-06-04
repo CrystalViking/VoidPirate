@@ -9,7 +9,7 @@ public class PlayerStats : ActorStats
     private void Start()
     {
         GetReferences(); 
-        InitVariables();
+        InitVariables(maxHealth);
     }
 
     private void GetReferences()
@@ -25,10 +25,7 @@ public class PlayerStats : ActorStats
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            TakeDamage(10);
-        }
+        
     }
 
 

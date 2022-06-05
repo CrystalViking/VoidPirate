@@ -18,7 +18,7 @@ public class EstrellaProjectiles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Enemy" && collision.tag != "Boss" && collision.tag != "Projectile")
+        if (collision.tag == "Player")
         {
             Destroy(gameObject);
         }

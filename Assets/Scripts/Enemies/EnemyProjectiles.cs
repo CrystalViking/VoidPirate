@@ -17,7 +17,7 @@ public class EnemyProjectiles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Enemy")
+        if (collision.tag == "Player" | collision.tag == "Wall" | collision.tag == "Door")
         {
             Destroy(gameObject);
         }

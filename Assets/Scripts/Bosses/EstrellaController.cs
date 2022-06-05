@@ -29,8 +29,8 @@ public class EstrellaController : MonoBehaviour
     public GameObject healthBar;
     public Slider healthBarSlider;
     public BossState currState = BossState.Idle;
-    public bool isInRoom = true;
-    public bool isDead = true;
+    public bool isInRoom = false;
+    public bool isDead = false;
     public GameObject[] sawLocators;
     private bool shouldDebuff = true;
     private float playerspeed;
@@ -68,7 +68,7 @@ public class EstrellaController : MonoBehaviour
                 StartCoroutine(MeleeAttack());
                 break;
             case (BossState.Death):
-                Death();
+                // Death();
                 break;
         }
 
@@ -257,9 +257,9 @@ public class EstrellaController : MonoBehaviour
 
     }
 
-    private void Death()
-    {
-        isDead = true;
-    }
+    // private void Death()
+    // {
+    //     isDead = true;
+    // }
 
 }

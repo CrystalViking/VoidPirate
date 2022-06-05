@@ -22,6 +22,7 @@ public class EnemyProjectiles : MonoBehaviour
             Destroy(gameObject);
         }
         else if (collision.name == "Player")
+        if (collision.tag == "Player" | collision.tag == "Wall" | collision.tag == "Door")
         {
             collision.GetComponent<PlayerStats>().TakeDamage(15);
             Destroy(gameObject);

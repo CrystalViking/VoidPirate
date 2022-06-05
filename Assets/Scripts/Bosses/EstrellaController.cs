@@ -136,7 +136,7 @@ public class EstrellaController : MonoBehaviour
         {
             anim.SetBool("IsAttackingLeft", false);
         }
-        // GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(30f);
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(30f);
         yield return new WaitForSeconds(0.6f);
         anim.SetBool("IsMeleeing", false);
         currState = BossState.Move;

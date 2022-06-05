@@ -5,23 +5,18 @@ using UnityEngine;
 public class EnemyStats : ActorStats
 {
     [SerializeField] ScriptableEnemy enemy;
+    private float lineOfSight;
+    private float attackRange;
+   
+   
 
-    public void DealDamage(ActorStats actorStats)
-    {
-        // Damaging functionality
-        // actorStats.TakeDamage()
-    }
-
-    public void TakeDamage()
-    {
-        // Taking damage functionality
-    }
-
-    public override void Die()
+    public void Die(float despawnTime = 10f)
     {
         base.Die();
-        Destroy(gameObject);
+        Destroy(gameObject, despawnTime);
     }
+
+
 
     public override void InitVariables(float maxHealth = 25f)
     {
@@ -40,6 +35,14 @@ public class EnemyStats : ActorStats
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void InitVariables()
+    {
+        speed = enemy.speed;
+        lineOfSight = enemy.lineOfSight;
+        attackRange = enemy.attackRange;
         
     }
 }

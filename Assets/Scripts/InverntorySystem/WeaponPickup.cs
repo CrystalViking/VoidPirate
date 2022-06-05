@@ -31,13 +31,13 @@ public class WeaponPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.name == "Player")
+        if(collision.CompareTag("Player"))
             isInRange = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.name == "Player")
+        if(collision.CompareTag("Player"))
             isInRange = false;
     }
 }

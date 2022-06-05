@@ -17,15 +17,16 @@ public class ScriptableEnemy : ScriptableObject
     public float attackRange;
     public GameObject[] bullet;
     public float timeBetweenAttacks;
-    private float nextAttackTime;
-    private Transform player;
-    private Animator anim;
+    //private float nextAttackTime; <- move to base class
+    //private Transform player; <- move to base class
+    //private Animator anim; <- move to base class
     public float health;
     public float maxHealth;
     public GameObject healthBar;
     public Slider healthBarSlider;
-    public EnemyState currState = EnemyState.Idle;
-    public EnemyType enemyType;
+    //public EnemyState currState = EnemyState.Idle; <- move to base class
+    //public EnemyType enemyType; <- move to base class
     public bool isInRoom = true;
-    float distanceFromPlayer;
+    
+    //float distanceFromPlayer; <- move to base class
 }

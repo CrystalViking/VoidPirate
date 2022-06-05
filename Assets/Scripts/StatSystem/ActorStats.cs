@@ -6,9 +6,9 @@ public class ActorStats : MonoBehaviour
 {
     [SerializeField] protected float health; // aktualne punkty zdrowia w postaci float
     [SerializeField] protected float maxHealth; // maksymalna liczba punktow zdrowia
-    [SerializeField] protected CharacterStat StatHealth; // punkty zdrowia w postaci CharacterStat (dla kontroli modyfikatorow)
+    protected CharacterStat StatHealth; // punkty zdrowia w postaci CharacterStat (dla kontroli modyfikatorow)
     [SerializeField] protected float speed;
-    [SerializeField] protected CharacterStat StatSpeed;
+    protected CharacterStat StatSpeed;
 
     protected bool isDead;
 
@@ -28,6 +28,16 @@ public class ActorStats : MonoBehaviour
         {
             health = maxHealth;
         }
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
+    }
+
+    public float GetHealth()
+    {
+        return health;
     }
 
     public virtual void Die()

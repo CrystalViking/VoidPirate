@@ -38,7 +38,11 @@ public class EnemyReceiveDamage : MonoBehaviour
             {
                 GetComponent<ShootingEnemy>().enabled = false;
             }
-            Destroy(gameObject, 10f);
+            else if ((gameObject.GetComponent("ChargingEnemy") as ChargingEnemy) != null)
+            {
+                GetComponent<ChargingEnemy>().enabled = false;
+            }
+            Destroy(gameObject, 5f);
         }
     }
 

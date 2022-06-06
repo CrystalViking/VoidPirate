@@ -18,9 +18,16 @@ public class BaseEnemyProjectile : MonoBehaviour
     
     public virtual void OnTriggerBehavior(Collider2D collision)
     {
+        Debug.Log(collision.gameObject.layer.ToString());
+        Debug.Log(collision.tag.ToString());
+
+        Collider2D tempcol = collision;
+
+
         if (!(collision.CompareTag("Enemy") || 
             collision.CompareTag("Player") || 
-            collision.CompareTag("Floor")))
+            collision.gameObject.layer == LayerMask.NameToLayer("Floor") ||
+            collision.CompareTag("Untagged")))
         {
             Destroy(gameObject);
         }

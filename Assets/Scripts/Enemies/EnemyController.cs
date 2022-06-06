@@ -71,18 +71,38 @@ public class EnemyController : MonoBehaviour
 
         if (isInRoom)
         {
-            if (IsInLineOfSight() && currState != EnemyState.Die)
+            if(enemyType.Equals(EnemyType.Melee))
             {
-                currState = EnemyState.Follow;
+                if (IsInLineOfSight() && currState != EnemyState.Die)
+                {
+                    currState = EnemyState.Follow;
+                }
+                else if (!IsInLineOfSight() && currState != EnemyState.Die)
+                {
+                    currState = EnemyState.Idle; //Should Wander
+                }
+                if (CanAttack())
+                {
+                    currState = EnemyState.Attack;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(15f);
+                }
             }
-            else if (!IsInLineOfSight() && currState != EnemyState.Die)
+            else
             {
-                currState = EnemyState.Idle; //Should Wander
+                float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
+                if (distanceFromPlayer < lineOfSight && distanceFromPlayer > attackRange)
+                {
+                    anim.SetBool("IsAttacking", false);
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                }
+                else if (distanceFromPlayer <= attackRange && Time.time > nextAttackTime)
+                {
+                    anim.SetBool("IsAttacking", true);
+                    Instantiate(bullet, transform.position, Quaternion.identity);
+                    nextAttackTime = Time.time + timeBetweenAttacks;
+                }
             }
-            if (CanAttack())
-            {
-                currState = EnemyState.Attack;
-            }
+            
         }
         else
         {
@@ -98,8 +118,7 @@ public class EnemyController : MonoBehaviour
         {
             case (EnemyType.Melee):
                 anim.SetBool("IsAttacking", true);
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(15f);
-                nextAttackTime = Time.time + timeBetweenAttacks;              
+                nextAttackTime = Time.time + timeBetweenAttacks;
                 break;
 
             case (EnemyType.Ranged):

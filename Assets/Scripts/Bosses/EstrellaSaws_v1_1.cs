@@ -30,7 +30,8 @@ public class EstrellaSaws_v1_1 : BaseEnemyProjectile
             collision.CompareTag("Boss") || 
             collision.CompareTag("Projectile") || 
             collision.CompareTag("PlayerProjectile") || 
-            collision.CompareTag("Player")))
+            collision.CompareTag("Player") ||
+            collision.CompareTag("Untagged")))
         {
             Destroy(gameObject);
         }

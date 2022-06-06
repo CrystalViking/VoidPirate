@@ -30,7 +30,8 @@ public class EstellaProjectiles_v1_1 : BaseEnemyProjectile
         if (!(collision.CompareTag("Enemy") ||
             collision.CompareTag("Boss") || 
             collision.CompareTag("Projectile") || 
-            collision.CompareTag("Player")))
+            collision.CompareTag("Player") ||
+            collision.CompareTag("Untagged")))
         {
             Destroy(gameObject);
         }

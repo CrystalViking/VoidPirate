@@ -33,6 +33,7 @@ public class EstrellaController : MonoBehaviour
     public bool isDead = true;
     public GameObject[] sawLocators;
     private bool shouldDebuff = true;
+    private bool damagedPlayer = false;
     private float playerspeed;
     float distanceFromPlayer;
 
@@ -136,8 +137,13 @@ public class EstrellaController : MonoBehaviour
         {
             anim.SetBool("IsAttackingLeft", false);
         }
-        //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(30f);
+        if (!damagedPlayer)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(30f);
+            damagedPlayer = true;
+        }
         yield return new WaitForSeconds(0.6f);
+        
         anim.SetBool("IsMeleeing", false);
         currState = BossState.Move;
     }
@@ -221,6 +227,7 @@ public class EstrellaController : MonoBehaviour
         {
             if (IsInAttackRange())
             {
+                damagedPlayer = false;
                 currState = BossState.MeleeAttack;
             }
             else

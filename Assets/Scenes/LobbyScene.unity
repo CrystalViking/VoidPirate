@@ -2726,6 +2726,18 @@ PrefabInstance:
       propertyPath: currentHealthText
       value: 
       objectReference: {fileID: 2094686463}
+    - target: {fileID: 8836956139156992218, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836956139156992218, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
+      propertyPath: health
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836956139156992218, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
+      propertyPath: maxHealth
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 8836956139156992219, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -40817,6 +40829,7 @@ MonoBehaviour:
   weapon: {fileID: 11400000, guid: f0865a268481cb2438b63cf19fa098e2, type: 2}
   playerInventory: {fileID: 62880740}
   itemPickupCode: 101
+  destroyOnPickUp: 1
 --- !u!58 &2045322516
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -41137,10 +41150,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4196884718552648977, guid: ab84ce52bf4e55e4280152ac6b17bd9e, type: 3}
-      propertyPath: playerInventory
-      value: 
-      objectReference: {fileID: 62880740}
     - target: {fileID: 3945749038620377056, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -41205,5 +41214,9 @@ PrefabInstance:
       propertyPath: projectileForce
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4196884718552648977, guid: ab84ce52bf4e55e4280152ac6b17bd9e, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 62880740}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab84ce52bf4e55e4280152ac6b17bd9e, type: 3}

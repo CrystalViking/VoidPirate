@@ -7,6 +7,7 @@ public class WeaponPickup : MonoBehaviour
     [SerializeField] Weapon weapon;
     [SerializeField] PlayerInventory playerInventory;
     [SerializeField] KeyCode itemPickupCode = KeyCode.E;
+    [SerializeField] bool destroyOnPickUp = true;
 
     private bool isInRange;
 
@@ -16,19 +17,27 @@ public class WeaponPickup : MonoBehaviour
         if(Input.GetKeyDown(itemPickupCode) && isInRange)
         {
             playerInventory.AddItem(weapon);
+            
+            if(destroyOnPickUp)
+            {
+                Destroy(gameObject);
+            }
+            
+
+
         }
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.name == "Player")
+        if(collision.CompareTag("Player"))
             isInRange = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.name == "Player")
+        if(collision.CompareTag("Player"))
             isInRange = false;
     }
 }

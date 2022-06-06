@@ -35,7 +35,8 @@ public class EnemyController : MonoBehaviour
     public Slider healthBarSlider;
     public EnemyState currState = EnemyState.Idle;
     public EnemyType enemyType;
-    public bool isInRoom = false;
+    public bool isInRoom = true;
+    public bool damagedPlayer = false;
     float distanceFromPlayer;
 
     void Start()
@@ -81,6 +82,7 @@ public class EnemyController : MonoBehaviour
             if (CanAttack())
             {
                 currState = EnemyState.Attack;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(15f);
             }
         }
         else
@@ -97,13 +99,13 @@ public class EnemyController : MonoBehaviour
         {
             case (EnemyType.Melee):
                 anim.SetBool("IsAttacking", true);
+                nextAttackTime = Time.time + timeBetweenAttacks;
                 break;
 
             case (EnemyType.Ranged):
                 anim.SetBool("IsAttacking", true);
                 Instantiate(bullet, transform.position, Quaternion.identity);
                 nextAttackTime = Time.time + timeBetweenAttacks;
-
                 break;
         }
     }
@@ -168,7 +170,7 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-    public void DealDamage(float damage)
+    public void TakeDamage(float damage)
     {
         healthBar.SetActive(true);
         health -= damage;

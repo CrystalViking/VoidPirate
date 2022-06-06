@@ -16,7 +16,7 @@ public class EnemyReceiveDamage : MonoBehaviour
         health = maxHealth;
     }
 
-    public void DealDamage(float damage)
+    public void TakeDamage(float damage)
     {
         healthBar.SetActive(true);
         health -= damage;

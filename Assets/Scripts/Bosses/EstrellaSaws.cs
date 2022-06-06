@@ -18,8 +18,13 @@ public class EstrellaSaws : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag != "Enemy" && collision.tag != "Boss" && collision.tag != "Projectile" && collision.tag != "PlayerProjectile" && collision.name != "Player")
         {
+            Destroy(gameObject);
+        }
+        else if(collision.name == "Player")
+        {
+            collision.GetComponent<PlayerStats>().TakeDamage(25);
             Destroy(gameObject);
         }
         else

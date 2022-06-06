@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 829660870811452216}
   - component: {fileID: -9037444287049676476}
   - component: {fileID: 4810381450876620194}
-  - component: {fileID: 1855059029692672951}
+  - component: {fileID: 3481294627662395184}
   m_Layer: 3
   m_Name: SawProjectile
   m_TagString: Projectile
@@ -145,7 +145,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1855059029692672951
+--- !u!114 &3481294627662395184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,10 +154,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 829660870811452223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de87fe9e5d5a5e74babff7fb96e9820c, type: 3}
+  m_Script: {fileID: 11500000, guid: 64ffffe892512bf43aa22af18d29cf6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 12
-  x: 0
-  y: 0
+  projectile: {fileID: 11400000, guid: 5c3f24158a7d5a84bafc46a2d0791904, type: 2}

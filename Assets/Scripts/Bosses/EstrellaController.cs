@@ -33,6 +33,7 @@ public class EstrellaController : MonoBehaviour
     public bool isDead = false;
     public GameObject[] sawLocators;
     private bool shouldDebuff = true;
+    private bool damagedPlayer = false;
     private float playerspeed;
     float distanceFromPlayer;
 
@@ -86,7 +87,7 @@ public class EstrellaController : MonoBehaviour
 
     }
 
-    public void DealDamage(float damage)
+    public void TakeDamage(float damage)
     {
         healthBar.SetActive(true);
         health -= damage;
@@ -136,7 +137,13 @@ public class EstrellaController : MonoBehaviour
         {
             anim.SetBool("IsAttackingLeft", false);
         }
+        if (!damagedPlayer)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(30f);
+            damagedPlayer = true;
+        }
         yield return new WaitForSeconds(0.6f);
+        
         anim.SetBool("IsMeleeing", false);
         currState = BossState.Move;
     }
@@ -147,7 +154,8 @@ public class EstrellaController : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             sawprojectiles[i] = Instantiate(bullet[0], new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-            sawprojectiles[i].GetComponent<EstrellaSaws>().SetGameObject(sawLocators[i]);
+            //sawprojectiles[i].GetComponent<EstrellaSaws>().SetGameObject(sawLocators[i]);
+            sawprojectiles[i].GetComponent<EstrellaSaws_v1_1>().SetGameObject(sawLocators[i]);
         }
         currState = BossState.Idle;
         StartCoroutine(SawAttack());
@@ -219,6 +227,7 @@ public class EstrellaController : MonoBehaviour
         {
             if (IsInAttackRange())
             {
+                damagedPlayer = false;
                 currState = BossState.MeleeAttack;
             }
             else

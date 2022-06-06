@@ -17,8 +17,13 @@ public class EnemyProjectiles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" | collision.tag == "Wall" | collision.tag == "Door")
+        if (collision.tag != "Enemy" && collision.name != "Player")
         {
+            Destroy(gameObject);
+        }
+        else if (collision.name == "Player")
+        {
+            collision.GetComponent<PlayerStats>().TakeDamage(15);
             Destroy(gameObject);
         }
         else

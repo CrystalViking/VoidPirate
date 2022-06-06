@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2271933765131339704}
   - component: {fileID: 7516329696809463188}
   - component: {fileID: 5224202030746181346}
-  - component: {fileID: 8776950568383046529}
+  - component: {fileID: 2845355620617193363}
   m_Layer: 0
   m_Name: Test Spell 1
   m_TagString: Projectile
@@ -145,7 +145,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8776950568383046529
+--- !u!114 &2845355620617193363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4828550350657439305}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf84d0f750d64747ac0765f7d5639e7, type: 3}
+  m_Script: {fileID: 11500000, guid: e9230d206f819924eb0f5d3bea2b86ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  projectile: {fileID: 11400000, guid: 49a7fa01699739942b11bcb34f747217, type: 2}

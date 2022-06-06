@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
+    private float speed;
     private Vector2 direction;
     private Animator animator;
+    private PlayerStats playerStats;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        GetReferences();
+        InitVariables();
     }
     private void Update()
     {
@@ -62,6 +64,18 @@ public class PlayerMovement : MonoBehaviour
         animator.SetLayerWeight(1, 1);
         animator.SetFloat("xDir", direction.x);
         animator.SetFloat("yDir", direction.y);
+    }
+
+
+    private void GetReferences()
+    {
+        animator = GetComponent<Animator>();
+        playerStats = GetComponent<PlayerStats>();
+    }
+
+    private void InitVariables()
+    {
+        speed = playerStats.GetSpeed();
     }
 
     public void SetSpeed(float speedX)

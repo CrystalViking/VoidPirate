@@ -82,7 +82,6 @@ public class EnemyController : MonoBehaviour
             if (CanAttack())
             {
                 currState = EnemyState.Attack;
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(15f);
             }
         }
         else
@@ -99,7 +98,8 @@ public class EnemyController : MonoBehaviour
         {
             case (EnemyType.Melee):
                 anim.SetBool("IsAttacking", true);
-                nextAttackTime = Time.time + timeBetweenAttacks;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(15f);
+                nextAttackTime = Time.time + timeBetweenAttacks;              
                 break;
 
             case (EnemyType.Ranged):

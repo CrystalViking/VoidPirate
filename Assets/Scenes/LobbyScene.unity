@@ -1256,6 +1256,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2045322512, guid: f78fabc36acffa144986682a502916f1, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 62880740}
     - target: {fileID: 6131570258045723768, guid: f78fabc36acffa144986682a502916f1, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1304,32 +1308,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ImpulseRifle
       objectReference: {fileID: 0}
-    - target: {fileID: 7458751263318114285, guid: f78fabc36acffa144986682a502916f1, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f78fabc36acffa144986682a502916f1, type: 3}
---- !u!1 &1720980487 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3258912619776116486, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
-  m_PrefabInstance: {fileID: 3258912618601751127}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1720980491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1720980487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26ebd0679b19d904b8d841d2e52d671d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealthText: {fileID: 2094686463}
-  maxHealthText: {fileID: 728496352}
-  weaponUI: {fileID: 1916330611}
 --- !u!1 &1770604839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,33 +2389,9 @@ PrefabInstance:
       propertyPath: currentHealthText
       value: 
       objectReference: {fileID: 2094686463}
-    - target: {fileID: 8836956139156992218, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836956139156992218, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
-      propertyPath: health
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836956139156992218, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
-      propertyPath: maxHealth
-      value: 500
-      objectReference: {fileID: 0}
     - target: {fileID: 8836956139156992219, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836956139156992244, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836956139156992245, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
-      propertyPath: canShoot
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836956139156992245, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
-      propertyPath: primaryCurrentAmmoStorage
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8836956139223194831, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_RootOrder
@@ -40496,43 +40452,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &2045322511 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6787399960490140412, guid: f78fabc36acffa144986682a502916f1, type: 3}
-  m_PrefabInstance: {fileID: 1637827988}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2045322512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045322511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fdbd9c98d888ba4fbf38a1b10ddde2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: f0865a268481cb2438b63cf19fa098e2, type: 2}
-  playerInventory: {fileID: 62880740}
-  itemPickupCode: 101
-  destroyOnPickUp: 1
---- !u!58 &2045322516
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045322511}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
 --- !u!1 &2084006700
 GameObject:
   m_ObjectHideFlags: 0
@@ -40705,10 +40624,6 @@ PrefabInstance:
     - target: {fileID: 3258912619541223588, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
       propertyPath: m_Name
       value: UI_Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258912619541223588, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}

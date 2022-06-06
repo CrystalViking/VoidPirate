@@ -713,7 +713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3258912619541223584
 RectTransform:
   m_ObjectHideFlags: 0
@@ -942,6 +942,7 @@ GameObject:
   - component: {fileID: 3258912619776116485}
   - component: {fileID: 3258912619776116483}
   - component: {fileID: 3258912619776116484}
+  - component: {fileID: 1720980491}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1009,6 +1010,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1720980491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3258912619776116486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ebd0679b19d904b8d841d2e52d671d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealthText: {fileID: 3258912619864638120}
+  maxHealthText: {fileID: 3258912619018345143}
+  weaponUI: {fileID: 3258912619980079140}
 --- !u!1 &3258912619864638122
 GameObject:
   m_ObjectHideFlags: 0

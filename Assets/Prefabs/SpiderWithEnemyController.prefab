@@ -439,14 +439,15 @@ MonoBehaviour:
   lineOfSight: 7.44
   attackRange: 0.38
   bullet: {fileID: 0}
-  timeBetweenAttacks: 0.33
+  timeBetweenAttacks: 1.5
   health: 0
-  maxHealth: 100
-  healthBar: {fileID: 3258912619541223588, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
+  maxHealth: 500
+  healthBar: {fileID: 8249778110884415442}
   healthBarSlider: {fileID: 7548932861836233004}
   currState: 4
   enemyType: 0
   isInRoom: 1
+  damagedPlayer: 0
 --- !u!1 &6787852211158795022
 GameObject:
   m_ObjectHideFlags: 0

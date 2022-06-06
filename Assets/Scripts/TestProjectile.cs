@@ -16,16 +16,17 @@ public class TestProjectile : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.tag == "Wall" | collision.tag == "Door")
+        if (collision.tag == "Wall" || collision.tag == "Door")
         {
             Destroy(gameObject);
         }
 
-        if (collision.tag == "Enemy" | collision.tag == "Boss")
+        if (collision.tag == "Enemy" || collision.tag == "Boss")
         {
             if (collision.GetComponent<EnemyController>() != null)
             {
-                collision.GetComponent<EnemyReceiveDamage>().TakeDamage(damage);
+                collision.GetComponent<EnemyController>().TakeDamage(damage);
+                Destroy(gameObject);
             }
             if (collision.GetComponent<EstrellaController>() != null)
             {

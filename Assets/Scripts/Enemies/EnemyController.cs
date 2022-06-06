@@ -172,7 +172,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        healthBar.SetActive(true);
+        healthBar.SetActive(true);       
         health -= damage;
         healthBarSlider.value = CalculateHealthPercentage();
         CheckDeath();

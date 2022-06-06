@@ -441,12 +441,13 @@ MonoBehaviour:
   bullet: {fileID: 4828550350657439305, guid: f51270035f4ae51409330665aad1c3b0, type: 3}
   timeBetweenAttacks: 1.5
   health: 0
-  maxHealth: 100
+  maxHealth: 500
   healthBar: {fileID: 8639519865099653721}
   healthBarSlider: {fileID: 7880057456447495335}
   currState: 4
   enemyType: 1
   isInRoom: 1
+  damagedPlayer: 0
 --- !u!1 &6605636542176515717
 GameObject:
   m_ObjectHideFlags: 0

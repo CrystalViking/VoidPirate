@@ -36,6 +36,7 @@ public class EnemyController : MonoBehaviour
     public EnemyState currState = EnemyState.Idle;
     public EnemyType enemyType;
     public bool isInRoom = true;
+    public bool damagedPlayer = false;
     float distanceFromPlayer;
 
     void Start()
@@ -80,6 +81,7 @@ public class EnemyController : MonoBehaviour
             if (CanAttack())
             {
                 currState = EnemyState.Attack;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(15f);
             }
         }
         else
@@ -96,13 +98,13 @@ public class EnemyController : MonoBehaviour
         {
             case (EnemyType.Melee):
                 anim.SetBool("IsAttacking", true);
+                nextAttackTime = Time.time + timeBetweenAttacks;
                 break;
 
             case (EnemyType.Ranged):
                 anim.SetBool("IsAttacking", true);
                 Instantiate(bullet, transform.position, Quaternion.identity);
                 nextAttackTime = Time.time + timeBetweenAttacks;
-
                 break;
         }
     }

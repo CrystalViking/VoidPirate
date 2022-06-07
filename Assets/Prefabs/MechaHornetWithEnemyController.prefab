@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 6194148048386134216}
   - component: {fileID: 6194148048386134220}
   - component: {fileID: -421603589938608218}
+  - component: {fileID: 9051615758992642138}
   m_Layer: 3
   m_Name: MechaHornetWithEnemyController
   m_TagString: Enemy
@@ -448,6 +449,18 @@ MonoBehaviour:
   enemyType: 1
   isInRoom: 1
   damagedPlayer: 0
+--- !u!114 &9051615758992642138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194148048386134219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f67b6fb6ff9a0c47a096423e458d7be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6605636542176515717
 GameObject:
   m_ObjectHideFlags: 0

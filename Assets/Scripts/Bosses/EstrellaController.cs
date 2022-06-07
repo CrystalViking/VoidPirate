@@ -36,6 +36,8 @@ public class EstrellaController : MonoBehaviour
     private bool damagedPlayer = false;
     private float playerspeed;
     float distanceFromPlayer;
+    public GameObject portal;
+    private bool isSpawned = false;
 
     void Start()
     {
@@ -69,7 +71,7 @@ public class EstrellaController : MonoBehaviour
                 StartCoroutine(MeleeAttack());
                 break;
             case (BossState.Death):
-                // Death();
+                StartCoroutine(SpawnPortal());
                 break;
         }
 
@@ -266,9 +268,14 @@ public class EstrellaController : MonoBehaviour
 
     }
 
-    // private void Death()
-    // {
-    //     isDead = true;
-    // }
+    IEnumerator SpawnPortal()
+    {
+        yield return new WaitForSeconds(8f);
+        if (!isSpawned)
+        {
+            Instantiate(portal, transform.position, Quaternion.identity);
+            isSpawned = true;
+        }
+    }
 
 }

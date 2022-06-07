@@ -23,6 +23,13 @@ public class PlayerStats : ActorStats
         hud.UpdateHealth(health, maxHealth);
     }
 
+
+    public override void Die()
+    {
+        base.Die();
+
+    }
+
     private void Update()
     {
         

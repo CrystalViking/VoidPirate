@@ -227,7 +227,6 @@ public class RoomController : MonoBehaviour
                     if (boss.currState != EstrellaController.BossState.Death)
                     {
                         areAllEnemiesDead = false;
-                        Debug.Log("dupsko");
                     }
                     
                     boss.isInRoom = true;

@@ -12,13 +12,15 @@ public class Rotation : MonoBehaviour
 
     void Update()
     {
-        if(player.transform.position.x < transform.position.x)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        else
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+        if (this.GetComponent<EnemyController>().health > 0) {
+            if ((player.transform.position.x < transform.position.x))
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
         }
     }
 }

@@ -357,7 +357,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   lineOfSight: 20
-  meleeRange: 2.66
+  chargeRange: 3.4
+  attackRange: 0.33
+  timeBetweenAttacks: 1.5
 --- !u!1 &4586327810264445585
 GameObject:
   m_ObjectHideFlags: 0

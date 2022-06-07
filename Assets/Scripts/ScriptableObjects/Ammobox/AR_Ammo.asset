@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642fe5601949785469aa9d676e9a3fe8, type: 3}
   m_Name: AR_Ammo
   m_EditorClassIdentifier: 
-  ItemName: 
-  ItemDescription: 
-  Icon: {fileID: 0}
-  minAmmo: 0
-  maxAmmo: 0
-  ammoType: 0
+  ItemName: AR Ammo
+  ItemDescription: Ammo for AR type rifles
+  Icon: {fileID: 21300000, guid: b08f5e6aa51fa0840a6c623b89695760, type: 3}
+  minAmmo: 100
+  maxAmmo: 150
+  ammoType: 2

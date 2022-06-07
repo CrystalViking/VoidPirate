@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : ActorStats
 {
@@ -27,7 +28,7 @@ public class PlayerStats : ActorStats
     public override void Die()
     {
         base.Die();
-
+        SceneManager.LoadScene("GameOverScene");
     }
 
     private void Update()

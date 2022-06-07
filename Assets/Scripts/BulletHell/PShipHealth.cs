@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PShipHealth : MonoBehaviour
 {
@@ -64,5 +65,7 @@ public class PShipHealth : MonoBehaviour
     public void Die()
     {
         Debug.Log("is Dead");
+        SceneManager.LoadScene("GameOverScene");
+
     }
 }

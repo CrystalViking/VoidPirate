@@ -53,6 +53,11 @@ public class PlayerInventory : MonoBehaviour
         return weapons[index];
     }
 
+    public int GetInventorySize()
+    {
+        return weapons.Length;
+    }
+
     
 
     private void GetReferences()

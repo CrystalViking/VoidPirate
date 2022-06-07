@@ -8,6 +8,7 @@ public enum WeaponType
     Melee,
     Pistol,
     AR,
+    AutoSniper,
     Shotgun,
     Special
 }

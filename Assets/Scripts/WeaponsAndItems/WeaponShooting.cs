@@ -61,7 +61,7 @@ public class WeaponShooting : MonoBehaviour
 
         if(currentWeapon != null)
         {
-            if (currentWeapon.weaponType == WeaponType.AR)
+            if (currentWeapon.weaponType == WeaponType.AR || currentWeapon.weaponType == WeaponType.AutoSniper)
             {
                 if(Input.GetKey(KeyCode.Mouse0))
                 {
@@ -171,17 +171,28 @@ public class WeaponShooting : MonoBehaviour
     {
         if(slot == 0)
         {
-            primaryCurrentAmmo -= currentAmmoAdded;
-            primaryCurrentAmmoStorage -= currentStoredAmmoAdded;
+            primaryCurrentAmmo += currentAmmoAdded;
+            primaryCurrentAmmoStorage += currentStoredAmmoAdded;
             hud.UpdateWeaponAmmoInfo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
         }
         if(slot == 1)
         {
-            secondaryCurrentAmmo -= currentAmmoAdded;
-            secondaryCurrentAmmoStorage -= currentStoredAmmoAdded;
+            secondaryCurrentAmmo += currentAmmoAdded;
+            secondaryCurrentAmmoStorage += currentStoredAmmoAdded;
             hud.UpdateWeaponAmmoInfo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
         }
         
+    }
+
+    public void AddAmmoToCurrentWeaponType(WeaponType weaponType, int currentStoredAmmoAdded)
+    {
+        for(int i = 0; i < inventory.GetInventorySize(); ++i)
+        {
+            if(inventory.GetItem(i)?.weaponType == weaponType)
+            {
+                AddAmmo((int)inventory.GetItem(i).weaponSlot, 0, currentStoredAmmoAdded);
+            }
+        }
     }
 
     private void Reload(int slot)

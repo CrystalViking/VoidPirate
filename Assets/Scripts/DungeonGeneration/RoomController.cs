@@ -222,19 +222,18 @@ public class RoomController : MonoBehaviour
                     }
                 }
 
-
-
-
                 if (boss)
                 {
-                    if (boss.currState == EstrellaController.BossState.Death)
+                    if (boss.currState != EstrellaController.BossState.Death)
                     {
                         areAllEnemiesDead = false;
+                        Debug.Log("dupsko");
                     }
+                    
                     boss.isInRoom = true;
                 }
-
-                if (enemies.Length > 0 && !areAllEnemiesDead)
+//enemies.Length > 0
+                if (!areAllEnemiesDead)
                 {
                     foreach (EnemyController enemy in enemies)
                     {

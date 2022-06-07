@@ -28,7 +28,7 @@ public class PlayerProjectiles : MonoBehaviour
             Vector2 myPos = transform.position;
             Vector2 direction = (mousePos - myPos).normalized;
             spell.GetComponent<Rigidbody2D>().velocity = direction * projectileForce;
-            spell.GetComponent<TestProjectile>().damage = Random.Range(minDamage, maxDamage);
+            spell.GetComponent<PlayerShipProjectile>().damage = Random.Range(minDamage, maxDamage);
             spell.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(mousePos - myPos));
         }
     }

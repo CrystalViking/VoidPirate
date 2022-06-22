@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour
         {
             if(enemyType.Equals(EnemyType.Melee))
             {
-                if (IsInLineOfSight() && currState != EnemyState.Die)
+                if (IsInLineOfSight() && currState != EnemyState.Die && !IsInAttackRange()) 
                 {
                     currState = EnemyState.Follow;
                 }
@@ -84,7 +84,8 @@ public class EnemyController : MonoBehaviour
                 if (CanAttack())
                 {
                     currState = EnemyState.Attack;
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(15f);
+                    StartCoroutine(DelayDMG());
+                    
                 }
             }
             else
@@ -116,9 +117,8 @@ public class EnemyController : MonoBehaviour
     {
         switch (enemyType)
         {
-            case (EnemyType.Melee):
-                anim.SetBool("IsAttacking", true);
-                nextAttackTime = Time.time + timeBetweenAttacks;
+            case (EnemyType.Melee):              
+                StartCoroutine(Delay());
                 break;
 
             case (EnemyType.Ranged):
@@ -129,7 +129,21 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void Follow()
+    IEnumerator Delay()
+    {
+        anim.SetBool("IsAttacking", true);
+        nextAttackTime = Time.time + timeBetweenAttacks;      
+        yield return new WaitForSeconds(0.8f);
+        currState = EnemyState.Idle;
+    }
+
+    IEnumerator DelayDMG()
+    {
+        yield return new WaitForSeconds(0.2f);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(15f);
+    }
+
+        void Follow()
     {
         switch (enemyType)
         {

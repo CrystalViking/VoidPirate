@@ -10,6 +10,12 @@ public class EquipmentManager : MonoBehaviour
 
     private HudScript hud;
 
+    private int EMprimaryCurrentAmmo;
+    private int EMprimaryCurrentAmmoStorage;
+
+    private int EMsecondaryCurrentAmmo;
+    private int EMsecondaryCurrentAmmoStorage;
+
     [SerializeField] Weapon defaultMeleeWeapon = null;
 
     // Start is called before the first frame update
@@ -58,7 +64,15 @@ public class EquipmentManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        hud.UpdateWeaponUI(inventory.GetItem(currentlyEquippedWeapon));
+        var currentWeapon = inventory.GetItem(currentlyEquippedWeapon);
+
+        hud.UpdateWeaponUI(currentWeapon);
+
+        if (currentWeapon.weaponSlot == WeaponSlot.Primary)
+            hud.UpdateWeaponAmmoInfo(GetPrimaryAmmo(), GetPrimaryStorage());
+        if (currentWeapon.weaponSlot == WeaponSlot.Secondary)
+            hud.UpdateWeaponAmmoInfo(GetSecondaryAmmo(), GetSecondaryStorage());
+        
     }
     
     
@@ -96,5 +110,40 @@ public class EquipmentManager : MonoBehaviour
         inventory = GetComponent<PlayerInventory>();
         hud = GetComponent<HudScript>();
     }
+
+    public void EM_UpdatePrimaryAmmo(int currentAmmoUpdate, int currentStoredAmmoUpdate)
+    {
+        EMprimaryCurrentAmmo = currentAmmoUpdate;
+        EMprimaryCurrentAmmoStorage = currentStoredAmmoUpdate;
+    }
+
+    public void EM_UpdateSecondaryAmmo(int currentAmmoUpdate, int currentStoredAmmoUpdate)
+    {
+        EMsecondaryCurrentAmmo = currentAmmoUpdate;
+        EMsecondaryCurrentAmmoStorage = currentStoredAmmoUpdate;
+    }
+
+
+    public int GetPrimaryAmmo()
+    {
+        return EMprimaryCurrentAmmo;
+    }
+
+    public int GetPrimaryStorage()
+    {
+        return EMprimaryCurrentAmmoStorage;
+    }
+
+
+    public int GetSecondaryAmmo()
+    {
+        return EMsecondaryCurrentAmmo;
+    }
+
+    public int GetSecondaryStorage()
+    {
+        return EMsecondaryCurrentAmmoStorage;
+    }
+
 
 }

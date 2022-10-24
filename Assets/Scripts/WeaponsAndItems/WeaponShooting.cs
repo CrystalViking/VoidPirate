@@ -118,6 +118,7 @@ public class WeaponShooting : MonoBehaviour
             primaryCurrentAmmo = weapon.magazineSize;
             primaryCurrentAmmoStorage = weapon.storedAmmo;
             primaryMagIsEmpty = false;
+            manager.EM_UpdatePrimaryAmmo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
         }
 
         // secondary
@@ -126,6 +127,7 @@ public class WeaponShooting : MonoBehaviour
             secondaryCurrentAmmo = weapon.magazineSize;
             secondaryCurrentAmmoStorage = weapon.storedAmmo;
             secondaryMagIsEmpty = false;
+            manager.EM_UpdateSecondaryAmmo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
         }
     }
 
@@ -143,6 +145,7 @@ public class WeaponShooting : MonoBehaviour
             {
                 primaryCurrentAmmo -= currentAmmoUsed;
                 primaryCurrentAmmoStorage -= currentStoredAmmoUsed;
+                manager.EM_UpdatePrimaryAmmo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
                 hud.UpdateWeaponAmmoInfo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
             }
             
@@ -161,6 +164,7 @@ public class WeaponShooting : MonoBehaviour
             {
                 secondaryCurrentAmmo -= currentAmmoUsed;
                 secondaryCurrentAmmoStorage -= currentStoredAmmoUsed;
+                manager.EM_UpdateSecondaryAmmo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
                 hud.UpdateWeaponAmmoInfo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
             }
         }
@@ -173,13 +177,17 @@ public class WeaponShooting : MonoBehaviour
         {
             primaryCurrentAmmo += currentAmmoAdded;
             primaryCurrentAmmoStorage += currentStoredAmmoAdded;
-            hud.UpdateWeaponAmmoInfo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
+            if(manager.CurrentlyEquippedWeapon() == slot)
+                hud.UpdateWeaponAmmoInfo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
+            manager.EM_UpdatePrimaryAmmo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
         }
         if(slot == 1)
         {
             secondaryCurrentAmmo += currentAmmoAdded;
             secondaryCurrentAmmoStorage += currentStoredAmmoAdded;
-            hud.UpdateWeaponAmmoInfo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
+            if (manager.CurrentlyEquippedWeapon() == slot)
+                hud.UpdateWeaponAmmoInfo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
+            manager.EM_UpdateSecondaryAmmo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
         }
         
     }

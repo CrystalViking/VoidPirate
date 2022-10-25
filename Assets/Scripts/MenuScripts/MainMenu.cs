@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public string firstLevel;
 
+    public string testLevel;
+
     public GameObject optionsScreen;
 
     // Start is called before the first frame update
@@ -24,6 +26,11 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(firstLevel);
+    }
+
+    public void StartTestLevel()
+    {
+        SceneManager.LoadScene(testLevel);
     }
 
     public void OpenOptions()

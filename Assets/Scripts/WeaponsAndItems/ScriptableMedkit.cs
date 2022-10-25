@@ -11,8 +11,9 @@ public enum MedkitType
 }
 
 
-[CreateAssetMenu(fileName = "new Ammobox", menuName = "Items/AmmoBox")]
+[CreateAssetMenu(fileName = "new Medkit", menuName = "Items/Medkit")]
 public class ScriptableMedkit : Item
 {
     public MedkitType medkitType;
+    public float hp_content;
 }

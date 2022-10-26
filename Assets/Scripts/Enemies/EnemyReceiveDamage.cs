@@ -42,7 +42,7 @@ public class EnemyReceiveDamage : MonoBehaviour
             {
                 GetComponent<ChargingEnemy>().enabled = false;
             }
-            Destroy(gameObject, 5f);
+            Destroy(gameObject, 1f);
         }
     }
 

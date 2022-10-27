@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScriptableEnergyDrink : MonoBehaviour
+[CreateAssetMenu(fileName = "new EnergyDrink", menuName = "Items/EnergyDrink")]
+public class ScriptableEnergyDrink : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float duration;
+    public float hp_content;
 }

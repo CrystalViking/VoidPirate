@@ -14,14 +14,39 @@ public class Door : MonoBehaviour
     private GameObject player;
     private float widthOffset = 3.5f;
 
+    private bool playerCanEnter;
+
+    public bool PlayerCanEnter {
+        get
+        {
+            return playerCanEnter;
+        }
+        private set
+        {
+            playerCanEnter = value;
+        }
+    }
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        playerCanEnter = false;
+    }
+
+
+    public void OpenDoor()
+    {
+        playerCanEnter = true;
+    }
+
+    public void CloseDoor()
+    {
+        playerCanEnter = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && playerCanEnter)
         {
             switch (doorType)
             {

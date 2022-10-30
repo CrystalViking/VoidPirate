@@ -687,11 +687,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemapVisualiser: {fileID: 1005989064}
   startPosition: {x: 0, y: 0}
-  randomWalkParameters: {fileID: 0}
-  corridorLength: 14
-  corridorCount: 5
+  randomWalkParameters: {fileID: 11400000, guid: fedf3cdcb17dea442b93cf9636a28609, type: 2}
+  corridorLength: 30
+  corridorCount: 10
   roomPercent: 0
-  roomGenerationParameters: {fileID: 0}
 --- !u!4 &1226094326
 Transform:
   m_ObjectHideFlags: 0

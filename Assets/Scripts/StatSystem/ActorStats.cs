@@ -12,6 +12,8 @@ public class ActorStats : MonoBehaviour
 
     protected StatModifier speedStatModifier;
 
+    private CoroutineCountDown timer;
+
     private bool timerIsRunning;
     private bool speedModifierOn;
 

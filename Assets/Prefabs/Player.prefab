@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8836956139223194831}
   - component: {fileID: 8836956139156992240}
   - component: {fileID: 8836956139156992241}
+  - component: {fileID: 8836956139156992204}
   - component: {fileID: 8836956139156992242}
   - component: {fileID: 8836956139156992243}
   - component: {fileID: 8836956139156992244}
-  - component: {fileID: 8836956139156992204}
   - component: {fileID: 8836956139156992218}
   - component: {fileID: 8836956139156992196}
   - component: {fileID: 8836956139156992195}
@@ -115,6 +115,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &8836956139156992204
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8836956139156992219}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!61 &8836956139156992242
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -169,27 +190,6 @@ MonoBehaviour:
   minDamage: 20
   maxDamage: 30
   projectileForce: 10
---- !u!50 &8836956139156992204
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8836956139156992219}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!114 &8836956139156992218
 MonoBehaviour:
   m_ObjectHideFlags: 0

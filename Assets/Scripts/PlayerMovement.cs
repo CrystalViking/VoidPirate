@@ -29,7 +29,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            animator.SetLayerWeight(1, 0);
+            //animator.SetLayerWeight(1, 0);
+            animator.SetBool("IsMoving", false);
         }
     }
 
@@ -45,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             direction += Vector2.left;
-            transform.localScale = new Vector3(-6, 6, 6);
+            transform.localScale = new Vector3(-0.5f, 0.4f, 0.5f);
         }
 
         if (Input.GetKey(KeyCode.S))
@@ -56,14 +57,15 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             direction += Vector2.right;
-            transform.localScale = new Vector3(6, 6, 6);
+            transform.localScale = new Vector3(0.5f, 0.4f, 0.5f);
         }
     }
     private void SetAnimatorMovement(Vector2 direction)
     {
-        animator.SetLayerWeight(1, 1);
-        animator.SetFloat("xDir", direction.x);
-        animator.SetFloat("yDir", direction.y);
+        //animator.SetLayerWeight(1, 1);
+        animator.SetBool("IsMoving", true);
+        //animator.SetFloat("xDir", direction.x);
+        //animator.SetFloat("yDir", direction.y);
     }
 
 

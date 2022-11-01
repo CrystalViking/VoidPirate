@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,13 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private PlayerStats playerStats;
 
+    private Vector2 pointerInput;
+
+    private WeaponParent weaponParent;
+
+    private bool LOOKING_LEFT;
+    private bool LOOKING_RIGHT;
+
     private void Start()
     {
         GetReferences();
@@ -16,9 +24,22 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        SetMousePointerFromInput();
+        UpdateWeaponParent();
         GetSpeed();
         TakeInput();
         Move();
+        
+    }
+
+    private void UpdateWeaponParent()
+    {
+        weaponParent.PointerPosition = pointerInput;
+    }
+
+    private void Awake()
+    {
+        weaponParent = GetComponentInChildren<WeaponParent>();
     }
 
     private void Move()
@@ -38,6 +59,23 @@ public class PlayerMovement : MonoBehaviour
     {
         direction = Vector2.zero;
 
+        var playerScreenPoint = Camera.main.WorldToScreenPoint(GameObject.Find("Player").transform.position);
+        var mouse = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
+
+        if(mouse.x < playerScreenPoint.x)
+        {
+            transform.localScale = new Vector3(-6, 6, 6);
+            LOOKING_LEFT = true;
+            LOOKING_RIGHT = false;
+        }
+        else
+        {
+            transform.localScale = new Vector3(6, 6, 6);
+            LOOKING_LEFT = false;
+            LOOKING_RIGHT = true;
+        }
+
+
         if (Input.GetKey(KeyCode.W))
         {
             direction += Vector2.up;
@@ -46,7 +84,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             direction += Vector2.left;
-            transform.localScale = new Vector3(-6, 6, 6);
+            if(!LOOKING_RIGHT)
+                transform.localScale = new Vector3(-6, 6, 6);
         }
 
         if (Input.GetKey(KeyCode.S))
@@ -57,9 +96,30 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             direction += Vector2.right;
-            transform.localScale = new Vector3(6, 6, 6);
+            if(!LOOKING_LEFT)
+                transform.localScale = new Vector3(6, 6, 6);
         }
+
+
+        
     }
+
+
+    private Vector2 GetPointerInput()
+    {
+        //pointerInput = Input.mousePosition;
+        //weaponParent.PointerPosition = pointerInput;
+
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Camera.main.nearClipPlane;
+        return Camera.main.ScreenToWorldPoint(mousePos);
+    }
+
+    private void SetMousePointerFromInput()
+    {
+        pointerInput = GetPointerInput();
+    }
+
     private void SetAnimatorMovement(Vector2 direction)
     {
         animator.SetLayerWeight(1, 1);
@@ -77,6 +137,8 @@ public class PlayerMovement : MonoBehaviour
     private void InitVariables()
     {
         speed = playerStats.GetSpeed();
+        LOOKING_LEFT = false;
+        LOOKING_RIGHT = true;
     }
 
     public void SetSpeed(float speedX)

@@ -21,6 +21,7 @@ public class EnemyProjectiles_v1_1 : BaseEnemyProjectile
 
         target = GameObject.FindGameObjectWithTag("Player");
         Vector2 moveDir = (target.transform.position - transform.position).normalized * speed;
+        bullet.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(target.transform.position - transform.position));
         bullet.velocity = new Vector2(moveDir.x, moveDir.y);
     }
 

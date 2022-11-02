@@ -1123,6 +1123,14 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8836956139156992240, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: aaced3cb3dee479428fc7576c9e1d0e0, type: 2}
+    - target: {fileID: 8836956139156992241, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1723798771, guid: 75beb5333cfadcd4aa5837436dae6704, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
 --- !u!1 &1223373865

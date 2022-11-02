@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             direction += Vector2.left;
-            transform.localScale = new Vector3(-0.5f, 0.4f, 0.5f);
+            transform.localScale = new Vector3(-0.7f, 0.7f, 0.7f);
         }
 
         if (Input.GetKey(KeyCode.S))
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             direction += Vector2.right;
-            transform.localScale = new Vector3(0.5f, 0.4f, 0.5f);
+            transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         }
     }
     private void SetAnimatorMovement(Vector2 direction)

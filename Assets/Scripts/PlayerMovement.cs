@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
 
     private WeaponParent weaponParent;
 
+
+    [SerializeField]
+    public bool weaponParent_on = false;
+
     private bool LOOKING_LEFT;
     private bool LOOKING_RIGHT;
 
@@ -25,7 +29,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         SetMousePointerFromInput();
-        UpdateWeaponParent();
+        if(weaponParent_on)
+            UpdateWeaponParent();
         GetSpeed();
         TakeInput();
         Move();

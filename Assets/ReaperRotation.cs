@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotation : MonoBehaviour
+public class ReaperRotation : MonoBehaviour
 {
     GameObject player;
     void Start()
@@ -12,7 +12,8 @@ public class Rotation : MonoBehaviour
 
     void Update()
     {
-        if (this.GetComponent<EnemyController>().health > 0) {
+        if (this.GetComponent<ReaperController>().health > 0)
+        {
             if ((player.transform.position.x < transform.position.x))
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);
@@ -21,6 +22,6 @@ public class Rotation : MonoBehaviour
             {
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
-        }     
+        }
     }
 }

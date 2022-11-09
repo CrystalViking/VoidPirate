@@ -8,6 +8,8 @@ public class PlayerProjectiles : MonoBehaviour
     public float minDamage;
     public float maxDamage;
     public float projectileForce;
+    private float lastShootTime = 0;
+    public float fireRate;
 
     public static float GetAngleFromVectorFloat(Vector3 dir)
     {
@@ -20,16 +22,21 @@ public class PlayerProjectiles : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            GameObject spell = Instantiate(projectile, transform.position, Quaternion.identity);
-            Vector3 worldMousePosition3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePos = new Vector2(worldMousePosition3D.x, worldMousePosition3D.y);
-            Vector2 myPos = transform.position;
-            Vector2 direction = (mousePos - myPos).normalized;
-            spell.GetComponent<Rigidbody2D>().velocity = direction * projectileForce;
-            spell.GetComponent<PlayerShipProjectile>().damage = Random.Range(minDamage, maxDamage);
-            spell.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(mousePos - myPos));
+        
+            if (Time.time > lastShootTime + fireRate)
+            {
+                lastShootTime = Time.time;
+                GameObject spell = Instantiate(projectile, transform.position, Quaternion.identity);
+                Vector3 worldMousePosition3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePos = new Vector2(worldMousePosition3D.x, worldMousePosition3D.y);
+                Vector2 myPos = transform.position;
+                Vector2 direction = (mousePos - myPos).normalized;
+                spell.GetComponent<Rigidbody2D>().velocity = direction * projectileForce;
+                spell.GetComponent<PlayerShipProjectile>().damage = Random.Range(minDamage, maxDamage);
+                spell.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(mousePos - myPos));
+            }
         }
     }
 }

@@ -34,9 +34,13 @@ public class ReaperController : MonoBehaviour
     public bool isDead = false;
     private bool damagedPlayer = false;
     private bool attackedPlayer = false;
+    private bool spawnedMinion = false;
+    private bool sacrificedMinion = false;
     float distanceFromPlayer;
-    //public GameObject portal;
-    //private bool isSpawned = false;
+    public GameObject minion;
+    public List<GameObject> minion_list;
+    public GameObject portal;
+    private bool isSpawned = false;
 
     void Start()
     {
@@ -57,15 +61,35 @@ public class ReaperController : MonoBehaviour
                 Move(speed);
                 break;
             case (BossState.MeleeAttack):
-                Move(speed/2f);
+                Move(speed / 2f);
                 StartCoroutine(MeleeAttack());
                 break;
             case (BossState.RangeAttack):
-                StartCoroutine(OrbAttack());              
+                StartCoroutine(OrbAttack());
+                break;
+            case (BossState.Spawn):
+                Move(speed / 2f);
+                StartCoroutine(SpawnMinion());
+                break;
+            case (BossState.Consume):
+                Move(speed / 2f);
+                StartCoroutine(ConsumeMinion());
+                break;
+            case (BossState.Teleport):
+                StartCoroutine(Teleport());
                 break;
             case (BossState.Death):
-                //StartCoroutine(SpawnPortal());
-            break;
+                StartCoroutine(SpawnPortal());
+                break;
+        }
+
+        foreach(GameObject m in minion_list)
+        {
+            if (!m)
+            {
+                minion_list.Remove(m);
+                break;
+            }
         }
 
         distanceFromPlayer = Vector2.Distance(player.position, transform.position);
@@ -96,6 +120,8 @@ public class ReaperController : MonoBehaviour
     {
         healthBar.SetActive(true);
         health -= damage;
+        if (health > maxHealth)
+            health = maxHealth;
         healthBarSlider.value = CalculateHealthPercentage();
         CheckDeath();
     }
@@ -128,32 +154,42 @@ public class ReaperController : MonoBehaviour
             else
             {
                 int r = 0;
-                r = Random.Range(1, 3);
+                r = Random.Range(1, 10);
 
-                if (r == 1)
-                {
-                    currState = BossState.Move;
-                }
-                else if (r == 2)
+                if (r == 2 || r == 7 || r == 1)
                 {
                     attackedPlayer = false;
                     currState = BossState.RangeAttack;
                 }
+                else if (r == 3 || r == 8)
+                {
+                    spawnedMinion = false;
+                    currState = BossState.Spawn;
+                }
+                else if (r == 4 || r == 9 || r == 6)
+                {
+                    sacrificedMinion = false;
+                    currState = BossState.Consume;
+                }
+                else if (r == 5)
+                {                 
+                    currState = BossState.Teleport;
+                }
                 else
                 {
-                    currState = BossState.Move;
+                    currState = BossState.Teleport;
                 }
 
             }
             nextAttackTime = Time.time + timeBetweenAttacks;
         }
-    
+
     }
 
     IEnumerator MeleeAttack()
     {
         anim.SetBool("IsAttacking", true);
-        
+
         yield return new WaitForSeconds(0.6f);
         if (!damagedPlayer && IsInAttackRange())
         {
@@ -168,7 +204,7 @@ public class ReaperController : MonoBehaviour
     IEnumerator OrbAttack()
     {
         anim.SetBool("IsShooting", true);
-              
+
         yield return new WaitForSeconds(0.6f);
 
         if (!attackedPlayer)
@@ -183,6 +219,82 @@ public class ReaperController : MonoBehaviour
 
         anim.SetBool("IsShooting", false);
         currState = BossState.Move;
+    }
+
+    IEnumerator SpawnMinion()
+    {
+        anim.SetBool("IsSpawning", true);
+
+        yield return new WaitForSeconds(0.6f);
+
+        if (!spawnedMinion)
+        {
+            minion_list.Add(Instantiate(minion, transform.position, Quaternion.identity));
+            minion_list.Add(Instantiate(minion, new Vector2(transform.position.x + 0.5f, transform.position.y + 0.5f), Quaternion.identity));
+
+            spawnedMinion = true;
+        }
+
+        anim.SetBool("IsSpawning", false);
+        currState = BossState.Move;
+    }
+
+    IEnumerator ConsumeMinion()
+    {
+        if (minion_list.Count > 0)
+        {
+            anim.SetBool("IsConsuming", true);
+
+            yield return new WaitForSeconds(0.8f);
+
+            if (!sacrificedMinion)
+            {
+                try
+                {
+                    minion_list[0].GetComponent<MinionController>().Sacrifice();
+                    TakeDamage(-500.0f);
+                    sacrificedMinion = true;
+                }
+                catch
+                {
+                    TakeDamage(-1.0f);
+                    sacrificedMinion = true;
+                }
+            }
+
+        
+
+            anim.SetBool("IsConsuming", false);
+            currState = BossState.Move;
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            currState = BossState.Move;
+        }
+    }
+
+    IEnumerator Teleport()
+    {
+        anim.SetBool("IsTeleporting", true);
+
+        yield return new WaitForSeconds(0.2f);
+
+        transform.position = player.position;
+
+        anim.SetBool("IsTeleporting", false);
+        currState = BossState.Move;
+    }
+
+    IEnumerator SpawnPortal()
+    {
+        if (!isSpawned)
+        {
+            Instantiate(portal, transform.position, Quaternion.identity);
+            isSpawned = true;
+        }
+        yield return new WaitForSeconds(0.5f);
     }
 }
 

@@ -36,6 +36,10 @@ public class TestProjectile : MonoBehaviour
             {
                 collision.GetComponent<ReaperController>().TakeDamage(damage);
             }
+            if (collision.GetComponent<MinionController>() != null)
+            {
+                collision.GetComponent<MinionController>().TakeDamage(damage);
+            }
             Destroy(gameObject);
         }
         else

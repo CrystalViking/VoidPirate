@@ -185,7 +185,8 @@ public class RoomController : MonoBehaviour
         foreach (Room room in loadedRooms)
         {
             EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
-            EstrellaController boss = room.GetComponentInChildren<EstrellaController>();
+            EstrellaController boss_e = room.GetComponentInChildren<EstrellaController>();
+            ReaperController boss_r = room.GetComponentInChildren<ReaperController>();
             Debug.Log(room.name);
 
             if (currRoom != room)
@@ -199,9 +200,13 @@ public class RoomController : MonoBehaviour
                     }
                 }
 
-                if (boss)
+                if (boss_e)
                 {
-                    boss.isInRoom = false;
+                    boss_e.isInRoom = false;
+                }
+                else if (boss_r)
+                {
+                    boss_r.isInRoom = false;
                 }
 
                 foreach (Door door in room.GetComponentsInChildren<Door>())
@@ -223,16 +228,25 @@ public class RoomController : MonoBehaviour
                     }
                 }
 
-                if (boss)
+                if (boss_e)
                 {
-                    if (boss.currState != EstrellaController.BossState.Death)
+                    if (boss_e.currState != EstrellaController.BossState.Death)
                     {
                         areAllEnemiesDead = false;
                     }
                     
-                    boss.isInRoom = true;
+                    boss_e.isInRoom = true;
                 }
-//enemies.Length > 0
+                else if (boss_r)
+                {
+                    if (boss_r.currState != ReaperController.BossState.Death)
+                    {
+                        areAllEnemiesDead = false;
+                    }
+
+                    boss_r.isInRoom = true;
+                }
+                //enemies.Length > 0
                 if (!areAllEnemiesDead)
                 {
                     foreach (EnemyController enemy in enemies)

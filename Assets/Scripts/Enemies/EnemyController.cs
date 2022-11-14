@@ -4,14 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public enum EnemyState
-{
-    Idle,
-    Wander,
-    Follow,
-    Die,
-    Attack
-};
+
 
 public enum EnemyType
 {

@@ -66,12 +66,12 @@ public class EquipmentManager : MonoBehaviour
     {
         var currentWeapon = inventory.GetItem(currentlyEquippedWeapon);
 
-        hud.UpdateWeaponUI(currentWeapon);
+        hud?.UpdateWeaponUI(currentWeapon);
 
         if (currentWeapon.weaponSlot == WeaponSlot.Primary)
-            hud.UpdateWeaponAmmoInfo(GetPrimaryAmmo(), GetPrimaryStorage());
+            hud?.UpdateWeaponAmmoInfo(GetPrimaryAmmo(), GetPrimaryStorage());
         if (currentWeapon.weaponSlot == WeaponSlot.Secondary)
-            hud.UpdateWeaponAmmoInfo(GetSecondaryAmmo(), GetSecondaryStorage());
+            hud?.UpdateWeaponAmmoInfo(GetSecondaryAmmo(), GetSecondaryStorage());
         
     }
     

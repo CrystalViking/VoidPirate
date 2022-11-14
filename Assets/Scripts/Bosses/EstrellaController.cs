@@ -104,7 +104,7 @@ public class EstrellaController : MonoBehaviour
             currState = BossState.Death;
             healthBar.SetActive(false);
             anim.SetBool("IsDead", true);
-            Destroy(gameObject, 10f);
+            Destroy(gameObject, 10f); // TODO: consider using scriptable object
         }
     }
 
@@ -144,8 +144,8 @@ public class EstrellaController : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(30f);
             damagedPlayer = true;
         }
-        yield return new WaitForSeconds(0.6f);
-        
+        yield return new WaitForSeconds(0.6f); // TODO: consider using scriptable object
+
         anim.SetBool("IsMeleeing", false);
         currState = BossState.Move;
     }
@@ -166,8 +166,8 @@ public class EstrellaController : MonoBehaviour
     {
         anim.SetBool("IsSawAttacking", true);
 
-        yield return new WaitForSeconds(0.6f);
-        
+        yield return new WaitForSeconds(0.6f); // TODO: consider using scriptable object
+
         anim.SetBool("IsSawAttacking", false);
         currState = BossState.Move;
     }
@@ -185,7 +185,7 @@ public class EstrellaController : MonoBehaviour
             anim.SetBool("IsAttackingLeft", false);
             GameObject flameprojectile = Instantiate(bullet[1], new Vector2(transform.position.x + 0.5f, transform.position.y), Quaternion.identity);
         }
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.4f); // TODO: consider using scriptable object
         anim.SetBool("IsFlameAttacking", false);
         currState = BossState.Move;
     }
@@ -194,11 +194,11 @@ public class EstrellaController : MonoBehaviour
     {
         anim.SetBool("IsDebuffing", true);
         
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetSpeed(playerspeed/2.0f);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetSpeed(playerspeed/2.0f); // TODO: consider using scriptable object
 
         StartCoroutine(DebuffTime());
 
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.2f); // TODO: consider using scriptable object
 
         anim.SetBool("IsDebuffing", false);
         shouldDebuff = false;
@@ -207,7 +207,7 @@ public class EstrellaController : MonoBehaviour
 
     IEnumerator DebuffTime()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(10.0f); // TODO: consider using scriptable object
         StartCoroutine(DebuffCooldown());
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetSpeed(playerspeed);
 
@@ -215,7 +215,7 @@ public class EstrellaController : MonoBehaviour
 
     IEnumerator DebuffCooldown()
     {
-        yield return new WaitForSeconds(20.0f);
+        yield return new WaitForSeconds(20.0f); // TODO: consider using scriptable object
         shouldDebuff = true;
     }
     private void Move()
@@ -236,9 +236,9 @@ public class EstrellaController : MonoBehaviour
             {
                 int r = 0;
                 if (shouldDebuff)
-                    r = Random.Range(1, 5);
+                    r = Random.Range(1, 5); // TODO: consider using scriptable object
                 else
-                    r = Random.Range(1, 4);
+                    r = Random.Range(1, 4); // TODO: consider using scriptable object
 
                 if (r == 1)
                 {
@@ -270,7 +270,7 @@ public class EstrellaController : MonoBehaviour
 
     IEnumerator SpawnPortal()
     {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(8f); // TODO: consider using scriptable object
         if (!isSpawned)
         {
             Instantiate(portal, transform.position, Quaternion.identity);

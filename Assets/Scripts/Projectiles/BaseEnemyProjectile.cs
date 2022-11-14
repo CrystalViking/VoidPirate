@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class BaseEnemyProjectile : MonoBehaviour
 {   
-    [SerializeField] public ScriptableProjectile projectile = null;
+    [SerializeField] public ScriptableProjectile projectileData = null;
+    //public GameObject projectile;
     protected GameObject target;
     protected Rigidbody2D bullet;
     protected float damage;
@@ -33,7 +34,7 @@ public class BaseEnemyProjectile : MonoBehaviour
         }
         else if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerStats>().TakeDamage(projectile.damage);
+            collision.GetComponent<PlayerStats>().TakeDamage(projectileData.damage);
             Destroy(gameObject);
         }
         else
@@ -49,10 +50,10 @@ public class BaseEnemyProjectile : MonoBehaviour
 
     public virtual void InitProjectile()
     {
-        projectileDestroyTime = projectile.projectileDestroyTime;
+        projectileDestroyTime = projectileData.projectileDestroyTime;
         bullet = GetComponent<Rigidbody2D>();
-        speed = projectile.speed;
-        damage = projectile.damage;
+        speed = projectileData.speed;
+        damage = projectileData.damage;
     }
 
     public static float GetAngleFromVectorFloat(Vector3 dir)

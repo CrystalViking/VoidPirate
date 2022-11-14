@@ -170,6 +170,7 @@ public class RoomController : MonoBehaviour
         CameraController.instance.currRoom = room;
         currRoom = room;
 
+
         StartCoroutine(RoomCorutine());
     }
 
@@ -184,7 +185,25 @@ public class RoomController : MonoBehaviour
     {
         foreach (Room room in loadedRooms)
         {
-            EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
+            //EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
+
+
+            //List<IEnemy> enemies = new List<IEnemy>();
+
+            //enemies = room.GetComponentInChildren<IEnemy>().Select
+
+            bool areAllEnemiesDead = true;
+
+            List<IEnemy> enemies = new List<IEnemy>(room.GetComponentsInChildren<IEnemy>());
+
+            if(enemies.All(x => x.GetEnemyState() == EnemyState.Die))
+            {
+                enemies.Clear();
+            }
+
+            
+
+
             EstrellaController boss = room.GetComponentInChildren<EstrellaController>();
             Debug.Log(room.name);
 
@@ -193,9 +212,10 @@ public class RoomController : MonoBehaviour
 
                 if (enemies != null)
                 {
-                    foreach (EnemyController enemy in enemies)
+                    foreach (IEnemy enemy in enemies)
                     {
-                        enemy.isInRoom = false;
+                        //enemy.isInRoom = false;
+                        enemy.SetActiveBehaviourFalse();
                     }
                 }
 
@@ -213,15 +233,18 @@ public class RoomController : MonoBehaviour
             else
             {
 
-                bool areAllEnemiesDead = true;
-
-                foreach (EnemyController enemy in enemies)
+                if (enemies.Count > 0)
                 {
-                    if (enemy.currState != EnemyState.Die)
+                    foreach (IEnemy enemy in enemies)
                     {
-                        areAllEnemiesDead = false;
+                        if (enemy.GetEnemyState() != EnemyState.Die)
+                        {
+                            areAllEnemiesDead = false;
+                        }
                     }
                 }
+
+                
 
                 if (boss)
                 {
@@ -235,9 +258,9 @@ public class RoomController : MonoBehaviour
 //enemies.Length > 0
                 if (!areAllEnemiesDead)
                 {
-                    foreach (EnemyController enemy in enemies)
+                    foreach (IEnemy enemy in enemies)
                     {
-                        enemy.isInRoom = true;
+                        enemy.SetActiveBehaviourTrue();
                     }
 
                     foreach (Door door in room.GetComponentsInChildren<Door>())
@@ -256,6 +279,8 @@ public class RoomController : MonoBehaviour
                         door.OpenDoor();
                     }
                 }
+
+                
             }
         }
     }

@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MedkitPickup : MonoBehaviour
+
+public class MedkitPickup : PickableItem, IPickable
 {
-
     [SerializeField] ScriptableMedkit medkit;
-    [SerializeField] KeyCode itemPickupCode = KeyCode.E;
-    [SerializeField] bool destroyOnPickUp = true;
-
-    private bool isInRange;
     void Update()
     {
-        if(Input.GetKeyDown(itemPickupCode) && isInRange)
+        InteractOnPickup();    
+    }
+
+    //FindObjectOfType
+
+    public override void InteractOnPickup()
+    {
+        if (Input.GetKeyDown(itemPickupCode) && isInRange)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().Heal(medkit.hp_content);
+            HealPlayer();
 
             if (destroyOnPickUp)
             {
@@ -23,15 +26,14 @@ public class MedkitPickup : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void HealPlayer()
     {
-        if (collision.CompareTag("Player"))
-            isInRange = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().Heal(medkit.hp_content);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-            isInRange = false;
-    }
+
+
+
+
 }

@@ -2,16 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
-{
-    top = 0,
-    left = 1,
-    down = 2,
-    right = 3
-};
-
-
-public class DungeonCrawlerController : MonoBehaviour
+public class ShipCrawlerController : MonoBehaviour
 {
 
     public static List<Vector2Int> positionsVisited = new List<Vector2Int>();
@@ -23,19 +14,19 @@ public class DungeonCrawlerController : MonoBehaviour
         {Direction.right, Vector2Int.right}
     };
 
-    public static List<Vector2Int> GenerateDungeon(DungeonGenerationData dungeonData)
+    public static List<Vector2Int> GenerateShip(ShipGenerationData dungeonData)
     {
-        List<DungeonCrawler> dungeonCrawlers = new List<DungeonCrawler>();
+        List<ShipCrawler> dungeonCrawlers = new List<ShipCrawler>();
         for (int i = 0; i < dungeonData.numberOfCrawlers; i++)
         {
-            dungeonCrawlers.Add(new DungeonCrawler(Vector2Int.zero));
+            dungeonCrawlers.Add(new ShipCrawler(Vector2Int.zero));
         }
 
         int iterations = Random.Range(dungeonData.iterationMin, dungeonData.iterationMax);
 
         for (int i = 0; i < iterations; i++)
         {
-            foreach (DungeonCrawler dungeonCrawler in dungeonCrawlers)
+            foreach (ShipCrawler dungeonCrawler in dungeonCrawlers)
             {
                 Vector2Int newPos = dungeonCrawler.Move(directionMovementMap);
                 positionsVisited.Add(newPos);

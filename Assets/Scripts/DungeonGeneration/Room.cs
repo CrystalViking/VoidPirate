@@ -14,14 +14,24 @@ public class Room : MonoBehaviour
     public Door topDoor;
     public Door bottomDoor;
     public List<Door> doors = new List<Door>();
+    private RoomController controller;
 
     void Start()
     {
         if (RoomController.instance == null)
         {
-            Debug.Log("You pressed play in the wrong scene.");
-            return;
+            if(ShipRoomController.instance == null)
+            {
+                Debug.Log("You pressed play in the wrong scene.");
+                return;
+            }
+            controller = ShipRoomController.instance;
         }
+        else
+        {
+            controller = RoomController.instance;
+        }
+
         Door[] ds = GetComponentsInChildren<Door>();
         foreach (Door d in ds)
         {
@@ -44,7 +54,7 @@ public class Room : MonoBehaviour
         }
 
 
-        RoomController.instance.RegisterRoom(this);
+        controller.RegisterRoom(this);
     }
 
     private void Update()
@@ -86,9 +96,9 @@ public class Room : MonoBehaviour
 
     public Room GetRight()
     {
-        if (RoomController.instance.DoesRoomExist(X + 1, Y))
+        if (controller.DoesRoomExist(X + 1, Y))
         {
-            return RoomController.instance.FindRoom(X + 1, Y);
+            return controller.FindRoom(X + 1, Y);
         }
 
         return null;
@@ -96,9 +106,9 @@ public class Room : MonoBehaviour
 
     public Room GetLeft()
     {
-        if (RoomController.instance.DoesRoomExist(X - 1, Y))
+        if (controller.DoesRoomExist(X - 1, Y))
         {
-            return RoomController.instance.FindRoom(X - 1, Y);
+            return controller.FindRoom(X - 1, Y);
         }
 
         return null;
@@ -106,9 +116,9 @@ public class Room : MonoBehaviour
 
     public Room GetTop()
     {
-        if (RoomController.instance.DoesRoomExist(X, Y + 1))
+        if (controller.DoesRoomExist(X, Y + 1))
         {
-            return RoomController.instance.FindRoom(X, Y + 1);
+            return controller.FindRoom(X, Y + 1);
         }
 
         return null;
@@ -116,9 +126,9 @@ public class Room : MonoBehaviour
 
     public Room GetBottom()
     {
-        if (RoomController.instance.DoesRoomExist(X, Y - 1))
+        if (controller.DoesRoomExist(X, Y - 1))
         {
-            return RoomController.instance.FindRoom(X, Y - 1);
+            return controller.FindRoom(X, Y - 1);
         }
 
         return null;
@@ -142,7 +152,7 @@ public class Room : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            RoomController.instance.OnPlayerEnterRoom(this);
+            controller.OnPlayerEnterRoom(this);
         }
     }
 }

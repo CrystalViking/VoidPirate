@@ -15,7 +15,7 @@ public class RoomController : MonoBehaviour
 
 {
     public static RoomController instance;
-    string currentWorldName = "Dungeon";
+    protected string currentWorldName = "Dungeon";
     RoomInfo currentLoadRoomData;
     Room currRoom;
     Queue<RoomInfo> loadRoomQueue = new Queue<RoomInfo>();

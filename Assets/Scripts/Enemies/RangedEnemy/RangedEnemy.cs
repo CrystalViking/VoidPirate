@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedEnemy : Enemy
+public class RangedEnemy : Enemy, IRangedEnemy
 {
-     public GameObject projectile;
+    public GameObject projectile;
 
 
     void Start()
@@ -15,26 +15,26 @@ public class RangedEnemy : Enemy
         activeBehaviour = enemyData.activeBehaviour;
         useRoomLogic = enemyData.useRoomLogic;
         enemyMovement = GetComponent<RangedEnemyMovement>();
-        
+
         animator = GetComponent<RangedEnemyAnimator>();
 
         healthBar = GetComponent<HealthBar>();
 
-       
+
 
         enemyCalculations = GetComponent<RangedEnemyCalculations>();
         enemyMovement.SetPlayerTransform(GameObject.FindGameObjectWithTag("Player").transform);
     }
 
-    
+
     void Update()
     {
-        if(currState != EnemyState.Die)
+        if (currState != EnemyState.Die)
         {
             ScrollStates();
             SelectBehaviour();
         }
-        
+
     }
 
     public void ScrollStates()
@@ -54,7 +54,7 @@ public class RangedEnemy : Enemy
             case (EnemyState.Die):
                 break;
             case (EnemyState.Attack):
-                Attack();
+                RangedAttack();
                 break;
         }
     }
@@ -73,9 +73,9 @@ public class RangedEnemy : Enemy
         currState = EnemyState.Idle;
     }
 
-    public  void ActiveBehaviour()
+    public void ActiveBehaviour()
     {
-        if(enemyCalculations.IsInLineOfSight() && !enemyCalculations.IsInAttackRange() && currState != EnemyState.Die)
+        if (enemyCalculations.IsInLineOfSight() && !enemyCalculations.IsInAttackRange() && currState != EnemyState.Die)
         {
             //Follow();
             currState = EnemyState.Follow;
@@ -84,16 +84,16 @@ public class RangedEnemy : Enemy
         {
             currState = EnemyState.Idle;
         }
-        if(enemyCalculations.IsInAttackRange() && enemyCalculations.CanAttack() && currState != EnemyState.Die)
+        if (enemyCalculations.IsInAttackRange() && enemyCalculations.CanAttack() && currState != EnemyState.Die)
         {
             //Attack();
             currState = EnemyState.Attack;
         }
-        
+
     }
 
 
-    public override void Attack()
+    public void RangedAttack()
     {
         animator.SetIsAttackingTrue();
         if (enemyCalculations.CanAttack())
@@ -101,7 +101,7 @@ public class RangedEnemy : Enemy
             Instantiate(projectile, transform.position, Quaternion.identity);
             enemyCalculations.SetNextAttackTime();
         }
-            
+
     }
 
     public override void Follow()
@@ -132,7 +132,7 @@ public class RangedEnemy : Enemy
 
             currState = EnemyState.Die;
 
-            if (useRoomLogic) 
+            if (useRoomLogic)
                 RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
 
             Destroy(gameObject, enemyData.despawnTimer);

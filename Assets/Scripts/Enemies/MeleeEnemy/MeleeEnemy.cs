@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : Enemy
+public class MeleeEnemy : Enemy, IMeleeEnemy
 {
 
     Task delayDMG;
     Task delay;
     Task roomCoroutine;
+
+    public int Health { get; set; }
 
 
     bool isDead = false;
@@ -15,11 +17,11 @@ public class MeleeEnemy : Enemy
     void Start()
     {
         health = enemyData.maxHealth;
-        useRoomLogic = enemyData.useRoomLogic; 
+        useRoomLogic = enemyData.useRoomLogic;
         activeBehaviour = enemyData.activeBehaviour;
 
         enemyMovement = GetComponent<MeleeEnemyMovement>();
-        
+
         animator = GetComponent<MeleeEnemyAnimator>();
 
         healthBar = GetComponent<HealthBar>();
@@ -28,7 +30,7 @@ public class MeleeEnemy : Enemy
         enemyMovement.SetPlayerTransform(GameObject.FindGameObjectWithTag("Player").transform);
     }
 
-    
+
     void Update()
     {
         if (currState != EnemyState.Die)
@@ -36,7 +38,7 @@ public class MeleeEnemy : Enemy
             ScrollStates();
             SelectBehaviour();
         }
-        
+
     }
 
 
@@ -59,7 +61,7 @@ public class MeleeEnemy : Enemy
                 //delay.Stop();
                 break;
             case (EnemyState.Attack):
-                Attack();
+                MeleeAttack();
                 break;
         }
     }
@@ -68,15 +70,15 @@ public class MeleeEnemy : Enemy
     {
         if (activeBehaviour)
             ActiveBehaviour();
-        else 
+        else
             PassiveBehaviour();
 
-        
+
     }
 
     public void ActiveBehaviour()
     {
-        if(enemyCalculations.IsInLineOfSight() && currState != 
+        if (enemyCalculations.IsInLineOfSight() && currState !=
             EnemyState.Die && !enemyCalculations.IsInAttackRange())
         {
             currState = EnemyState.Follow;
@@ -98,7 +100,7 @@ public class MeleeEnemy : Enemy
         currState = EnemyState.Idle;
     }
 
-    public override void Attack()
+    public void MeleeAttack()
     {
         animator.SetIsMovingFalse();
         //StartCoroutine(Delay());
@@ -110,7 +112,7 @@ public class MeleeEnemy : Enemy
         animator.SetIsMovingTrue();
         animator.SetIsAttackingFalse();
 
-        
+
         transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
     }
 
@@ -163,9 +165,9 @@ public class MeleeEnemy : Enemy
         }
     }
 
-    
 
-    
+
+
 
 
 

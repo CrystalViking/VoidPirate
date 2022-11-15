@@ -23,6 +23,11 @@ public class RoomController : MonoBehaviour
     bool isLoadingRoom = false;
     bool spawnedBossRoom = false;
     bool updatedRooms = false;
+    string[] possibleRooms = new string[]
+    {
+        //"Empty",
+        "Start"
+    };
 
     private void Start()
     {
@@ -156,12 +161,6 @@ public class RoomController : MonoBehaviour
 
     public string GetRandomRoomName()
     {
-        string[] possibleRooms = new string[]
-        {
-            //"Empty",
-            "Basic1"
-        };
-
         return possibleRooms[Random.Range(0, possibleRooms.Length)];
     }
 
@@ -186,7 +185,6 @@ public class RoomController : MonoBehaviour
         {
             EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
             EstrellaController boss = room.GetComponentInChildren<EstrellaController>();
-            Debug.Log(room.name);
 
             if (currRoom != room)
             {

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ShipGenerator : MonoBehaviour
 {
-    public ShipGenerationData dungeonGenerationData;
+    public ShipGenerationData shipGenerationData;
     private List<Vector2Int> shipRooms;
 
     private void Start() {
-        shipRooms = ShipCrawlerController.GenerateShip(dungeonGenerationData);
+        shipRooms = ShipCrawlerController.GenerateShip(shipGenerationData);
+        Debug.Log("Spawning rooms");
         SpawnRooms(shipRooms);
     }
 
@@ -17,6 +18,8 @@ public class ShipGenerator : MonoBehaviour
         ShipRoomController.instance.LoadRoom("Start", 0, 0);
         foreach(Vector2Int roomLocation in rooms)
         {
+            Debug.Log(roomLocation);
+
             ShipRoomController.instance.LoadRoom(ShipRoomController.instance.GetRandomRoomName(), roomLocation.x, roomLocation.y);
         }
     }

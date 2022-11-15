@@ -27,6 +27,11 @@ public class ShipRoomController : RoomController
     private void Start()
     {
         currentWorldName = "Ship";
+        string[] possibleRooms = new string[]
+        {
+            //"Empty",
+            "Start"
+        };
     }
 
 //     private void Update()
@@ -149,17 +154,6 @@ public class ShipRoomController : RoomController
 //     public Room FindRoom(int x, int y)
 //     {
 //         return loadedRooms.Find(item => item.X == x && item.Y == y);
-//     }
-
-//     public string GetRandomRoomName()
-//     {
-//         string[] possibleRooms = new string[]
-//         {
-//             //"Empty",
-//             "Basic1"
-//         };
-
-//         return possibleRooms[Random.Range(0, possibleRooms.Length)];
 //     }
 
 //     public void OnPlayerEnterRoom(Room room)

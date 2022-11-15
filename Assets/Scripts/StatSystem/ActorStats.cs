@@ -62,7 +62,8 @@ public class ActorStats : MonoBehaviour
 
     public void SetStatSpeed(float speed)
     {
-        statSpeed.BaseValue = speed;
+        if(statSpeed != null)
+            statSpeed.BaseValue = speed;
     }
 
     private void ModifySpeedPercentAdd(float percantage)

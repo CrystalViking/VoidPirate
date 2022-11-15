@@ -16,6 +16,8 @@ public class EquipmentManager : MonoBehaviour
     private int EMsecondaryCurrentAmmo;
     private int EMsecondaryCurrentAmmoStorage;
 
+    private WeaponParent weaponParent;
+
     [SerializeField] Weapon defaultMeleeWeapon = null;
 
     // Start is called before the first frame update
@@ -26,6 +28,11 @@ public class EquipmentManager : MonoBehaviour
         
         EquipWeapon(defaultMeleeWeapon);
         
+    }
+
+    private void Awake()
+    {
+        weaponParent = GetComponentInChildren<WeaponParent>();
     }
 
     IEnumerator LetOthersCatchUp()
@@ -43,13 +50,14 @@ public class EquipmentManager : MonoBehaviour
         {
             UnequipWeapon();
             EquipWeapon(inventory.GetItem(0));
-            
+
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && currentlyEquippedWeapon != 1)
         {
             UnequipWeapon();
             EquipWeapon(inventory.GetItem(1));
-               
+            
+
         }
         if (Input.GetKeyDown(KeyCode.Alpha3) && currentlyEquippedWeapon != 2)
         {
@@ -68,11 +76,15 @@ public class EquipmentManager : MonoBehaviour
 
         hud?.UpdateWeaponUI(currentWeapon);
 
-        if (currentWeapon.weaponSlot == WeaponSlot.Primary)
-            hud?.UpdateWeaponAmmoInfo(GetPrimaryAmmo(), GetPrimaryStorage());
-        if (currentWeapon.weaponSlot == WeaponSlot.Secondary)
-            hud?.UpdateWeaponAmmoInfo(GetSecondaryAmmo(), GetSecondaryStorage());
-        
+        if(currentWeapon != null)
+        {
+            if (currentWeapon.weaponSlot == WeaponSlot.Primary)
+                hud?.UpdateWeaponAmmoInfo(GetPrimaryAmmo(), GetPrimaryStorage());
+            if (currentWeapon.weaponSlot == WeaponSlot.Secondary)
+                hud?.UpdateWeaponAmmoInfo(GetSecondaryAmmo(), GetSecondaryStorage());
+
+        }
+
     }
     
     
@@ -83,17 +95,39 @@ public class EquipmentManager : MonoBehaviour
 
     private void EquipWeapon(Weapon weapon)
     {
-        currentlyEquippedWeapon = (int)weapon.weaponSlot;
-        UpdateUI();
+        if(weapon != null)
+        {
+            DisableWeaponParentIfNotMelee((int)weapon.weaponSlot);
+
+            currentlyEquippedWeapon = (int)weapon.weaponSlot;
+            UpdateUI();
+        }
+
+        
         //Debug.Log(currentlyEquippedWeapon.ToString());
         //currentWeaponObject = Instantiate(weapon.prefab);
     }
 
     public void EquipPickup(int weaponSlot)
     {
+        DisableWeaponParentIfNotMelee(weaponSlot);
+
         currentlyEquippedWeapon = weaponSlot;
         UpdateUI();
     }
+
+    private void DisableWeaponParentIfNotMelee(int weaponSlot)
+    {
+        if(weaponSlot != 2)
+        {
+            transform.Find("WeaponParent").gameObject.SetActive(false);
+        }
+        else
+        {
+            transform.Find("WeaponParent").gameObject.SetActive(true);
+        }
+    }
+    
 
     private void UnequipWeapon()
     {

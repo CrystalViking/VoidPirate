@@ -112,7 +112,7 @@ public class RangedEnemy : Enemy
 
     public override void Idle()
     {
-        animator.SetIsAttackingFalse();
+        animator?.SetIsAttackingFalse();
     }
 
     public override void TakeDamage(float damage)

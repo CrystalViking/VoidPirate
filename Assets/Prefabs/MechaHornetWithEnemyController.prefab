@@ -34,7 +34,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -447,7 +447,7 @@ MonoBehaviour:
   healthBarSlider: {fileID: 7880057456447495335}
   currState: 4
   enemyType: 1
-  isInRoom: 1
+  isInRoom: 0
   damagedPlayer: 0
 --- !u!114 &9051615758992642138
 MonoBehaviour:

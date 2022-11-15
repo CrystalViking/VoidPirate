@@ -10,9 +10,9 @@ public enum EnemyState
     Wander,
     Follow,
     Die,
-    Attack
-};
-
+    Attack,
+    FollowAndAttack
+}
 
 public abstract class Enemy : MonoBehaviour, IEnemy
 {

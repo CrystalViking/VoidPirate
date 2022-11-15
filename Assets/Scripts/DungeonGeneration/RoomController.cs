@@ -202,10 +202,6 @@ public class RoomController : MonoBehaviour
             }
 
             
-
-
-            EstrellaController boss = room.GetComponentInChildren<EstrellaController>();
-            EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
             EstrellaController boss_e = room.GetComponentInChildren<EstrellaController>();
             ReaperController boss_r = room.GetComponentInChildren<ReaperController>();
             Debug.Log(room.name);
@@ -253,7 +249,7 @@ public class RoomController : MonoBehaviour
 
                 
 
-                if (boss)
+                if (boss_r)
                 {
                     if (boss_r.currState != ReaperController.BossState.Death)
                     {
@@ -262,6 +258,17 @@ public class RoomController : MonoBehaviour
 
                     boss_r.isInRoom = true;
                 }
+
+                if (boss_e)
+                {
+                    if (boss_e.currState != EstrellaController.BossState.Death)
+                    {
+                        areAllEnemiesDead = false;
+                    }
+
+                    boss_e.isInRoom = true;
+                }
+
                 //enemies.Length > 0
                 if (!areAllEnemiesDead)
                 {

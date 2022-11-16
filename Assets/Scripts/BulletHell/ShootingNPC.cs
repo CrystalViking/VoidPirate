@@ -21,7 +21,6 @@ public class ShootingNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (Time.time > nextShotTime)
         {
             Instantiate(bullet, transform.position, Quaternion.identity);

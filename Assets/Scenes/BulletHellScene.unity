@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &171435620 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3256481681080192238, guid: 496b1509274d9a64e802413f0f7168a8, type: 3}
+  m_PrefabInstance: {fileID: 3256481681417125108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &188297408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2224888155287910735, guid: 1ef1839edc4588f43b5ec33367e8b6f3, type: 3}
@@ -446,6 +451,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1716406938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1716406939}
+  - component: {fileID: 1716406940}
+  m_Layer: 0
+  m_Name: SpaceshipRotatePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1716406939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716406938}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 171435620}
+  m_Father: {fileID: 188297408}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1716406940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716406938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd65b9a948a64f44a20de1907378f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
 --- !u!1 &1955503226
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +553,6 @@ MonoBehaviour:
   timerSO: {fileID: 11400000, guid: 7ee32f93ead9c154f8c9002bfda01889, type: 2}
   sceneInfo: {fileID: 11400000, guid: e5158c6023e46d2479c606c722fedfc0, type: 2}
   startingTime: 60
-  isEventOn: 0
   countdownText: {fileID: 893541841}
 --- !u!114 &1955503229
 MonoBehaviour:
@@ -637,7 +687,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 188297408}
+    m_TransformParent: {fileID: 1716406939}
     m_Modifications:
     - target: {fileID: 3256481681080192237, guid: 496b1509274d9a64e802413f0f7168a8, type: 3}
       propertyPath: m_Name
@@ -648,12 +698,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3256481681080192238, guid: 496b1509274d9a64e802413f0f7168a8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256481681080192238, guid: 496b1509274d9a64e802413f0f7168a8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256481681080192238, guid: 496b1509274d9a64e802413f0f7168a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.369
+      value: 0.92249995
       objectReference: {fileID: 0}
     - target: {fileID: 3256481681080192238, guid: 496b1509274d9a64e802413f0f7168a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.147
+      value: 0.3675
       objectReference: {fileID: 0}
     - target: {fileID: 3256481681080192238, guid: 496b1509274d9a64e802413f0f7168a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -665,11 +723,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3256481681080192238, guid: 496b1509274d9a64e802413f0f7168a8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3256481681080192238, guid: 496b1509274d9a64e802413f0f7168a8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3256481681080192238, guid: 496b1509274d9a64e802413f0f7168a8, type: 3}
       propertyPath: m_LocalRotation.z

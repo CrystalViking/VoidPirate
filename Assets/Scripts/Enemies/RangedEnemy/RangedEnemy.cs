@@ -119,6 +119,8 @@ public class RangedEnemy : Enemy, IRangedEnemy
     {
         healthBar.SetHealthBarActive();
         health -= damage;
+        if (health > enemyData.maxHealth)
+            health = enemyData.maxHealth;
         healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
         CheckDeath();
     }

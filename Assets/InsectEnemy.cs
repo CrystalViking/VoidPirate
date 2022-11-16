@@ -2,18 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : Enemy, IMeleeEnemy
+public class InsectEnemy : MeleeEnemy
 {
-
-    protected Task delayDMG;
-    protected Task delay;
-    protected Task roomCoroutine;
-
-    public int Health { get; set; }
-
-
-    bool isDead = false;
-
+    new private MeleeEnemyAnimator animator;
+    private bool attacked;
     void Start()
     {
         health = enemyData.maxHealth;
@@ -25,11 +17,11 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
         animator = GetComponent<MeleeEnemyAnimator>();
 
         healthBar = GetComponent<HealthBar>();
+        attacked = false;
 
         enemyCalculations = GetComponent<MeleeEnemyCalculations>();
         enemyMovement.SetPlayerTransform(GameObject.FindGameObjectWithTag("Player").transform);
     }
-
 
     void Update()
     {
@@ -41,8 +33,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
 
     }
 
-
-    public void ScrollStates()
+    public new void ScrollStates()
     {
         switch (currState)
         {
@@ -50,15 +41,10 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
             case (EnemyState.Idle):
                 Idle();
                 break;
-            case (EnemyState.Wander):
-                //Wander();
-                break;
             case (EnemyState.Follow):
                 Follow();
                 break;
             case (EnemyState.Die):
-                //delayDMG.Stop();
-                //delay.Stop();
                 break;
             case (EnemyState.Attack):
                 MeleeAttack();
@@ -66,7 +52,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
         }
     }
 
-    public void SelectBehaviour()
+    public new void SelectBehaviour()
     {
         if (activeBehaviour)
             ActiveBehaviour();
@@ -76,7 +62,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
 
     }
 
-    public void ActiveBehaviour()
+    public new void ActiveBehaviour()
     {
         if (enemyCalculations.IsInLineOfSight() && currState !=
             EnemyState.Die && !enemyCalculations.IsInAttackRange())
@@ -89,21 +75,20 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
         }
         if (enemyCalculations.CanAttack() && currState != EnemyState.Die)
         {
-            currState = EnemyState.Attack;
-            delayDMG = new Task(DelayDMG());
-            //StartCoroutine(DelayDMG());
+            currState = EnemyState.Attack;         
         }
     }
 
-    public void PassiveBehaviour()
+    public new void PassiveBehaviour()
     {
         currState = EnemyState.Idle;
     }
 
-    public void MeleeAttack()
+    public new void MeleeAttack()
     {
         animator.SetIsMovingFalse();
-        //StartCoroutine(Delay());
+        attacked = false;
+        delayDMG = new Task(DelayDMG());
         delay = new Task(Delay());
     }
 
@@ -128,7 +113,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
         enemyCalculations.SetNextAttackTime();
         yield return new WaitForSeconds(enemyData.meleeAnimationDelay);
         currState = EnemyState.Idle;
-        if (isDead)
+        if (health < 0)
             currState = EnemyState.Die;
 
     }
@@ -136,7 +121,11 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
     protected override IEnumerator DelayDMG()
     {
         yield return new WaitForSeconds(enemyData.meleeAnimationDamageDelay);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);
+        if (!attacked && enemyCalculations.IsInAttackRange())
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);          
+        }
+        attacked = true;
     }
 
     public override void TakeDamage(float damage)
@@ -156,8 +145,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
             healthBar.SetHealthBarInActive();
             animator.SetIsDeadTrue();
 
-            currState = EnemyState.Die;
-            isDead = true;
+            currState = EnemyState.Die;          
 
             if (useRoomLogic)
                 RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
@@ -166,11 +154,4 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
 
         }
     }
-
-
-
-
-
-
-
 }

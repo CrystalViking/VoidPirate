@@ -7,7 +7,10 @@ using TMPro;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public float currentTime = 0f;
+    [SerializeField]
+    private FloatSO timerSO;
+    [SerializeField]
+    private SceneInfo sceneInfo;
     public float startingTime = 10f;
     GameObject[] enemies;
     GameObject[] projectiles;
@@ -31,18 +34,30 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdownText;
     void Start()
     {
-        currentTime = startingTime;
+        if(sceneInfo.isEventOn == false)
+        {
+            timerSO.Value = startingTime;
+        }
+        
     }
     private void Update()
     {
-        currentTime -= 1 * Time.deltaTime;
-        countdownText.text = currentTime.ToString("F0");
+        timerSO.Value -= 1 * Time.deltaTime;
+        countdownText.text = timerSO.Value.ToString("F0");
 
-        if(currentTime <= 0)
+        if(timerSO.Value <= 0)
         {
-            currentTime = 0;
+            timerSO.Value = 0;
             DestroyAllComponents();
             SceneManager.LoadScene("EndingScene");
+        }
+
+        if(timerSO.Value <= 40 & timerSO.Value > 39)
+        {
+            timerSO.Value = 39;
+            sceneInfo.isEventOn = true;
+            DestroyAllComponents();
+            SceneManager.LoadScene("LobbyShip");
         }
     }
 

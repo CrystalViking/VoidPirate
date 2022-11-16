@@ -499,8 +499,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48df1023f19dc6348a9faeff6811c6f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTime: 0
+  timerSO: {fileID: 11400000, guid: 7ee32f93ead9c154f8c9002bfda01889, type: 2}
+  sceneInfo: {fileID: 11400000, guid: e5158c6023e46d2479c606c722fedfc0, type: 2}
   startingTime: 60
+  isEventOn: 0
   countdownText: {fileID: 893541841}
 --- !u!114 &1955503229
 MonoBehaviour:

@@ -8,8 +8,7 @@ public class SceneInfo : ScriptableObject
     [SerializeField]
     public bool isEventOn = false;
 
-    private void OnEnable()
-    {
-        isEventOn = false;
-    }
+    private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
 }
+
+

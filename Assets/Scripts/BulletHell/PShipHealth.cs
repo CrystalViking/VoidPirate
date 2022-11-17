@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PShipHealth : MonoBehaviour
 {
-    
+    [SerializeField]
+    private SceneInfo sceneInfo;
     [SerializeField] public float maxHealth = 500;
     public float health;
     private bool isDead;
@@ -64,6 +65,7 @@ public class PShipHealth : MonoBehaviour
 
     public void Die()
     {
+        sceneInfo.isEventOn = false;
         Debug.Log("is Dead");
         SceneManager.LoadScene("GameOverScene");
 

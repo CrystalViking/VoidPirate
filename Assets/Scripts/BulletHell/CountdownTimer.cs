@@ -11,7 +11,8 @@ public class CountdownTimer : MonoBehaviour
     private FloatSO timerSO;
     [SerializeField]
     private SceneInfo sceneInfo;
-    public float startingTime = 10f;
+    public float startingTime = 60.0f;
+    private float increasingTimer;
     GameObject[] enemies;
     GameObject[] projectiles;
     void DestroyAllComponents()
@@ -42,21 +43,21 @@ public class CountdownTimer : MonoBehaviour
     }
     private void Update()
     {
-        timerSO.Value -= 1 * Time.deltaTime;
+        increasingTimer += Time.deltaTime;
+        timerSO.Value -= Time.deltaTime;
         countdownText.text = timerSO.Value.ToString("F0");
 
-        if(timerSO.Value <= 0)
+        if (timerSO.Value <= 0f)
         {
-            timerSO.Value = 0;
+            timerSO.Value = 0f;
             DestroyAllComponents();
+            sceneInfo.isEventOn = false;
             SceneManager.LoadScene("EndingScene");
         }
 
-        if(timerSO.Value <= 40 & timerSO.Value > 39)
+        else if (increasingTimer > 20.0f)
         {
-            timerSO.Value = 39;
-            sceneInfo.isEventOn = true;
-            DestroyAllComponents();
+            sceneInfo.isEventOn = true; 
             SceneManager.LoadScene("LobbyShip");
         }
     }

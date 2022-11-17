@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   lineOfSight: 7.44
-  attackRange: 0.55
-  timeBetweenAttacks: 1
+  attackRange: 0.75
+  timeBetweenAttacks: 0.9
   meleeDamage: 20
   maxHealth: 300
   meleeAnimationDelay: 0.8
-  meleeAnimationDamageDelay: 0.2
+  meleeAnimationDamageDelay: 0.8
   useRoomLogic: 1
-  activeBehaviour: 1
+  activeBehaviour: 0
   despawnTimer: 1

@@ -102,12 +102,15 @@ public class MechaHealerEnemy : MeleeEnemy
         Vector3 position = transform.position;
         foreach (GameObject go in gos)
         {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance && curDistance > 0.0f && curDistance < 30.0f)
+            if (!go.GetComponent<IEnemy>().HasFullHealth())
             {
-                closest = go;
-                distance = curDistance;
+                Vector3 diff = go.transform.position - position;
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance && curDistance > 0.0f && curDistance < 30.0f)
+                {
+                    closest = go;
+                    distance = curDistance;
+                }
             }
         }
         return closest;

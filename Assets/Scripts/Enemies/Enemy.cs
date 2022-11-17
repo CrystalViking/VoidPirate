@@ -86,7 +86,13 @@ public abstract class Enemy : MonoBehaviour, IEnemy
         Debug.Log("Enemy: Moving");
     }
 
-
+    public virtual bool HasFullHealth()
+    {
+        if (enemyData.maxHealth == health)
+            return true;
+        else
+            return false;
+    }
 
     protected virtual IEnumerator Delay()
     {

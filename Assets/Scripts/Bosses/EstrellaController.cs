@@ -148,6 +148,8 @@ public class EstrellaController : MonoBehaviour
 
         anim.SetBool("IsMeleeing", false);
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Death;
     }
 
     private void SawAttackPrep()
@@ -170,6 +172,8 @@ public class EstrellaController : MonoBehaviour
 
         anim.SetBool("IsSawAttacking", false);
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Death;
     }
 
     IEnumerator FlameAttack()
@@ -188,6 +192,8 @@ public class EstrellaController : MonoBehaviour
         yield return new WaitForSeconds(0.4f); // TODO: consider using scriptable object
         anim.SetBool("IsFlameAttacking", false);
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Death;
     }
 
     IEnumerator Debuff()
@@ -203,6 +209,8 @@ public class EstrellaController : MonoBehaviour
         anim.SetBool("IsDebuffing", false);
         shouldDebuff = false;
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Death;
     }
 
     IEnumerator DebuffTime()

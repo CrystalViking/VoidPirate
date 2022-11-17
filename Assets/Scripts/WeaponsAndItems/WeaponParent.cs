@@ -91,7 +91,7 @@ public class WeaponParent : MonoBehaviour
 
             if(collider.CompareTag("Enemy"))
             {
-                collider.GetComponent<EnemyReceiveDamage>().TakeDamage(20);
+                collider.GetComponent<IEnemy>().TakeDamage(20);
             }
         }
     }

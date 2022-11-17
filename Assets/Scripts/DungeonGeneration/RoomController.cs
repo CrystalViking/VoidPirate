@@ -142,8 +142,6 @@ public class RoomController : MonoBehaviour
       isLoadingRoom = false;
     }
   }
-
-
   public bool DoesRoomExist(int x, int y)
   {
     return loadedRooms.Find(item => item.X == x && item.Y == y) != null;
@@ -170,6 +168,7 @@ public class RoomController : MonoBehaviour
     CameraController.instance.currRoom = room;
     currRoom = room;
 
+
     StartCoroutine(RoomCorutine());
   }
 
@@ -184,22 +183,46 @@ public class RoomController : MonoBehaviour
   {
     foreach (Room room in loadedRooms)
     {
-      EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
-      EstrellaController boss = room.GetComponentInChildren<EstrellaController>();
+      //EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
+
+
+      //List<IEnemy> enemies = new List<IEnemy>();
+
+      //enemies = room.GetComponentInChildren<IEnemy>().Select
+
+      bool areAllEnemiesDead = true;
+
+      List<IEnemy> enemies = new List<IEnemy>(room.GetComponentsInChildren<IEnemy>());
+
+      if (enemies.All(x => x.GetEnemyState() == EnemyState.Die))
+      {
+        enemies.Clear();
+      }
+
+
+      EstrellaController boss_e = room.GetComponentInChildren<EstrellaController>();
+      ReaperController boss_r = room.GetComponentInChildren<ReaperController>();
+      Debug.Log(room.name);
 
       if (currRoom != room)
       {
+
         if (enemies != null)
         {
-          foreach (EnemyController enemy in enemies)
+          foreach (IEnemy enemy in enemies)
           {
-            enemy.isInRoom = false;
+            //enemy.isInRoom = false;
+            enemy.SetActiveBehaviourFalse();
           }
         }
 
-        if (boss)
+        if (boss_e)
         {
-          boss.isInRoom = false;
+          boss_e.isInRoom = false;
+        }
+        else if (boss_r)
+        {
+          boss_r.isInRoom = false;
         }
 
         foreach (Door door in room.GetComponentsInChildren<Door>())
@@ -210,32 +233,46 @@ public class RoomController : MonoBehaviour
       }
       else
       {
-        bool areAllEnemiesDead = true;
 
-        foreach (EnemyController enemy in enemies)
+        if (enemies.Count > 0)
         {
-          if (enemy.currState != EnemyState.Die)
+          foreach (IEnemy enemy in enemies)
           {
-            areAllEnemiesDead = false;
+            if (enemy.GetEnemyState() != EnemyState.Die)
+            {
+              areAllEnemiesDead = false;
+            }
           }
         }
 
-        if (boss)
+
+
+        if (boss_r)
         {
-          if (boss.currState != EstrellaController.BossState.Death)
+          if (boss_r.currState != ReaperController.BossState.Death)
           {
             areAllEnemiesDead = false;
           }
 
-          boss.isInRoom = true;
+          boss_r.isInRoom = true;
         }
 
+        if (boss_e)
+        {
+          if (boss_e.currState != EstrellaController.BossState.Death)
+          {
+            areAllEnemiesDead = false;
+          }
 
+          boss_e.isInRoom = true;
+        }
+
+        //enemies.Length > 0
         if (!areAllEnemiesDead)
         {
-          foreach (EnemyController enemy in enemies)
+          foreach (IEnemy enemy in enemies)
           {
-            enemy.isInRoom = true;
+            enemy.SetActiveBehaviourTrue();
           }
 
           foreach (Door door in room.GetComponentsInChildren<Door>())

@@ -50,7 +50,11 @@ public class PlayerInventory : MonoBehaviour
 
     public Weapon GetItem(int index)
     {
-        return weapons[index];
+        if(weapons != null && weapons.Length != 0)
+        {
+            return weapons[index];
+        }
+        return null;
     }
 
     public int GetInventorySize()

@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoBoxPickup : MonoBehaviour
+public class AmmoBoxPickup : PickableItem, IPickable
 {
     [SerializeField] ScriptableAmmoBox ammoBox;
-    [SerializeField] KeyCode itemPickupCode = KeyCode.E;
-    [SerializeField] bool destroyOnPickUp;
 
-    private bool isInRange;
     private WeaponShooting weaponInterface;
     private GameObject player;
 
@@ -22,19 +19,7 @@ public class AmmoBoxPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PickUp();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-            isInRange = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-            isInRange = false;
+        InteractOnPickup();
     }
 
     private void ReplenishAmmo()
@@ -51,7 +36,7 @@ public class AmmoBoxPickup : MonoBehaviour
     }
 
 
-    private void PickUp()
+    public override void InteractOnPickup()
     {
         if(Input.GetKeyDown(itemPickupCode) && isInRange)
         {

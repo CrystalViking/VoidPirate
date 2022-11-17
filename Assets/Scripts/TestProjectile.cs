@@ -23,14 +23,22 @@ public class TestProjectile : MonoBehaviour
 
         if (collision.tag == "Enemy" || collision.tag == "Boss")
         {
-            if (collision.GetComponent<EnemyController>() != null)
+            if (collision.GetComponent<IEnemy>() != null)
             {
-                collision.GetComponent<EnemyController>().TakeDamage(damage);
+                collision.GetComponent<IEnemy>().TakeDamage(damage);
                 Destroy(gameObject);
             }
             if (collision.GetComponent<EstrellaController>() != null)
             {
                 collision.GetComponent<EstrellaController>().TakeDamage(damage);
+            }
+            if (collision.GetComponent<ReaperController>() != null)
+            {
+                collision.GetComponent<ReaperController>().TakeDamage(damage);
+            }
+            if (collision.GetComponent<MinionController>() != null)
+            {
+                collision.GetComponent<MinionController>().TakeDamage(damage);
             }
             Destroy(gameObject);
         }

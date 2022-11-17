@@ -21,6 +21,6 @@ public class Rotation : MonoBehaviour
             {
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
-        }
+        }     
     }
 }

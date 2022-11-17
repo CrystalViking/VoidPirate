@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MeleeEnemy" Collapsed="true">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQACABAACEAAAAAAIAAIAgAABAIACAAAAAAqAAAIAE=</HashCode>
+      <FileName>Assets\Scripts\Enemies\MeleeEnemy\MeleeEnemy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Enemy" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BYDAAABAACIEAAChAAAwIAAAAIAoUCAEAAAAgAARAEk=</HashCode>
+      <FileName>Assets\Scripts\Enemies\Enemy.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="enemyData" />
+      <Field Name="enemyCalculations" />
+      <Field Name="animator" />
+      <Field Name="enemyMovement" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.21" />
+  </Class>
+  <Class Name="RangedEnemy" Collapsed="true">
+    <Position X="1.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAABAACEAAAAAAIAAAAAAAIAAACAAAAAAiAAAIAE=</HashCode>
+      <FileName>Assets\Scripts\Enemies\RangedEnemy\RangedEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyData" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAYAAAAAAAEBAAQAAAAAEAAgQAAACAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Enemies\EnemySO\EnemyData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="IEnemy">
+    <Position X="10.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAACAAAAAAAAAAAAAAAAEAAAAgAABAAA=</HashCode>
+      <FileName>Assets\Scripts\Enemies\IEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IEnemyAnimator" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAAAYAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Enemies\IEnemyAnimator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IEnemyCalculations" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAQAAAIAAgAAQABIAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Enemies\IEnemyCalculations.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IEnemyMovement" Collapsed="true">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Enemies\IEnemyMovement.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

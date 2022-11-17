@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : ActorStats
 {
     private HudScript hud;
+    private Task speedModifier;
 
     private void Start()
     {
@@ -22,6 +23,12 @@ public class PlayerStats : ActorStats
     {
         base.CheckHealth();
         hud.UpdateHealth(health, maxHealth);
+    }
+
+    public void ApplySpeedModifier(float seconds, float percentage)
+    {
+        speedModifier = new Task(ModifySpeedForTimeSeconds(seconds, percentage));   
+        //speedModifier.Stop();
     }
 
 

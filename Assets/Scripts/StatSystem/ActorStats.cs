@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActorStats : MonoBehaviour
+public class ActorStats : MonoBehaviour, IActorStats
 {
     [SerializeField] protected float health; // aktualne punkty zdrowia w postaci float
     [SerializeField] protected float maxHealth; // maksymalna liczba punktow zdrowia
@@ -12,9 +12,9 @@ public class ActorStats : MonoBehaviour
 
     protected StatModifier speedStatModifier;
 
-    private CoroutineCountDown timer;
+    //private CoroutineCountDown timer;
 
-    private bool timerIsRunning;
+    //private bool timerIsRunning;
     private bool speedModifierOn;
 
     protected bool isDead;
@@ -37,7 +37,7 @@ public class ActorStats : MonoBehaviour
         }
     }
 
-   
+
 
     public float GetSpeed()
     {
@@ -54,7 +54,7 @@ public class ActorStats : MonoBehaviour
         isDead = true;
     }
 
-    public void SetHealthTo( float healthToSetTo)
+    public void SetHealthTo(float healthToSetTo)
     {
         health = healthToSetTo;
         CheckHealth();
@@ -62,27 +62,50 @@ public class ActorStats : MonoBehaviour
 
     public void SetStatSpeed(float speed)
     {
-        if(statSpeed != null)
+        if (statSpeed != null)
             statSpeed.BaseValue = speed;
+        else
+        {
+            statSpeed = new CharacterStat();
+            statSpeed.BaseValue = speed;
+        }
+
+
     }
 
-    private void ModifySpeedPercentAdd(float percantage)
+
+    // needs a rework
+    private void ModifySpeedPercentAdd(float percentage)
     {
-        speedStatModifier = new StatModifier(percantage, StatModType.PercentAdd);
-        statSpeed.AddModifier(speedStatModifier);
-        speed = statSpeed.Value;
+        if (!speedModifierOn)
+        {
+            speedStatModifier = new StatModifier(percentage, StatModType.PercentAdd);
+            statSpeed?.AddModifier(speedStatModifier);
+            speed = statSpeed.Value;
+            speedModifierOn = true;
+
+        }
     }
 
+    // needs a rework
     private void RemoveModifySpeedPercentAdd()
     {
-        statSpeed.RemoveModifier(speedStatModifier);
-        speed = statSpeed.Value;
+        if (speedModifierOn)
+        {
+            statSpeed.RemoveModifier(speedStatModifier);
+            speed = statSpeed.Value;
+            speedModifierOn = false;
+        }
     }
 
 
-    public void ModifySpeedForTimeSeconds(float seconds)
+    // needs a rework
+    protected IEnumerator ModifySpeedForTimeSeconds(float seconds, float speedPercentage)
     {
-        speedModifierOn = true;
+        //speedModifierOn = true;
+        ModifySpeedPercentAdd(speedPercentage);
+        yield return new WaitForSeconds(seconds);
+        RemoveModifySpeedPercentAdd();
     }
 
     public void TakeDamage(float damage)
@@ -102,7 +125,7 @@ public class ActorStats : MonoBehaviour
         SetHealthTo(maxHealth);
         SetStatSpeed(speed);
         isDead = false;
-        timerIsRunning = true;
+        //timerIsRunning = true;
         speedModifierOn = false;
     }
 }

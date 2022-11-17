@@ -105,8 +105,18 @@ public class PlayerMovement : MonoBehaviour
                 transform.localScale = new Vector3(6, 6, 6);
         }
 
+        // testing
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            playerStats.ApplySpeedModifier(2, 0.5f);
+        }
 
-        
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            playerStats.ApplySpeedModifier(2, -0.5f);
+        }
+
+
     }
 
 
@@ -153,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float GetSpeed()
     {
+        speed = playerStats.GetSpeed();
         return speed;
     }
 }

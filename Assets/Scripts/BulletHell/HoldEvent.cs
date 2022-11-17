@@ -23,6 +23,13 @@ public class HoldEvent : MonoBehaviour
             inRange = true;
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            inRange = false;
+        }
+    }
 
     // Update is called once per frame
     void Update()

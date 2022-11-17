@@ -12,7 +12,8 @@ public enum EnemyState
     Die,
     Attack,
     FollowAndAttack,
-    Heal
+    Heal,
+    Spawn
 }
 
 public abstract class Enemy : MonoBehaviour, IEnemy

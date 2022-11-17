@@ -172,7 +172,6 @@ public class MechaHealerEnemy : MeleeEnemy
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);
             attacked = true;
-            Debug.Log("DIE");
         }
     }
 

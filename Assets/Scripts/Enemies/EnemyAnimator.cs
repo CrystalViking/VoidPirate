@@ -14,32 +14,56 @@ public class EnemyAnimator : MonoBehaviour, IEnemyAnimator
 
     public void SetIsAttackingTrue()
     {
-        anim.SetBool("IsAttacking", true);
+        try
+        {
+            anim.SetBool("IsAttacking", true);
+        }
+        catch { }
     }
 
     public void SetIsAttackingFalse()
     {
-        anim.SetBool("IsAttacking", false);
+        try
+        {
+            anim.SetBool("IsAttacking", false);
+        }
+        catch{ }
     }
 
     public void SetIsMovingTrue()
     {
-        anim.SetBool("IsMoving", true);
+        try
+        {
+            anim.SetBool("IsMoving", true);
+        }
+        catch { }
     }
 
     public void SetIsMovingFalse()
     {
-        anim.SetBool("IsMoving", false);
+        try
+        {
+            anim.SetBool("IsMoving", false);
+        }
+        catch { }
     }
 
     public void SetIsDeadTrue()
     {
-        anim.SetBool("IsDead", true);
+        try
+        {
+            anim.SetBool("IsDead", true);
+        }
+        catch { }
     }
 
     public void SetIsDeadFalse()
     {
-        anim.SetBool("IsDead", false);
+        try
+        {
+            anim.SetBool("IsDead", false);
+        }
+        catch { }
     }
 
 }

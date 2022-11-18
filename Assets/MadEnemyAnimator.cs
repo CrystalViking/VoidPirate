@@ -11,12 +11,20 @@ public class MadEnemyAnimator : EnemyAnimator
 
     public void SetIsMovingOrAttackingTrue()
     {
-        anim.SetBool("IsMovingOrAttacking", true);
+        try
+        {
+            anim.SetBool("IsMovingOrAttacking", true);
+        }
+        catch { }
     }
 
     public void SetIsMovingOrAttackingFalse()
     {
-        anim.SetBool("IsMovingOrAttacking", false);
+        try
+        {
+            anim.SetBool("IsMovingOrAttacking", false);
+        }
+        catch { }
     }
 
 }

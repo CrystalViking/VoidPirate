@@ -23,8 +23,7 @@ public class SpawnerEnemy : MeleeEnemy
 
         enemyCalculations = GetComponent<MeleeEnemyCalculations>();
 
-        spawned = false;
-        
+        spawned = false;      
     }
 
     void Update()
@@ -107,7 +106,7 @@ public class SpawnerEnemy : MeleeEnemy
         yield return new WaitForSeconds(enemyData.meleeAnimationDamageDelay);
         if (!spawned && currState != EnemyState.Die)
         {
-            X = Random.Range(0, 5);
+            X = Random.Range(0, allies.Length);
             spawnedAlly = Instantiate(allies[X], new Vector2(transform.position.x - 0.2f, transform.position.y), Quaternion.identity);
             spawned = true;
 

@@ -251,7 +251,7 @@ public class RoomController : MonoBehaviour
 
                 if (boss_r)
                 {
-                    if (boss_r.currState != ReaperController.BossState.Death)
+                    if (boss_r.currState != ReaperController.BossState.Die)
                     {
                         areAllEnemiesDead = false;
                     }
@@ -261,7 +261,7 @@ public class RoomController : MonoBehaviour
 
                 if (boss_e)
                 {
-                    if (boss_e.currState != EstrellaController.BossState.Death)
+                    if (boss_e.currState != EstrellaController.BossState.Die)
                     {
                         areAllEnemiesDead = false;
                     }

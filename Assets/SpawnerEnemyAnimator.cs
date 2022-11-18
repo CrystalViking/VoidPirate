@@ -11,11 +11,19 @@ public class SpawnerEnemyAnimator : EnemyAnimator
 
     public void SetIsSpawningTrue()
     {
-        anim.SetBool("IsSpawning", true);
+        try
+        {
+            anim.SetBool("IsSpawning", true);
+        }
+        catch { }
     }
 
     public void SetIsSpawningFalse()
     {
-        anim.SetBool("IsSpawning", false);
+        try
+        {
+            anim.SetBool("IsSpawning", false);
+        }
+        catch { }
     }
 }

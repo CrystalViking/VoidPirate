@@ -11,11 +11,19 @@ public class MechaHealerEnemyAnimator : EnemyAnimator
 
     public void SetIsHealingTrue()
     {
-        anim.SetBool("IsHealing", true);
+        try
+        {
+            anim.SetBool("IsHealing", true);
+        }
+        catch { }
     }
 
     public void SetIsHealingFalse()
     {
-        anim.SetBool("IsHealing", false);
+        try
+        {
+            anim.SetBool("IsHealing", false);
+        }
+        catch { }
     }
 }

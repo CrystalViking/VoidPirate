@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EstrellaController : MonoBehaviour
+public class EstrellaController : MonoBehaviour, IEnemy
 {
     public enum BossState
     {
@@ -34,7 +34,7 @@ public class EstrellaController : MonoBehaviour
     public GameObject[] sawLocators;
     private bool shouldDebuff = true;
     private bool damagedPlayer = false;
-    private float playerspeed;
+    //private float playerspeed;
     float distanceFromPlayer;
     public GameObject portal;
     private bool isSpawned = false;
@@ -45,7 +45,7 @@ public class EstrellaController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         health = maxHealth;
         nextAttackTime = 1.0f;
-        playerspeed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().GetSpeed();
+        //playerspeed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetSpeed();
     }
 
     void Update()
@@ -194,9 +194,11 @@ public class EstrellaController : MonoBehaviour
     {
         anim.SetBool("IsDebuffing", true);
         
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetSpeed(playerspeed/2.0f); // TODO: consider using scriptable object
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetSpeed(playerspeed/2.0f); // TODO: consider using scriptable object
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>()?.
+            SpeedDebuffSecondsPercentAdd(StatModApplicationType.AgentAppliedDebuff, 0.5f, 10); // TODO: consider using scriptable object
 
-        StartCoroutine(DebuffTime());
+        //StartCoroutine(DebuffTime());
 
         yield return new WaitForSeconds(1.2f); // TODO: consider using scriptable object
 
@@ -209,7 +211,7 @@ public class EstrellaController : MonoBehaviour
     {
         yield return new WaitForSeconds(10.0f); // TODO: consider using scriptable object
         StartCoroutine(DebuffCooldown());
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetSpeed(playerspeed);
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetSpeed(playerspeed);
 
     }
 
@@ -278,4 +280,34 @@ public class EstrellaController : MonoBehaviour
         }
     }
 
+    public void SetUseRoomLogicTrue()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void SetUseRoomLogicFalse()
+    {
+        throw new System.NotImplementedException();
+    }
+
+
+    // band-aid before possible refactor
+    public EnemyState GetEnemyState()
+    {
+        if (currState == BossState.Death)
+            return EnemyState.Die;
+        else
+            return EnemyState.Idle;
+
+    }
+
+    public void SetActiveBehaviourFalse()
+    {
+        isInRoom = false;
+    }
+
+    public void SetActiveBehaviourTrue()
+    {
+        isInRoom = true;
+    }
 }

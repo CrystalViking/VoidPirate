@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private bool LOOKING_LEFT;
     private bool LOOKING_RIGHT;
 
+    
+
     private void Start()
     {
         GetReferences();
@@ -105,10 +107,10 @@ public class PlayerMovement : MonoBehaviour
                 transform.localScale = new Vector3(6, 6, 6);
         }
 
-
-        
     }
 
+
+   
 
     private Vector2 GetPointerInput()
     {
@@ -153,6 +155,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float GetSpeed()
     {
+        speed = playerStats.GetSpeed();
         return speed;
     }
 }

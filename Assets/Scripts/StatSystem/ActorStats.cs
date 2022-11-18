@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActorStats : MonoBehaviour
+public class ActorStats : MonoBehaviour, IActorStats
 {
     [SerializeField] protected float health; // aktualne punkty zdrowia w postaci float
     [SerializeField] protected float maxHealth; // maksymalna liczba punktow zdrowia
-    protected CharacterStat StatHealth; // punkty zdrowia w postaci CharacterStat (dla kontroli modyfikatorow)
+    protected CharacterStat statHealth; // punkty zdrowia w postaci CharacterStat (dla kontroli modyfikatorow)
     [SerializeField] protected float speed;
     protected CharacterStat statSpeed;
 
     protected StatModifier speedStatModifier;
 
-    private CoroutineCountDown timer;
+    //private CoroutineCountDown timer;
 
-    private bool timerIsRunning;
+    //private bool timerIsRunning;
     private bool speedModifierOn;
 
     protected bool isDead;
@@ -37,7 +37,7 @@ public class ActorStats : MonoBehaviour
         }
     }
 
-   
+
 
     public float GetSpeed()
     {
@@ -54,35 +54,71 @@ public class ActorStats : MonoBehaviour
         isDead = true;
     }
 
-    public void SetHealthTo( float healthToSetTo)
+    public void SetHealthTo(float healthToSetTo)
     {
         health = healthToSetTo;
+        if (statHealth != null)
+            statHealth.BaseValue = healthToSetTo;
         CheckHealth();
     }
 
     public void SetStatSpeed(float speed)
     {
-        if(statSpeed != null)
+        if (statSpeed != null)
             statSpeed.BaseValue = speed;
+        else
+        {
+            statSpeed = new CharacterStat();
+            statSpeed.BaseValue = speed;
+        }
+
+
     }
 
-    private void ModifySpeedPercentAdd(float percantage)
+    public void SetStatHealth(float health)
     {
-        speedStatModifier = new StatModifier(percantage, StatModType.PercentAdd);
-        statSpeed.AddModifier(speedStatModifier);
-        speed = statSpeed.Value;
+        if (statHealth != null)
+            statHealth.BaseValue = health;
+        else
+        {
+            statHealth = new CharacterStat();
+            statHealth.BaseValue = health;
+        }
     }
 
+
+    // needs a rework
+    private void ModifySpeedPercentAdd(float percentage)
+    {
+        if (!speedModifierOn)
+        {
+            speedStatModifier = new StatModifier(percentage, StatModType.PercentAdd);
+            statSpeed?.AddModifier(speedStatModifier);
+            speed = statSpeed.Value;
+            speedModifierOn = true;
+
+        }
+    }
+
+    // needs a rework
     private void RemoveModifySpeedPercentAdd()
     {
-        statSpeed.RemoveModifier(speedStatModifier);
-        speed = statSpeed.Value;
+        if (speedModifierOn)
+        {
+            statSpeed.RemoveModifier(speedStatModifier);
+            speed = statSpeed.Value;
+            speedModifierOn = false;
+        }
     }
 
 
-    public void ModifySpeedForTimeSeconds(float seconds)
+    // needs a rework
+    protected IEnumerator ModifySpeedForTimeSeconds(float seconds, float speedPercentage)
     {
-        speedModifierOn = true;
+        //speedModifierOn = true;
+        ModifySpeedPercentAdd(speedPercentage);
+        yield return new WaitForSeconds(seconds);
+        RemoveModifySpeedPercentAdd();
     }
 
     public void TakeDamage(float damage)
@@ -101,8 +137,9 @@ public class ActorStats : MonoBehaviour
     {
         SetHealthTo(maxHealth);
         SetStatSpeed(speed);
+        SetStatHealth(health);
         isDead = false;
-        timerIsRunning = true;
+        //timerIsRunning = true;
         speedModifierOn = false;
     }
 }

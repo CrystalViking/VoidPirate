@@ -4,38 +4,38 @@ using UnityEngine;
 
 public class ObjectRoomSpawner : MonoBehaviour
 {
-    [System.Serializable]
-    public struct RandomSpawner
+  [System.Serializable]
+  public struct RandomSpawner
+  {
+    public string name;
+    public SpawnerData spawnerData;
+  }
+
+  public GridController grid;
+  public RandomSpawner[] spawnerData;
+
+  private void Start()
+  {
+    //grid = GetComponentInChildren<GridController>();
+  }
+
+  public void InitialiseObjectSpawning()
+  {
+    foreach (RandomSpawner rs in spawnerData)
     {
-        public string name;
-        public SpawnerData spawnerData;
+      SpawnObjects(rs);
     }
+  }
 
-    public GridController grid;
-    public RandomSpawner[] spawnerData;
+  private void SpawnObjects(RandomSpawner data)
+  {
+    int randomIteration = Random.Range(data.spawnerData.minSpawn, data.spawnerData.maxSpawn + 1);
 
-    private void Start()
+    for (int i = 0; i < randomIteration; i++)
     {
-        //grid = GetComponentInChildren<GridController>();
+      int randomPos = Random.Range(0, grid.availablePoints.Count - 1);
+      GameObject go = Instantiate(data.spawnerData.itemToSpawn, grid.availablePoints[randomPos], Quaternion.identity, transform) as GameObject;
+      grid.availablePoints.RemoveAt(randomPos);
     }
-
-    public void InitialiseObjectSpawning()
-    {
-        foreach(RandomSpawner rs in spawnerData)
-        {
-            SpawnObjects(rs);
-        }
-    }
-
-    private void SpawnObjects(RandomSpawner data)
-    {
-        int randomIteration = Random.Range(data.spawnerData.minSpawn, data.spawnerData.maxSpawn + 1);
-
-        for (int i = 0; i < randomIteration; i++)
-        {
-            int randomPos = Random.Range(0, grid.availablePoints.Count - 1);
-            GameObject go = Instantiate(data.spawnerData.itemToSpawn, grid.availablePoints[randomPos], Quaternion.identity, transform) as GameObject;
-            grid.availablePoints.RemoveAt(randomPos);
-        }
-    }
+  }
 }

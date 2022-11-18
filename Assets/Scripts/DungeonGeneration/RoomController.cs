@@ -218,10 +218,10 @@ public class RoomController : MonoBehaviour
                     }
                 }
 
-                if (boss_e)
-                {
-                    boss_e.isInRoom = false;
-                }
+                //if (boss_e)
+                //{
+                //    boss_e.isInRoom = false;
+                //}
                 else if (boss_r)
                 {
                     boss_r.isInRoom = false;

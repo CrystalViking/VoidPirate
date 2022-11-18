@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class StatModApplier : IStatModApplier
 {
-    private Task timer;
-    StatModifier statModifier;
-    CharacterStat characterStat;
-    public bool Expired { get; private set; } = false;
-    public StatModApplicationType ModApplicationType { get; private set; }
+    protected Task timer;
+    protected StatModifier statModifier;
+    protected CharacterStat characterStat;
+    public bool Expired { get; protected set; } = false;
+    public StatModApplicationType ModApplicationType { get; protected set; }
 
     
 
@@ -32,19 +32,18 @@ public class StatModApplier : IStatModApplier
     }
 
 
-    public void ApplyModifierForSeconds(float seconds)
+    public virtual void ApplyModifierForSeconds(float seconds)
     {
         timer = new Task(modDuration(seconds));
     }
 
-    IEnumerator modDuration(float seconds)
+
+    protected IEnumerator modDuration(float seconds)
     {
         ApplyModifier();
         yield return new WaitForSeconds(seconds);
         RemoveModifer();
 
         Expired = true;
-
-        Debug.Log("Expired");
     }
 }

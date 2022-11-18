@@ -26,7 +26,7 @@ public class PlayerStats : ActorStats
     }
     public void SpeedBuffSecondsPercentAdd(StatModApplicationType statModApplicationType, float value, float seconds)
     {
-        StatModApplier statModApplier = new StatModApplier();
+        SpeedModApplier statModApplier = new SpeedModApplier();
         statModApplier.SetModifier(value, StatModType.PercentAdd, ref statSpeed, statModApplicationType);
         statModManager.AddApplier(statModApplier, seconds);
     }
@@ -35,9 +35,17 @@ public class PlayerStats : ActorStats
     {
         value = -value;
 
-        StatModApplier statModApplier = new StatModApplier();
+        SpeedModApplier statModApplier = new SpeedModApplier();
         statModApplier.SetModifier(value, StatModType.PercentAdd, ref statSpeed, statModApplicationType);
         statModManager.AddApplier(statModApplier, seconds);
+    }
+
+    public void HealthPoison(StatModApplicationType statModApplicationType, float hpDecrease, float duration)
+    {
+        HealthModApplier healthModApplier = new HealthModApplier();
+        healthModApplier.SetPoisonModifier(hpDecrease, ref statHealth, statModApplicationType);
+        statModManager.AddApplier(healthModApplier, duration);
+
     }
 
 
@@ -50,6 +58,7 @@ public class PlayerStats : ActorStats
     private void Update()
     {
         speed = statSpeed.Value;
+        SetHealthTo(statHealth.Value);
     }
 
     public override void InitVariables(float maxHealth = 100)

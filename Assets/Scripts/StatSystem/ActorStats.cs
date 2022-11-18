@@ -6,7 +6,7 @@ public class ActorStats : MonoBehaviour, IActorStats
 {
     [SerializeField] protected float health; // aktualne punkty zdrowia w postaci float
     [SerializeField] protected float maxHealth; // maksymalna liczba punktow zdrowia
-    protected CharacterStat StatHealth; // punkty zdrowia w postaci CharacterStat (dla kontroli modyfikatorow)
+    protected CharacterStat statHealth; // punkty zdrowia w postaci CharacterStat (dla kontroli modyfikatorow)
     [SerializeField] protected float speed;
     protected CharacterStat statSpeed;
 
@@ -57,6 +57,8 @@ public class ActorStats : MonoBehaviour, IActorStats
     public void SetHealthTo(float healthToSetTo)
     {
         health = healthToSetTo;
+        if (statHealth != null)
+            statHealth.BaseValue = healthToSetTo;
         CheckHealth();
     }
 
@@ -71,6 +73,17 @@ public class ActorStats : MonoBehaviour, IActorStats
         }
 
 
+    }
+
+    public void SetStatHealth(float health)
+    {
+        if (statHealth != null)
+            statHealth.BaseValue = health;
+        else
+        {
+            statHealth = new CharacterStat();
+            statHealth.BaseValue = health;
+        }
     }
 
 
@@ -124,6 +137,7 @@ public class ActorStats : MonoBehaviour, IActorStats
     {
         SetHealthTo(maxHealth);
         SetStatSpeed(speed);
+        SetStatHealth(health);
         isDead = false;
         //timerIsRunning = true;
         speedModifierOn = false;

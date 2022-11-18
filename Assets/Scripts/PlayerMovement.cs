@@ -107,18 +107,6 @@ public class PlayerMovement : MonoBehaviour
                 transform.localScale = new Vector3(6, 6, 6);
         }
 
-        // testing
-        if(Input.GetKey(KeyCode.LeftShift))
-        {
-            playerStats.SpeedBuffSecondsPercentAdd(StatModApplicationType.AbilityAppliedBuff, 0.5f, 2f);
-        }
-
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            playerStats.SpeedDebuffSecondsPercentAdd(StatModApplicationType.AbilityAppliedDebuff, 0.25f, 4f);
-        }
-
-
     }
 
 

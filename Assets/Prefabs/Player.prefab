@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 8836956139156992205}
   - component: {fileID: 8836956139156992203}
   - component: {fileID: 8836956139156992245}
+  - component: {fileID: 902422170117798277}
   - component: {fileID: 439382045070682856}
   m_Layer: 3
   m_Name: Player
@@ -280,6 +281,18 @@ MonoBehaviour:
   primaryMagIsEmpty: 0
   secondaryMagIsEmpty: 0
   canShoot: 0
+--- !u!114 &902422170117798277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8836956139156992219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f57f0d84aac3a8478b5e1b1f33c4483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &439382045070682856
 CircleCollider2D:
   m_ObjectHideFlags: 0

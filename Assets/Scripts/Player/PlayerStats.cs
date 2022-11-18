@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : ActorStats
 {
     private HudScript hud;
-    private Task speedModifier;
+    StatModManager statModManager;
 
     private void Start()
     {
@@ -24,11 +24,20 @@ public class PlayerStats : ActorStats
         base.CheckHealth();
         hud.UpdateHealth(health, maxHealth);
     }
-
-    public void ApplySpeedModifier(float seconds, float percentage)
+    public void SpeedBuffSecondsPercentAdd(StatModApplicationType statModApplicationType, float value, float seconds)
     {
-        speedModifier = new Task(ModifySpeedForTimeSeconds(seconds, percentage));   
-        //speedModifier.Stop();
+        StatModApplier statModApplier = new StatModApplier();
+        statModApplier.SetModifier(value, StatModType.PercentAdd, ref statSpeed, statModApplicationType);
+        statModManager.AddApplier(statModApplier, seconds);
+    }
+
+    public void SpeedDebuffSecondsPercentAdd(StatModApplicationType statModApplicationType, float value, float seconds)
+    {
+        value = -value;
+
+        StatModApplier statModApplier = new StatModApplier();
+        statModApplier.SetModifier(value, StatModType.PercentAdd, ref statSpeed, statModApplicationType);
+        statModManager.AddApplier(statModApplier, seconds);
     }
 
 
@@ -40,10 +49,15 @@ public class PlayerStats : ActorStats
 
     private void Update()
     {
-        
+        speed = statSpeed.Value;
     }
 
+    public override void InitVariables(float maxHealth = 100)
+    {
+        base.InitVariables(maxHealth);
 
+        statModManager = GetComponent<StatModManager>();
+    }
 
 
 

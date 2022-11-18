@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private bool LOOKING_LEFT;
     private bool LOOKING_RIGHT;
 
+    
+
     private void Start()
     {
         GetReferences();
@@ -108,17 +110,19 @@ public class PlayerMovement : MonoBehaviour
         // testing
         if(Input.GetKey(KeyCode.LeftShift))
         {
-            playerStats.ApplySpeedModifier(2, 0.5f);
+            playerStats.SpeedBuffSecondsPercentAdd(StatModApplicationType.AbilityAppliedBuff, 0.5f, 2f);
         }
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            playerStats.ApplySpeedModifier(2, -0.5f);
+            playerStats.SpeedDebuffSecondsPercentAdd(StatModApplicationType.AbilityAppliedDebuff, 0.25f, 4f);
         }
 
 
     }
 
+
+   
 
     private Vector2 GetPointerInput()
     {

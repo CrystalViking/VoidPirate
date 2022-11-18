@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinionController : MonoBehaviour
+public class MinionController : MonoBehaviour, IEnemy
 {
 
     public enum EnemyState
@@ -115,5 +115,28 @@ public class MinionController : MonoBehaviour
     private float CalculateHealthPercentage()
     {
         return (health / maxHealth);
+    }
+
+    public void SetUseRoomLogicTrue()
+    { }
+    public void SetUseRoomLogicFalse()
+    { }
+
+    public void SetActiveBehaviourTrue()
+    { }
+    public void SetActiveBehaviourFalse()
+    { }
+
+    public bool HasFullHealth()
+    {
+        if (health == maxHealth)
+            return true;
+        else
+            return false;
+    }
+
+    global::EnemyState IEnemy.GetEnemyState()
+    {
+        throw new System.NotImplementedException();
     }
 }

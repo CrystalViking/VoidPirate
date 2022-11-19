@@ -11,6 +11,7 @@ public class InsectEnemy : MeleeEnemy
         health = enemyData.maxHealth;
         useRoomLogic = enemyData.useRoomLogic;
         activeBehaviour = enemyData.activeBehaviour;
+        isUndestructible = false;
 
         enemyMovement = GetComponent<MeleeEnemyMovement>();
 
@@ -123,19 +124,23 @@ public class InsectEnemy : MeleeEnemy
         yield return new WaitForSeconds(enemyData.meleeAnimationDamageDelay);
         if (!attacked && enemyCalculations.IsInAttackRange())
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);          
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().HealthPoison(StatModApplicationType.AgentAppliedDebuff, 5, 10);
         }
         attacked = true;
     }
 
     public override void TakeDamage(float damage)
     {
-        healthBar.SetHealthBarActive();
-        health -= damage;
-        if (health > enemyData.maxHealth)
-            health = enemyData.maxHealth;
-        healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-        CheckDeath();
+        if (!isUndestructible)
+        {
+            healthBar.SetHealthBarActive();
+            health -= damage;
+            if (health > enemyData.maxHealth)
+                health = enemyData.maxHealth;
+            healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
+            CheckDeath();
+        }
     }
 
     protected override void CheckDeath()

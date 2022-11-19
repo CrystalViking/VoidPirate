@@ -14,6 +14,7 @@ public class RangedEnemy : Enemy, IRangedEnemy
         currState = EnemyState.Idle;
         activeBehaviour = enemyData.activeBehaviour;
         useRoomLogic = enemyData.useRoomLogic;
+        isUndestructible = false;
         enemyMovement = GetComponent<RangedEnemyMovement>();
 
         animator = GetComponent<RangedEnemyAnimator>();
@@ -117,12 +118,15 @@ public class RangedEnemy : Enemy, IRangedEnemy
 
     public override void TakeDamage(float damage)
     {
-        healthBar.SetHealthBarActive();
-        health -= damage;
-        if (health > enemyData.maxHealth)
-            health = enemyData.maxHealth;
-        healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-        CheckDeath();
+        if (!isUndestructible)
+        {
+            healthBar.SetHealthBarActive();
+            health -= damage;
+            if (health > enemyData.maxHealth)
+                health = enemyData.maxHealth;
+            healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
+            CheckDeath();
+        }
     }
 
     protected override void CheckDeath()

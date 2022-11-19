@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 direction;
     private Animator animator;
     private PlayerStats playerStats;
+    private float scale;
 
     private Vector2 pointerInput;
 
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        scale = 3;
         GetReferences();
         InitVariables();
     }
@@ -71,13 +73,13 @@ public class PlayerMovement : MonoBehaviour
 
         if(mouse.x < playerScreenPoint.x)
         {
-            transform.localScale = new Vector3(-6, 6, 6);
+            transform.localScale = new Vector3(-scale, scale, scale);
             LOOKING_LEFT = true;
             LOOKING_RIGHT = false;
         }
         else
         {
-            transform.localScale = new Vector3(6, 6, 6);
+            transform.localScale = new Vector3(scale, scale, scale);
             LOOKING_LEFT = false;
             LOOKING_RIGHT = true;
         }
@@ -92,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         {
             direction += Vector2.left;
             if(!LOOKING_RIGHT)
-                transform.localScale = new Vector3(-6, 6, 6);
+                transform.localScale = new Vector3(-scale, scale, scale);
         }
 
         if (Input.GetKey(KeyCode.S))
@@ -104,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         {
             direction += Vector2.right;
             if(!LOOKING_LEFT)
-                transform.localScale = new Vector3(6, 6, 6);
+                transform.localScale = new Vector3(scale, scale, scale);
         }
     }
 

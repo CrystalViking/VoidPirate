@@ -302,7 +302,7 @@ public class EstrellaController : MonoBehaviour, IEnemy
     // band-aid before possible refactor
     public EnemyState GetEnemyState()
     {
-        if (currState == BossState.Death)
+        if (currState == BossState.Die)
             return EnemyState.Die;
         else
             return EnemyState.Idle;
@@ -314,20 +314,6 @@ public class EstrellaController : MonoBehaviour, IEnemy
         isInRoom = false;
     }
 
-    public void SetUseRoomLogicTrue()
-    { }
-    public void SetUseRoomLogicFalse()
-    { }
-
-    public void SetActiveBehaviourTrue()
-    { }
-    public void SetActiveBehaviourFalse()
-    { }
-
-    public EnemyState GetEnemyState()
-    {
-        return EnemyState.Idle;
-    }
 
     public bool HasFullHealth()
     {

@@ -38,6 +38,7 @@ public class EstrellaSaws_v1_1 : BaseEnemyProjectile
         else if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerStats>().TakeDamage(damage);
+            //collision.GetComponent<PlayerStats>().HealthPoison(StatModApplicationType.EntityAppliedDebuff, 10, 10);
             Destroy(gameObject);
         }
         else

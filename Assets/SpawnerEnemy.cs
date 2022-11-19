@@ -16,6 +16,7 @@ public class SpawnerEnemy : MeleeEnemy
         health = enemyData.maxHealth;
         useRoomLogic = enemyData.useRoomLogic;
         activeBehaviour = enemyData.activeBehaviour;
+        isUndestructible = false;
 
         animator = GetComponent<SpawnerEnemyAnimator>();
 
@@ -116,16 +117,20 @@ public class SpawnerEnemy : MeleeEnemy
 
     public override void TakeDamage(float damage)
     {
-        healthBar.SetHealthBarActive();
-        health -= damage;
-        if (health > enemyData.maxHealth)
-            health = enemyData.maxHealth;
-        healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-        CheckDeath();
+        if (!isUndestructible)
+        {
+            healthBar.SetHealthBarActive();
+            health -= damage;
+            if (health > enemyData.maxHealth)
+                health = enemyData.maxHealth;
+            healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
+            CheckDeath();
+        }
     }
 
     protected override void CheckDeath()
     {
+
         if (health <= 0)
         {
             healthBar.SetHealthBarInActive();

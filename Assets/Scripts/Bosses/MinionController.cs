@@ -135,6 +135,21 @@ public class MinionController : MonoBehaviour, IEnemy
             return false;
     }
 
+    public virtual void SetHealth(float maxhealth)
+    {
+        health = maxhealth;
+    }
+
+    public virtual float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public virtual void SetUndestructible(bool G)
+    {
+
+    }
+
     global::EnemyState IEnemy.GetEnemyState()
     {
         throw new System.NotImplementedException();

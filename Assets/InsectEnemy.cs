@@ -123,7 +123,8 @@ public class InsectEnemy : MeleeEnemy
         yield return new WaitForSeconds(enemyData.meleeAnimationDamageDelay);
         if (!attacked && enemyCalculations.IsInAttackRange())
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);          
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().HealthPoison(StatModApplicationType.AgentAppliedDebuff, 5, 10);
         }
         attacked = true;
     }

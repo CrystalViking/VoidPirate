@@ -104,7 +104,7 @@ public class EstrellaController : MonoBehaviour, IEnemy
             currState = BossState.Die;
             healthBar.SetActive(false);
             anim.SetBool("IsDead", true);
-            Destroy(gameObject, 10f); // TODO: consider using scriptable object
+            Destroy(gameObject, 1.0f); // TODO: consider using scriptable object
         }
     }
 
@@ -205,6 +205,7 @@ public class EstrellaController : MonoBehaviour, IEnemy
             SpeedDebuffSecondsPercentAdd(StatModApplicationType.AgentAppliedDebuff, 0.5f, 10); // TODO: consider using scriptable object
 
         //StartCoroutine(DebuffTime());
+        StartCoroutine(DebuffCooldown());
 
         yield return new WaitForSeconds(1.2f); // TODO: consider using scriptable object
 
@@ -280,7 +281,7 @@ public class EstrellaController : MonoBehaviour, IEnemy
 
     IEnumerator SpawnPortal()
     {
-        yield return new WaitForSeconds(8f); // TODO: consider using scriptable object
+        yield return new WaitForSeconds(0.7f); // TODO: consider using scriptable object
         if (!isSpawned)
         {
             Instantiate(portal, transform.position, Quaternion.identity);

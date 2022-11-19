@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReaperController : MonoBehaviour
+public class ReaperController : MonoBehaviour, IEnemy
 {
     public enum BossState
     {
@@ -14,7 +14,7 @@ public class ReaperController : MonoBehaviour
         Spawn,
         Consume,
         Teleport,
-        Death
+        Die
 
     };
 
@@ -78,7 +78,7 @@ public class ReaperController : MonoBehaviour
             case (BossState.Teleport):
                 StartCoroutine(Teleport());
                 break;
-            case (BossState.Death):
+            case (BossState.Die):
                 StartCoroutine(SpawnPortal());
                 break;
         }
@@ -135,7 +135,7 @@ public class ReaperController : MonoBehaviour
     {
         if (health <= 0)
         {
-            currState = BossState.Death;
+            currState = BossState.Die;
             healthBar.SetActive(false);
             anim.SetBool("IsDead", true);
             Destroy(gameObject, 0.5f);
@@ -199,6 +199,8 @@ public class ReaperController : MonoBehaviour
 
         anim.SetBool("IsAttacking", false);
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Die;
     }
 
     IEnumerator OrbAttack()
@@ -219,6 +221,8 @@ public class ReaperController : MonoBehaviour
 
         anim.SetBool("IsShooting", false);
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Die;
     }
 
     IEnumerator SpawnMinion()
@@ -237,6 +241,8 @@ public class ReaperController : MonoBehaviour
 
         anim.SetBool("IsSpawning", false);
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Die;
     }
 
     IEnumerator ConsumeMinion()
@@ -266,12 +272,16 @@ public class ReaperController : MonoBehaviour
 
             anim.SetBool("IsConsuming", false);
             currState = BossState.Move;
+            if (health < 0)
+                currState = BossState.Die;
         }
         else
         {
             yield return new WaitForSeconds(0.1f);
 
             currState = BossState.Move;
+            if (health < 0)
+                currState = BossState.Die;
         }
     }
 
@@ -285,6 +295,8 @@ public class ReaperController : MonoBehaviour
 
         anim.SetBool("IsTeleporting", false);
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Die;
     }
 
     IEnumerator SpawnPortal()
@@ -295,6 +307,29 @@ public class ReaperController : MonoBehaviour
             isSpawned = true;
         }
         yield return new WaitForSeconds(0.5f);
+    }
+
+    public void SetUseRoomLogicTrue()
+    { }
+    public void SetUseRoomLogicFalse()
+    { }
+
+    public void SetActiveBehaviourTrue()
+    { }
+    public void SetActiveBehaviourFalse()
+    { }
+
+    public EnemyState GetEnemyState()
+    {
+        return EnemyState.Idle;
+    }
+
+    public bool HasFullHealth()
+    {
+        if (health == maxHealth)
+            return true;
+        else
+            return false;
     }
 }
 

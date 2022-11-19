@@ -13,7 +13,7 @@ public class EstrellaController : MonoBehaviour, IEnemy
         FlameAttack,
         Debuff,
         MeleeAttack,
-        Death
+        Die
 
     };
 
@@ -70,7 +70,7 @@ public class EstrellaController : MonoBehaviour, IEnemy
             case (BossState.MeleeAttack):
                 StartCoroutine(MeleeAttack());
                 break;
-            case (BossState.Death):
+            case (BossState.Die):
                 StartCoroutine(SpawnPortal());
                 break;
         }
@@ -101,7 +101,7 @@ public class EstrellaController : MonoBehaviour, IEnemy
     {
         if (health <= 0)
         {
-            currState = BossState.Death;
+            currState = BossState.Die;
             healthBar.SetActive(false);
             anim.SetBool("IsDead", true);
             Destroy(gameObject, 10f); // TODO: consider using scriptable object
@@ -148,6 +148,8 @@ public class EstrellaController : MonoBehaviour, IEnemy
 
         anim.SetBool("IsMeleeing", false);
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Die;
     }
 
     private void SawAttackPrep()
@@ -170,6 +172,8 @@ public class EstrellaController : MonoBehaviour, IEnemy
 
         anim.SetBool("IsSawAttacking", false);
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Die;
     }
 
     IEnumerator FlameAttack()
@@ -188,6 +192,8 @@ public class EstrellaController : MonoBehaviour, IEnemy
         yield return new WaitForSeconds(0.4f); // TODO: consider using scriptable object
         anim.SetBool("IsFlameAttacking", false);
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Die;
     }
 
     IEnumerator Debuff()
@@ -205,6 +211,8 @@ public class EstrellaController : MonoBehaviour, IEnemy
         anim.SetBool("IsDebuffing", false);
         shouldDebuff = false;
         currState = BossState.Move;
+        if (health < 0)
+            currState = BossState.Die;
     }
 
     IEnumerator DebuffTime()
@@ -304,6 +312,29 @@ public class EstrellaController : MonoBehaviour, IEnemy
     public void SetActiveBehaviourFalse()
     {
         isInRoom = false;
+    }
+
+    public void SetUseRoomLogicTrue()
+    { }
+    public void SetUseRoomLogicFalse()
+    { }
+
+    public void SetActiveBehaviourTrue()
+    { }
+    public void SetActiveBehaviourFalse()
+    { }
+
+    public EnemyState GetEnemyState()
+    {
+        return EnemyState.Idle;
+    }
+
+    public bool HasFullHealth()
+    {
+        if (health == maxHealth)
+            return true;
+        else
+            return false;
     }
 
     public void SetActiveBehaviourTrue()

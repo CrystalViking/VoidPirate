@@ -7,5 +7,6 @@
 
     void SetActiveBehaviourFalse();
     void SetActiveBehaviourTrue();
+    bool HasFullHealth();
 
 }

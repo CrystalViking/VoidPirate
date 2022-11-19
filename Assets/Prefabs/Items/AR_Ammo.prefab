@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e97b23b914393f41b2b90604a3278e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoBox: {fileID: 11400000, guid: eae0629a24e8d85458a357047690010c, type: 2}
   itemPickupCode: 101
   destroyOnPickUp: 1
+  ammoBox: {fileID: 11400000, guid: eae0629a24e8d85458a357047690010c, type: 2}
 --- !u!58 &6373554596781878674
 CircleCollider2D:
   m_ObjectHideFlags: 0

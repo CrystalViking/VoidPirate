@@ -12,7 +12,7 @@ public class Rotation : MonoBehaviour
 
     void Update()
     {
-        if (this.GetComponent<EnemyController>().health > 0) {
+        if (this.GetComponent<IEnemy>().GetEnemyState() != EnemyState.Die) {
             if ((player.transform.position.x < transform.position.x))
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);

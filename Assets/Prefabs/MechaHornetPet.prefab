@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 7194649746599901050}
   - component: {fileID: 4137751669176490209}
   - component: {fileID: 8832713643573875306}
+  - component: {fileID: -1643171920660895409}
   m_Layer: 3
   m_Name: MechaHornetPet
   m_TagString: Enemy
@@ -536,6 +537,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-1643171920660895409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194148048386134219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f67b6fb6ff9a0c47a096423e458d7be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6605636542176515717
 GameObject:
   m_ObjectHideFlags: 0

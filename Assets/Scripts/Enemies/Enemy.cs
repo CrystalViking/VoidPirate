@@ -10,9 +10,11 @@ public enum EnemyState
     Wander,
     Follow,
     Die,
-    Attack
-};
-
+    Attack,
+    FollowAndAttack,
+    Heal,
+    Spawn
+}
 
 public abstract class Enemy : MonoBehaviour, IEnemy
 {
@@ -85,7 +87,13 @@ public abstract class Enemy : MonoBehaviour, IEnemy
         Debug.Log("Enemy: Moving");
     }
 
-
+    public virtual bool HasFullHealth()
+    {
+        if (enemyData.maxHealth == health)
+            return true;
+        else
+            return false;
+    }
 
     protected virtual IEnumerator Delay()
     {

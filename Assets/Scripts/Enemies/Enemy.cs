@@ -13,7 +13,8 @@ public enum EnemyState
     Attack,
     FollowAndAttack,
     Heal,
-    Spawn
+    Spawn,
+    Protect
 }
 
 public abstract class Enemy : MonoBehaviour, IEnemy
@@ -29,6 +30,7 @@ public abstract class Enemy : MonoBehaviour, IEnemy
     public bool useRoomLogic = false;
     public bool activeBehaviour = false;
     public EnemyState currState = EnemyState.Idle;
+    public bool isUndestructible = false;
     
 
     public float health;
@@ -94,6 +96,22 @@ public abstract class Enemy : MonoBehaviour, IEnemy
         else
             return false;
     }
+
+    public virtual void SetHealth(float maxhealth)
+    {
+        health = maxhealth;
+    }
+
+    public virtual float GetMaxHealth()
+    {
+        return enemyData.maxHealth;
+    }
+
+    public virtual void SetUndestructible(bool G)
+    {
+        isUndestructible = G;
+    }
+
 
     protected virtual IEnumerator Delay()
     {

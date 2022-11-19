@@ -328,4 +328,19 @@ public class EstrellaController : MonoBehaviour, IEnemy
     {
         isInRoom = true;
     }
+    public virtual void SetHealth(float maxhealth)
+    {
+        health = maxhealth;
+    }
+
+    public virtual float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public virtual void SetUndestructible(bool G)
+    {
+
+    }
+
 }

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5977790952817914284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.63, y: -0.85, z: -1.2434833}
-  m_LocalScale: {x: 0.66735625, y: 0.66735625, z: 0.66735625}
+  m_LocalScale: {x: 0.3311355, y: 0.3311355, z: 0.3311355}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,15 +72,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2051526019
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4fa17e65d3db00d409d5b4900ec24d08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96f91a3cfcd203d49806f0b356f72286, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 0.64}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,9 +99,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.01171157, y: 0}
   serializedVersion: 2
-  m_Radius: 0.64000005
+  m_Radius: 1.3231791
 --- !u!114 &5977790952817914285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdbd9c98d888ba4fbf38a1b10ddde2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: 325d526233babaa4490aa59b072877e6, type: 2}
-  playerInventory: {fileID: 0}
   itemPickupCode: 101
   destroyOnPickUp: 1
+  weapon: {fileID: 11400000, guid: 325d526233babaa4490aa59b072877e6, type: 2}

@@ -9,4 +9,10 @@
     void SetActiveBehaviourTrue();
     bool HasFullHealth();
 
+    void SetHealth(float maxhealth);
+
+    void SetUndestructible(bool G);
+
+    float GetMaxHealth();
+
 }

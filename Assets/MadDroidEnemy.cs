@@ -12,6 +12,8 @@ public class MadDroidEnemy : RangedEnemy
         currState = EnemyState.Idle;
         activeBehaviour = enemyData.activeBehaviour;
         useRoomLogic = enemyData.useRoomLogic;
+        isUndestructible = false;
+
         enemyMovement = GetComponent<MeleeEnemyMovement>();
 
         animator = GetComponent<MadEnemyAnimator>();
@@ -90,12 +92,15 @@ public class MadDroidEnemy : RangedEnemy
 
     public override void TakeDamage(float damage)
     {
-        healthBar.SetHealthBarActive();
-        health -= damage;
-        if (health > enemyData.maxHealth)
-            health = enemyData.maxHealth;
-        healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-        CheckDeath();
+        if (!isUndestructible)
+        {
+            healthBar.SetHealthBarActive();
+            health -= damage;
+            if (health > enemyData.maxHealth)
+                health = enemyData.maxHealth;
+            healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
+            CheckDeath();
+        }
     }
 
     protected override void CheckDeath()

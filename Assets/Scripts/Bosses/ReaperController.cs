@@ -331,6 +331,21 @@ public class ReaperController : MonoBehaviour, IEnemy
         else
             return false;
     }
+
+    public virtual float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public virtual void SetHealth(float maxhealth)
+    {
+        health = maxhealth;
+    }
+
+    public virtual void SetUndestructible(bool G)
+    {
+
+    }
 }
 
     

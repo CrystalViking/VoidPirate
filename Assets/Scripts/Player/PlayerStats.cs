@@ -8,6 +8,8 @@ public class PlayerStats : ActorStats
     private HudScript hud;
     StatModManager statModManager;
 
+    PlayerRenderer playerRenderer;
+
     private void Start()
     {
         GetReferences(); 
@@ -46,7 +48,11 @@ public class PlayerStats : ActorStats
         healthModApplier.SetPoisonModifier(hpDecrease, ref statHealth, statModApplicationType);
         statModManager.AddApplier(healthModApplier, duration);
 
+        StartCoroutine(playerRenderer.FlashRed((int)duration));
+
     }
+
+    
 
 
     public override void Die()
@@ -66,6 +72,7 @@ public class PlayerStats : ActorStats
         base.InitVariables(maxHealth);
 
         statModManager = GetComponent<StatModManager>();
+        playerRenderer = GetComponent<PlayerRenderer>();
     }
 
 

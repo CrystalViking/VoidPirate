@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8836956139156992242}
   - component: {fileID: 8836956139156992243}
   - component: {fileID: 8836956139156992244}
+  - component: {fileID: 5655434622578385863}
   - component: {fileID: 979390896146605342}
   - component: {fileID: 8836956139156992218}
   - component: {fileID: 8836956139156992196}
@@ -195,6 +196,19 @@ MonoBehaviour:
   maxDamage: 30
   projectileForce: 10
   fireRate: 0
+--- !u!114 &5655434622578385863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8836956139156992219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5390439e721a24f96b7dbafe49f378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRenderer: {fileID: 8836956139156992241}
 --- !u!114 &979390896146605342
 MonoBehaviour:
   m_ObjectHideFlags: 0

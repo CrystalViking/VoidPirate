@@ -32,6 +32,16 @@ public class ProtectorEnemy : MeleeEnemy
 
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.tag);
+        if(collision.tag == "Wall" || collision.tag == "Door")
+        {
+            health = -1;
+            CheckDeath();
+        }
+    }
+
     public new void ScrollStates()
     {
         switch (currState)
@@ -119,7 +129,7 @@ public class ProtectorEnemy : MeleeEnemy
             {
                 Vector3 diff = go.transform.position - position;
                 float curDistance = diff.sqrMagnitude;
-                if (curDistance < distance && curDistance > 0.0f && curDistance < 20.0f)
+                if (curDistance < distance && curDistance > 0.0f && curDistance < 25.0f)
                 {
                     closest = go;
                     distance = curDistance;

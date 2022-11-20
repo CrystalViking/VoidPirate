@@ -32,15 +32,15 @@ public class UIManager : MonoBehaviour
 
     public void SetActiveHud(bool state)
     {
-        hudCanvas.SetActive(state);
-        pauseCanvas.SetActive(!state);
+        hudCanvas?.SetActive(state);
+        pauseCanvas?.SetActive(!state);
     }
 
 
     public void SetActivePause(bool state)
     {
-        hudCanvas.SetActive(!state);
-        pauseCanvas.SetActive(state);
+        hudCanvas?.SetActive(!state);
+        pauseCanvas?.SetActive(state);
 
         Time.timeScale = state ? 0 : 1;
         isPaused = state;

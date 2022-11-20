@@ -7,6 +7,11 @@ public class WeaponShooting : MonoBehaviour
     public GameObject projectile;
     private Weapon currentWeapon;
 
+    
+    private PlayerInventory playerInventory;
+    private EquipmentManager equipmentManager;
+    private HudScript hud;
+
     private float lastShootTime = 0;
 
     [SerializeField] private int primaryCurrentAmmo;
@@ -21,10 +26,7 @@ public class WeaponShooting : MonoBehaviour
 
     [SerializeField] private bool canShoot;
 
-    private PlayerInventory inventory;
-    private EquipmentManager manager;
-
-    private HudScript hud;
+    
 
     public static float GetAngleFromVectorFloat(Vector3 dir)
     {
@@ -43,7 +45,7 @@ public class WeaponShooting : MonoBehaviour
 
         //StartCoroutine(LetOthersCatchUp());
 
-        currentWeapon = inventory.GetItem(manager.CurrentlyEquippedWeapon());
+        currentWeapon = playerInventory.GetItem(equipmentManager.CurrentlyEquippedWeapon());
 
     }
 
@@ -56,7 +58,7 @@ public class WeaponShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentWeapon = inventory.GetItem(manager.CurrentlyEquippedWeapon());
+        currentWeapon = playerInventory.GetItem(equipmentManager.CurrentlyEquippedWeapon());
 
 
         if(currentWeapon != null)
@@ -73,7 +75,7 @@ public class WeaponShooting : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
         {
-            Reload(manager.CurrentlyEquippedWeapon());
+            Reload(equipmentManager.CurrentlyEquippedWeapon());
         }
 
         
@@ -81,7 +83,7 @@ public class WeaponShooting : MonoBehaviour
 
     private void Shoot()
     {
-        IfCanShoot(manager.CurrentlyEquippedWeapon());
+        IfCanShoot(equipmentManager.CurrentlyEquippedWeapon());
 
 
         if(canShoot)
@@ -118,7 +120,7 @@ public class WeaponShooting : MonoBehaviour
             primaryCurrentAmmo = weapon.magazineSize;
             primaryCurrentAmmoStorage = weapon.storedAmmo;
             primaryMagIsEmpty = false;
-            manager.EM_UpdatePrimaryAmmo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
+            equipmentManager.EM_UpdatePrimaryAmmo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
         }
 
         // secondary
@@ -127,7 +129,7 @@ public class WeaponShooting : MonoBehaviour
             secondaryCurrentAmmo = weapon.magazineSize;
             secondaryCurrentAmmoStorage = weapon.storedAmmo;
             secondaryMagIsEmpty = false;
-            manager.EM_UpdateSecondaryAmmo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
+            equipmentManager.EM_UpdateSecondaryAmmo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
         }
     }
 
@@ -139,13 +141,13 @@ public class WeaponShooting : MonoBehaviour
             if(primaryCurrentAmmo <= 0)
             {
                 primaryMagIsEmpty = true;
-                IfCanShoot(manager.CurrentlyEquippedWeapon());
+                IfCanShoot(equipmentManager.CurrentlyEquippedWeapon());
             }
             else
             {
                 primaryCurrentAmmo -= currentAmmoUsed;
                 primaryCurrentAmmoStorage -= currentStoredAmmoUsed;
-                manager.EM_UpdatePrimaryAmmo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
+                equipmentManager.EM_UpdatePrimaryAmmo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
                 hud.UpdateWeaponAmmoInfo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
             }
             
@@ -158,13 +160,13 @@ public class WeaponShooting : MonoBehaviour
             if (secondaryCurrentAmmo <= 0)
             {
                 secondaryMagIsEmpty = true;
-                IfCanShoot(manager.CurrentlyEquippedWeapon());
+                IfCanShoot(equipmentManager.CurrentlyEquippedWeapon());
             }
             else
             {
                 secondaryCurrentAmmo -= currentAmmoUsed;
                 secondaryCurrentAmmoStorage -= currentStoredAmmoUsed;
-                manager.EM_UpdateSecondaryAmmo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
+                equipmentManager.EM_UpdateSecondaryAmmo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
                 hud.UpdateWeaponAmmoInfo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
             }
         }
@@ -177,28 +179,28 @@ public class WeaponShooting : MonoBehaviour
         {
             primaryCurrentAmmo += currentAmmoAdded;
             primaryCurrentAmmoStorage += currentStoredAmmoAdded;
-            if(manager.CurrentlyEquippedWeapon() == slot)
+            if(equipmentManager.CurrentlyEquippedWeapon() == slot)
                 hud.UpdateWeaponAmmoInfo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
-            manager.EM_UpdatePrimaryAmmo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
+            equipmentManager.EM_UpdatePrimaryAmmo(primaryCurrentAmmo, primaryCurrentAmmoStorage);
         }
         if(slot == 1)
         {
             secondaryCurrentAmmo += currentAmmoAdded;
             secondaryCurrentAmmoStorage += currentStoredAmmoAdded;
-            if (manager.CurrentlyEquippedWeapon() == slot)
+            if (equipmentManager.CurrentlyEquippedWeapon() == slot)
                 hud.UpdateWeaponAmmoInfo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
-            manager.EM_UpdateSecondaryAmmo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
+            equipmentManager.EM_UpdateSecondaryAmmo(secondaryCurrentAmmo, secondaryCurrentAmmoStorage);
         }
         
     }
 
     public void AddAmmoToCurrentWeaponType(WeaponType weaponType, int currentStoredAmmoAdded)
     {
-        for(int i = 0; i < inventory.GetInventorySize(); ++i)
+        for(int i = 0; i < playerInventory.GetInventorySize(); ++i)
         {
-            if(inventory.GetItem(i)?.weaponType == weaponType)
+            if(playerInventory.GetItem(i)?.weaponType == weaponType)
             {
-                AddAmmo((int)inventory.GetItem(i).weaponSlot, 0, currentStoredAmmoAdded);
+                AddAmmo((int)playerInventory.GetItem(i).weaponSlot, 0, currentStoredAmmoAdded);
             }
         }
     }
@@ -206,7 +208,7 @@ public class WeaponShooting : MonoBehaviour
     private void Reload(int slot)
     {
 
-        int mag = inventory.GetItem(slot).magazineSize;
+        int mag = playerInventory.GetItem(slot).magazineSize;
         int currentSlotAmmo = 0;
         int currentSlotAmmoLeft = 0;
         bool currentMagIsEmpty = true;
@@ -268,7 +270,7 @@ public class WeaponShooting : MonoBehaviour
                 {
                     if (currentSlotAmmoLeft > ammoToReplenish)
                     {
-                        currentSlotAmmo = inventory.GetItem(slot).magazineSize;
+                        currentSlotAmmo = playerInventory.GetItem(slot).magazineSize;
                         currentSlotAmmoLeft -= ammoToReplenish;
 
                         ammoReplenished = ammoToReplenish;
@@ -348,8 +350,9 @@ public class WeaponShooting : MonoBehaviour
 
     private void GetReferences()
     {
-        inventory = GetComponent<PlayerInventory>();
-        manager = GetComponent<EquipmentManager>();
+        
+        playerInventory = GetComponent<PlayerInventory>();
+        equipmentManager = GetComponent<EquipmentManager>();
         hud = GetComponent<HudScript>();
     }
 }

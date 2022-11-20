@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class RadioController : MonoBehaviour
+public class RadioController : MonoBehaviour, IInteractable
 {
     bool isInRange;
     bool isActive = false;
@@ -41,7 +41,7 @@ public class RadioController : MonoBehaviour
 
     public void InteractOnAction()
     {
-        if(isInRange)
+        if (isInRange)
         {
             if (Input.GetKeyDown(itemInteractionCode))
             {
@@ -59,12 +59,12 @@ public class RadioController : MonoBehaviour
                 radio.NavigateStations(true);
             }
 
-            if(Input.GetKeyDown(itemPreviousStationCode) && isActive)
+            if (Input.GetKeyDown(itemPreviousStationCode) && isActive)
             {
                 radio.NavigateStations(false);
             }
         }
-        
+
 
     }
     IEnumerator activateRadio()

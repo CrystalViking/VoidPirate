@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8836956139156992241}
   - component: {fileID: 8836956139156992204}
   - component: {fileID: 8836956139156992242}
+  - component: {fileID: 8228254657988179766}
   - component: {fileID: 8836956139156992243}
   - component: {fileID: 1769758419974698626}
-  - component: {fileID: 8836956139156992244}
   - component: {fileID: 5655434622578385863}
   - component: {fileID: 979390896146605342}
   - component: {fileID: 8836956139156992218}
@@ -167,6 +167,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.05}
   m_EdgeRadius: 0
+--- !u!114 &8228254657988179766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8836956139156992219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0afae8730ab4c14d894e0b03782b2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8836956139156992243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,23 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9f508cd8e861048a8d63feffb23167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8836956139156992244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8836956139156992219}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a94335444b7a41f49a0a63a9936efbe0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 7030676788894008369, guid: c2c98ed91c79f8240aa3770b75a0e729, type: 3}
-  minDamage: 20
-  maxDamage: 30
-  projectileForce: 10
-  fireRate: 0
 --- !u!114 &5655434622578385863
 MonoBehaviour:
   m_ObjectHideFlags: 0

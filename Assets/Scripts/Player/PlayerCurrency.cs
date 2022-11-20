@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerCurrency : MonoBehaviour
 {
-    int total;
+    public int total;
     CharacterStat statSingleCoinValue;
-    int singleCoinValue;
+    int singleCoinValue = 1;
 
     // Start is called before the first frame update
     void Start()

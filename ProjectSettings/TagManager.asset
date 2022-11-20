@@ -15,6 +15,12 @@ TagManager:
   - Floor
   - Projectile
   - EnemyProjectile
+  - GroundTilemap
+  - Decoration1Tilemap
+  - Decoration2Tilemap
+  - FrontTilemap
+  - CollitionTilemap
+  - MinimapTilemap
   layers:
   - Default
   - TransparentFX
@@ -25,9 +31,9 @@ TagManager:
   - Blocking Layer
   - Floor
   - Player
-  - 
-  - 
-  - 
+  - Room
+  - Wall
+  - MiniMap
   - 
   - 
   - 
@@ -72,4 +78,22 @@ TagManager:
     locked: 0
   - name: Wall
     uniqueID: 1474003349
+    locked: 0
+  - name: Ground
+    uniqueID: 3222806463
+    locked: 0
+  - name: Ground Decoration 1
+    uniqueID: 224834631
+    locked: 0
+  - name: Ground Decoration 2
+    uniqueID: 1030165769
+    locked: 0
+  - name: Front
+    uniqueID: 2466976895
+    locked: 0
+  - name: Collision
+    uniqueID: 3763490459
+    locked: 0
+  - name: Minimap
+    uniqueID: 2077223661
     locked: 0

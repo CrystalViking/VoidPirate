@@ -346,6 +346,11 @@ public class ReaperController : MonoBehaviour, IEnemy
     {
 
     }
+
+    public GameObject GetParent()
+    {
+        return transform.parent.gameObject;
+    }
 }
 
     

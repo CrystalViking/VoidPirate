@@ -154,4 +154,9 @@ public class MinionController : MonoBehaviour, IEnemy
     {
         throw new System.NotImplementedException();
     }
+
+    public GameObject GetParent()
+    {
+        return transform.parent.gameObject;
+    }
 }

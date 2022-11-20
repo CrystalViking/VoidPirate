@@ -6,6 +6,8 @@ public class WeaponShooting : MonoBehaviour
 {
     public GameObject projectile;
     private Weapon currentWeapon;
+    public AudioSource pWeapon;
+    public AudioSource sWeapon;
 
     private float lastShootTime = 0;
 
@@ -90,7 +92,10 @@ public class WeaponShooting : MonoBehaviour
             {
                 lastShootTime = Time.time;
 
-
+                if(currentWeapon.ItemName == "Impulse Rifle")
+                    pWeapon.Play();
+                if (currentWeapon.ItemName == "DMR")
+                    sWeapon.Play();
                 GameObject spell = Instantiate(projectile, transform.position, Quaternion.identity);
                 Vector3 worldMousePosition3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePos = new Vector2(worldMousePosition3D.x, worldMousePosition3D.y);
@@ -123,7 +128,7 @@ public class WeaponShooting : MonoBehaviour
 
         // secondary
         if (slot == 1)
-        {
+        {         
             secondaryCurrentAmmo = weapon.magazineSize;
             secondaryCurrentAmmoStorage = weapon.storedAmmo;
             secondaryMagIsEmpty = false;

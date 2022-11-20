@@ -109,6 +109,11 @@ public class SpawnerEnemy : MeleeEnemy
         {
             X = Random.Range(0, allies.Length);
             spawnedAlly = Instantiate(allies[X], new Vector2(transform.position.x - 0.2f, transform.position.y), Quaternion.identity);
+            try
+            {
+                spawnedAlly.transform.parent = transform.parent;
+            }
+            catch { }
             spawned = true;
 
         }       

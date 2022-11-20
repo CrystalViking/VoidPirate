@@ -32,7 +32,7 @@ public class ProtectorEnemy : MeleeEnemy
 
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    /*void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.tag);
         if(collision.tag == "Wall" || collision.tag == "Door")
@@ -40,7 +40,7 @@ public class ProtectorEnemy : MeleeEnemy
             health = -1;
             CheckDeath();
         }
-    }
+    }*/
 
     public new void ScrollStates()
     {
@@ -125,11 +125,11 @@ public class ProtectorEnemy : MeleeEnemy
         Vector3 position = transform.position;
         foreach (GameObject go in gos)
         {
-            if (!go.GetComponent<ProtectorEnemy>())
+            if (!go.GetComponent<ProtectorEnemy>() && GetParent().transform.parent.gameObject == go.GetComponent<IEnemy>().GetParent().transform.parent.gameObject)
             {
                 Vector3 diff = go.transform.position - position;
                 float curDistance = diff.sqrMagnitude;
-                if (curDistance < distance && curDistance > 0.0f && curDistance < 25.0f)
+                if (curDistance < distance && curDistance > 0.0f)
                 {
                     closest = go;
                     distance = curDistance;

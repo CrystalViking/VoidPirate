@@ -11,6 +11,7 @@ public class WeaponParent : MonoBehaviour
 
     public float delay = 0.3f;
     private bool attackBlocked;
+    public AudioSource hit;
 
 
     public bool IsAttacking { get; private set; }
@@ -62,7 +63,8 @@ public class WeaponParent : MonoBehaviour
         {
             return;
         }
-        
+
+        hit.Play();
         animator.SetTrigger("Attack");
         IsAttacking = true;
         attackBlocked = true;

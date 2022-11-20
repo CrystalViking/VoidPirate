@@ -343,4 +343,8 @@ public class EstrellaController : MonoBehaviour, IEnemy
 
     }
 
+    public GameObject GetParent()
+    {
+        return transform.parent.gameObject;
+    }
 }

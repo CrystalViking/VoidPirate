@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class RoomNodeSO : ScriptableObject
   [HideInInspector] public RoomNodeGraphSO roomNodeGraph;
   public RoomNodeTypeSO roomNodeType;
   [HideInInspector] public RoomNodeTypeListSO roomNodeTypeList;
+  [HideInInspector] public Orientation parentEntranceSide = Orientation.none;
 
 
 #if UNITY_EDITOR
@@ -41,6 +43,12 @@ public class RoomNodeSO : ScriptableObject
     if (parentRoomNodeIdList.Count > 0 || roomNodeType.isEntrance)
     {
       EditorGUILayout.LabelField(roomNodeType.roomNodeTypeName);
+      List<string> orientationList = Enum.GetNames(typeof(Orientation)).ToList();
+      int selectedIndex = orientationList.FindIndex(x => x == parentEntranceSide.ToString());
+      string[] orientationArray = Enum.GetNames(typeof(Orientation));
+      int selectionOrientation = EditorGUILayout.Popup("", selectedIndex, orientationArray);
+      parentEntranceSide = (Orientation)Enum.Parse(typeof(Orientation), orientationArray[selectionOrientation]);
+
     }
     else
     {

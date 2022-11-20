@@ -7,4 +7,5 @@ public class ScriptableEnergyDrink : Item
 {
     public float duration;
     public float hp_content;
+    public float percentBuff;
 }

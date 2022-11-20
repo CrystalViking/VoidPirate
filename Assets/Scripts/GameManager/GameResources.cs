@@ -19,7 +19,7 @@ public class GameResources : MonoBehaviour
   }
 
   [Space(10)]
-  [Header("Dungeon")]
-  [Tooltip("Populate with the dungeon RoomNodeTypeListSO")]
+  [Header("Spaceship")]
+  [Tooltip("Populate with the spaceship RoomNodeTypeListSO")]
   public RoomNodeTypeListSO roomNodeTypeList;
 }

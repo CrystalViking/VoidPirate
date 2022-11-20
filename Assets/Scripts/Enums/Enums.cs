@@ -1,4 +1,3 @@
-
 public enum Orientation
 {
   north,
@@ -6,4 +5,19 @@ public enum Orientation
   south,
   west,
   none
+}
+
+public enum GameState
+{
+  gameStarted,
+  playingLevel,
+  engagingEnemies,
+  bossStage,
+  engagingBoss,
+  levelCompleted,
+  gameWon,
+  gameLost,
+  gamePaused,
+  shipOverviewMap,
+  restartGame
 }

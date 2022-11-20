@@ -22,10 +22,11 @@ public class SpaceshipLevelSO : ScriptableObject
 
   private void OnValidate()
   {
+    HelperUtilities.ValidateCheckEmptyString(this, nameof(levelName), levelName);
 
     if (HelperUtilities.ValidateCheckEnumerableValues(this, nameof(roomTemplateList), roomTemplateList) ||
-    HelperUtilities.ValidateCheckEnumerableValues(this, nameof(roomNodeGraphList), roomNodeGraphList) ||
-     HelperUtilities.ValidateCheckEmptyString(this, nameof(levelName), levelName))
+    HelperUtilities.ValidateCheckEnumerableValues(this, nameof(roomNodeGraphList), roomNodeGraphList)
+     )
     {
       return;
     }

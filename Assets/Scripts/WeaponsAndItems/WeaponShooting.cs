@@ -8,7 +8,7 @@ public class WeaponShooting : MonoBehaviour
     private Weapon currentWeapon;
 
     
-    private PlayerInventory playerInventory;
+    private WeaponInventory playerInventory;
     private EquipmentManager equipmentManager;
     private HudScript hud;
 
@@ -351,7 +351,7 @@ public class WeaponShooting : MonoBehaviour
     private void GetReferences()
     {
         
-        playerInventory = GetComponent<PlayerInventory>();
+        playerInventory = GetComponent<WeaponInventory>();
         equipmentManager = GetComponent<EquipmentManager>();
         hud = GetComponent<HudScript>();
     }

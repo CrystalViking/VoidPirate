@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyDrinkPickup : PickableItem, IPickable
+public class EnergyDrinkPickup : PickableItem, IPickable, IStackable
 {
     [SerializeField] ScriptableEnergyDrink energyDrink;
 
@@ -31,5 +31,23 @@ public class EnergyDrinkPickup : PickableItem, IPickable
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().Heal(energyDrink.hp_content);
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().SpeedBuffSecondsPercentAdd(StatModApplicationType.ConsumableAppliedBuff,energyDrink.percentBuff, energyDrink.duration);
+    }
+
+    public void InteractOnStackup()
+    {
+        if (Input.GetKeyDown(itemStackupCode) && isInRange)
+        {
+            PlayerStack();
+
+            if (destroyOnPickUp)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void PlayerStack()
+    {
+        throw new NotImplementedException();
     }
 }

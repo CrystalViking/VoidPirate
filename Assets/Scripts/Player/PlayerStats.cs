@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerStats : ActorStats
 {
@@ -9,6 +10,8 @@ public class PlayerStats : ActorStats
     StatModManager statModManager;
 
     PlayerRenderer playerRenderer;
+
+    public UnityEvent<float> OnHealthChange;
 
     private void Start()
     {
@@ -24,7 +27,9 @@ public class PlayerStats : ActorStats
     public override void CheckHealth()
     {
         base.CheckHealth();
-        hud.UpdateHealth(health, maxHealth);
+        hud.UpdateHealth(health);
+
+        OnHealthChange?.Invoke((float)health / maxHealth);
     }
     public void SpeedBuffSecondsPercentAdd(StatModApplicationType statModApplicationType, float value, float seconds)
     {

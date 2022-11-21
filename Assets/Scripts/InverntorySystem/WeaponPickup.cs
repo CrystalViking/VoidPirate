@@ -16,7 +16,7 @@ public class WeaponPickup : PickableItem, IPickable
     {
         if (Input.GetKeyDown(itemPickupCode) && isInRange)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().AddItem(weapon);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponInventory>().AddItem(weapon);
 
             if (destroyOnPickUp)
             {

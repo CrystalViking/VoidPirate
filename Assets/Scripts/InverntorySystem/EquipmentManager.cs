@@ -5,7 +5,7 @@ using UnityEngine;
 public class EquipmentManager : MonoBehaviour
 {
     private int currentlyEquippedWeapon = 0;
-    private PlayerInventory playerInventory;
+    private WeaponInventory playerInventory;
     private GameObject currentWeaponObject = null;
 
     private HudScript playerHud;
@@ -149,7 +149,7 @@ public class EquipmentManager : MonoBehaviour
 
     private void GetReferences()
     { 
-        playerInventory = GetComponent<PlayerInventory>();
+        playerInventory = GetComponent<WeaponInventory>();
         playerHud = GetComponent<HudScript>();
     }
 

@@ -7,15 +7,15 @@ using TMPro;
 public class HudScript : MonoBehaviour
 {
     [SerializeField] private TMP_Text currentHealthText;
-    [SerializeField] private TMP_Text maxHealthText;
+    //[SerializeField] private TMP_Text maxHealthText;
     [SerializeField] private WeaponUI weaponUI;
 
     
 
-    public void UpdateHealth(float currentHealth, float maxHealth)
+    public void UpdateHealth(float currentHealth)
     {
         currentHealthText.text = currentHealth.ToString();
-        maxHealthText.text = maxHealth.ToString();
+        //maxHealthText.text = maxHealth.ToString();
     }
 
     public void UpdateWeaponUI(Weapon newWeapon)

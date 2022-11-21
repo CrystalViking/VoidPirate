@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public UIManager UiManager { get; private set; }
     public IActorStats PlayerStats { get; private set; } 
     public HudScript PlayerHudScript { get; private set; }
-    public PlayerInventory PlayerInventory { get; private set; }
+    public WeaponInventory PlayerInventory { get; private set; }
     public EquipmentManager EquipmentManager { get; private set; }
     public WeaponShooting WeaponShooting { get; private set; }
     public WeaponParent WeaponParent { get; private set; }
@@ -43,7 +43,7 @@ public class PlayerManager : MonoBehaviour
         UiManager = GetComponent<UIManager>();
         PlayerStats = GetComponent<PlayerStats>();
         EquipmentManager = GetComponent<EquipmentManager>();
-        PlayerInventory = GetComponent<PlayerInventory>();  
+        PlayerInventory = GetComponent<WeaponInventory>();  
         WeaponShooting = GetComponent<WeaponShooting>();
         WeaponParent = GetComponent<WeaponParent>();
         HudScript = GetComponent<HudScript>();

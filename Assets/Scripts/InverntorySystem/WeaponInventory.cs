@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventory : MonoBehaviour
+public class WeaponInventory : MonoBehaviour, IPlayerInventory
 {
     [SerializeField] private Weapon[] weapons;
 
@@ -13,6 +13,7 @@ public class PlayerInventory : MonoBehaviour
     private void InitVariables()
     {
         weapons = new Weapon[3];
+
     }
 
 
@@ -24,12 +25,12 @@ public class PlayerInventory : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     public void AddItem(Weapon newItem)
     {
-        if(weapons[(int)newItem.weaponSlot] != null)
+        if (weapons[(int)newItem.weaponSlot] != null)
         {
             RemoveItem((int)newItem.weaponSlot);
         }
@@ -50,7 +51,7 @@ public class PlayerInventory : MonoBehaviour
 
     public Weapon GetItem(int index)
     {
-        if(weapons != null && weapons.Length != 0)
+        if (weapons != null && weapons.Length != 0)
         {
             return weapons[index];
         }
@@ -62,7 +63,7 @@ public class PlayerInventory : MonoBehaviour
         return weapons.Length;
     }
 
-    
+
 
     private void GetReferences()
     {
@@ -70,5 +71,5 @@ public class PlayerInventory : MonoBehaviour
         shooting = GetComponent<WeaponShooting>();
     }
 
-   
+
 }

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public abstract class PickableItem : MonoBehaviour
+public abstract class PickableItem : MonoBehaviour, IPickable
 {
     protected bool isInRange;
 
     
     [SerializeField] protected KeyCode itemPickupCode = KeyCode.E;
     [SerializeField] protected bool destroyOnPickUp = true;
+    [SerializeField] protected KeyCode itemStackupCode = KeyCode.Q;
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {

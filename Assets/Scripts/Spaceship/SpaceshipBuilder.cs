@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using System;
 
 [DisallowMultipleComponent]
@@ -44,9 +45,9 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
 
       while (!spaceshipBuildSuccessful && spaceshipRebuildAttemptsForNodeGraph <= Settings.maxSpaceshipRebuildAttemptsForRoomGraph)
       {
-        ClearDungeon();
+        ClearSpaceship();
         spaceshipRebuildAttemptsForNodeGraph++;
-        spaceshipBuildSuccessful = AttemptToBuildRandomDungeon(roomNodeGraph);
+        spaceshipBuildSuccessful = AttemptToBuildRandomSpaceship(roomNodeGraph);
       }
 
       if (spaceshipBuildSuccessful)
@@ -60,7 +61,16 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
 
   private void InstantiateRoomGameObjects()
   {
-    throw new NotImplementedException();
+    foreach (KeyValuePair<string, SpaceshipRoom> keyValuePair in spaceshipBuilderRoomDictionary)
+    {
+      SpaceshipRoom room = keyValuePair.Value;
+      Vector3 roomPosition = new Vector3(room.lowerBounds.x - room.templateLowerBounds.x, room.lowerBounds.y - room.templateLowerBounds.y, 0f);
+      GameObject roomGameObject = Instantiate(room.prefab, roomPosition, Quaternion.identity, transform);
+      InstantiatedRoom instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
+      instantiatedRoom.room = room;
+      instantiatedRoom.Initialise(gameObject);
+      room.instantiatedRoom = instantiatedRoom;
+    }
   }
 
 
@@ -82,7 +92,7 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
     }
   }
 
-  private bool AttemptToBuildRandomDungeon(RoomNodeGraphSO roomNodeGraph)
+  private bool AttemptToBuildRandomSpaceship(RoomNodeGraphSO roomNodeGraph)
   {
     Queue<RoomNodeSO> openRoomNodeQueue = new Queue<RoomNodeSO>();
     RoomNodeSO entranceNode = roomNodeGraph.GetRoomNode(roomNodeTypeList.list.Find(x => x.isEntrance));
@@ -155,10 +165,14 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
       {
         return false;
       }
-      // the change would be that: parentDoorway =  roomNode.parentEntranceSide;
-      Doorway parentDoorway = unconnectedAvailableParentDoorways[UnityEngine.Random.Range(0, unconnectedAvailableParentDoorways.Count)];
+
+      // the change would be that: 
+      Doorway parentDoorway = unconnectedAvailableParentDoorways.Find(x => x.orientation == roomNode.parentEntranceSide);
+
+      //Doorway parentDoorway = unconnectedAvailableParentDoorways[UnityEngine.Random.Range(0, unconnectedAvailableParentDoorways.Count)];
       RoomTemplateSO roomTemplate = GetRandomTemplateForRoomConsistentWithParent(roomNode, parentDoorway);
       SpaceshipRoom room = CreateRoomFromRoomTemplate(roomTemplate, roomNode);
+
 
       if (PlaceTheRoom(parentRoom, parentDoorway, room))
       {
@@ -172,7 +186,7 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
       }
     }
 
-    return roomOverlaps;
+    return true;
   }
 
 
@@ -248,6 +262,8 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
     {
       parentDoorway.isConnected = true;
       parentDoorway.isUnavailable = true;
+      doorway.isConnected = true;
+      doorway.isUnavailable = true;
 
       return true;
     }
@@ -335,7 +351,6 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
     return matchingRoomTemplateList[UnityEngine.Random.Range(0, matchingRoomTemplateList.Count)];
   }
 
-  // Important change here that may break some things. Check this code if that happens
   private IEnumerable<Doorway> GetUnconnectedAvailableDoorways(List<Doorway> doorwayList)
   {
     foreach (Doorway doorway in doorwayList)
@@ -447,7 +462,7 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
     }
   }
 
-  private void ClearDungeon()
+  private void ClearSpaceship()
   {
     if (spaceshipBuilderRoomDictionary.Count > 0)
     {

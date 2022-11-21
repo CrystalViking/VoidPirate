@@ -22,4 +22,11 @@ public class GameResources : MonoBehaviour
   [Header("Spaceship")]
   [Tooltip("Populate with the spaceship RoomNodeTypeListSO")]
   public RoomNodeTypeListSO roomNodeTypeList;
+
+  // For shaders if we would like to add them in future
+  [Space(10)]
+  [Header("Materials")]
+  [Tooltip("Dimmed Material")]
+  public Material dimmedMaterial;
+
 }

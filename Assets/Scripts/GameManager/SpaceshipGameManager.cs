@@ -47,7 +47,12 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
 
   private void PlaySpaceshipLevel(int spaceshipListIndex)
   {
-    throw new NotImplementedException();
+    bool spaceshipBuiltSuccessfully = SpaceshipBuilder.Instance.GenerateSpaceship(spaceshipLevelList[spaceshipListIndex]);
+
+    if (!spaceshipBuiltSuccessfully)
+    {
+      Debug.Log("Couldn't build dungeon from specified rooms and node graphs");
+    }
   }
 
 #if UNITY_EDITOR

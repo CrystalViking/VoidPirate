@@ -33,8 +33,10 @@ public class PShipHealth : MonoBehaviour
     {
         if (dmgTaken >= 300)
         {
+            dmgTaken = 0;
+            ScreenShakeController.instance.StartShake(1f, 3f);
             sceneInfo.isEventOn = true;
-            SceneManager.LoadScene("LobbyShip");
+            StartCoroutine(SceneLoader.instance.LoadScene());
         }
     }
 

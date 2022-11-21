@@ -295,6 +295,7 @@ MonoBehaviour:
   isUndestructible: 0
   health: 0
   projectile: {fileID: 320230852668635978, guid: 3ec6a9f1a19d4584cbc566637a131b42, type: 3}
+  spit: {fileID: 0}
 --- !u!82 &7519237064540060957
 AudioSource:
   m_ObjectHideFlags: 0
@@ -307,7 +308,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0989eb5e7bb77dc42991833727b9e0c8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.01
+  m_Volume: 0.007
   m_Pitch: 1
   Loop: 0
   Mute: 0

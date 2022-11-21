@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,8 @@ public class MedkitPickup : PickableItem, IPickable
     [SerializeField] ScriptableMedkit medkit;
     void Update()
     {
-        InteractOnPickup();    
+        InteractOnPickup();
+        InteractOnStackup();
     }
 
     //FindObjectOfType
@@ -26,6 +28,23 @@ public class MedkitPickup : PickableItem, IPickable
         }
     }
 
+    public void InteractOnStackup()
+    {
+        if (Input.GetKeyDown(itemStackUpCode) && isInRange)
+        {
+            PlayerStackup();
+
+            if (destroyOnPickUp)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void PlayerStackup()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<ConsumableInventory>().AddMedkit(medkit);
+    }
 
     private void HealPlayer()
     {

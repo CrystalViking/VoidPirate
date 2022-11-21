@@ -11,6 +11,7 @@ public class EnergyDrinkPickup : PickableItem, IPickable
     void Update()
     {
         InteractOnPickup();
+        InteractOnStackup();
     }
 
 
@@ -25,6 +26,24 @@ public class EnergyDrinkPickup : PickableItem, IPickable
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void InteractOnStackup()
+    {
+        if (Input.GetKeyDown(itemStackUpCode) && isInRange)
+        {
+            PlayerStackup();
+
+            if (destroyOnPickUp)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void PlayerStackup()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<ConsumableInventory>().AddEnergyDrink(energyDrink);
     }
 
     private void EnergyBoost()

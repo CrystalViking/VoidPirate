@@ -10,6 +10,7 @@ public abstract class PickableItem : MonoBehaviour
     
     [SerializeField] protected KeyCode itemPickupCode = KeyCode.E;
     [SerializeField] protected bool destroyOnPickUp = true;
+    [SerializeField] protected KeyCode itemStackUpCode = KeyCode.Q;
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {

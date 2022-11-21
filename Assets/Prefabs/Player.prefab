@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 8836956139156992218}
   - component: {fileID: 8836956139156992196}
   - component: {fileID: 8836956139156992195}
+  - component: {fileID: 8059567542978103790}
   - component: {fileID: 8836956139156992205}
   - component: {fileID: 8836956139156992203}
   - component: {fileID: 8836956139156992245}
@@ -204,6 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9f508cd8e861048a8d63feffb23167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  total: 0
 --- !u!114 &5655434622578385863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +248,9 @@ MonoBehaviour:
   health: 0
   maxHealth: 500
   speed: 5
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8836956139156992196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealthText: {fileID: 0}
-  maxHealthText: {fileID: 0}
   weaponUI: {fileID: 0}
 --- !u!114 &8836956139156992195
 MonoBehaviour:
@@ -274,6 +278,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
+--- !u!114 &8059567542978103790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8836956139156992219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ee156c2b769d6449ed24ed5d2f6189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableMedkits: []
+  scriptableEnergyDrinks: []
 --- !u!114 &8836956139156992205
 MonoBehaviour:
   m_ObjectHideFlags: 0

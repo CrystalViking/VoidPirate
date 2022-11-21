@@ -2341,6 +2341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   groundTilemap: {fileID: 0}
+  wallsTilemap: {fileID: 0}
   decoration1Tilemap: {fileID: 0}
   decoration2Tilemap: {fileID: 0}
   frontTilemap: {fileID: 0}
@@ -2362,7 +2363,7 @@ GameObject:
   - component: {fileID: 6124396934656852618}
   m_Layer: 0
   m_Name: Tilemap1_Walls
-  m_TagString: GroundTilemap
+  m_TagString: WallsTilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

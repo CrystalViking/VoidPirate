@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HoldEvent : MonoBehaviour
 {
@@ -14,8 +15,12 @@ public class HoldEvent : MonoBehaviour
     public string key = "e";
     private bool inRange = false;
     public Slider slider;
-  
-    // Start is called before the first frame update
+    public TextMeshProUGUI text;
+    public GameObject chargeBar;
+    public GameObject helpText;
+    [SerializeField]
+    private SceneInfo sceneInfo;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -31,14 +36,17 @@ public class HoldEvent : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(inRange)
+        if (sceneInfo.isEventOn == true)
         {
-            CheckIfButtonHeld();
+            helpText.SetActive(true);
+
+            if (inRange)
+            {
+                CheckIfButtonHeld();
+            }
         }
-        
     }
     void CheckIfButtonHeld()
     {
@@ -50,6 +58,7 @@ public class HoldEvent : MonoBehaviour
 
         if (Input.GetKey(key) & held == false)
         {
+            chargeBar.SetActive(true);
             timer += Time.deltaTime;
             SetSlider();
             if (timer > (startTime + holdTime))

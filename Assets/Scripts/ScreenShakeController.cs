@@ -17,7 +17,7 @@ public class ScreenShakeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(0f, 0f, -10f);
+        
         if (Input.GetKeyDown(KeyCode.K))
         {
             StartShake(.5f, 3f);

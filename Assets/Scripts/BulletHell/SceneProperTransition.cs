@@ -5,12 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneProperTransition : MonoBehaviour
 {
-    [SerializeField] private int index;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(index);
+            StartCoroutine(SceneLoader.instance.LoadScene("BulletHellScene"));
         }
     }
 }

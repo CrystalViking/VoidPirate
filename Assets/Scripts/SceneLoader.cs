@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance;
-    public string sceneName;
+    public float transitionTime;
+    public Animator crossFade;
     // Start is called before the first frame update
     private void Start()
     {
@@ -15,9 +16,10 @@ public class SceneLoader : MonoBehaviour
     void Update()
     {
     }
-    public IEnumerator LoadScene()
+    public IEnumerator LoadScene(string sceneName)
     {
-        yield return new WaitForSeconds(1f);
+        crossFade.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneName);
     }
 }

@@ -67,6 +67,7 @@ public class SpawnerEnemy : MeleeEnemy
     {
         if(enemyCalculations.IsItTimeToAttack() && currState != EnemyState.Die)
         {
+            audioSource.Play();
             currState = EnemyState.Spawn;
         }
     }
@@ -83,7 +84,7 @@ public class SpawnerEnemy : MeleeEnemy
 
     public void Spawn()
     {
-        animator.SetIsSpawningTrue();
+        animator.SetIsSpawningTrue();      
         spawned = false;
         delaySpawn = new Task(DelaySpawn());
         delay = new Task(Delay());
@@ -103,15 +104,21 @@ public class SpawnerEnemy : MeleeEnemy
     }
 
     protected  IEnumerator DelaySpawn()
-    {     
+    {       
         yield return new WaitForSeconds(enemyData.meleeAnimationDamageDelay);
         if (!spawned && currState != EnemyState.Die)
         {
             X = Random.Range(0, allies.Length);
             spawnedAlly = Instantiate(allies[X], new Vector2(transform.position.x - 0.2f, transform.position.y), Quaternion.identity);
+            try
+            {
+                spawnedAlly.transform.parent = transform.parent;
+            }
+            catch { }
             spawned = true;
 
-        }       
+        }
+        audioSource.Stop();
 
     }
 

@@ -41,6 +41,7 @@ public class ReaperController : MonoBehaviour, IEnemy
     public List<GameObject> minion_list;
     public GameObject portal;
     private bool isSpawned = false;
+    public AudioSource[] audioSources;
 
     void Start()
     {
@@ -193,6 +194,7 @@ public class ReaperController : MonoBehaviour, IEnemy
         yield return new WaitForSeconds(0.6f);
         if (!damagedPlayer && IsInAttackRange())
         {
+            audioSources[1].Play();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(80f);
             damagedPlayer = true;
         }
@@ -211,6 +213,7 @@ public class ReaperController : MonoBehaviour, IEnemy
 
         if (!attackedPlayer)
         {
+            audioSources[0].Play();
             Instantiate(bullet[0], new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             Instantiate(bullet[0], new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
             Instantiate(bullet[0], new Vector2(transform.position.x, transform.position.y - 1), Quaternion.identity);
@@ -233,6 +236,7 @@ public class ReaperController : MonoBehaviour, IEnemy
 
         if (!spawnedMinion)
         {
+            audioSources[2].Play();
             minion_list.Add(Instantiate(minion, transform.position, Quaternion.identity));
             minion_list.Add(Instantiate(minion, new Vector2(transform.position.x + 0.5f, transform.position.y + 0.5f), Quaternion.identity));
 
@@ -257,6 +261,7 @@ public class ReaperController : MonoBehaviour, IEnemy
             {
                 try
                 {
+                    audioSources[3].Play();
                     minion_list[0].GetComponent<MinionController>().Sacrifice();
                     TakeDamage(-500.0f);
                     sacrificedMinion = true;
@@ -288,10 +293,12 @@ public class ReaperController : MonoBehaviour, IEnemy
     IEnumerator Teleport()
     {
         anim.SetBool("IsTeleporting", true);
+        audioSources[4].Play();
 
         yield return new WaitForSeconds(0.2f);
 
         transform.position = player.position;
+        
 
         anim.SetBool("IsTeleporting", false);
         currState = BossState.Move;
@@ -345,6 +352,11 @@ public class ReaperController : MonoBehaviour, IEnemy
     public virtual void SetUndestructible(bool G)
     {
 
+    }
+
+    public GameObject GetParent()
+    {
+        return transform.parent.gameObject;
     }
 }
 

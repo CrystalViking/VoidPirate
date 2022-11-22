@@ -1,4 +1,6 @@
-﻿public interface IEnemy
+﻿using UnityEngine;
+
+public interface IEnemy
 {
     void TakeDamage(float damage);
     void SetUseRoomLogicTrue();
@@ -14,5 +16,7 @@
     void SetUndestructible(bool G);
 
     float GetMaxHealth();
+
+    GameObject GetParent();
 
 }

@@ -122,6 +122,7 @@ public class MechaHealerEnemy : MeleeEnemy
         animator.SetIsMovingFalse();
         animator.SetIsHealingTrue();
         healed = false;
+        audioSource.Play();
         delayHeal = new Task(DelayHeal());
         delay = new Task(Delay());
 

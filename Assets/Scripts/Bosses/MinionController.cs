@@ -24,6 +24,7 @@ public class MinionController : MonoBehaviour, IEnemy
     public GameObject healthBar;
     public Slider healthBarSlider;
     public EnemyState currState = EnemyState.Wander;
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -57,6 +58,8 @@ public class MinionController : MonoBehaviour, IEnemy
 
     void Wander()
     {
+        if (!audioSource.isPlaying)
+            audioSource.Play();
         anim.SetBool("IsMoving", true);      
         //transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         transform.position = Vector2.MoveTowards(transform.position, new Vector2(X, Y), speed * Time.deltaTime);
@@ -153,5 +156,10 @@ public class MinionController : MonoBehaviour, IEnemy
     global::EnemyState IEnemy.GetEnemyState()
     {
         throw new System.NotImplementedException();
+    }
+
+    public GameObject GetParent()
+    {
+        return transform.parent.gameObject;
     }
 }

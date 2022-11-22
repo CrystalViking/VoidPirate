@@ -154,4 +154,9 @@ public abstract class Enemy : MonoBehaviour, IEnemy
     {
         return currState;
     }
+
+    public GameObject GetParent()
+    {
+        return transform.parent.gameObject;
+    }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EstellaProjectiles_v1_1 : BaseEnemyProjectile
 {
-    // Start is called before the first frame update
     void Start()
     {
         InitProjectile();

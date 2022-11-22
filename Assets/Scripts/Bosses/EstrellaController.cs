@@ -38,6 +38,7 @@ public class EstrellaController : MonoBehaviour, IEnemy
     float distanceFromPlayer;
     public GameObject portal;
     private bool isSpawned = false;
+    public AudioSource[] audioSources;
 
     void Start()
     {
@@ -143,6 +144,8 @@ public class EstrellaController : MonoBehaviour, IEnemy
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(30f);
             damagedPlayer = true;
+            if (!audioSources[2].isPlaying)
+                audioSources[2].Play();
         }
         yield return new WaitForSeconds(0.6f); // TODO: consider using scriptable object
 
@@ -167,13 +170,22 @@ public class EstrellaController : MonoBehaviour, IEnemy
     IEnumerator SawAttack()
     {
         anim.SetBool("IsSawAttacking", true);
+        if (!audioSources[1].isPlaying)
+            audioSources[1].Play();
 
         yield return new WaitForSeconds(0.6f); // TODO: consider using scriptable object
 
+        StartCoroutine(StopAudioSource1());
         anim.SetBool("IsSawAttacking", false);
         currState = BossState.Move;
         if (health < 0)
             currState = BossState.Die;
+    }
+
+    IEnumerator StopAudioSource1()
+    {
+        yield return new WaitForSeconds(0.7f);
+        audioSources[1].Stop();
     }
 
     IEnumerator FlameAttack()
@@ -189,11 +201,20 @@ public class EstrellaController : MonoBehaviour, IEnemy
             anim.SetBool("IsAttackingLeft", false);
             GameObject flameprojectile = Instantiate(bullet[1], new Vector2(transform.position.x + 0.5f, transform.position.y), Quaternion.identity);
         }
+        audioSources[0].Play();
         yield return new WaitForSeconds(0.4f); // TODO: consider using scriptable object
+
+        StartCoroutine(StopAudioSource0());
         anim.SetBool("IsFlameAttacking", false);
         currState = BossState.Move;
         if (health < 0)
             currState = BossState.Die;
+    }
+
+    IEnumerator StopAudioSource0()
+    {
+        yield return new WaitForSeconds(1.4f);
+        audioSources[0].Stop();
     }
 
     IEnumerator Debuff()
@@ -204,6 +225,8 @@ public class EstrellaController : MonoBehaviour, IEnemy
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>()?.
             SpeedDebuffSecondsPercentAdd(StatModApplicationType.AgentAppliedDebuff, 0.5f, 10); // TODO: consider using scriptable object
 
+        if (!audioSources[3].isPlaying)
+            audioSources[3].Play();
         //StartCoroutine(DebuffTime());
         StartCoroutine(DebuffCooldown());
 
@@ -343,4 +366,8 @@ public class EstrellaController : MonoBehaviour, IEnemy
 
     }
 
+    public GameObject GetParent()
+    {
+        return transform.parent.gameObject;
+    }
 }

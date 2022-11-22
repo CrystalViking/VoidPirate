@@ -6,6 +6,7 @@ using UnityEngine;
 public class RangedEnemy : Enemy, IRangedEnemy
 {
     public GameObject projectile;
+    public AudioSource spit;
 
 
     void Start()
@@ -78,7 +79,6 @@ public class RangedEnemy : Enemy, IRangedEnemy
     {
         if (enemyCalculations.IsInLineOfSight() && !enemyCalculations.IsInAttackRange() && currState != EnemyState.Die)
         {
-            //Follow();
             currState = EnemyState.Follow;
         }
         else if (!enemyCalculations.IsInLineOfSight() && currState != EnemyState.Die)
@@ -99,6 +99,7 @@ public class RangedEnemy : Enemy, IRangedEnemy
         animator.SetIsAttackingTrue();
         if (enemyCalculations.CanAttack())
         {
+            spit.Play();
             Instantiate(projectile, transform.position, Quaternion.identity);
             enemyCalculations.SetNextAttackTime();
         }
@@ -108,6 +109,8 @@ public class RangedEnemy : Enemy, IRangedEnemy
     public override void Follow()
     {
         animator.SetIsAttackingFalse();
+        if (!audioSource.isPlaying)
+            audioSource.Play();
         transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
     }
 

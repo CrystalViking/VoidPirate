@@ -86,14 +86,14 @@ public class ConsumableInventory : MonoBehaviour
         onMedkitStackChanged?.Invoke(scriptableMedkits.Count.ToString());
         onEnergyStackChanged?.Invoke(scriptableEnergyDrinks.Count.ToString());
 
-        if (Input.GetKey(KeyCode.Alpha5))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             
             StartCoroutine(UseMedkitWithCoolDown());
             
         }
 
-        if (Input.GetKey(KeyCode.Alpha6))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             StartCoroutine(UseEnergyDrinkWithCoolDown());
             

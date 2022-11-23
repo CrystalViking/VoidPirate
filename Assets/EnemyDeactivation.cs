@@ -10,6 +10,7 @@ public class EnemyDeactivation : MonoBehaviour
     public float cooldownEMP;
     public float enemyDeactivationTime;
     public AudioSource audioSource;
+    public Canvas canvasEMP; 
     void Start()
     {
         canEMP = true;
@@ -31,6 +32,7 @@ public class EnemyDeactivation : MonoBehaviour
                 catch { }
             }
             canEMP = false;
+            canvasEMP.enabled = false;
             StartCoroutine(EMPCooldown());
             StartCoroutine(EMPDuration());
         }
@@ -39,6 +41,7 @@ public class EnemyDeactivation : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldownEMP);
             canEMP = true;
+            canvasEMP.enabled = true;
     }
 
     IEnumerator EMPDuration()

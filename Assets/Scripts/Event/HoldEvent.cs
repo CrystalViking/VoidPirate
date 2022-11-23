@@ -48,7 +48,15 @@ public class HoldEvent : MonoBehaviour
     {
         if (sceneInfo.isEventOn == true)
         {
-            TargetIndicator.instance.MarkTarget(GameObject.Find("ShipMonitor").transform);
+            if(held == false)
+            {
+                TargetIndicator.instance.MarkTarget(GameObject.Find("ShipMonitor").transform);
+            }
+            if (held)
+            {
+                TargetIndicator.instance.MarkTarget(anyObject.transform);
+            }
+         
             helpText.SetActive(true);
 
             if (inRange)

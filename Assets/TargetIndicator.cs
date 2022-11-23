@@ -5,15 +5,41 @@ using UnityEngine;
 public class TargetIndicator : MonoBehaviour
 {
     public Transform target;
+
+    private bool lookingLeft;
+    private bool lookingRight;
+
+    private PlayerMovement playerMovement;
+
     void Start()
     {
-        
+        playerMovement = GetComponentInParent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
         MarkTarget(target);
+        FetchLookingDirections();
+        CorrectTransform();
+    }
+
+    private void FetchLookingDirections()
+    {
+        lookingLeft = playerMovement.IsLookingLeft();
+        lookingRight = playerMovement.IsLookingRight();
+    }
+
+    private void CorrectTransform()
+    {
+        if(lookingLeft)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        if(lookingRight)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     public void MarkTarget(Transform target)

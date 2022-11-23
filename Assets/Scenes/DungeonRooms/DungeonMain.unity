@@ -198,6 +198,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3258912619541223588, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
   m_PrefabInstance: {fileID: 688930716}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &596838269 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1683221973016674023, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
+  m_PrefabInstance: {fileID: 688930716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &688930716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -978,6 +983,10 @@ PrefabInstance:
       propertyPath: pauseCanvas
       value: 
       objectReference: {fileID: 902451708}
+    - target: {fileID: 9071709076533217867, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
+      propertyPath: canvasEMP
+      value: 
+      objectReference: {fileID: 596838269}
     m_RemovedComponents:
     - {fileID: 1447205113408390653, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d65cc915e66869340bffecd8adbea07e, type: 3}

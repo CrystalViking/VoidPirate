@@ -31,6 +31,7 @@ public class InstantiatedRoom : MonoBehaviour
   {
     PopulateTilemapMemberVariables(roomGameObject);
     BlockOffUnusedDoorways();
+    AddDoorsToRooms();
     DisableCollisionTilemapRenderer();
   }
 
@@ -169,6 +170,46 @@ public class InstantiatedRoom : MonoBehaviour
         tilemap.SetTile(new Vector3Int(startPos.x + 1 + xPos, startPos.y - yPos, 0),
           tilemap.GetTile(new Vector3Int(startPos.x + xPos, startPos.y - yPos, 0)));
         tilemap.SetTransformMatrix(new Vector3Int(startPos.x + 1 + xPos, startPos.y - yPos, 0), transformMatrix);
+      }
+    }
+  }
+
+  private void AddDoorsToRooms()
+  {
+    if (room.roomNodeType.isCorridorEW || room.roomNodeType.isCorridorNS)
+    {
+      return;
+    }
+
+    foreach (Doorway doorway in room.doorwayList)
+    {
+      if (doorway.doorPrefab != null && doorway.isConnected)
+      {
+        float tileDistance = Settings.tileSizePixels / Settings.pixelsPerUnit;
+        GameObject door = Instantiate(doorway.doorPrefab, gameObject.transform);
+        if (doorway.orientation == Orientation.north)
+        {
+          // localPosition - position relative to the parent room
+          door.transform.localPosition = new Vector3(doorway.position.x + tileDistance / 2f, doorway.position.y + tileDistance, 0f);
+          door.transform.Rotate(new Vector3(0f, 0f, 180f));
+        }
+        else if (doorway.orientation == Orientation.south)
+        {
+          // localPosition - position relative to the parent room
+          door.transform.localPosition = new Vector3(doorway.position.x + tileDistance / 2f, doorway.position.y, 0f);
+        }
+        else if (doorway.orientation == Orientation.east)
+        {
+          // localPosition - position relative to the parent room
+          door.transform.localPosition = new Vector3(doorway.position.x + tileDistance, doorway.position.y + tileDistance - 0.5f, 0f);
+          door.transform.Rotate(new Vector3(0f, 0f, 90f));
+        }
+        else if (doorway.orientation == Orientation.west)
+        {
+          // localPosition - position relative to the parent room
+          door.transform.localPosition = new Vector3(doorway.position.x, doorway.position.y + tileDistance - 0.5f, 0f);
+          door.transform.Rotate(new Vector3(0f, 0f, -90f));
+        }
       }
     }
   }

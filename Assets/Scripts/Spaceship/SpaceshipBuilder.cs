@@ -154,11 +154,6 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
 
     while (roomOverlaps)
     {
-      // Probably here you should chose the side 
-      // RoomNodeSO roomNode has the information of parentEntranceSide
-      // which means that the current room should be placed on the 
-      // roomNode.parentEntranceSide of parentRoom
-
       List<Doorway> unconnectedAvailableParentDoorways = GetUnconnectedAvailableDoorways(parentRoom.doorwayList).ToList();
 
       if (unconnectedAvailableParentDoorways.Count == 0)
@@ -166,10 +161,10 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
         return false;
       }
 
-      // the change would be that: 
       Doorway parentDoorway = unconnectedAvailableParentDoorways.Find(x => x.orientation == roomNode.parentEntranceSide);
 
-      //Doorway parentDoorway = unconnectedAvailableParentDoorways[UnityEngine.Random.Range(0, unconnectedAvailableParentDoorways.Count)];
+      // Uncomment if you want the doors to be chosen randomly
+      // Doorway parentDoorway = unconnectedAvailableParentDoorways[UnityEngine.Random.Range(0, unconnectedAvailableParentDoorways.Count)];
       RoomTemplateSO roomTemplate = GetRandomTemplateForRoomConsistentWithParent(roomNode, parentDoorway);
       SpaceshipRoom room = CreateRoomFromRoomTemplate(roomTemplate, roomNode);
 
@@ -378,10 +373,12 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
     room.doorwayList = CopyDoorwayList(roomTemplate.doorwayList);
 
 
-    if (roomNode.parentRoomNodeIdList.Count == 0)
+    if (roomNode.parentRoomNodeIdList.Count == 0) // Only entrance has no parent
     {
       room.parentRoomId = "";
       room.isPreviouslyVisited = true;
+      SpaceshipGameManager.Instance.SetCurrentRoom(room);
+
     }
     else
     {

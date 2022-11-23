@@ -18,6 +18,8 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
   [SerializeField]
   [HideInInspector]
   public GameState gameState;
+  private SpaceshipRoom currentRoom;
+  private SpaceshipRoom previousRoom;
 
   void Start()
   {
@@ -45,6 +47,12 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
     }
   }
 
+  public void SetCurrentRoom(SpaceshipRoom room)
+  {
+    previousRoom = currentRoom;
+    currentRoom = room;
+  }
+
   private void PlaySpaceshipLevel(int spaceshipListIndex)
   {
     bool spaceshipBuiltSuccessfully = SpaceshipBuilder.Instance.GenerateSpaceship(spaceshipLevelList[spaceshipListIndex]);
@@ -53,6 +61,8 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
     {
       Debug.Log("Couldn't build dungeon from specified rooms and node graphs");
     }
+
+    GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f, (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);
   }
 
 #if UNITY_EDITOR

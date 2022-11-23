@@ -14,7 +14,15 @@ public enum EnemyState
     FollowAndAttack,
     Heal,
     Spawn,
-    Protect
+    Protect,
+    Move,
+    SawAttack,
+    FlameAttack,
+    Debuff,
+    MeleeAttack,
+    RangeAttack,
+    Consume,
+    Teleport
 }
 
 public abstract class Enemy : MonoBehaviour, IEnemy

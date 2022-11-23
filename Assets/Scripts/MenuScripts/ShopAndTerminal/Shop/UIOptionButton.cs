@@ -13,6 +13,7 @@ public class UIOptionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     void Start()
     {
         GetImage = GetComponentInChildren<Image>();
+        GetImage.gameObject.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

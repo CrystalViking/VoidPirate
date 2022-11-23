@@ -20,6 +20,7 @@ public class HoldEvent : MonoBehaviour
     public GameObject helpText;
     [SerializeField]
     private SceneInfo sceneInfo;
+    public Animator alarm;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,6 +34,13 @@ public class HoldEvent : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             inRange = false;
+        }
+    }
+    private void Start()
+    {
+        if (sceneInfo.isEventOn == true)
+        {
+            alarm.SetBool("isAlarmOn", true);
         }
     }
 
@@ -71,6 +79,7 @@ public class HoldEvent : MonoBehaviour
     }
     void ButtonHeld()
     {
+        alarm.SetBool("isAlarmOn", false);
         anyObject.SetActive(true);
     }
 

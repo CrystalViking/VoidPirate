@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class TargetIndicator : MonoBehaviour
 {
-    public Transform target;
+    public static TargetIndicator instance;
 
     private bool lookingLeft;
     private bool lookingRight;
 
     private PlayerMovement playerMovement;
+    public float HideDistance;
 
     void Start()
     {
+        instance = this;
         playerMovement = GetComponentInParent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MarkTarget(target);
         FetchLookingDirections();
         CorrectTransform();
     }
@@ -46,7 +47,25 @@ public class TargetIndicator : MonoBehaviour
     {
         var dir = target.position - transform.position;
 
+        if(dir.magnitude < HideDistance)
+        {
+            SetChildren(false);
+        }
+
+        else
+        {
+            SetChildren(true);
+        }
+
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    void SetChildren(bool value)
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(value);
+        }
     }
 }

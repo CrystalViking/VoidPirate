@@ -40,6 +40,7 @@ public class HoldEvent : MonoBehaviour
     {
         if (sceneInfo.isEventOn == true)
         {
+            TargetIndicator.instance.MarkTarget(GameObject.Find("ShipMonitor").transform);
             helpText.SetActive(true);
 
             if (inRange)

@@ -4690,6 +4690,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 200619023}
+    - target: {fileID: 2722008227089864630, guid: d9898f6490cd6ff43b020cba755cf052, type: 3}
+      propertyPath: HideDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2722008227089864631, guid: d9898f6490cd6ff43b020cba755cf052, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4732,6 +4736,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2722008227089864631, guid: d9898f6490cd6ff43b020cba755cf052, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2722008228713941123, guid: d9898f6490cd6ff43b020cba755cf052, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

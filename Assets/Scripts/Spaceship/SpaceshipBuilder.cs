@@ -368,6 +368,7 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
     room.roomTemplateId = roomTemplate.guid;
     room.id = roomNode.id;
     room.prefab = roomTemplate.prefab;
+    room.roomNodeType = roomTemplate.roomNodeType;
     room.lowerBounds = roomTemplate.lowerBounds;
     room.upperBounds = roomTemplate.upperBounds;
     room.spawnPositionArray = roomTemplate.spawnPositionArray;

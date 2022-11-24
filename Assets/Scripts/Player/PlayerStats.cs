@@ -68,8 +68,12 @@ public class PlayerStats : ActorStats
 
     private void Update()
     {
-        speed = statSpeed.Value;
-        SetHealthTo(statHealth.Value);
+        try
+        {
+            speed = statSpeed.Value;
+            SetHealthTo(statHealth.Value);
+        }
+        catch { }
     }
 
     public override void InitVariables(float maxHealth = 100)

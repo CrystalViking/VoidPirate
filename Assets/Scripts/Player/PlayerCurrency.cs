@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerCurrency : MonoBehaviour
 {
@@ -8,10 +9,13 @@ public class PlayerCurrency : MonoBehaviour
     CharacterStat statSingleCoinValue;
     int singleCoinValue = 1;
 
+    [SerializeField]
+    private UnityEvent<string> onPlayerCurrencyChange;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        onPlayerCurrencyChange?.Invoke(total.ToString());
     }
 
     // Update is called once per frame
@@ -30,6 +34,7 @@ public class PlayerCurrency : MonoBehaviour
 
         if(total >= amount)
         total -= amount;
+        onPlayerCurrencyChange?.Invoke(total.ToString());
     }
 
     public void SetSingleCoinValue(int value)

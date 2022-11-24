@@ -12,6 +12,7 @@ public class ChargingEnemy : MonoBehaviour
     public float timeBetweenAttacks;
     private Transform player;
     private Animator anim;
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -32,6 +33,8 @@ public class ChargingEnemy : MonoBehaviour
         {
             anim.SetBool("IsAttacking", true);
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * 2 * Time.deltaTime);
+            if(!audioSource.isPlaying)
+                audioSource.Play();
         }
         else if (distanceFromPlayer <= attackRange && Time.time > nextAttackTime)
         {

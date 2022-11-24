@@ -136,6 +136,19 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    public bool IsLookingLeft()
+    {
+        return LOOKING_LEFT;
+    }
+
+    public bool IsLookingRight()
+    {
+        return LOOKING_RIGHT;
+    }
+
+
+
+
     private void GetReferences()
     {
         animator = GetComponent<Animator>();

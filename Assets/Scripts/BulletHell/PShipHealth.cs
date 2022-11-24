@@ -11,17 +11,35 @@ public class PShipHealth : MonoBehaviour
     [SerializeField] public float maxHealth = 500;
     public float health;
     private bool isDead;
+    private float dmgTaken;
 
     private void Start()
     {
-        InitVariables();
+        dmgTaken = 0;
+        isDead = false;
+        if (sceneInfo.isEventOn == false)
+        {
+            health = maxHealth;
+            PlayerPrefs.SetFloat("shipHealth", health);
+        }
+        else
+        {
+            health = PlayerPrefs.GetFloat("shipHealth", maxHealth);
+        }
+        
     }
 
     private void Update()
     {
-        CheckDeath();
-
+        if (dmgTaken >= 300)
+        {
+            dmgTaken = 0;
+            ScreenShakeController.instance.StartShake(1f, 3f);
+            sceneInfo.isEventOn = true;
+            StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
+        }
     }
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +55,7 @@ public class PShipHealth : MonoBehaviour
     {
         if(health <= 0)
         {
-            health = 0;
+            PlayerPrefs.DeleteKey("shipHealth");
             isDead = true;
             Die();
         }
@@ -48,16 +66,13 @@ public class PShipHealth : MonoBehaviour
         if(!isDead)
         {
             health -= damage;
+            dmgTaken += damage;
+            PlayerPrefs.SetFloat("shipHealth", health);
             CheckDeath();
         }
         
     }
 
-    private void InitVariables()
-    {
-        isDead = false;
-        health = maxHealth;
-    }
     private float CalculateHealthPercentage()
     {
         return (health / maxHealth);

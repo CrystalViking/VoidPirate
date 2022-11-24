@@ -19,7 +19,7 @@ public class EnemyDeactivation : MonoBehaviour
 
     void Update()
     {   
-        if (Input.GetKeyDown(KeyCode.Z) && canEMP)
+        if (Input.GetKeyDown(KeyCode.Space) && canEMP)
         {
             enemies = FindAllEnemiesInRoom();
             audioSource.Play();

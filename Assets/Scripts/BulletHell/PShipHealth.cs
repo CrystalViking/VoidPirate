@@ -36,7 +36,7 @@ public class PShipHealth : MonoBehaviour
             dmgTaken = 0;
             ScreenShakeController.instance.StartShake(1f, 3f);
             sceneInfo.isEventOn = true;
-            StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
+            StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipEvent"));
         }
     }
 

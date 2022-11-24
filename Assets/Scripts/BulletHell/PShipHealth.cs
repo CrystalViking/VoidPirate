@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PShipHealth : MonoBehaviour
 {
@@ -13,20 +14,37 @@ public class PShipHealth : MonoBehaviour
     private bool isDead;
     private float dmgTaken;
 
+    private int healthSetOnStart = 0;
+
+    [SerializeField]
+    private UnityEvent<float> sliderOnHealthChanged;
+    [SerializeField]
+    private UnityEvent<string> textOnHealthChanged;
+
     private void Start()
     {
         dmgTaken = 0;
         isDead = false;
         if (sceneInfo.isEventOn == false)
         {
-            health = maxHealth;
+            if(healthSetOnStart == 0)
+                health = maxHealth;
+
+            healthSetOnStart = 1;
+
             PlayerPrefs.SetFloat("shipHealth", health);
+            PlayerPrefs.SetFloat("maxHealth", health);
+            PlayerPrefs.SetInt("healthSetOnStart", 1);
         }
         else
         {
-            health = PlayerPrefs.GetFloat("shipHealth", maxHealth);
+            health = PlayerPrefs.GetFloat("shipHealth", health);
+            maxHealth = PlayerPrefs.GetFloat("maxHealth", maxHealth);
+            healthSetOnStart = PlayerPrefs.GetInt("healthSetOnStart", healthSetOnStart);
+
         }
-        
+        textOnHealthChanged?.Invoke(health.ToString());
+        sliderOnHealthChanged.Invoke(CalculateHealthPercentage());
     }
 
     private void Update()
@@ -68,6 +86,10 @@ public class PShipHealth : MonoBehaviour
             health -= damage;
             dmgTaken += damage;
             PlayerPrefs.SetFloat("shipHealth", health);
+
+            sliderOnHealthChanged?.Invoke(CalculateHealthPercentage());
+            textOnHealthChanged?.Invoke(health.ToString());
+
             CheckDeath();
         }
         

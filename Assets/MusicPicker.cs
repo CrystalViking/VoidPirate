@@ -5,13 +5,16 @@ using UnityEngine;
 public class MusicPicker : MonoBehaviour
 {
     public AudioSource[] audioSources;
+    private GameObject player;
     void Start()
     {
         audioSources[0].Play();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
+        transform.position = player.transform.position;
         try
         {
             if (FindPlayerRoom() == FindBoss().GetComponent<IEnemy>().GetParent().transform.parent.gameObject)

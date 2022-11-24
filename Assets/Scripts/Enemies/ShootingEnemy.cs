@@ -12,6 +12,7 @@ public class ShootingEnemy : MonoBehaviour
     private float nextShotTime;
     private Transform player;
     private Animator anim;
+    public AudioSource audioSource;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -30,6 +31,7 @@ public class ShootingEnemy : MonoBehaviour
         {
             anim.SetBool("IsAttacking", true);
             Instantiate(bullet, transform.position, Quaternion.identity);
+            audioSource.Play();
             nextShotTime = Time.time + timeBetweenShots;
         }
     }

@@ -10,6 +10,7 @@ public class EnemyReceiveDamage : MonoBehaviour
     private Animator anim;
     public GameObject healthBar;
     public Slider healthBarSlider;
+    public AudioSource audioSource;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -30,6 +31,8 @@ public class EnemyReceiveDamage : MonoBehaviour
         {
             healthBar.SetActive(false);
             anim.SetBool("IsDead", true);
+            if(!audioSource.isPlaying)
+                audioSource.Play();
             if ((gameObject.GetComponent("FollowEnemy") as FollowEnemy) != null)
             {
                 GetComponent<FollowEnemy>().enabled = false;

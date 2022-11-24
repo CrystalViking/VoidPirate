@@ -21,6 +21,7 @@ public class HoldEvent : MonoBehaviour
     [SerializeField]
     private SceneInfo sceneInfo;
     public Animator alarm;
+    public AudioSource audioSource;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,6 +41,7 @@ public class HoldEvent : MonoBehaviour
     {
         if (sceneInfo.isEventOn == true)
         {
+            audioSource.Play();
             alarm.SetBool("isAlarmOn", true);
         }
     }
@@ -88,6 +90,7 @@ public class HoldEvent : MonoBehaviour
     void ButtonHeld()
     {
         alarm.SetBool("isAlarmOn", false);
+        audioSource.Stop();
         anyObject.SetActive(true);
     }
 

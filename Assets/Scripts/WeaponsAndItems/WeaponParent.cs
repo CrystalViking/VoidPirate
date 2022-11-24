@@ -73,7 +73,7 @@ public class WeaponParent : MonoBehaviour
             return;
         }
 
-        //hit.Play();
+        hit.Play();
         animator.SetTrigger("Attack");
         IsAttacking = true;
         attackBlocked = true;

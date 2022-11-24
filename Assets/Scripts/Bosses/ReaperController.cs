@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReaperController : MonoBehaviour, IEnemy
+public class ReaperController : Enemy, IEnemy
 {
-    public enum BossState
+    /*public enum EnemyState
     {
         Idle,
         Move,
@@ -16,22 +16,22 @@ public class ReaperController : MonoBehaviour, IEnemy
         Teleport,
         Die
 
-    };
+    }*/
 
     public float speed;
     public float attackRange;
     public GameObject[] bullet;
     public float timeBetweenAttacks;
-    private float nextAttackTime;
+    //private float nextAttackTime;
     private Transform player;
     private Animator anim;
-    public float health;
+    //public float health;
     public float maxHealth;
-    public GameObject healthBar;
-    public Slider healthBarSlider;
-    public BossState currState = BossState.Idle;
-    public bool isInRoom = false;
-    public bool isDead = false;
+    //public GameObject healthBar;
+    //public Slider healthBarSlider;
+    //public EnemyState currState = EnemyState.Idle;
+    //public bool isInRoom = false;
+    //public bool isDead = false;
     private bool damagedPlayer = false;
     private bool attackedPlayer = false;
     private bool spawnedMinion = false;
@@ -49,6 +49,8 @@ public class ReaperController : MonoBehaviour, IEnemy
         player = GameObject.FindGameObjectWithTag("Player").transform;
         health = maxHealth;
         nextAttackTime = 1.0f;
+        useRoomLogic = true;
+        healthBar = GetComponent<HealthBar>();
     }
 
     void Update()
@@ -56,30 +58,30 @@ public class ReaperController : MonoBehaviour, IEnemy
         switch (currState)
         {
 
-            case (BossState.Idle):
+            case (EnemyState.Idle):
                 break;
-            case (BossState.Move):
+            case (EnemyState.Move):
                 Move(speed);
                 break;
-            case (BossState.MeleeAttack):
+            case (EnemyState.MeleeAttack):
                 Move(speed / 2f);
                 StartCoroutine(MeleeAttack());
                 break;
-            case (BossState.RangeAttack):
+            case (EnemyState.RangeAttack):
                 StartCoroutine(OrbAttack());
                 break;
-            case (BossState.Spawn):
+            case (EnemyState.Spawn):
                 Move(speed / 2f);
                 StartCoroutine(SpawnMinion());
                 break;
-            case (BossState.Consume):
+            case (EnemyState.Consume):
                 Move(speed / 2f);
                 StartCoroutine(ConsumeMinion());
                 break;
-            case (BossState.Teleport):
+            case (EnemyState.Teleport):
                 StartCoroutine(Teleport());
                 break;
-            case (BossState.Die):
+            case (EnemyState.Die):
                 StartCoroutine(SpawnPortal());
                 break;
         }
@@ -95,14 +97,14 @@ public class ReaperController : MonoBehaviour, IEnemy
 
         distanceFromPlayer = Vector2.Distance(player.position, transform.position);
 
-        if (isInRoom)
+        if (activeBehaviour)
         {
             if (health > 0)
                 PrepareNextMove();
         }
         else
         {
-            currState = BossState.Idle;
+            currState = EnemyState.Idle;
         }
 
     }
@@ -117,30 +119,32 @@ public class ReaperController : MonoBehaviour, IEnemy
         return distanceFromPlayer < attackRange;
     }
 
-    public void TakeDamage(float damage)
+    public new void TakeDamage(float damage)
     {
-        healthBar.SetActive(true);
+        healthBar.SetHealthBarActive();
         health -= damage;
-        if (health > maxHealth)
-            health = maxHealth;
-        healthBarSlider.value = CalculateHealthPercentage();
+        healthBar.SetHealthBarValue(CalculateHealthPercentage());
         CheckDeath();
+    }
+
+    private new void CheckDeath()
+    {
+        if (health <= 0)
+        {
+            currState = EnemyState.Die;
+            healthBar.SetHealthBarInActive();
+            anim.SetBool("IsDead", true);
+
+            if (useRoomLogic)
+                RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
+
+            Destroy(gameObject, 0.5f);
+        }
     }
 
     private float CalculateHealthPercentage()
     {
         return (health / maxHealth);
-    }
-
-    private void CheckDeath()
-    {
-        if (health <= 0)
-        {
-            currState = BossState.Die;
-            healthBar.SetActive(false);
-            anim.SetBool("IsDead", true);
-            Destroy(gameObject, 0.5f);
-        }
     }
 
     private void PrepareNextMove()
@@ -150,7 +154,7 @@ public class ReaperController : MonoBehaviour, IEnemy
             if (IsInAttackRange())
             {
                 damagedPlayer = false;
-                currState = BossState.MeleeAttack;
+                currState = EnemyState.MeleeAttack;
             }
             else
             {
@@ -160,25 +164,25 @@ public class ReaperController : MonoBehaviour, IEnemy
                 if (r == 2 || r == 7 || r == 1)
                 {
                     attackedPlayer = false;
-                    currState = BossState.RangeAttack;
+                    currState = EnemyState.RangeAttack;
                 }
                 else if (r == 3 || r == 8)
                 {
                     spawnedMinion = false;
-                    currState = BossState.Spawn;
+                    currState = EnemyState.Spawn;
                 }
                 else if (r == 4 || r == 9 || r == 6)
                 {
                     sacrificedMinion = false;
-                    currState = BossState.Consume;
+                    currState = EnemyState.Consume;
                 }
                 else if (r == 5)
                 {                 
-                    currState = BossState.Teleport;
+                    currState = EnemyState.Teleport;
                 }
                 else
                 {
-                    currState = BossState.Teleport;
+                    currState = EnemyState.Teleport;
                 }
 
             }
@@ -200,9 +204,9 @@ public class ReaperController : MonoBehaviour, IEnemy
         }
 
         anim.SetBool("IsAttacking", false);
-        currState = BossState.Move;
+        currState = EnemyState.Move;
         if (health < 0)
-            currState = BossState.Die;
+            currState = EnemyState.Die;
     }
 
     IEnumerator OrbAttack()
@@ -223,9 +227,9 @@ public class ReaperController : MonoBehaviour, IEnemy
         }
 
         anim.SetBool("IsShooting", false);
-        currState = BossState.Move;
+        currState = EnemyState.Move;
         if (health < 0)
-            currState = BossState.Die;
+            currState = EnemyState.Die;
     }
 
     IEnumerator SpawnMinion()
@@ -244,9 +248,9 @@ public class ReaperController : MonoBehaviour, IEnemy
         }
 
         anim.SetBool("IsSpawning", false);
-        currState = BossState.Move;
+        currState = EnemyState.Move;
         if (health < 0)
-            currState = BossState.Die;
+            currState = EnemyState.Die;
     }
 
     IEnumerator ConsumeMinion()
@@ -276,17 +280,17 @@ public class ReaperController : MonoBehaviour, IEnemy
         
 
             anim.SetBool("IsConsuming", false);
-            currState = BossState.Move;
+            currState = EnemyState.Move;
             if (health < 0)
-                currState = BossState.Die;
+                currState = EnemyState.Die;
         }
         else
         {
             yield return new WaitForSeconds(0.1f);
 
-            currState = BossState.Move;
+            currState = EnemyState.Move;
             if (health < 0)
-                currState = BossState.Die;
+                currState = EnemyState.Die;
         }
     }
 
@@ -301,9 +305,9 @@ public class ReaperController : MonoBehaviour, IEnemy
         
 
         anim.SetBool("IsTeleporting", false);
-        currState = BossState.Move;
+        currState = EnemyState.Move;
         if (health < 0)
-            currState = BossState.Die;
+            currState = EnemyState.Die;
     }
 
     IEnumerator SpawnPortal()
@@ -316,48 +320,6 @@ public class ReaperController : MonoBehaviour, IEnemy
         yield return new WaitForSeconds(0.5f);
     }
 
-    public void SetUseRoomLogicTrue()
-    { }
-    public void SetUseRoomLogicFalse()
-    { }
-
-    public void SetActiveBehaviourTrue()
-    { }
-    public void SetActiveBehaviourFalse()
-    { }
-
-    public EnemyState GetEnemyState()
-    {
-        return EnemyState.Idle;
-    }
-
-    public bool HasFullHealth()
-    {
-        if (health == maxHealth)
-            return true;
-        else
-            return false;
-    }
-
-    public virtual float GetMaxHealth()
-    {
-        return maxHealth;
-    }
-
-    public virtual void SetHealth(float maxhealth)
-    {
-        health = maxhealth;
-    }
-
-    public virtual void SetUndestructible(bool G)
-    {
-
-    }
-
-    public GameObject GetParent()
-    {
-        return transform.parent.gameObject;
-    }
 }
 
     

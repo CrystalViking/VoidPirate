@@ -721,6 +721,7 @@ GameObject:
   - component: {fileID: 5491643659686729414}
   - component: {fileID: 4199006610221312292}
   - component: {fileID: 4870843209172202822}
+  - component: {fileID: 127380734565665938}
   m_Layer: 3
   m_Name: Estrella_boss
   m_TagString: Boss
@@ -840,7 +841,6 @@ MonoBehaviour:
   healthBar: {fileID: 4991385374683168299}
   healthBarSlider: {fileID: 6049128247333920484}
   currState: 0
-  isInRoom: 0
   isDead: 0
   sawLocators:
   - {fileID: 3409405726312792462}
@@ -857,6 +857,8 @@ MonoBehaviour:
   - {fileID: 5491643659686729414}
   - {fileID: 4199006610221312292}
   - {fileID: 4870843209172202822}
+  useRoomLogic: 0
+  activeBehaviour: 0
 --- !u!61 &-8470786902933805028
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1267,3 +1269,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &127380734565665938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684571762453161274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61bfd627eb79c24090769561a77fa38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 4991385374683168299}
+  healthBarSlider: {fileID: 6049128247333920484}

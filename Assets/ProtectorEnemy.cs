@@ -104,6 +104,12 @@ public class ProtectorEnemy : MeleeEnemy
     public override void Idle()
     {
         animator.SetIsProtectingFalse();
+        try
+        {
+            if(ally)
+                ReturnHP();
+        }
+        catch { }
     }
 
     public new void Follow()
@@ -112,10 +118,18 @@ public class ProtectorEnemy : MeleeEnemy
     }
 
     public void Protect()
-    {        
-        animator.SetIsProtectingTrue();
-        ally.GetComponent<IEnemy>().SetUndestructible(true);   
-        transform.position = Vector2.MoveTowards(transform.position, new Vector3(ally.transform.position.x, ally.transform.position.y + 0.5f, ally.transform.position.z), enemyData.speed * Time.deltaTime);
+    {
+        if (!ally)
+        {
+            ally = FindClosestEnemy();
+            animator.SetIsProtectingFalse();
+        }
+        else
+        {
+            animator.SetIsProtectingTrue();
+            ally.GetComponent<IEnemy>().SetUndestructible(true);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector3(ally.transform.position.x, ally.transform.position.y + 0.5f, ally.transform.position.z), enemyData.speed * Time.deltaTime);
+        }
     }
 
     public void ReturnHP()

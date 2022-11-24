@@ -104,7 +104,7 @@ public class PShipHealth : MonoBehaviour
     {
         sceneInfo.isEventOn = false;
         Debug.Log("is Dead");
-        SceneManager.LoadScene("GameOverScene");
+        StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
 
     }
 }

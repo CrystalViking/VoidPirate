@@ -65,6 +65,11 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
     GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f, (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);
   }
 
+  public SpaceshipLevelSO GetCurrentSpaceshipLevel()
+  {
+    return spaceshipLevelList[currentSpaceshipListIndex];
+  }
+
 #if UNITY_EDITOR
 
   private void OnValidate()

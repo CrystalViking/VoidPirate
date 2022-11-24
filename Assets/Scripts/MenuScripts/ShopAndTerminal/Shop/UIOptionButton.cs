@@ -4,26 +4,44 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIOptionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UIOptionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     //public Image prompt;
     //public Image none;
-    Image GetImage;
+
+    public AudioClip hover;
+    public AudioClip click;
+    
+    
+    Image image;
+    AudioSource audioSource;
+
+    
 
     void Start()
     {
-        GetImage = GetComponentInChildren<Image>();
-        GetImage.gameObject.SetActive(false);
+        image = GetComponentInChildren<Image>();
+        audioSource = GetComponent<AudioSource>();
+        image.gameObject.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        GetImage.gameObject.SetActive(true);
+        image.gameObject.SetActive(true);
+        audioSource.clip = hover;
+        audioSource.Play();
     }
 
-    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData)
     {
-        GetImage.gameObject.SetActive(false);
+        image.gameObject.SetActive(false);
+        audioSource.Stop();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        audioSource.clip = click;
+        audioSource.Play();
     }
 
     

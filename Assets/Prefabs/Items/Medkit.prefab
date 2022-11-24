@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6366d231994fc1148a1c01613275db57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  medkit: {fileID: 11400000, guid: 7ac74d4e9341854408ede12422c826fa, type: 2}
-  itemPickupCode: 101
+  itemPickupCode: 102
   destroyOnPickUp: 1
+  itemStackUpCode: 101
+  medkit: {fileID: 11400000, guid: 7ac74d4e9341854408ede12422c826fa, type: 2}

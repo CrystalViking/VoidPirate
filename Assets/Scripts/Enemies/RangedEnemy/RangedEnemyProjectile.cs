@@ -31,7 +31,8 @@ public class RangedEnemyProjectile : BaseEnemyProjectile
             Destroy(gameObject);
         }
         else if (!(collision.CompareTag("Enemy") ||
-            collision.CompareTag("Boss") ||
+            collision.CompareTag("Boss")||
+            collision.CompareTag("Room") ||
             collision.CompareTag("Untagged")))
         {
             Destroy(gameObject);

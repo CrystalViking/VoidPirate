@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //SetActiveHud(true);
+        SetActiveHud(true);
     }
 
     private void Update()
@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             SetActivePause(true);
-            
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {

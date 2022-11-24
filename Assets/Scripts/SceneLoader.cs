@@ -22,4 +22,14 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneName);
     }
+
+    public IEnumerator LoadScene(string sceneName, float transitionTime)
+    {
+        crossFade.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(sceneName);
+    }
+
+
+
 }

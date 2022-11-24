@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9156367638847601412}
   - component: {fileID: 9027107673727299027}
   - component: {fileID: 2999746906070117473}
+  - component: {fileID: 110958413072645519}
   m_Layer: 10
   m_Name: SpaceshipDoor
   m_TagString: Untagged
@@ -112,6 +113,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &110958413072645519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5518069951972688811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63932a22e11054d4e8dfd02dfaae8e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorCollider: {fileID: 8936466591849106499}
+  isBossRoomDoor: 0
 --- !u!1 &7229499426251366505
 GameObject:
   m_ObjectHideFlags: 0

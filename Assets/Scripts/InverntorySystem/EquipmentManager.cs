@@ -25,7 +25,7 @@ public class EquipmentManager : MonoBehaviour
     {
         GetReferences();
         StartCoroutine(LetOthersCatchUp());
-        
+        //playerInventory.AddItem(defaultMeleeWeapon);
         EquipWeapon(defaultMeleeWeapon);
         
     }
@@ -37,7 +37,7 @@ public class EquipmentManager : MonoBehaviour
 
     IEnumerator LetOthersCatchUp()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => playerInventory != null);
         playerInventory.AddItem(defaultMeleeWeapon);
 
     }

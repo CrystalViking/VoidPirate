@@ -13,7 +13,7 @@ public class SceneTransition : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             sceneInfo.isEventOn = false;
-            SceneManager.LoadScene(index);
+            StartCoroutine(SceneLoader.instance.LoadScene("BulletHellScene"));
         }
     }
 }

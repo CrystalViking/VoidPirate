@@ -63,7 +63,7 @@ public class PlayerStats : ActorStats
     public override void Die()
     {
         base.Die();
-        SceneManager.LoadScene("GameOverScene");
+        StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
     }
 
     private void Update()

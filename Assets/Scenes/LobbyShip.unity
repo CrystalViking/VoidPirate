@@ -4633,7 +4633,6 @@ GameObject:
   m_Component:
   - component: {fileID: 512912408}
   - component: {fileID: 512912407}
-  - component: {fileID: 512912406}
   - component: {fileID: 512912409}
   m_Layer: 0
   m_Name: Chair
@@ -4642,20 +4641,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &512912406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512912405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107401a95d5ecbc4ab078728db3ee381, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anyObject: {fileID: 1647987140}
-  key: e
 --- !u!212 &512912407
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5019,7 +5004,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2908704, y: 1}
+    m_SensorSize: {x: 2.075294, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5696,7 +5681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3258912619541223588, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3258912619761375936, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5713,6 +5698,10 @@ PrefabInstance:
     - target: {fileID: 3258912619761375936, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258912619776116486, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3258912619980079143, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
       propertyPath: m_AnchorMax.y

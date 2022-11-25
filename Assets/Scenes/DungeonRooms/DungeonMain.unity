@@ -743,7 +743,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b27c46ab0923db64d832865712fe05df, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.01
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -839,7 +839,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1ce3878e4f1b7174d936e17b78147454, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.01
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1114,7 +1114,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1063263098533648199, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1353010365479940594, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
       propertyPath: m_IsActive
@@ -1122,7 +1122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2780455471124962410, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3028380204826105601, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
       propertyPath: m_RootOrder
@@ -1270,11 +1270,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5414322889873314045, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5495210381333021622, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6715612363950059216, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
       propertyPath: hudCanvas

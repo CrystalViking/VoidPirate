@@ -53,18 +53,5 @@ MonoBehaviour:
     isUnavailable: 0
   spawnPositionArray:
   - {x: 0, y: 0}
-  enemiesByLevelList:
-  - spaceshipLevel: {fileID: 11400000, guid: 5f96372a2a925ce42a9a6a114f34ca3b, type: 2}
-    spawnableObjectRatioList:
-    - spaceshipObject: {fileID: 11400000, guid: e8acc394bf41dcd4c998d540f0b503e3, type: 2}
-      ratio: 5
-    - spaceshipObject: {fileID: 11400000, guid: 01c3e672c06b59d448ce5128a34565f6, type: 2}
-      ratio: 5
-    - spaceshipObject: {fileID: 11400000, guid: f2c00f7e0cf073e46bcac31d71d29c39, type: 2}
-      ratio: 5
-    - spaceshipObject: {fileID: 11400000, guid: a0fdcdac699878e479c9871af76acfe2, type: 2}
-      ratio: 5
-    - spaceshipObject: {fileID: 11400000, guid: 526fc3f817ec5c94eaa740558c27963e, type: 2}
-      ratio: 5
-    - spaceshipObject: {fileID: 11400000, guid: 78eca8498d2a42a42b672772193440e1, type: 2}
-      ratio: 5
+  enemiesByLevelList: []
+  roomEnemySpawnParametersList: []

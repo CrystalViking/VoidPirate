@@ -3,31 +3,50 @@ using UnityEngine;
 
 public class SpawnTest : MonoBehaviour
 {
-  public RoomTemplateSO roomTemplateSO;
   private List<SpawnableObjectsByLevel<EnemyDetailsSO>> testLevelSpawnList;
   private RandomSpawnableObject<EnemyDetailsSO> randomEnemyHelperClass;
-  private GameObject instantiatedEnemy;
+  private List<GameObject> instantiatedEnemyList = new List<GameObject>();
 
-  private void Start()
+
+  private void OnEnable()
   {
-    testLevelSpawnList = roomTemplateSO.enemiesByLevelList;
+    StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+  }
 
-    randomEnemyHelperClass = new RandomSpawnableObject<EnemyDetailsSO>(testLevelSpawnList);
+  private void OnDisable()
+  {
+    StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
+  }
+
+
+  private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
+  {
+    if (instantiatedEnemyList != null && instantiatedEnemyList.Count > 0)
+    {
+      foreach (GameObject enemy in instantiatedEnemyList)
+      {
+        Destroy(enemy);
+      }
+    }
+
+    RoomTemplateSO roomTemplate = SpaceshipBuilder.Instance.GetRoomTemplate(roomChangedEventArgs.room.roomTemplateId);
+
+    if (roomTemplate != null)
+    {
+      testLevelSpawnList = roomTemplate.enemiesByLevelList;
+      randomEnemyHelperClass = new RandomSpawnableObject<EnemyDetailsSO>(testLevelSpawnList);
+    }
   }
 
   private void Update()
   {
     if (Input.GetKeyDown(KeyCode.T))
     {
-      if (instantiatedEnemy != null)
-      {
-        Destroy(instantiatedEnemy);
-      }
 
       EnemyDetailsSO enemyDetails = randomEnemyHelperClass.GetItem();
 
       if (enemyDetails != null)
-        instantiatedEnemy = Instantiate(enemyDetails.enemyPrefab, HelperUtilities.GetSpawnPositionNearestToPlayer(HelperUtilities.GetMouseWorldPosition()), Quaternion.identity);
+        instantiatedEnemyList.Add(Instantiate(enemyDetails.enemyPrefab, HelperUtilities.GetSpawnPositionNearestToPlayer(HelperUtilities.GetMouseWorldPosition()), Quaternion.identity));
     }
   }
 }

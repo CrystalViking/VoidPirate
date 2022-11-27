@@ -68,3 +68,11 @@ MonoBehaviour:
       ratio: 5
     - spaceshipObject: {fileID: 11400000, guid: 78eca8498d2a42a42b672772193440e1, type: 2}
       ratio: 5
+  roomEnemySpawnParametersList:
+  - spaceshipLevel: {fileID: 11400000, guid: 5f96372a2a925ce42a9a6a114f34ca3b, type: 2}
+    minTotalEnemiesToSpawn: 2
+    maxTotalEnemiesToSpawn: 5
+    minConcurrentEnemies: 2
+    maxConcurrentEnemies: 3
+    minSpawnInterval: 1
+    maxSpawnInterval: 2

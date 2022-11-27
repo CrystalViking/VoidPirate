@@ -70,6 +70,12 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
     return spaceshipLevelList[currentSpaceshipListIndex];
   }
 
+  public SpaceshipRoom GetCurrentRoom()
+  {
+    return currentRoom;
+  }
+
+
 #if UNITY_EDITOR
 
   private void OnValidate()

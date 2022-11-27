@@ -28,6 +28,10 @@ public class RoomTemplateSO : ScriptableObject
   public List<Doorway> doorwayList;
   [Tooltip("Each possible spawn position (used for enemies and items) for the room in the tilemap coordinates should be added to this array")]
   public Vector2Int[] spawnPositionArray;
+  [Space(10)]
+  [Header("Enemy details")]
+  [NonReorderable]
+  public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
 
   public List<Doorway> GetDoorwayList()
   {

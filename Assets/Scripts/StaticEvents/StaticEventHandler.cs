@@ -7,7 +7,7 @@ public static class StaticEventHandler
 {
   public static event Action<RoomChangedEventArgs> OnRoomChanged;
 
-  public static void CallSpaceshipRoomChangedEvent(SpaceshipRoom room)
+  public static void CallRoomChangedEvent(SpaceshipRoom room)
   {
     OnRoomChanged?.Invoke(new RoomChangedEventArgs() { room = room });
   }

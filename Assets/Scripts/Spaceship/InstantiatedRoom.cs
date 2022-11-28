@@ -27,6 +27,15 @@ public class InstantiatedRoom : MonoBehaviour
     roomColliderBounds = boxCollider2D.bounds;
   }
 
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    if (collision.tag == "Player" && room != SpaceshipGameManager.Instance.GetCurrentRoom())
+    {
+      this.room.isPreviouslyVisited = true;
+      StaticEventHandler.CallRoomChangedEvent(room);
+    }
+  }
+
   public void Initialise(GameObject roomGameObject)
   {
     PopulateTilemapMemberVariables(roomGameObject);
@@ -76,6 +85,24 @@ public class InstantiatedRoom : MonoBehaviour
   private void DisableCollisionTilemapRenderer()
   {
     collisionTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
+  }
+
+  public void DisableRoomCollider()
+  {
+    boxCollider2D.enabled = false;
+  }
+
+  public void LockDoors()
+  {
+    SpaceshipDoor[] doorArray = GetComponentsInChildren<SpaceshipDoor>();
+
+    // Trigger lock doors
+    foreach (SpaceshipDoor door in doorArray)
+    {
+      door.LockDoor();
+    }
+
+    DisableRoomCollider();
   }
 
   private void BlockOffUnusedDoorways()

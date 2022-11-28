@@ -367,6 +367,8 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
     room.lowerBounds = roomTemplate.lowerBounds;
     room.upperBounds = roomTemplate.upperBounds;
     room.spawnPositionArray = roomTemplate.spawnPositionArray;
+    room.enemiesByLevelList = roomTemplate.enemiesByLevelList;
+    room.roomLevelEnemySpawnParametersList = roomTemplate.roomEnemySpawnParametersList;
     room.templateLowerBounds = roomTemplate.lowerBounds;
     room.templateUpperBounds = roomTemplate.upperBounds;
     room.childRoomIdList = CopyStringList(roomNode.childRoomNodeIdList);
@@ -383,6 +385,11 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
     else
     {
       room.parentRoomId = roomNode.parentRoomNodeIdList[0];
+    }
+
+    if (room.GetNumberOfEnemiesToSpawn(SpaceshipGameManager.Instance.GetCurrentSpaceshipLevel()) == 0)
+    {
+      room.isClearedOfEnemies = true;
     }
 
     return room;

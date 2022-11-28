@@ -18,11 +18,13 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
   [SerializeField]
   [HideInInspector]
   public GameState gameState;
+  [HideInInspector] public GameState previousGameState;
   private SpaceshipRoom currentRoom;
   private SpaceshipRoom previousRoom;
 
   void Start()
   {
+    previousGameState = GameState.gameStarted;
     gameState = GameState.gameStarted;
   }
 
@@ -74,10 +76,14 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
 
     if (!spaceshipBuiltSuccessfully)
     {
-      Debug.Log("Couldn't build dungeon from specified rooms and node graphs");
+      Debug.Log("Couldn't build spaceship from specified rooms and node graphs");
     }
 
-    GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f, (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);
+    StaticEventHandler.CallRoomChangedEvent(currentRoom);
+
+    GameObject.FindGameObjectWithTag("Player").transform.position =
+    new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x)
+    / 2f, (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);
   }
 
   public SpaceshipLevelSO GetCurrentSpaceshipLevel()

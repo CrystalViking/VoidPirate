@@ -16,6 +16,7 @@ public class MechaHealerEnemy : MeleeEnemy
         currState = EnemyState.Idle;
         activeBehaviour = enemyData.activeBehaviour;
         useRoomLogic = enemyData.useRoomLogic;
+        isUndestructible = false;
         enemyMovement = GetComponent<MeleeEnemyMovement>();
 
         animator = GetComponent<MechaHealerEnemyAnimator>();
@@ -121,6 +122,7 @@ public class MechaHealerEnemy : MeleeEnemy
         animator.SetIsMovingFalse();
         animator.SetIsHealingTrue();
         healed = false;
+        audioSource.Play();
         delayHeal = new Task(DelayHeal());
         delay = new Task(Delay());
 
@@ -188,12 +190,15 @@ public class MechaHealerEnemy : MeleeEnemy
 
     public override void TakeDamage(float damage)
     {
-        healthBar.SetHealthBarActive();
-        health -= damage;
-        if (health > enemyData.maxHealth)
-            health = enemyData.maxHealth;
-        healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-        CheckDeath();
+        if (!isUndestructible)
+        {
+            healthBar.SetHealthBarActive();
+            health -= damage;
+            if (health > enemyData.maxHealth)
+                health = enemyData.maxHealth;
+            healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
+            CheckDeath();
+        }
     }
 
     protected override void CheckDeath()

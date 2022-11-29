@@ -52,13 +52,8 @@ public class CountdownTimer : MonoBehaviour
             timerSO.Value = 0f;
             DestroyAllComponents();
             sceneInfo.isEventOn = false;
-            SceneManager.LoadScene("EndingScene");
-        }
-
-        else if (increasingTimer > 20.0f)
-        {
-            sceneInfo.isEventOn = true; 
-            SceneManager.LoadScene("LobbyShip");
+            PlayerPrefs.DeleteKey("shipHealth");
+            StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
         }
     }
 

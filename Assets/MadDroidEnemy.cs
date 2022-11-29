@@ -12,6 +12,8 @@ public class MadDroidEnemy : RangedEnemy
         currState = EnemyState.Idle;
         activeBehaviour = enemyData.activeBehaviour;
         useRoomLogic = enemyData.useRoomLogic;
+        isUndestructible = false;
+
         enemyMovement = GetComponent<MeleeEnemyMovement>();
 
         animator = GetComponent<MadEnemyAnimator>();
@@ -40,7 +42,7 @@ public class MadDroidEnemy : RangedEnemy
             case (EnemyState.Idle):
                 Idle();
                 break;
-            case (EnemyState.FollowAndAttack):
+            case (EnemyState.FollowAndAttack):              
                 FollowAndAttack();
                 break;
             case (EnemyState.Die):
@@ -61,7 +63,7 @@ public class MadDroidEnemy : RangedEnemy
     public new void ActiveBehaviour()
     {
         if (enemyCalculations.IsInLineOfSight() && currState != EnemyState.Die)
-        {
+        {         
             currState = EnemyState.FollowAndAttack;
         }
         else if (!enemyCalculations.IsInLineOfSight() && currState != EnemyState.Die)
@@ -77,6 +79,7 @@ public class MadDroidEnemy : RangedEnemy
         transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
         if (enemyCalculations.CanAttack())
         {
+            audioSource.Play();
             Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
             enemyCalculations.SetNextAttackTime();
         }
@@ -90,12 +93,15 @@ public class MadDroidEnemy : RangedEnemy
 
     public override void TakeDamage(float damage)
     {
-        healthBar.SetHealthBarActive();
-        health -= damage;
-        if (health > enemyData.maxHealth)
-            health = enemyData.maxHealth;
-        healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-        CheckDeath();
+        if (!isUndestructible)
+        {
+            healthBar.SetHealthBarActive();
+            health -= damage;
+            if (health > enemyData.maxHealth)
+                health = enemyData.maxHealth;
+            healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
+            CheckDeath();
+        }
     }
 
     protected override void CheckDeath()

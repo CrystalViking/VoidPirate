@@ -66,10 +66,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Paused
+  m_text: PAUSE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7a5ffb7b27c36de4cbcc52b4816dfc24, type: 2}
-  m_sharedMaterial: {fileID: -7462035603026009458, guid: 7a5ffb7b27c36de4cbcc52b4816dfc24, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e14919174d03b44469bca6ad089bb19f, type: 2}
+  m_sharedMaterial: {fileID: 3524346761249939268, guid: e14919174d03b44469bca6ad089bb19f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -416,7 +416,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7725008786942912709, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_text
-      value: Continue
+      value: CONTINIUE
       objectReference: {fileID: 0}
     - target: {fileID: 7725008786942912709, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_fontColor.b
@@ -582,7 +582,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7725008786942912709, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_text
-      value: Main menu
+      value: MAIN MENU
       objectReference: {fileID: 0}
     - target: {fileID: 7725008786942912709, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_fontColor.b

@@ -3,41 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EstrellaController : MonoBehaviour, IEnemy
+public class EstrellaController : Enemy, IEnemy
 {
-    public enum BossState
-    {
-        Idle,
-        Move,
-        SawAttack,
-        FlameAttack,
-        Debuff,
-        MeleeAttack,
-        Die
-
-    };
 
     public float speed;
     public float attackRange;
     public GameObject[] bullet;
     public float timeBetweenAttacks;
-    private float nextAttackTime;
     private Transform player;
     private Animator anim;
-    public float health;
     public float maxHealth;
-    public GameObject healthBar;
-    public Slider healthBarSlider;
-    public BossState currState = BossState.Idle;
-    public bool isInRoom = false;
     public bool isDead = false;
     public GameObject[] sawLocators;
     private bool shouldDebuff = true;
     private bool damagedPlayer = false;
-    //private float playerspeed;
     float distanceFromPlayer;
     public GameObject portal;
     private bool isSpawned = false;
+    public AudioSource[] audioSources;
 
     void Start()
     {
@@ -45,7 +28,8 @@ public class EstrellaController : MonoBehaviour, IEnemy
         player = GameObject.FindGameObjectWithTag("Player").transform;
         health = maxHealth;
         nextAttackTime = 1.0f;
-        //playerspeed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().GetSpeed();
+        useRoomLogic = true;
+        healthBar = GetComponent<HealthBar>();      
     }
 
     void Update()
@@ -53,58 +37,62 @@ public class EstrellaController : MonoBehaviour, IEnemy
         switch (currState)
         {
 
-            case (BossState.Idle):
+            case (EnemyState.Idle):
                 break;
-            case (BossState.Move):
+            case (EnemyState.Move):
                 Move();
                 break;
-            case (BossState.SawAttack):
+            case (EnemyState.SawAttack):
                 SawAttackPrep();
                 break;
-            case (BossState.FlameAttack):
+            case (EnemyState.FlameAttack):
                 StartCoroutine(FlameAttack());
                 break;
-            case (BossState.Debuff):
+            case (EnemyState.Debuff):
                 StartCoroutine(Debuff());
                 break;
-            case (BossState.MeleeAttack):
+            case (EnemyState.MeleeAttack):
                 StartCoroutine(MeleeAttack());
                 break;
-            case (BossState.Die):
+            case (EnemyState.Die):
                 StartCoroutine(SpawnPortal());
                 break;
         }
 
         distanceFromPlayer = Vector2.Distance(player.position, transform.position);
 
-        if (isInRoom)
+        if (activeBehaviour)
         {
             if(health > 0)
                 PrepareNextMove();
         }
         else
         {
-            currState = BossState.Idle;
+            currState = EnemyState.Idle;
         }
 
     }
 
-    public void TakeDamage(float damage)
+    public new void TakeDamage(float damage)
     {
-        healthBar.SetActive(true);
+        healthBar.SetHealthBarActive();
         health -= damage;
-        healthBarSlider.value = CalculateHealthPercentage();
+        healthBar.SetHealthBarValue(CalculateHealthPercentage());
         CheckDeath();
     }
 
-    private void CheckDeath()
+    private new void CheckDeath()
     {
         if (health <= 0)
         {
-            currState = BossState.Die;
-            healthBar.SetActive(false);
+            currState = EnemyState.Die;
+            healthBar.SetHealthBarInActive();
             anim.SetBool("IsDead", true);
-            Destroy(gameObject, 10f); // TODO: consider using scriptable object
+
+            if (useRoomLogic)
+                RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
+
+            Destroy(gameObject, 1.0f); // TODO: consider using scriptable object
         }
     }
 
@@ -143,13 +131,15 @@ public class EstrellaController : MonoBehaviour, IEnemy
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(30f);
             damagedPlayer = true;
+            if (!audioSources[2].isPlaying)
+                audioSources[2].Play();
         }
         yield return new WaitForSeconds(0.6f); // TODO: consider using scriptable object
 
         anim.SetBool("IsMeleeing", false);
-        currState = BossState.Move;
+        currState = EnemyState.Move;
         if (health < 0)
-            currState = BossState.Die;
+            currState = EnemyState.Die;
     }
 
     private void SawAttackPrep()
@@ -158,22 +148,30 @@ public class EstrellaController : MonoBehaviour, IEnemy
         for (int i = 0; i < 8; i++)
         {
             sawprojectiles[i] = Instantiate(bullet[0], new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-            //sawprojectiles[i].GetComponent<EstrellaSaws>().SetGameObject(sawLocators[i]);
             sawprojectiles[i].GetComponent<EstrellaSaws_v1_1>().SetGameObject(sawLocators[i]);
         }
-        currState = BossState.Idle;
+        currState = EnemyState.Idle;
         StartCoroutine(SawAttack());
     }
     IEnumerator SawAttack()
     {
         anim.SetBool("IsSawAttacking", true);
+        if (!audioSources[1].isPlaying)
+            audioSources[1].Play();
 
         yield return new WaitForSeconds(0.6f); // TODO: consider using scriptable object
 
+        StartCoroutine(StopAudioSource1());
         anim.SetBool("IsSawAttacking", false);
-        currState = BossState.Move;
+        currState = EnemyState.Move;
         if (health < 0)
-            currState = BossState.Die;
+            currState = EnemyState.Die;
+    }
+
+    IEnumerator StopAudioSource1()
+    {
+        yield return new WaitForSeconds(0.7f);
+        audioSources[1].Stop();
     }
 
     IEnumerator FlameAttack()
@@ -189,37 +187,46 @@ public class EstrellaController : MonoBehaviour, IEnemy
             anim.SetBool("IsAttackingLeft", false);
             GameObject flameprojectile = Instantiate(bullet[1], new Vector2(transform.position.x + 0.5f, transform.position.y), Quaternion.identity);
         }
+        audioSources[0].Play();
         yield return new WaitForSeconds(0.4f); // TODO: consider using scriptable object
+
+        StartCoroutine(StopAudioSource0());
         anim.SetBool("IsFlameAttacking", false);
-        currState = BossState.Move;
+        currState = EnemyState.Move;
         if (health < 0)
-            currState = BossState.Die;
+            currState = EnemyState.Die;
+    }
+
+    IEnumerator StopAudioSource0()
+    {
+        yield return new WaitForSeconds(1.4f);
+        audioSources[0].Stop();
     }
 
     IEnumerator Debuff()
     {
         anim.SetBool("IsDebuffing", true);
         
-        //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetSpeed(playerspeed/2.0f); // TODO: consider using scriptable object
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>()?.
-            SpeedDebuffSecondsPercentAdd(StatModApplicationType.AgentAppliedDebuff, 0.5f, 10); // TODO: consider using scriptable object
+        SpeedDebuffSecondsPercentAdd(StatModApplicationType.AgentAppliedDebuff, 0.5f, 10); // TODO: consider using scriptable object
 
-        //StartCoroutine(DebuffTime());
+        if (!audioSources[3].isPlaying)
+            audioSources[3].Play();
+        StartCoroutine(DebuffCooldown());
 
         yield return new WaitForSeconds(1.2f); // TODO: consider using scriptable object
 
         anim.SetBool("IsDebuffing", false);
         shouldDebuff = false;
-        currState = BossState.Move;
+        currState = EnemyState.Move;
         if (health < 0)
-            currState = BossState.Die;
+            currState = EnemyState.Die;
     }
 
     IEnumerator DebuffTime()
     {
         yield return new WaitForSeconds(10.0f); // TODO: consider using scriptable object
         StartCoroutine(DebuffCooldown());
-        //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetSpeed(playerspeed);
 
     }
 
@@ -240,7 +247,7 @@ public class EstrellaController : MonoBehaviour, IEnemy
             if (IsInAttackRange())
             {
                 damagedPlayer = false;
-                currState = BossState.MeleeAttack;
+                currState = EnemyState.MeleeAttack;
             }
             else
             {
@@ -252,23 +259,23 @@ public class EstrellaController : MonoBehaviour, IEnemy
 
                 if (r == 1)
                 {
-                    currState = BossState.Move;
+                    currState = EnemyState.Move;
                 }
                 else if(r == 2)
                 {
-                    currState = BossState.SawAttack;
+                    currState = EnemyState.SawAttack;
                 }
                 else if(r == 3)
                 {
-                    currState = BossState.FlameAttack;
+                    currState = EnemyState.FlameAttack;
                 }
                 else if (r == 4)
                 {
-                    currState = BossState.Debuff;
+                    currState = EnemyState.Debuff;
                 }
                 else
                 {
-                    currState = BossState.Move;
+                    currState = EnemyState.Move;
                 }
 
             }
@@ -280,7 +287,7 @@ public class EstrellaController : MonoBehaviour, IEnemy
 
     IEnumerator SpawnPortal()
     {
-        yield return new WaitForSeconds(8f); // TODO: consider using scriptable object
+        yield return new WaitForSeconds(0.7f); // TODO: consider using scriptable object
         if (!isSpawned)
         {
             Instantiate(portal, transform.position, Quaternion.identity);
@@ -288,43 +295,4 @@ public class EstrellaController : MonoBehaviour, IEnemy
         }
     }
 
-    public void SetUseRoomLogicTrue()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void SetUseRoomLogicFalse()
-    {
-        throw new System.NotImplementedException();
-    }
-
-
-    // band-aid before possible refactor
-    public EnemyState GetEnemyState()
-    {
-        if (currState == BossState.Die)
-            return EnemyState.Die;
-        else
-            return EnemyState.Idle;
-
-    }
-
-    public void SetActiveBehaviourFalse()
-    {
-        isInRoom = false;
-    }
-
-
-    public bool HasFullHealth()
-    {
-        if (health == maxHealth)
-            return true;
-        else
-            return false;
-    }
-
-    public void SetActiveBehaviourTrue()
-    {
-        isInRoom = true;
-    }
 }

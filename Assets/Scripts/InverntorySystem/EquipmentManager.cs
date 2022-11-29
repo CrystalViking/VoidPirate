@@ -5,10 +5,10 @@ using UnityEngine;
 public class EquipmentManager : MonoBehaviour
 {
     private int currentlyEquippedWeapon = 0;
-    private PlayerInventory inventory;
+    private PlayerInventory playerInventory;
     private GameObject currentWeaponObject = null;
 
-    private HudScript hud;
+    private HudScript playerHud;
 
     private int EMprimaryCurrentAmmo;
     private int EMprimaryCurrentAmmoStorage;
@@ -25,7 +25,7 @@ public class EquipmentManager : MonoBehaviour
     {
         GetReferences();
         StartCoroutine(LetOthersCatchUp());
-        
+        //playerInventory.AddItem(defaultMeleeWeapon);
         EquipWeapon(defaultMeleeWeapon);
         
     }
@@ -37,8 +37,8 @@ public class EquipmentManager : MonoBehaviour
 
     IEnumerator LetOthersCatchUp()
     {
-        yield return new WaitForSeconds(1);
-        inventory.AddItem(defaultMeleeWeapon);
+        yield return new WaitUntil(() => playerInventory != null);
+        playerInventory.AddItem(defaultMeleeWeapon);
 
     }
 
@@ -49,20 +49,20 @@ public class EquipmentManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha1) && currentlyEquippedWeapon != 0)
         {
             UnequipWeapon();
-            EquipWeapon(inventory.GetItem(0));
+            EquipWeapon(playerInventory.GetItem(0));
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && currentlyEquippedWeapon != 1)
         {
             UnequipWeapon();
-            EquipWeapon(inventory.GetItem(1));
+            EquipWeapon(playerInventory.GetItem(1));
             
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha3) && currentlyEquippedWeapon != 2)
         {
             UnequipWeapon();
-            EquipWeapon(inventory.GetItem(2));
+            EquipWeapon(playerInventory.GetItem(2));
             
         }
 
@@ -72,16 +72,16 @@ public class EquipmentManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        var currentWeapon = inventory.GetItem(currentlyEquippedWeapon);
+        var currentWeapon = playerInventory.GetItem(currentlyEquippedWeapon);
 
-        hud?.UpdateWeaponUI(currentWeapon);
+        playerHud?.UpdateWeaponUI(currentWeapon);
 
         if(currentWeapon != null)
         {
             if (currentWeapon.weaponSlot == WeaponSlot.Primary)
-                hud?.UpdateWeaponAmmoInfo(GetPrimaryAmmo(), GetPrimaryStorage());
+                playerHud?.UpdateWeaponAmmoInfo(GetPrimaryAmmo(), GetPrimaryStorage());
             if (currentWeapon.weaponSlot == WeaponSlot.Secondary)
-                hud?.UpdateWeaponAmmoInfo(GetSecondaryAmmo(), GetSecondaryStorage());
+                playerHud?.UpdateWeaponAmmoInfo(GetSecondaryAmmo(), GetSecondaryStorage());
 
         }
 
@@ -90,7 +90,15 @@ public class EquipmentManager : MonoBehaviour
     
     private void InstantiateWeapon(GameObject weaponObject, int weaponSlot)
     {
-        Weapon weapon = inventory.GetItem(weaponSlot);
+        Weapon weapon = playerInventory.GetItem(weaponSlot);
+    }
+
+    public Weapon GetCurrentlyUsedWeaponSO()
+    {
+        Weapon weapon = playerInventory.GetItem(currentlyEquippedWeapon);
+        if (weapon != null)
+            return weapon;
+        return null;
     }
 
     private void EquipWeapon(Weapon weapon)
@@ -140,9 +148,9 @@ public class EquipmentManager : MonoBehaviour
     }
 
     private void GetReferences()
-    {
-        inventory = GetComponent<PlayerInventory>();
-        hud = GetComponent<HudScript>();
+    { 
+        playerInventory = GetComponent<PlayerInventory>();
+        playerHud = GetComponent<HudScript>();
     }
 
     public void EM_UpdatePrimaryAmmo(int currentAmmoUpdate, int currentStoredAmmoUpdate)

@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //SetActiveHud(true);
+        SetActiveHud(true);
     }
 
     private void Update()
@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             SetActivePause(true);
-            
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {
@@ -32,15 +31,15 @@ public class UIManager : MonoBehaviour
 
     public void SetActiveHud(bool state)
     {
-        hudCanvas.SetActive(state);
-        pauseCanvas.SetActive(!state);
+        hudCanvas?.SetActive(state);
+        pauseCanvas?.SetActive(!state);
     }
 
 
     public void SetActivePause(bool state)
     {
-        hudCanvas.SetActive(!state);
-        pauseCanvas.SetActive(state);
+        hudCanvas?.SetActive(!state);
+        pauseCanvas?.SetActive(state);
 
         Time.timeScale = state ? 0 : 1;
         isPaused = state;

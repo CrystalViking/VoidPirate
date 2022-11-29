@@ -8,8 +8,9 @@ public abstract class PickableItem : MonoBehaviour
     protected bool isInRange;
 
     
-    [SerializeField] protected KeyCode itemPickupCode = KeyCode.E;
+    [SerializeField] protected KeyCode itemPickupCode = KeyCode.F;
     [SerializeField] protected bool destroyOnPickUp = true;
+    [SerializeField] protected KeyCode itemStackUpCode = KeyCode.E;
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {

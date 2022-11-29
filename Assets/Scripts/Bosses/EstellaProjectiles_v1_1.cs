@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EstellaProjectiles_v1_1 : BaseEnemyProjectile
 {
-    // Start is called before the first frame update
     void Start()
     {
         InitProjectile();
@@ -29,7 +28,8 @@ public class EstellaProjectiles_v1_1 : BaseEnemyProjectile
     {
         if (!(collision.CompareTag("Enemy") ||
             collision.CompareTag("Boss") || 
-            collision.CompareTag("Projectile") || 
+            collision.CompareTag("Projectile") ||
+            collision.CompareTag("Room") ||
             collision.CompareTag("Player") ||
             collision.CompareTag("Untagged")))
         {

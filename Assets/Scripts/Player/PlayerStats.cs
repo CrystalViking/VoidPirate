@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PlayerStats : ActorStats
@@ -9,6 +10,8 @@ public class PlayerStats : ActorStats
     StatModManager statModManager;
 
     PlayerRenderer playerRenderer;
+
+    public UnityEvent<float> OnHealthChange;
 
     private void Start()
     {
@@ -24,7 +27,9 @@ public class PlayerStats : ActorStats
     public override void CheckHealth()
     {
         base.CheckHealth();
-        hud.UpdateHealth(health, maxHealth);
+        hud.UpdateHealth(health);
+
+        OnHealthChange?.Invoke((float)health/maxHealth);
     }
     public void SpeedBuffSecondsPercentAdd(StatModApplicationType statModApplicationType, float value, float seconds)
     {
@@ -58,13 +63,17 @@ public class PlayerStats : ActorStats
     public override void Die()
     {
         base.Die();
-        SceneManager.LoadScene("GameOverScene");
+        StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
     }
 
     private void Update()
     {
-        speed = statSpeed.Value;
-        SetHealthTo(statHealth.Value);
+        try
+        {
+            speed = statSpeed.Value;
+            SetHealthTo(statHealth.Value);
+        }
+        catch { }
     }
 
     public override void InitVariables(float maxHealth = 100)

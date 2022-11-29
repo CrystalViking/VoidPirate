@@ -6,11 +6,13 @@ public class InsectEnemy : MeleeEnemy
 {
     new private MeleeEnemyAnimator animator;
     private bool attacked;
+    //public AudioSource bite;
     void Start()
     {
         health = enemyData.maxHealth;
         useRoomLogic = enemyData.useRoomLogic;
         activeBehaviour = enemyData.activeBehaviour;
+        isUndestructible = false;
 
         enemyMovement = GetComponent<MeleeEnemyMovement>();
 
@@ -87,7 +89,7 @@ public class InsectEnemy : MeleeEnemy
     public new void MeleeAttack()
     {
         animator.SetIsMovingFalse();
-        attacked = false;
+        attacked = false;       
         delayDMG = new Task(DelayDMG());
         delay = new Task(Delay());
     }
@@ -96,7 +98,8 @@ public class InsectEnemy : MeleeEnemy
     {
         animator.SetIsMovingTrue();
         animator.SetIsAttackingFalse();
-
+        if (!audioSource.isPlaying)
+            audioSource.Play();
 
         transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
     }
@@ -123,19 +126,24 @@ public class InsectEnemy : MeleeEnemy
         yield return new WaitForSeconds(enemyData.meleeAnimationDamageDelay);
         if (!attacked && enemyCalculations.IsInAttackRange())
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);          
+            bite.Play();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().HealthPoison(StatModApplicationType.AgentAppliedDebuff, 5, 10);
         }
         attacked = true;
     }
 
     public override void TakeDamage(float damage)
     {
-        healthBar.SetHealthBarActive();
-        health -= damage;
-        if (health > enemyData.maxHealth)
-            health = enemyData.maxHealth;
-        healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-        CheckDeath();
+        if (!isUndestructible)
+        {
+            healthBar.SetHealthBarActive();
+            health -= damage;
+            if (health > enemyData.maxHealth)
+                health = enemyData.maxHealth;
+            healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
+            CheckDeath();
+        }
     }
 
     protected override void CheckDeath()

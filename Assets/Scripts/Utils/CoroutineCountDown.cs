@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoroutineCountDown : MonoBehaviour
 {
-    private bool timerStarted;
+    //private bool timerStarted;
     private bool timerSet;
     private float timerSeconds;
 
@@ -38,7 +38,7 @@ public class CoroutineCountDown : MonoBehaviour
     {
         if(timerSet)
         {
-            timerStarted = true;
+            //timerStarted = true;
             StartCoroutine(CountDown());
         }
         
@@ -48,7 +48,7 @@ public class CoroutineCountDown : MonoBehaviour
     {
         if(timerSet)
         {
-            timerStarted = false;
+            //timerStarted = false;
             timerSet = false;
         } 
     }
@@ -56,7 +56,7 @@ public class CoroutineCountDown : MonoBehaviour
     private void InitVariables()
     {
         timerSeconds = 0f;
-        timerStarted = false;
+        //timerStarted = false;
         timerSet = false;
 
     }

@@ -16,6 +16,7 @@ public class SpawnerEnemy : MeleeEnemy
         health = enemyData.maxHealth;
         useRoomLogic = enemyData.useRoomLogic;
         activeBehaviour = enemyData.activeBehaviour;
+        isUndestructible = false;
 
         animator = GetComponent<SpawnerEnemyAnimator>();
 
@@ -66,6 +67,7 @@ public class SpawnerEnemy : MeleeEnemy
     {
         if(enemyCalculations.IsItTimeToAttack() && currState != EnemyState.Die)
         {
+            audioSource.Play();
             currState = EnemyState.Spawn;
         }
     }
@@ -82,7 +84,7 @@ public class SpawnerEnemy : MeleeEnemy
 
     public void Spawn()
     {
-        animator.SetIsSpawningTrue();
+        animator.SetIsSpawningTrue();      
         spawned = false;
         delaySpawn = new Task(DelaySpawn());
         delay = new Task(Delay());
@@ -102,30 +104,40 @@ public class SpawnerEnemy : MeleeEnemy
     }
 
     protected  IEnumerator DelaySpawn()
-    {     
+    {       
         yield return new WaitForSeconds(enemyData.meleeAnimationDamageDelay);
         if (!spawned && currState != EnemyState.Die)
         {
             X = Random.Range(0, allies.Length);
             spawnedAlly = Instantiate(allies[X], new Vector2(transform.position.x - 0.2f, transform.position.y), Quaternion.identity);
+            try
+            {
+                spawnedAlly.transform.parent = transform.parent;
+            }
+            catch { }
             spawned = true;
 
-        }       
+        }
+        audioSource.Stop();
 
     }
 
     public override void TakeDamage(float damage)
     {
-        healthBar.SetHealthBarActive();
-        health -= damage;
-        if (health > enemyData.maxHealth)
-            health = enemyData.maxHealth;
-        healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-        CheckDeath();
+        if (!isUndestructible)
+        {
+            healthBar.SetHealthBarActive();
+            health -= damage;
+            if (health > enemyData.maxHealth)
+                health = enemyData.maxHealth;
+            healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
+            CheckDeath();
+        }
     }
 
     protected override void CheckDeath()
     {
+
         if (health <= 0)
         {
             healthBar.SetHealthBarInActive();

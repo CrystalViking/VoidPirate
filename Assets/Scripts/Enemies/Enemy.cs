@@ -13,7 +13,16 @@ public enum EnemyState
     Attack,
     FollowAndAttack,
     Heal,
-    Spawn
+    Spawn,
+    Protect,
+    Move,
+    SawAttack,
+    FlameAttack,
+    Debuff,
+    MeleeAttack,
+    RangeAttack,
+    Consume,
+    Teleport
 }
 
 public abstract class Enemy : MonoBehaviour, IEnemy
@@ -29,6 +38,7 @@ public abstract class Enemy : MonoBehaviour, IEnemy
     public bool useRoomLogic = false;
     public bool activeBehaviour = false;
     public EnemyState currState = EnemyState.Idle;
+    public bool isUndestructible = false;
     
 
     public float health;
@@ -95,6 +105,22 @@ public abstract class Enemy : MonoBehaviour, IEnemy
             return false;
     }
 
+    public virtual void SetHealth(float maxhealth)
+    {
+        health = maxhealth;
+    }
+
+    public virtual float GetMaxHealth()
+    {
+        return enemyData.maxHealth;
+    }
+
+    public virtual void SetUndestructible(bool G)
+    {
+        isUndestructible = G;
+    }
+
+
     protected virtual IEnumerator Delay()
     {
         throw new NotImplementedException();
@@ -135,5 +161,10 @@ public abstract class Enemy : MonoBehaviour, IEnemy
     public EnemyState GetEnemyState()
     {
         return currState;
+    }
+
+    public GameObject GetParent()
+    {
+        return transform.parent.gameObject;
     }
 }

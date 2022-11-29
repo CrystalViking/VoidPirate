@@ -11,6 +11,10 @@ public class WeaponParent : MonoBehaviour
 
     public float delay = 0.3f;
     private bool attackBlocked;
+    public AudioSource hit;
+
+    private PlayerManager playerManager;
+    private EquipmentManager equipmentManager;
 
 
     public bool IsAttacking { get; private set; }
@@ -21,6 +25,12 @@ public class WeaponParent : MonoBehaviour
     public void ResetIsAttacking()
     {
         IsAttacking = false;
+    }
+
+    private void Start()
+    {
+        playerManager = GetComponent<PlayerManager>();
+        equipmentManager = GetComponentInParent<EquipmentManager>();
     }
 
     private void Update()
@@ -62,7 +72,8 @@ public class WeaponParent : MonoBehaviour
         {
             return;
         }
-        
+
+        hit.Play();
         animator.SetTrigger("Attack");
         IsAttacking = true;
         attackBlocked = true;
@@ -91,7 +102,9 @@ public class WeaponParent : MonoBehaviour
 
             if(collider.CompareTag("Enemy") || collider.CompareTag("Boss"))
             {
-                collider.GetComponent<IEnemy>().TakeDamage(50);
+                
+
+                collider.GetComponent<IEnemy>().TakeDamage(equipmentManager.GetCurrentlyUsedWeaponSO().maxDamage);
             }
         }
     }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8474554745076951819}
   - component: {fileID: 2224888155287910840}
   - component: {fileID: -4518976098215357024}
+  - component: {fileID: 5889312836101792147}
   - component: {fileID: 7745005393566102651}
   m_Layer: 3
   m_Name: Spaceship
@@ -187,6 +188,8 @@ MonoBehaviour:
   minDamage: 20
   maxDamage: 30
   projectileForce: 10
+  fireRate: 0
+  audioSource: {fileID: 0}
 --- !u!114 &-4518976098215357024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,8 +202,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2eb857344284646bad5e57106a6104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneInfo: {fileID: 0}
   maxHealth: 500
   health: 0
+  sliderOnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  textOnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5889312836101792147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224888155287910730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45239e93e59fba54481cff90894c0166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudCanvas: {fileID: 0}
+  pauseCanvas: {fileID: 0}
 --- !u!114 &7745005393566102651
 MonoBehaviour:
   m_ObjectHideFlags: 0

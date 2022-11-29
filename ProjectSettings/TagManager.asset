@@ -23,6 +23,7 @@ TagManager:
   - CollisionTilemap
   - CollitionTilemap
   - WallsTilemap
+  - Room
   layers:
   - Default
   - TransparentFX
@@ -101,4 +102,6 @@ TagManager:
     locked: 0
   - name: Minimap
     uniqueID: 2077223661
+  - name: UpperParticles (Stars)
+    uniqueID: 2194243131
     locked: 0

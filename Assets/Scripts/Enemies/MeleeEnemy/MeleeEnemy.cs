@@ -8,6 +8,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
     protected Task delayDMG;
     protected Task delay;
     protected Task roomCoroutine;
+    public AudioSource bite;
     private bool attacked;
 
     public int Health { get; set; }
@@ -20,6 +21,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
         health = enemyData.maxHealth;
         useRoomLogic = enemyData.useRoomLogic;
         activeBehaviour = enemyData.activeBehaviour;
+        isUndestructible = false;
 
         enemyMovement = GetComponent<MeleeEnemyMovement>();
 
@@ -103,7 +105,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
     public void MeleeAttack()
     {
         animator.SetIsMovingFalse();
-        attacked = false;
+        attacked = false;       
         delay = new Task(Delay());
         delayDMG = new Task(DelayDMG());
     }
@@ -112,7 +114,8 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
     {
         animator.SetIsMovingTrue();
         animator.SetIsAttackingFalse();
-
+        if(!audioSource.isPlaying)
+            audioSource.Play();
 
         transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
     }
@@ -139,6 +142,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
         yield return new WaitForSeconds(enemyData.meleeAnimationDamageDelay);
         if (!attacked && enemyCalculations.IsInAttackRange())
         {
+            bite.Play();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);
         }
         attacked = true;
@@ -146,12 +150,15 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
 
     public override void TakeDamage(float damage)
     {
-        healthBar.SetHealthBarActive();
-        health -= damage;
-        if (health > enemyData.maxHealth)
-            health = enemyData.maxHealth;
-        healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-        CheckDeath();
+        if (!isUndestructible)
+        {
+            healthBar.SetHealthBarActive();
+            health -= damage;
+            if (health > enemyData.maxHealth)
+                health = enemyData.maxHealth;
+            healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
+            CheckDeath();
+        }
     }
 
     protected override void CheckDeath()

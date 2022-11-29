@@ -10,6 +10,7 @@ public class PlayerProjectiles : MonoBehaviour
     public float projectileForce;
     private float lastShootTime = 0;
     public float fireRate;
+    public AudioSource audioSource;
 
     public static float GetAngleFromVectorFloat(Vector3 dir)
     {
@@ -29,6 +30,7 @@ public class PlayerProjectiles : MonoBehaviour
             {
                 lastShootTime = Time.time;
                 GameObject spell = Instantiate(projectile, transform.position, Quaternion.identity);
+                audioSource.Play();
                 Vector3 worldMousePosition3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePos = new Vector2(worldMousePosition3D.x, worldMousePosition3D.y);
                 Vector2 myPos = transform.position;

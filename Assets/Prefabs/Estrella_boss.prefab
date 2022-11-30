@@ -830,17 +830,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0068eda71ac857545b45e0c4fb4d9bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  enemyData: {fileID: 0}
+  useRoomLogic: 0
+  activeBehaviour: 0
+  currState: 0
+  isUndestructible: 0
+  health: 0
   speed: 2
   attackRange: 1.5
   bullet:
   - {fileID: 829660870811452223, guid: 9abdc2b1fd4a3ae449874c7b63a136e9, type: 3}
   - {fileID: 752237071657277670, guid: 186ae7a4a2d9d8c4f906f916aa182823, type: 3}
   timeBetweenAttacks: 2
-  health: 0
   maxHealth: 12000
-  healthBar: {fileID: 4991385374683168299}
-  healthBarSlider: {fileID: 6049128247333920484}
-  currState: 0
   isDead: 0
   sawLocators:
   - {fileID: 3409405726312792462}
@@ -857,8 +860,6 @@ MonoBehaviour:
   - {fileID: 5491643659686729414}
   - {fileID: 4199006610221312292}
   - {fileID: 4870843209172202822}
-  useRoomLogic: 0
-  activeBehaviour: 0
 --- !u!61 &-8470786902933805028
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -897,7 +898,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3832be6465e6a894b93bf542f6957554, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.02
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -993,7 +994,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fe51edb2b2284974c9599a6d8184fb57, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.06
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1089,7 +1090,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9958bb22bbe85594497552a210e3273f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.02
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1185,7 +1186,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 375f248ff4d323e499345f1a8e9ec3e1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.02
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

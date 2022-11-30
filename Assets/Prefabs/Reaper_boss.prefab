@@ -570,18 +570,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07eb7242ed78e24e8910c24be2721de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  enemyData: {fileID: 0}
+  useRoomLogic: 0
+  activeBehaviour: 0
+  currState: 0
+  isUndestructible: 0
+  health: 0
   speed: 1
   attackRange: 2
   bullet:
   - {fileID: 752237071657277670, guid: 1b2bbd986b0b00c4e935e316161e1f86, type: 3}
   timeBetweenAttacks: 1.8
-  health: 0
   maxHealth: 12000
-  healthBar: {fileID: 1665523857214379930}
-  healthBarSlider: {fileID: 1665523857214379931}
-  currState: 0
-  isInRoom: 0
-  isDead: 0
   minion: {fileID: 6594579410092307034, guid: 4b798ec2b5abc4a49b33c26a9b254b8b, type: 3}
   minion_list: []
   portal: {fileID: 6225709882075278008, guid: d6569d81f3b1d9e4984da0b5b053ac30, type: 3}
@@ -615,7 +616,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 314a5dbe7032e7a4186fafb157713693, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.02
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -711,7 +712,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9958bb22bbe85594497552a210e3273f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.01
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -807,7 +808,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b0367e6ca4b950443ad412639fb9ac37, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.04
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -903,7 +904,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c9b197fff763b8746bdefd3225ae2921, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.01
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -999,7 +1000,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 740db441a1f119a4db77ee73a1bc8cd5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.01
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

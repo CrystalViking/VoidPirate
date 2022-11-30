@@ -242,6 +242,7 @@ MonoBehaviour:
   currState: 0
   isUndestructible: 0
   health: 0
+  bite: {fileID: 0}
   allies:
   - {fileID: 741157875844909433, guid: 20b6179aa778a834999341768e9b5c6b, type: 3}
   - {fileID: 3039306468364581178, guid: 8c24802cc3408ab479c97e0bef696cd3, type: 3}
@@ -274,7 +275,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2fc42aa9a0b7534488dcf512fa676b85, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.03
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

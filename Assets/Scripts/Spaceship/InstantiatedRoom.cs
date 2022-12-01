@@ -15,8 +15,7 @@ public class InstantiatedRoom : MonoBehaviour
   [HideInInspector] public Tilemap decoration1Tilemap;
   [HideInInspector] public Tilemap decoration2Tilemap;
   [HideInInspector] public Tilemap frontTilemap;
-  //[HideInInspector]
-  public Tilemap collisionTilemap;
+  [HideInInspector] public Tilemap collisionTilemap;
   [HideInInspector] public Tilemap minimapTilemap;
   [HideInInspector] public Bounds roomColliderBounds;
   private BoxCollider2D boxCollider2D;
@@ -171,16 +170,16 @@ public class InstantiatedRoom : MonoBehaviour
 
   private void BlockDoorwayVertically(Tilemap tilemap, Doorway doorway)
   {
-    Vector2Int startPos = doorway.doorwayStartCopyPos;
+    Vector2Int startPosition = doorway.doorwayStartCopyPos;
 
     for (int yPos = 0; yPos < doorway.doorwayCopyTileHeight; yPos++)
     {
       for (int xPos = 0; xPos < doorway.doorwayCopyTileWidth; xPos++)
       {
-        Matrix4x4 transformMatrix = tilemap.GetTransformMatrix(new Vector3Int(startPos.x + xPos, startPos.y - yPos, 0));
-        tilemap.SetTile(new Vector3Int(startPos.x + xPos, startPos.y - 1 - yPos, 0),
-          tilemap.GetTile(new Vector3Int(startPos.x + xPos, startPos.y - yPos, 0)));
-        tilemap.SetTransformMatrix(new Vector3Int(startPos.x + 1 + xPos, startPos.y - yPos, 0), transformMatrix);
+        Matrix4x4 transformMatrix = tilemap.GetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0));
+        tilemap.SetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0), tilemap.GetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0)));
+        tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0), transformMatrix);
+
       }
     }
   }

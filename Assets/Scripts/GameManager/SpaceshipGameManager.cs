@@ -80,10 +80,14 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
     }
 
     StaticEventHandler.CallRoomChangedEvent(currentRoom);
+    // GameObject.FindGameObjectWithTag("Player").transform.position =
+    // new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x)
+    // / 2f, (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);
 
-    GameObject.FindGameObjectWithTag("Player").transform.position =
-    new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x)
-    / 2f, (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);
+    GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f, (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);
+
+    // GameObject.FindGameObjectWithTag("Player").transform.position = HelperUtilities.GetSpawnPositionNearestToPlayer(GameObject.FindGameObjectWithTag("Player").gameObject.transform.position);
+
   }
 
   public SpaceshipLevelSO GetCurrentSpaceshipLevel()

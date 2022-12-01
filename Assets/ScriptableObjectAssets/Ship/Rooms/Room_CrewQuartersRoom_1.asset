@@ -12,47 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaee06fe7c8b01f4991f91e39bba49b8, type: 3}
   m_Name: Room_CrewQuartersRoom_1
   m_EditorClassIdentifier: 
-  guid: 1ba66bd2bd53eac4bb8957024294f2f2
-  prefab: {fileID: 6687935448939123030, guid: 0af9c3a4e35e93543b8cc7522cf050cd, type: 3}
-  previousPrefab: {fileID: 6687935448939123030, guid: 0af9c3a4e35e93543b8cc7522cf050cd, type: 3}
+  guid: b49c02e005c9634478854a162736015f
+  prefab: {fileID: 4327421925113694216, guid: e60431c0f30e03f489369f4d7b77bf8f, type: 3}
+  previousPrefab: {fileID: 4327421925113694216, guid: e60431c0f30e03f489369f4d7b77bf8f, type: 3}
   roomNodeType: {fileID: 11400000, guid: 2bd6dc097ff18614ba0bbc7c7205d6af, type: 2}
   lowerBounds: {x: -47, y: -24}
   upperBounds: {x: -27, y: -6}
   doorwayList:
-  - position: {x: -37, y: -6}
+  - position: {x: 5, y: 39}
     orientation: 0
     doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
-    doorwayStartCopyPos: {x: -40, y: -6}
+    doorwayStartCopyPos: {x: 2, y: 39}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 5
     isConnected: 0
     isUnavailable: 0
-  - position: {x: -37, y: -24}
+  - position: {x: 5, y: 21}
     orientation: 2
     doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
-    doorwayStartCopyPos: {x: -40, y: -20}
+    doorwayStartCopyPos: {x: 2, y: 25}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 5
     isConnected: 0
     isUnavailable: 0
-  - position: {x: -27, y: -15}
+  - position: {x: 15, y: 30}
     orientation: 1
     doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
-    doorwayStartCopyPos: {x: -31, y: -12}
-    doorwayCopyTileWidth: 5
-    doorwayCopyTileHeight: 5
+    doorwayStartCopyPos: {x: 10, y: 33}
+    doorwayCopyTileWidth: 6
+    doorwayCopyTileHeight: 6
     isConnected: 0
     isUnavailable: 0
-  - position: {x: -47, y: -15}
+  - position: {x: -5, y: 30}
     orientation: 3
     doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
-    doorwayStartCopyPos: {x: -47, y: -12}
+    doorwayStartCopyPos: {x: -5, y: 33}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 5
     isConnected: 0
     isUnavailable: 0
   spawnPositionArray:
-  - {x: 0, y: 0}
+  - {x: 5, y: 30}
   enemiesByLevelList:
   - spaceshipLevel: {fileID: 11400000, guid: 5f96372a2a925ce42a9a6a114f34ca3b, type: 2}
     spawnableObjectRatioList:

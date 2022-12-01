@@ -64,7 +64,12 @@ public class SpaceshipBuilder : SingletonMonobehaviour<SpaceshipBuilder>
     foreach (KeyValuePair<string, SpaceshipRoom> keyValuePair in spaceshipBuilderRoomDictionary)
     {
       SpaceshipRoom room = keyValuePair.Value;
-      Vector3 roomPosition = new Vector3(room.lowerBounds.x - room.templateLowerBounds.x, room.lowerBounds.y - room.templateLowerBounds.y, 0f);
+      int x = room.lowerBounds.x - room.templateLowerBounds.x;
+      int y = room.lowerBounds.y - room.templateLowerBounds.y;
+      Vector3 roomPosition = new Vector3(x, y, 0f);
+
+      room.spawnPositionArray[0] = new Vector2Int(x, y);
+      //      Debug.Log(room.roomNodeType.name + " Position: " + roomPosition);
       GameObject roomGameObject = Instantiate(room.prefab, roomPosition, Quaternion.identity, transform);
       InstantiatedRoom instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
       instantiatedRoom.room = room;

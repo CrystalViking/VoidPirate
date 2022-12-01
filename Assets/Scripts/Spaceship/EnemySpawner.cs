@@ -103,7 +103,7 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
           yield return null;
         }
 
-        Vector3Int cellPosition = (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Length)];
+        Vector3Int cellPosition = (Vector3Int)currentRoom.spawnPositionArray[0];
 
         // Create Enemy - Get next enemy type to spawn 
         CreateEnemy(randomEnemyHelperClass.GetItem(), grid.CellToWorld(cellPosition));
@@ -147,7 +147,7 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
     GameObject enemy = Instantiate(enemyDetails.enemyPrefab, position, Quaternion.identity, transform);
 
     // Initialize Enemy
-    enemy.GetComponent<Enemy>().EnemyInitialization(enemyDetails, enemiesSpawnedSoFar, dungeonLevel);
+    //enemy.GetComponent<Enemy>().EnemyInitialization(enemyDetails, enemiesSpawnedSoFar, dungeonLevel);
 
   }
 

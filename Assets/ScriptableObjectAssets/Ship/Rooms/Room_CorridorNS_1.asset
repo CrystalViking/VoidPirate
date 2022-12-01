@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaee06fe7c8b01f4991f91e39bba49b8, type: 3}
   m_Name: Room_CorridorNS_1
   m_EditorClassIdentifier: 
-  guid: 78602f174ee1f5d4eb28e19bd0217d82
-  prefab: {fileID: 6687935448939123030, guid: 13e28323b50b84744a3ab058542ba063, type: 3}
-  previousPrefab: {fileID: 6687935448939123030, guid: 13e28323b50b84744a3ab058542ba063, type: 3}
+  guid: 3170508189fb0a24dbfc52875cf509c8
+  prefab: {fileID: 4327421925113694216, guid: e71edcfe56c0b3642bd64e789cf90226, type: 3}
+  previousPrefab: {fileID: 4327421925113694216, guid: e71edcfe56c0b3642bd64e789cf90226, type: 3}
   roomNodeType: {fileID: 11400000, guid: 5ba6ad34ebde63b4e80dbb6faf4d1278, type: 2}
-  lowerBounds: {x: -39, y: -22}
-  upperBounds: {x: -35, y: -9}
+  lowerBounds: {x: -2, y: -2}
+  upperBounds: {x: 2, y: 2}
   doorwayList:
-  - position: {x: -37, y: -9}
+  - position: {x: 0, y: 2}
     orientation: 0
     doorPrefab: {fileID: 0}
     doorwayStartCopyPos: {x: 0, y: 0}
@@ -27,7 +27,7 @@ MonoBehaviour:
     doorwayCopyTileHeight: 0
     isConnected: 0
     isUnavailable: 0
-  - position: {x: -37, y: -22}
+  - position: {x: 0, y: -2}
     orientation: 2
     doorPrefab: {fileID: 0}
     doorwayStartCopyPos: {x: 0, y: 0}
@@ -36,4 +36,6 @@ MonoBehaviour:
     isConnected: 0
     isUnavailable: 0
   spawnPositionArray:
-  - {x: 0, y: 0}
+  - {x: 0, y: 12}
+  enemiesByLevelList: []
+  roomEnemySpawnParametersList: []

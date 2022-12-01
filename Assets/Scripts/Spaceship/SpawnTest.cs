@@ -46,7 +46,10 @@ public class SpawnTest : MonoBehaviour
       EnemyDetailsSO enemyDetails = randomEnemyHelperClass.GetItem();
 
       if (enemyDetails != null)
-        instantiatedEnemyList.Add(Instantiate(enemyDetails.enemyPrefab, HelperUtilities.GetSpawnPositionNearestToPlayer(HelperUtilities.GetMouseWorldPosition()), Quaternion.identity));
+      {
+
+      }
+      instantiatedEnemyList.Add(Instantiate(enemyDetails.enemyPrefab, HelperUtilities.GetSpawnPositionNearestToPlayer(HelperUtilities.GetMouseWorldPosition()), Quaternion.identity));
     }
   }
 }

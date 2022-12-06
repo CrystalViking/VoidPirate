@@ -21,7 +21,7 @@ MonoBehaviour:
   maxDamage: 40
   spread: 0
   range: 0
-  reloadTime: 0
+  reloadTime: 3
   timeBetweenShots: 0
   magazineSize: 70
   bulletsPerTap: 1
@@ -30,6 +30,11 @@ MonoBehaviour:
   weaponSlot: 0
   projectileVelocity: 0
   weaponScreenShake: 0
-  projectileForce: 10
+  projectileForce: 30
+  shootSound: {fileID: 8300000, guid: 5dbc74a65da58144aa0a20190bcd4909, type: 3}
+  reloadPhases:
+  - {fileID: 8300000, guid: 5034636124c582b4893800f869124732, type: 3}
+  - {fileID: 8300000, guid: 8661ec677881a5a4ea46398c20eb9e79, type: 3}
+  - {fileID: 8300000, guid: f84a2bf3a6b43994a970dab1c4bc6fe8, type: 3}
   storedAmmo: 420
   fireRate: 0.1

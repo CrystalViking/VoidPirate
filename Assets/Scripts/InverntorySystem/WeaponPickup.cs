@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponPickup : PickableItem, IPickable
 {
-    [SerializeField] Weapon weapon;
+    [SerializeField] WeaponSO weapon;
     
    
     void Update()

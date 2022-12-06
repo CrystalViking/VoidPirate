@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 684841395}
   - component: {fileID: 1063263098533648199}
   m_Layer: 8
-  m_Name: WeaponParent
+  m_Name: MeleeParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,14 +174,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684841393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.046, y: -0.012, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.046000004, y: -0.012, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 586052861}
-  m_Father: {fileID: 3028380204826105601}
-  m_RootOrder: 0
+  m_Father: {fileID: 7996569902494228750}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &684841395
 MonoBehaviour:
@@ -327,6 +327,70 @@ Transform:
   m_Father: {fileID: 586052861}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7284874234847063168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6461975300185591271}
+  m_Layer: 8
+  m_Name: GunParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6461975300185591271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284874234847063168}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7996569902494228750}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8388950080252037497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7996569902494228750}
+  m_Layer: 8
+  m_Name: Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7996569902494228750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8388950080252037497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6461975300185591271}
+  - {fileID: 684841394}
+  m_Father: {fileID: 3028380204826105601}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5811291728164359118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -366,6 +430,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8836956139156992218, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
+      propertyPath: playerStatsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 86e24979f623de94585e759b538776c2, type: 2}
     - target: {fileID: 8836956139156992219, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_Name
       value: Player WeaponParent
@@ -446,6 +514,10 @@ PrefabInstance:
       propertyPath: sWeapon
       value: 
       objectReference: {fileID: 5495210381333021622}
+    - target: {fileID: 8836956139156992245, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8836956139223194831, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -724,7 +796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6415849291111299765, guid: e850daa4a41898245adf20c0dc16d9ba, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6415849291111299765, guid: e850daa4a41898245adf20c0dc16d9ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -993,7 +1065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1218191596180458991, guid: 04b67766881144943a67171a2cb5bb8f, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1218191596180458991, guid: 04b67766881144943a67171a2cb5bb8f, type: 3}
       propertyPath: m_LocalPosition.x

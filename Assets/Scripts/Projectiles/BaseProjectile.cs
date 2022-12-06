@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BaseProjectile
 {
-    private Weapon weapon;
+    private WeaponSO weapon;
     private float minDamage;
     private float maxDamage;
     public float delay { get; set; }
@@ -17,13 +17,13 @@ public class BaseProjectile
 
     }
 
-    BaseProjectile(Weapon weapon) : this()
+    BaseProjectile(WeaponSO weapon) : this()
     {
         minDamage = weapon.minDamage;
         maxDamage = weapon.maxDamage;
     }
 
-    BaseProjectile(Weapon weapon, float delay = 1.0f) : this(weapon)
+    BaseProjectile(WeaponSO weapon, float delay = 1.0f) : this(weapon)
     {
         this.delay = delay;
     }
@@ -33,7 +33,7 @@ public class BaseProjectile
     /// </summary>
     /// <param name="weapon"> Provide the Weapon class</param>
     /// <param name="delay"> Set the delay before projectile is destroyed (1.0f by default) </param>
-    public void SetStats(Weapon weapon, float delay = 1.0f)
+    public void SetStats(WeaponSO weapon, float delay = 1.0f)
     {
         minDamage = weapon.minDamage;
         maxDamage = weapon.maxDamage;

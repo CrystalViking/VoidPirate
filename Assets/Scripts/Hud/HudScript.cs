@@ -18,7 +18,7 @@ public class HudScript : MonoBehaviour
         //maxHealthText.text = maxHealth.ToString();
     }
 
-    public void UpdateWeaponUI(Weapon newWeapon)
+    public void UpdateWeaponUI(WeaponSO newWeapon)
     {
         if (newWeapon != null)
             weaponUI.UpdateInfo(newWeapon.Icon, newWeapon.magazineSize, newWeapon.storedAmmo);

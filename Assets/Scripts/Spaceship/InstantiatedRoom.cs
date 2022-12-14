@@ -18,7 +18,7 @@ public class InstantiatedRoom : MonoBehaviour
   [HideInInspector] public Tilemap collisionTilemap;
   [HideInInspector] public Tilemap minimapTilemap;
   [HideInInspector] public Bounds roomColliderBounds;
-  private BoxCollider2D boxCollider2D;
+  public BoxCollider2D boxCollider2D;
 
   private void Awake()
   {
@@ -91,6 +91,11 @@ public class InstantiatedRoom : MonoBehaviour
     boxCollider2D.enabled = false;
   }
 
+  public void EnableRoomCollider()
+  {
+    boxCollider2D.enabled = true;
+  }
+
   public void LockDoors()
   {
     SpaceshipDoor[] doorArray = GetComponentsInChildren<SpaceshipDoor>();
@@ -102,6 +107,28 @@ public class InstantiatedRoom : MonoBehaviour
     }
 
     DisableRoomCollider();
+  }
+
+  public void UnlockDoors(float doorUnlockDelay)
+  {
+    StartCoroutine(UnlockDoorsRoutine(doorUnlockDelay));
+  }
+
+  private IEnumerator UnlockDoorsRoutine(float doorUnlockDelay)
+  {
+    if (doorUnlockDelay > 0f)
+      yield return new WaitForSeconds(doorUnlockDelay);
+
+    SpaceshipDoor[] doorArray = GetComponentsInChildren<SpaceshipDoor>();
+
+    // Trigger open doors
+    foreach (SpaceshipDoor door in doorArray)
+    {
+      door.UnlockDoor();
+    }
+
+    // Enable room trigger collider
+    EnableRoomCollider();
   }
 
   private void BlockOffUnusedDoorways()

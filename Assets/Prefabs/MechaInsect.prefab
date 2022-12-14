@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 614406756359852973}
   - component: {fileID: 1061715953182048362}
   - component: {fileID: -798309329442708867}
+  - component: {fileID: -3421114578153781054}
   m_Layer: 6
   m_Name: MechaInsect
   m_TagString: Enemy
@@ -256,7 +257,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1425931169
-  m_SortingLayer: 4
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -907353698, guid: 61c37af5bc18026468d148cd7ca8a7a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -599,6 +600,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3421114578153781054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039306468364581178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2dc2a17d48b76408a50e469a1b330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3695577035281811305
 GameObject:
   m_ObjectHideFlags: 0

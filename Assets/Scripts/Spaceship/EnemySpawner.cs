@@ -103,10 +103,9 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
           yield return null;
         }
 
-        Vector3Int cellPosition = (Vector3Int)currentRoom.spawnPositionArray[0];
-
+        Vector3 enemySpawnPosition = currentRoom.instantiatedRoom.boxCollider2D.bounds.center;
         // Create Enemy - Get next enemy type to spawn 
-        CreateEnemy(randomEnemyHelperClass.GetItem(), grid.CellToWorld(cellPosition));
+        CreateEnemy(randomEnemyHelperClass.GetItem(), enemySpawnPosition);
 
         yield return new WaitForSeconds(GetEnemySpawnInterval());
       }
@@ -146,9 +145,47 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
     // Instantiate enemy
     GameObject enemy = Instantiate(enemyDetails.enemyPrefab, position, Quaternion.identity, transform);
 
-    // Initialize Enemy
-    //enemy.GetComponent<Enemy>().EnemyInitialization(enemyDetails, enemiesSpawnedSoFar, dungeonLevel);
+    // Initialize Enemy - can be used to modify enemy behaviour
+    enemy.GetComponent<Enemy>().EnemyInitialization();
 
+    enemy.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
+  }
+
+  private void Enemy_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
+  {
+    Debug.Log("Enemy destroyed");
+    // Unsubscribe from event
+    destroyedEvent.OnDestroyed -= Enemy_OnDestroyed;
+
+    // reduce current enemy count
+    currentEnemyCount--;
+
+    // Score points - call points scored event
+    StaticEventHandler.CallPointsScoredEvent(destroyedEventArgs.points);
+
+    if (currentEnemyCount <= 0 && enemiesSpawnedSoFar == enemiesToSpawn)
+    {
+      currentRoom.isClearedOfEnemies = true;
+
+      // Set game state
+      if (SpaceshipGameManager.Instance.gameState == GameState.engagingEnemies)
+      {
+        SpaceshipGameManager.Instance.gameState = GameState.playingLevel;
+        SpaceshipGameManager.Instance.previousGameState = GameState.engagingEnemies;
+      }
+
+      else if (SpaceshipGameManager.Instance.gameState == GameState.engagingBoss)
+      {
+        SpaceshipGameManager.Instance.gameState = GameState.bossStage;
+        SpaceshipGameManager.Instance.previousGameState = GameState.engagingBoss;
+      }
+
+      // unlock doors
+      currentRoom.instantiatedRoom.UnlockDoors(0.1f);
+
+      // Trigger room enemies defeated event
+      StaticEventHandler.CallRoomEnemiesDefeatedEvent(currentRoom);
+    }
   }
 
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class GunManager : MonoBehaviour
         hudScript = GetComponentInParent<HudScript>();
         SelectGun();
     }
+
+   
 
     // Update is called once per frame
     void Update()
@@ -90,6 +93,17 @@ public class GunManager : MonoBehaviour
         //    SelectGun();
         //}
 
+    }
+
+    public void AddAmmoToCurrentWeaponSlot(WeaponSlot weaponSlot, int ammo)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i)?.GetComponent<IWeaponData>().GetWeaponSlot() == weaponSlot)
+            {
+                transform.GetChild(i)?.GetComponent<GunShooting>().AddAmmo(ammo);
+            }
+        }
     }
 
     public void AddAmmoToCurrentWeaponType(WeaponType weaponType, int currentStoredAmmoAdded)

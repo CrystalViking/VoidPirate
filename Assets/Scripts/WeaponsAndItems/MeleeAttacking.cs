@@ -26,6 +26,7 @@ public class MeleeAttacking : MonoBehaviour, IWeaponData
     public void OnEnable()
     {
         attackBlocked = false;
+        IsAttacking = false;
         weaponAudioSource.Stop();
     }
 

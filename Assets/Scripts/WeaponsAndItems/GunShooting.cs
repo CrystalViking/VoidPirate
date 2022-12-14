@@ -182,8 +182,14 @@ public class GunShooting : MonoBehaviour, IWeaponData
 
     public void AddAmmo(int addAmmoInStorage)
     {
-        currentAmmoStorage += addAmmoInStorage;
-
+        if(addAmmoInStorage > weaponData.storedAmmo - currentAmmoStorage)
+        {
+            currentAmmoStorage = weaponData.storedAmmo;
+        }
+        else
+        {
+            currentAmmoStorage += addAmmoInStorage;
+        }
         //update hud event
     }
 

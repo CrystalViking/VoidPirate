@@ -2,4 +2,6 @@
 {
     WeaponSlot GetWeaponSlot();
     WeaponType GetWeaponType();
+
+    WeaponSO GetWeaponData();
 }

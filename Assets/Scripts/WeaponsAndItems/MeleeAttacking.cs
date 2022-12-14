@@ -100,4 +100,9 @@ public class MeleeAttacking : MonoBehaviour, IWeaponData
     {
         return weaponData.weaponType;
     }
+
+    public WeaponSO GetWeaponData()
+    {
+        return weaponData;
+    }
 }

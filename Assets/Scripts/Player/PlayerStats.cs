@@ -33,7 +33,7 @@ public class PlayerStats : ActorStats
     public override void CheckHealth()
     {
         base.CheckHealth();
-        hud.UpdateHealth(health);
+        //hud.UpdateHealth(health);
 
         OnHealthChange?.Invoke((float)health/maxHealth);
     }

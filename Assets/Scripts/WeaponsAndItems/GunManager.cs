@@ -14,10 +14,13 @@ public class GunManager : MonoBehaviour
 
     private GameObject currentWeapon;
 
+    private HudScript hudScript;
+
 
     void Start()
     {
         //guns = new GameObject[2];
+        hudScript = GetComponentInParent<HudScript>();
         SelectGun();
     }
 
@@ -25,6 +28,19 @@ public class GunManager : MonoBehaviour
     void Update()
     {
         TakeInput();
+        if(currentWeapon.GetComponent<IWeaponData>().GetWeaponSlot() == WeaponSlot.Melee)
+        {
+            hudScript?.UpdateWeaponUI(currentWeapon.GetComponent<IWeaponData>().GetWeaponData(),
+                                 0,
+                                 0);
+        }
+        else
+        {
+            hudScript?.UpdateWeaponUI(currentWeapon.GetComponent<IWeaponData>().GetWeaponData(),
+                                 currentWeapon.GetComponent<GunShooting>().GetCurrentMagAmmo(),
+                                 currentWeapon.GetComponent<GunShooting>().GetCurrentStoredAmmo());
+        }
+        
     }
 
 

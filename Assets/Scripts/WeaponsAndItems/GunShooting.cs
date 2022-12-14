@@ -84,6 +84,16 @@ public class GunShooting : MonoBehaviour, IWeaponData
         return ammoAmount;
     }
 
+    public int GetCurrentMagAmmo()
+    {
+        return currentAmmo;
+    }
+
+    public int GetCurrentStoredAmmo()
+    {
+        return currentAmmoStorage;
+    }
+
     private void ReloadFinished(object sender, EventArgs e)
     {
         magIsEmpty = false;

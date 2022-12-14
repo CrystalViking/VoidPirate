@@ -10,6 +10,9 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
     protected Task roomCoroutine;
     public AudioSource bite;
     private bool attacked;
+    public ParticleSystem particles;
+    public GameObject cashParticles;
+    private bool moneySpawned;
 
     public int Health { get; set; }
 
@@ -22,6 +25,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
         useRoomLogic = enemyData.useRoomLogic;
         activeBehaviour = enemyData.activeBehaviour;
         isUndestructible = false;
+        moneySpawned = false;
 
         enemyMovement = GetComponent<MeleeEnemyMovement>();
 
@@ -118,6 +122,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
             audioSource.Play();
 
         transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+     
     }
 
     public override void Idle()
@@ -152,8 +157,11 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
     {
         if (!isUndestructible)
         {
+            if(!particles.isPlaying)
+                particles.Play();
             healthBar.SetHealthBarActive();
             health -= damage;
+            
             if (health > enemyData.maxHealth)
                 health = enemyData.maxHealth;
             healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
@@ -164,7 +172,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
     protected override void CheckDeath()
     {
         if (health <= 0)
-        {
+        {           
             healthBar.SetHealthBarInActive();
             animator.SetIsDeadTrue();
 
@@ -174,6 +182,11 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
             if (useRoomLogic)
                 RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
 
+            if (!moneySpawned)
+            {
+                Instantiate(cashParticles, transform.position, Quaternion.identity);
+                moneySpawned = true;
+            }
             Destroy(gameObject, enemyData.despawnTimer);
 
         }

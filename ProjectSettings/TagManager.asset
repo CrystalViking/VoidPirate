@@ -16,6 +16,7 @@ TagManager:
   - Projectile
   - EnemyProjectile
   - Room
+  - Particles
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Blocking Layer
   - Floor
   - Player
-  - 
+  - Particle System
   - 
   - 
   - 
@@ -59,21 +60,24 @@ TagManager:
   - name: BlockingBlocks
     uniqueID: 2828808053
     locked: 0
-  - name: Enemies
-    uniqueID: 87052025
-    locked: 0
-  - name: Top
-    uniqueID: 2869036127
-    locked: 0
-  - name: Item
-    uniqueID: 2243441277
-    locked: 0
   - name: Door
     uniqueID: 3613609851
     locked: 0
   - name: Wall
     uniqueID: 1474003349
     locked: 0
+  - name: Item
+    uniqueID: 2243441277
+    locked: 0
+  - name: Enemies
+    uniqueID: 87052025
+    locked: 0
+  - name: Top
+    uniqueID: 2869036127
+    locked: 0
   - name: UpperParticles (Stars)
     uniqueID: 2194243131
+    locked: 0
+  - name: Particles
+    uniqueID: 509006739
     locked: 0

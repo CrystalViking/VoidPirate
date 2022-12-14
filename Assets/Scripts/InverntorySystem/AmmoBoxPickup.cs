@@ -6,7 +6,8 @@ public class AmmoBoxPickup : PickableItem, IPickable
 {
     [SerializeField] ScriptableAmmoBox ammoBox;
 
-    private WeaponShooting weaponInterface;
+    //private WeaponShooting weaponInterface;
+    private GunManager weaponInterface;
     private GameObject player;
 
 
@@ -31,7 +32,8 @@ public class AmmoBoxPickup : PickableItem, IPickable
     private void GetReferences()
     {
         player = GameObject.Find("Player");
-        weaponInterface = player.GetComponent<WeaponShooting>();
+        //weaponInterface = player.GetComponent<WeaponShooting>();
+        weaponInterface = player.GetComponentInChildren<GunManager>();
         isInRange = false;
     }
 

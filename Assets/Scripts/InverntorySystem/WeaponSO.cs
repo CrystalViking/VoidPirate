@@ -10,12 +10,13 @@ public enum WeaponType
     AR,
     AutoSniper,
     Shotgun,
+    Laser,
     Special
 }
 
 public enum WeaponSlot
 {
-    Primary, Secondary, Melee, Tertiary
+    Primary, Secondary, Tertiary, Melee
 }
 
 

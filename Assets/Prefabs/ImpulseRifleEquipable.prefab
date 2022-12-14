@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3187377328018829458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2987720511030363783}
+  m_Layer: 9
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2987720511030363783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3187377328018829458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.189, y: 0.015, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7472795314478576426}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7472795314478576425
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +42,7 @@ GameObject:
   - component: {fileID: 7472795314478576426}
   - component: {fileID: 7472795314478576437}
   - component: {fileID: 7472795314478576438}
+  - component: {fileID: 5305381246840547306}
   - component: {fileID: 7472795314478576436}
   - component: {fileID: 7472795314478576427}
   m_Layer: 9
@@ -31,7 +63,8 @@ Transform:
   m_LocalPosition: {x: 0.133, y: -0.062, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2987720511030363783}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,9 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbaac76f6093de4b9207abf7eeb5db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7030676788894008369, guid: c2c98ed91c79f8240aa3770b75a0e729, type: 3}
   weaponData: {fileID: 11400000, guid: f0865a268481cb2438b63cf19fa098e2, type: 2}
   weaponAudioSource: {fileID: 0}
+  firePoint: {fileID: 2987720511030363783}
   isActive: 0
   currentAmmo: 0
   currentAmmoStorage: 0
@@ -73,6 +106,18 @@ MonoBehaviour:
   phaseFlag: 0
   reloadInterrupted: 0
   phaseSeconds: 0
+--- !u!114 &5305381246840547306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7472795314478576425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c8ab6116e824248a25fc184c8663a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &7472795314478576436
 AudioSource:
   m_ObjectHideFlags: 0

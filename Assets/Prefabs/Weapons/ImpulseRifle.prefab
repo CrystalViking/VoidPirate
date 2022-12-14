@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -2051526019
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6501d55aa82e379459ac12cd69d6f912, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7057cc386a9b1e94a8bb127d5b227c8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdbd9c98d888ba4fbf38a1b10ddde2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: f0865a268481cb2438b63cf19fa098e2, type: 2}
-  playerInventory: {fileID: 0}
   itemPickupCode: 101
   destroyOnPickUp: 1
+  itemStackUpCode: 101
+  weapon: {fileID: 11400000, guid: f0865a268481cb2438b63cf19fa098e2, type: 2}

@@ -15,21 +15,26 @@ MonoBehaviour:
   ItemName: DMR
   ItemDescription: A regular DMR
   Icon: {fileID: 21300000, guid: 96f91a3cfcd203d49806f0b356f72286, type: 3}
-  prefab: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+  prefab: {fileID: 311762857886400628, guid: 340f2996f203a354c95cd69f011b4f26, type: 3}
+  projectilePrefab: {fileID: 7030676788894008369, guid: c2c98ed91c79f8240aa3770b75a0e729, type: 3}
   minDamage: 450
   maxDamage: 520
   spread: 0
   range: 0
-  reloadTime: 0
+  reloadTime: 4
   timeBetweenShots: 0
   magazineSize: 10
   bulletsPerTap: 1
   allowButtonHold: 0
   weaponType: 3
-  weaponSlot: 1
+  weaponSlot: 0
   projectileVelocity: 0
   weaponScreenShake: 0
-  projectileForce: 40
+  projectileForce: 80
+  shootSound: {fileID: 8300000, guid: cfa16117c62143e4c9055eb2c083673f, type: 3}
+  reloadPhases:
+  - {fileID: 8300000, guid: ace79a9e0d4a65547af6715539b6e0c0, type: 3}
+  - {fileID: 8300000, guid: c11fb3b3ced9fff40a645a5a5d1157a1, type: 3}
+  - {fileID: 8300000, guid: 805da20df04b72f45b83e70b9f9befdd, type: 3}
   storedAmmo: 50
-  fireRate: 0.8
+  fireRate: 1.2

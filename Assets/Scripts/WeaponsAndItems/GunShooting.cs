@@ -3,16 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunShooting : MonoBehaviour
+public class GunShooting : MonoBehaviour, IWeaponData
 {
-    public GameObject projectile;
+    //public GameObject projectile;
     public WeaponSO weaponData;
     private GunReloading gunReloading;
     [SerializeField]
     private AudioSource weaponAudioSource;
 
     [SerializeField]
+    private Transform firePoint;
+
+    [SerializeField]
     private bool isActive;
+
+    private IBulletShoot bulletShoot;
 
     private float lastShootTime = 0;
 
@@ -22,8 +27,8 @@ public class GunShooting : MonoBehaviour
     private int magAmmoTemp, storedAmmoTemp;
 
     [SerializeField] bool magIsEmpty = false;
-    [SerializeField] bool isReloading = false;
-    [SerializeField] bool reloadingInterrupted = false;
+    [SerializeField] protected bool isReloading = false;
+    [SerializeField] protected bool reloadingInterrupted = false;
 
 
     private bool canShoot;
@@ -33,7 +38,7 @@ public class GunShooting : MonoBehaviour
     {
         weaponAudioSource.Stop();
         isReloading = gunReloading.IsReloading();
-        if(isReloading)
+        if (isReloading)
             reloadingInterrupted = true;
     }
 
@@ -58,6 +63,27 @@ public class GunShooting : MonoBehaviour
         isReloading = gunReloading.IsReloading();
     }
 
+    public WeaponSO GetWeaponData()
+    {
+        return weaponData;
+    }
+
+    public WeaponSlot GetWeaponSlot()
+    {
+        return weaponData.weaponSlot;
+    }
+
+    public WeaponType GetWeaponType()
+    {
+        return weaponData.weaponType;
+    }
+
+    public (int,int) GetAmmoAmountInfo()
+    {
+        (int, int) ammoAmount = (currentAmmo, currentAmmoStorage);
+        return ammoAmount;
+    }
+
     private void ReloadFinished(object sender, EventArgs e)
     {
         magIsEmpty = false;
@@ -68,21 +94,21 @@ public class GunShooting : MonoBehaviour
     }
 
 
-    private void TakeInput()
+    protected virtual void TakeInput()
     {
-        if(IsActive())
+        if (IsActive())
         {
-            if(weaponData != null && !isReloading)
+            if (weaponData != null && !isReloading)
             {
-                if(Input.GetKey(KeyCode.Mouse0))
+                if (Input.GetKey(KeyCode.Mouse0))
                 {
                     Shoot();
                 }
             }
 
-            if(isReloading == false || reloadingInterrupted == true)
+            if (isReloading == false || reloadingInterrupted == true)
             {
-                if(Input.GetKeyDown(KeyCode.R))
+                if (Input.GetKeyDown(KeyCode.R))
                 {
                     Reload();
                 }
@@ -90,7 +116,7 @@ public class GunShooting : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    protected virtual void Shoot()
     {
         if (IfCanShoot())
         {
@@ -103,19 +129,20 @@ public class GunShooting : MonoBehaviour
                 weaponAudioSource.Play();
 
 
+                bulletShoot.InstantiateBullet(weaponData, firePoint);
+
+                //GameObject spell = Instantiate(weaponData.projectilePrefab, firePoint.position, Quaternion.identity);
+                ////Vector3 worldMousePosition3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                ////Vector2 mousePos = new Vector2(worldMousePosition3D.x, worldMousePosition3D.y);
+                ////Vector2 myPos = transform.position;
+                ////Vector2 direction = (mousePos - myPos).normalized;
+                //spell.GetComponent<Rigidbody2D>().velocity = firePoint.right * weaponData.projectileForce;
+                //spell.GetComponent<TestProjectile>().damage = UnityEngine.Random.Range(weaponData.minDamage, weaponData.maxDamage);
+                ////spell.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(mousePos - myPos));
+                //spell.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(firePoint.right));
 
 
-                GameObject spell = Instantiate(projectile, transform.position, Quaternion.identity);
-                Vector3 worldMousePosition3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 mousePos = new Vector2(worldMousePosition3D.x, worldMousePosition3D.y);
-                Vector2 myPos = transform.position;
-                Vector2 direction = (mousePos - myPos).normalized;
-                spell.GetComponent<Rigidbody2D>().velocity = direction * weaponData.projectileForce;
-                spell.GetComponent<TestProjectile>().damage = UnityEngine.Random.Range(weaponData.minDamage, weaponData.maxDamage);
-                spell.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(mousePos - myPos));
-
-
-                UseAmmo(1,0);
+                UseAmmo(1, 0);
             }
         }
     }
@@ -130,7 +157,7 @@ public class GunShooting : MonoBehaviour
 
     private void UseAmmo(int useAmmoInMag, int useAmmoInStorage)
     {
-        if(currentAmmo <= 0)
+        if (currentAmmo <= 0)
         {
             magIsEmpty = true;
         }
@@ -143,6 +170,13 @@ public class GunShooting : MonoBehaviour
         }
     }
 
+    public void AddAmmo(int addAmmoInStorage)
+    {
+        currentAmmoStorage += addAmmoInStorage;
+
+        //update hud event
+    }
+
     private void AddAmmo(int addAmmoInMag, int addAmmoInStorage)
     {
         currentAmmo += addAmmoInMag;
@@ -152,12 +186,12 @@ public class GunShooting : MonoBehaviour
         //update hud event
     }
 
-    private bool IsActive()
+    protected bool IsActive()
     {
         return gameObject.activeInHierarchy;
     }
 
-    private void Reload()
+    protected virtual void Reload()
     {
         int mag = weaponData.magazineSize;
         int currentAmmoTemp = currentAmmo;
@@ -169,22 +203,22 @@ public class GunShooting : MonoBehaviour
         int ammoToReplenish = mag - currentAmmoTemp;
         int ammoReplenished = 0;
 
-        if(currentAmmoStorageTemp > 0)
+        if (currentAmmoStorageTemp > 0)
         {
-            if(currentAmmoTemp == 0)
+            if (currentAmmoTemp == 0)
             {
-                if(currentAmmoStorageTemp > mag)
+                if (currentAmmoStorageTemp > mag)
                 {
                     currentAmmoTemp = mag;
                     currentAmmoStorageTemp -= mag;
 
                     ammoReplenished = mag;
                 }
-                else if(currentAmmoStorageTemp <= mag
+                else if (currentAmmoStorageTemp <= mag
                         &&
                         currentAmmoStorageTemp > 0)
                 {
-                    if(currentAmmoStorageTemp >= ammoToReplenish)
+                    if (currentAmmoStorageTemp >= ammoToReplenish)
                     {
                         currentAmmoTemp = mag;
                         currentAmmoStorageTemp -= ammoToReplenish;
@@ -200,11 +234,11 @@ public class GunShooting : MonoBehaviour
                     }
                 }
             }
-            else if(currentAmmoTemp > 0)
+            else if (currentAmmoTemp > 0)
             {
                 if (currentAmmoStorageTemp > 0)
                 {
-                    if(currentAmmoStorageTemp > ammoToReplenish)
+                    if (currentAmmoStorageTemp > ammoToReplenish)
                     {
                         currentAmmoTemp = mag;
                         currentAmmoStorageTemp -= ammoToReplenish;
@@ -237,7 +271,7 @@ public class GunShooting : MonoBehaviour
         }
         else if (reloadingInterrupted)
         {
-            reloadingInterrupted = false; 
+            reloadingInterrupted = false;
             gunReloading.Reload(weaponData);
             magAmmoTemp = currentAmmoTemp;
             storedAmmoTemp = currentAmmoStorageTemp;
@@ -271,19 +305,20 @@ public class GunShooting : MonoBehaviour
         return false;
     }
 
-    public static float GetAngleFromVectorFloat(Vector3 dir)
-    {
-        dir = dir.normalized;
-        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        if (n < 0) n += 360;
+    //public static float GetAngleFromVectorFloat(Vector3 dir)
+    //{
+    //    dir = dir.normalized;
+    //    float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+    //    if (n < 0) n += 360;
 
-        return n;
-    }
+    //    return n;
+    //}
 
     private void GetReferences()
     {
         weaponAudioSource = GetComponent<AudioSource>();
         gunReloading = GetComponent<GunReloading>();
+        bulletShoot = GetComponent<ImpulseBullet>();
         gunReloading.ReloadFinished += ReloadFinished;
     }
 

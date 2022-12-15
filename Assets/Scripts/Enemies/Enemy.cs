@@ -22,7 +22,10 @@ public enum EnemyState
     MeleeAttack,
     RangeAttack,
     Consume,
-    Teleport
+    Teleport,
+    Reborn,
+    MeleeAttackReborned,
+    MoveReborned
 }
 
 public abstract class Enemy : MonoBehaviour, IEnemy

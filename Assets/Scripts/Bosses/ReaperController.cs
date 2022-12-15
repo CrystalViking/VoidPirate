@@ -5,33 +5,14 @@ using UnityEngine.UI;
 
 public class ReaperController : Enemy, IEnemy
 {
-    /*public enum EnemyState
-    {
-        Idle,
-        Move,
-        MeleeAttack,
-        RangeAttack,
-        Spawn,
-        Consume,
-        Teleport,
-        Die
-
-    }*/
-
+    
     public float speed;
     public float attackRange;
     public GameObject[] bullet;
     public float timeBetweenAttacks;
-    //private float nextAttackTime;
     private Transform player;
     private Animator anim;
-    //public float health;
     public float maxHealth;
-    //public GameObject healthBar;
-    //public Slider healthBarSlider;
-    //public EnemyState currState = EnemyState.Idle;
-    //public bool isInRoom = false;
-    //public bool isDead = false;
     private bool damagedPlayer = false;
     private bool attackedPlayer = false;
     private bool spawnedMinion = false;
@@ -42,6 +23,9 @@ public class ReaperController : Enemy, IEnemy
     public GameObject portal;
     private bool isSpawned = false;
     public AudioSource[] audioSources;
+    public ParticleSystem particles;
+    public GameObject cashParticles;
+    private bool moneySpawned;
 
     void Start()
     {
@@ -121,6 +105,8 @@ public class ReaperController : Enemy, IEnemy
 
     public new void TakeDamage(float damage)
     {
+        if (!particles.isPlaying)
+            particles.Play();
         healthBar.SetHealthBarActive();
         health -= damage;
         healthBar.SetHealthBarValue(CalculateHealthPercentage());
@@ -137,6 +123,12 @@ public class ReaperController : Enemy, IEnemy
 
             if (useRoomLogic)
                 RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
+
+            if (!moneySpawned)
+            {
+                Instantiate(cashParticles, new Vector2(transform.position.x, transform.position.y + 1),Quaternion.identity);
+                moneySpawned = true;
+            }
 
             Destroy(gameObject, 0.5f);
         }

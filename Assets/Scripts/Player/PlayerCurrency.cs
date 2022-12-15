@@ -26,7 +26,7 @@ public class PlayerCurrency : MonoBehaviour
 
     public void AddCoins(int coinAmount)
     {
-        total = coinAmount * singleCoinValue;
+        total = total + coinAmount * singleCoinValue;
     }
 
     public void SpendCoins(int amount)

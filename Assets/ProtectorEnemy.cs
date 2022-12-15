@@ -7,6 +7,7 @@ public class ProtectorEnemy : MeleeEnemy
     new private ProtectorEnemyAnimator animator;
     public GameObject ally;
     private bool autioset;
+    private bool moneySpawned;
 
     void Start()
     {
@@ -33,16 +34,6 @@ public class ProtectorEnemy : MeleeEnemy
         }
 
     }
-
-    /*void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.tag);
-        if(collision.tag == "Wall" || collision.tag == "Door")
-        {
-            health = -1;
-            CheckDeath();
-        }
-    }*/
 
     public new void ScrollStates()
     {
@@ -164,6 +155,8 @@ public class ProtectorEnemy : MeleeEnemy
     {
         if (!isUndestructible)
         {
+            if (!particles.isPlaying)
+                particles.Play();
             healthBar.SetHealthBarActive();
             health -= damage;
             if (health > enemyData.maxHealth)
@@ -188,6 +181,12 @@ public class ProtectorEnemy : MeleeEnemy
 
             if (useRoomLogic)
                 RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
+
+            if (!moneySpawned)
+            {
+                Instantiate(cashParticles, transform.position, Quaternion.identity);
+                moneySpawned = true;
+            }
 
             Destroy(gameObject, enemyData.despawnTimer);
 

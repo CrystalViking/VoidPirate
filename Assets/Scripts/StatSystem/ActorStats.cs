@@ -49,6 +49,11 @@ public class ActorStats : MonoBehaviour, IActorStats
         return health;
     }
 
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public virtual void Die()
     {
         isDead = true;

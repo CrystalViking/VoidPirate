@@ -21,6 +21,9 @@ public class EstrellaController : Enemy, IEnemy
     public GameObject portal;
     private bool isSpawned = false;
     public AudioSource[] audioSources;
+    public ParticleSystem particles;
+    public GameObject cashParticles;
+    private bool moneySpawned;
 
     void Start()
     {
@@ -75,6 +78,8 @@ public class EstrellaController : Enemy, IEnemy
 
     public new void TakeDamage(float damage)
     {
+        if (!particles.isPlaying)
+            particles.Play();
         healthBar.SetHealthBarActive();
         health -= damage;
         healthBar.SetHealthBarValue(CalculateHealthPercentage());
@@ -91,6 +96,12 @@ public class EstrellaController : Enemy, IEnemy
 
             if (useRoomLogic)
                 RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
+
+            if (!moneySpawned)
+            {
+                Instantiate(cashParticles, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
+                moneySpawned = true;
+            }
 
             Destroy(gameObject, 1.0f); // TODO: consider using scriptable object
         }

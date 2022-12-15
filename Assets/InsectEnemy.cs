@@ -6,6 +6,7 @@ public class InsectEnemy : MeleeEnemy
 {
     new private MeleeEnemyAnimator animator;
     private bool attacked;
+    private bool moneySpawned;
     //public AudioSource bite;
     void Start()
     {
@@ -102,6 +103,7 @@ public class InsectEnemy : MeleeEnemy
             audioSource.Play();
 
         transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+     
     }
 
     public override void Idle()
@@ -137,6 +139,8 @@ public class InsectEnemy : MeleeEnemy
     {
         if (!isUndestructible)
         {
+            if (!particles.isPlaying)
+                particles.Play();
             healthBar.SetHealthBarActive();
             health -= damage;
             if (health > enemyData.maxHealth)
@@ -157,6 +161,12 @@ public class InsectEnemy : MeleeEnemy
 
             if (useRoomLogic)
                 RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
+
+            if (!moneySpawned)
+            {
+                Instantiate(cashParticles, transform.position, Quaternion.identity);
+                moneySpawned = true;
+            }
 
             Destroy(gameObject, enemyData.despawnTimer);
 

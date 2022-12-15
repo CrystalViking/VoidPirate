@@ -547,6 +547,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   analogGlitch: {fileID: 0}
   isOnBulletHell: 0
+  volume: {fileID: 1566702869}
+  scanLineJiterLowValue: 0.2
+  verticalJumpLowValue: 0.02
+  scanLineJiterHighValue: 0.5
+  verticalJumpHighValue: 0.05
 --- !u!1001 &688930716
 PrefabInstance:
   m_ObjectHideFlags: 0

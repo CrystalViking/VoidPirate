@@ -101,7 +101,8 @@ public class InsectEnemy : MeleeEnemy
         if (!audioSource.isPlaying)
             audioSource.Play();
 
-        transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+        //transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+        AstarAI.instance.Move(150f);
     }
 
     public override void Idle()

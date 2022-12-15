@@ -5,6 +5,7 @@ using UnityEngine;
 public class MadDroidEnemy : RangedEnemy
 {
     new private MadEnemyAnimator animator;
+    private bool moneySpawned;
 
     void Start()
     {
@@ -95,6 +96,8 @@ public class MadDroidEnemy : RangedEnemy
     {
         if (!isUndestructible)
         {
+            if (!particles.isPlaying)
+                particles.Play();
             healthBar.SetHealthBarActive();
             health -= damage;
             if (health > enemyData.maxHealth)
@@ -115,6 +118,12 @@ public class MadDroidEnemy : RangedEnemy
 
             if (useRoomLogic)
                 RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
+
+            if (!moneySpawned)
+            {
+                Instantiate(cashParticles, transform.position, Quaternion.identity);
+                moneySpawned = true;
+            }
 
             Destroy(gameObject, enemyData.despawnTimer);
         }

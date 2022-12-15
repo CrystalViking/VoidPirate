@@ -23,5 +23,30 @@ public class AtarosRotation : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
         }
+        else
+        {
+            try
+            {
+                Transform red = transform.GetChild(4);
+                Transform blue = transform.GetChild(5);
+                if ((player.transform.position.x > transform.position.x))
+                {
+                    red.parent = null;
+                    blue.parent = null;
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    red.parent = transform;
+                    blue.parent = transform;
+                }
+                else
+                {
+                    red.parent = null;
+                    blue.parent = null;
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                    red.parent = transform;
+                    blue.parent = transform;
+                }
+            }
+            catch { }
+        }
     }
 }

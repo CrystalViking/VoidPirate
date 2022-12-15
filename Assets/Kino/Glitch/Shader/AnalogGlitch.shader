@@ -46,7 +46,7 @@ Shader "Hidden/Kino/Glitch/Analog"
     half4 frag(v2f_img i) : SV_Target
     {
         float u = i.uv.x;
-        float v = i.uv.y;
+        float v = -i.uv.y;
 
         // Scan line jitter
         float jitter = nrand(v, _Time.x) * 2 - 1;

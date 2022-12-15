@@ -153,7 +153,6 @@ public class EnemySpawner : SingletonMonobehaviour<EnemySpawner>
 
   private void Enemy_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
   {
-    Debug.Log("Enemy destroyed");
     // Unsubscribe from event
     destroyedEvent.OnDestroyed -= Enemy_OnDestroyed;
 

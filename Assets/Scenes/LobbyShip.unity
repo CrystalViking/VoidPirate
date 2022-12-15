@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionTime: 1
-  crossFade: {fileID: 558502953}
+  crossFade: {fileID: 653304587}
 --- !u!4 &392293749
 Transform:
   m_ObjectHideFlags: 0
@@ -5677,6 +5677,11 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5770115089231195137, guid: 7686b5dd27a5d52468a61107dfc883a0, type: 3}
   m_PrefabInstance: {fileID: 5770115090171073757}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &653304587 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 428577259393789091, guid: 2023cc4b51bbfae44addbaadf035661f, type: 3}
+  m_PrefabInstance: {fileID: 2092284824}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &723950753 stripped
 GameObject:

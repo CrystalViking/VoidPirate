@@ -31,19 +31,28 @@ public class GunManager : MonoBehaviour
     void Update()
     {
         TakeInput();
-        if(currentWeapon.GetComponent<IWeaponData>().GetWeaponSlot() == WeaponSlot.Melee)
+
+        UpdateHud();
+         
+    }
+
+    void UpdateHud()
+    {
+        if (transform.childCount > 0)
         {
-            hudScript?.UpdateWeaponUI(currentWeapon.GetComponent<IWeaponData>().GetWeaponData(),
-                                 0,
-                                 0);
+            if (currentWeapon.GetComponent<IWeaponData>().GetWeaponSlot() == WeaponSlot.Melee)
+            {
+                hudScript?.UpdateWeaponUI(currentWeapon.GetComponent<IWeaponData>().GetWeaponData(),
+                                     0,
+                                     0);
+            }
+            else
+            {
+                hudScript?.UpdateWeaponUI(currentWeapon.GetComponent<IWeaponData>().GetWeaponData(),
+                                     currentWeapon.GetComponent<GunShooting>().GetCurrentMagAmmo(),
+                                     currentWeapon.GetComponent<GunShooting>().GetCurrentStoredAmmo());
+            }
         }
-        else
-        {
-            hudScript?.UpdateWeaponUI(currentWeapon.GetComponent<IWeaponData>().GetWeaponData(),
-                                 currentWeapon.GetComponent<GunShooting>().GetCurrentMagAmmo(),
-                                 currentWeapon.GetComponent<GunShooting>().GetCurrentStoredAmmo());
-        }
-        
     }
 
 

@@ -171,5 +171,6 @@ public abstract class Enemy : MonoBehaviour, IEnemy
   public void EnemyInitialization()
   {
     this.enemyData.useRoomLogic = false;
+    this.enemyData.activeBehaviour = true;
   }
 }

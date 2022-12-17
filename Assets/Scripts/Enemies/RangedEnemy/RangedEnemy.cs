@@ -7,7 +7,9 @@ public class RangedEnemy : Enemy, IRangedEnemy
 {
   public GameObject projectile;
   public AudioSource spit;
-
+  public ParticleSystem particles;
+  public GameObject cashParticles;
+  private bool moneySpawned;
 
   void Start()
   {
@@ -123,6 +125,8 @@ public class RangedEnemy : Enemy, IRangedEnemy
   {
     if (!isUndestructible)
     {
+      if (!particles.isPlaying)
+        particles.Play();
       healthBar.SetHealthBarActive();
       health -= damage;
       if (health > enemyData.maxHealth)
@@ -145,6 +149,12 @@ public class RangedEnemy : Enemy, IRangedEnemy
 
       if (useRoomLogic)
         RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
+
+      if (!moneySpawned)
+      {
+        Instantiate(cashParticles, transform.position, Quaternion.identity);
+        moneySpawned = true;
+      }
 
       Destroy(gameObject, enemyData.despawnTimer);
     }

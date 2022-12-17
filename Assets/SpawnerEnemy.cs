@@ -10,6 +10,7 @@ public class SpawnerEnemy : MeleeEnemy
   public GameObject[] allies;
   private int X;
   public GameObject spawnedAlly;
+  private bool moneySpawned;
 
   void Start()
   {
@@ -126,6 +127,8 @@ public class SpawnerEnemy : MeleeEnemy
   {
     if (!isUndestructible)
     {
+      if (!particles.isPlaying)
+        particles.Play();
       healthBar.SetHealthBarActive();
       health -= damage;
       if (health > enemyData.maxHealth)
@@ -149,6 +152,12 @@ public class SpawnerEnemy : MeleeEnemy
 
       if (useRoomLogic)
         RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
+
+      if (!moneySpawned)
+      {
+        Instantiate(cashParticles, transform.position, Quaternion.identity);
+        moneySpawned = true;
+      }
 
       Destroy(gameObject, enemyData.despawnTimer);
 

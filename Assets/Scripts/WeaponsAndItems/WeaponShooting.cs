@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponShooting : MonoBehaviour
 {
     public GameObject projectile;
-    private Weapon currentWeapon;
+    private WeaponSO currentWeapon;
     public AudioSource pWeapon;
     public AudioSource sWeapon;
 
@@ -117,7 +117,7 @@ public class WeaponShooting : MonoBehaviour
 
     }
 
-    public void InitAmmo(int slot, Weapon weapon)
+    public void InitAmmo(int slot, WeaponSO weapon)
     {
         // primary
         if(slot == 0)

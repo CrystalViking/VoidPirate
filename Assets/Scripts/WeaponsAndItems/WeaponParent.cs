@@ -27,6 +27,11 @@ public class WeaponParent : MonoBehaviour
         IsAttacking = false;
     }
 
+    public void OnEnable()
+    {
+        attackBlocked = false;
+    }
+
     private void Start()
     {
         playerManager = GetComponent<PlayerManager>();

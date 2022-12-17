@@ -18,7 +18,7 @@ public class EquipmentManager : MonoBehaviour
 
     private WeaponParent weaponParent;
 
-    [SerializeField] Weapon defaultMeleeWeapon = null;
+    [SerializeField] WeaponSO defaultMeleeWeapon = null;
 
     // Start is called before the first frame update
     void Start()
@@ -90,18 +90,18 @@ public class EquipmentManager : MonoBehaviour
     
     private void InstantiateWeapon(GameObject weaponObject, int weaponSlot)
     {
-        Weapon weapon = playerInventory.GetItem(weaponSlot);
+        WeaponSO weapon = playerInventory.GetItem(weaponSlot);
     }
 
-    public Weapon GetCurrentlyUsedWeaponSO()
+    public WeaponSO GetCurrentlyUsedWeaponSO()
     {
-        Weapon weapon = playerInventory.GetItem(currentlyEquippedWeapon);
+        WeaponSO weapon = playerInventory.GetItem(currentlyEquippedWeapon);
         if (weapon != null)
             return weapon;
         return null;
     }
 
-    private void EquipWeapon(Weapon weapon)
+    private void EquipWeapon(WeaponSO weapon)
     {
         if(weapon != null)
         {

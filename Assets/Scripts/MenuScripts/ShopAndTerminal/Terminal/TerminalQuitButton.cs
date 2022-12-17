@@ -10,8 +10,10 @@ public class TerminalQuitButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(terminalWindow != null)
+        if (terminalWindow != null)
+        {
             terminalWindow.SetActive(false);
+        }
     }
 
     // Start is called before the first frame update

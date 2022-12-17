@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private Weapon[] weapons;
+    [SerializeField] private WeaponSO[] weapons;
 
     private WeaponShooting shooting;
 
@@ -12,7 +12,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void InitVariables()
     {
-        weapons = new Weapon[3];
+        weapons = new WeaponSO[3];
     }
 
 
@@ -27,7 +27,7 @@ public class PlayerInventory : MonoBehaviour
         
     }
 
-    public void AddItem(Weapon newItem)
+    public void AddItem(WeaponSO newItem)
     {
         if(weapons[(int)newItem.weaponSlot] != null)
         {
@@ -48,7 +48,7 @@ public class PlayerInventory : MonoBehaviour
         weapons[index] = null;
     }
 
-    public Weapon GetItem(int index)
+    public WeaponSO GetItem(int index)
     {
         if(weapons != null && weapons.Length != 0)
         {

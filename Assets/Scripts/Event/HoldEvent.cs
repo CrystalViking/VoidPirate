@@ -39,33 +39,33 @@ public class HoldEvent : MonoBehaviour
     }
     private void Start()
     {
-        if (sceneInfo.isEventOn == true)
+        /*if (sceneInfo.isEventOn == true)
         {
             audioSource.Play();
             alarm.SetBool("isAlarmOn", true);
-        }
+        }*/
     }
 
     void Update()
     {
-        if (sceneInfo.isEventOn == true)
+        //if (sceneInfo.isEventOn == true)
+        //{
+        /*if(held == false)
         {
-            if(held == false)
-            {
-                TargetIndicator.instance.MarkTarget(GameObject.Find("ShipMonitor").transform);
-            }
-            if (held)
-            {
-                TargetIndicator.instance.MarkTarget(anyObject.transform);
-            }
-         
-            helpText.SetActive(true);
+            TargetIndicator.instance.MarkTarget(GameObject.Find("ShipMonitor").transform);
+        }
+        if (held)
+        {
+            TargetIndicator.instance.MarkTarget(anyObject.transform);
+        }
+        */
+        helpText.SetActive(true);
 
             if (inRange)
             {
                 CheckIfButtonHeld();
             }
-        }
+        //}
     }
     void CheckIfButtonHeld()
     {
@@ -89,9 +89,10 @@ public class HoldEvent : MonoBehaviour
     }
     void ButtonHeld()
     {
-        alarm.SetBool("isAlarmOn", false);
+        /*alarm.SetBool("isAlarmOn", false);
         audioSource.Stop();
-        anyObject.SetActive(true);
+        anyObject.SetActive(true);*/
+        EventManager.instance.EventComplete();
     }
 
     public void SetSlider()

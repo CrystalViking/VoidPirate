@@ -11,6 +11,12 @@ public class PlayerStats : ActorStats
 
     PlayerRenderer playerRenderer;
 
+    [SerializeField]
+    private PlayerStatsSO playerStatsSO;
+
+    [SerializeField]
+    private int weaponInventorySize;
+
     public UnityEvent<float> OnHealthChange;
 
     private void Start()
@@ -27,7 +33,7 @@ public class PlayerStats : ActorStats
     public override void CheckHealth()
     {
         base.CheckHealth();
-        hud.UpdateHealth(health);
+        //hud.UpdateHealth(health);
 
         OnHealthChange?.Invoke((float)health/maxHealth);
     }
@@ -78,7 +84,8 @@ public class PlayerStats : ActorStats
 
     public override void InitVariables(float maxHealth = 100)
     {
-        base.InitVariables(maxHealth);
+        base.InitVariables(playerStatsSO.maxHealth);
+        weaponInventorySize = playerStatsSO.weaponInventorySize;
 
         statModManager = GetComponent<StatModManager>();
         playerRenderer = GetComponent<PlayerRenderer>();

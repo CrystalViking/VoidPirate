@@ -3,40 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - Spawn Point
-  - Rooms
-  - Door
-  - Weapon
-  - Boss
-  - PlayerProjectile
-  - Wall
-  - Floor
-  - Projectile
-  - EnemyProjectile
-  - GroundTilemap
-  - Decoration1Tilemap
-  - Decoration2Tilemap
-  - FrontTilemap
-  - MinimapTilemap
-  - CollisionTilemap
-  - CollitionTilemap
-  - WallsTilemap
-  - Room
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Top
+  - 
   - Water
   - UI
-  - Blocking Layer
-  - Floor
-  - Room
-  - Wall
-  - Player
-  - MiniMap
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -60,49 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Floor
-    uniqueID: 899546395
-    locked: 0
-  - name: BlockingBlocks
-    uniqueID: 2828808053
-    locked: 0
-  - name: Wall
-    uniqueID: 1474003349
-    locked: 0
-  - name: Ground
-    uniqueID: 3222806463
-    locked: 0
-  - name: Ground Decoration 1
-    uniqueID: 224834631
-    locked: 0
-  - name: Ground Decoration 2
-    uniqueID: 1030165769
-    locked: 0
-  - name: Enemies
-    uniqueID: 87052025
-    locked: 0
-  - name: Instances
-    uniqueID: 2832976691
-    locked: 0
-  - name: Front
-    uniqueID: 2466976895
-    locked: 0
-  - name: Collision
-    uniqueID: 3763490459
-    locked: 0
-  - name: Minimap
-    uniqueID: 2077223661
-    locked: 0
-  - name: Top
-    uniqueID: 2869036127
-    locked: 0
-  - name: Item
-    uniqueID: 2243441277
-    locked: 0
-  - name: Door
-    uniqueID: 3613609851
-    locked: 0
-  - name: UpperParticles (Stars)
-    uniqueID: 2194243131
     locked: 0

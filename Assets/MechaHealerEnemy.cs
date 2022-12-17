@@ -9,7 +9,7 @@ public class MechaHealerEnemy : MeleeEnemy
   private bool healed;
   public GameObject enemy;
   private Task delayHeal;
-
+  private bool moneySpawned;
   void Start()
   {
     health = enemyData.maxHealth;
@@ -170,7 +170,7 @@ public class MechaHealerEnemy : MeleeEnemy
   protected override IEnumerator DelayDMG()
   {
     yield return new WaitForSeconds(enemyData.meleeAnimationDamageDelay);
-    if (!attacked)
+    if (!attacked && enemyCalculations.IsInAttackRange())
     {
       GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(enemyData.meleeDamage);
       attacked = true;
@@ -192,6 +192,8 @@ public class MechaHealerEnemy : MeleeEnemy
   {
     if (!isUndestructible)
     {
+      if (!particles.isPlaying)
+        particles.Play();
       healthBar.SetHealthBarActive();
       health -= damage;
       if (health > enemyData.maxHealth)
@@ -203,10 +205,10 @@ public class MechaHealerEnemy : MeleeEnemy
 
   protected override void CheckDeath()
   {
-    DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
-    destroyedEvent.CallDestroyedEvent(false, 1);
     if (health <= 0)
     {
+      DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
+      destroyedEvent.CallDestroyedEvent(false, 1);
       healthBar.SetHealthBarInActive();
       animator.SetIsDeadTrue();
 
@@ -214,6 +216,12 @@ public class MechaHealerEnemy : MeleeEnemy
 
       if (useRoomLogic)
         RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
+
+      if (!moneySpawned)
+      {
+        Instantiate(cashParticles, transform.position, Quaternion.identity);
+        moneySpawned = true;
+      }
 
       Destroy(gameObject, enemyData.despawnTimer);
 

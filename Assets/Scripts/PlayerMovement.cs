@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 pointerInput;
 
     private WeaponParent weaponParent;
+    private GunParent gunParent;
 
 
     [SerializeField]
@@ -43,12 +44,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateWeaponParent()
     {
-        weaponParent.PointerPosition = pointerInput;
+        if(weaponParent != null)
+            weaponParent.PointerPosition = pointerInput;
+        if (gunParent != null)
+            gunParent.PointerPosition = pointerInput;
     }
 
     private void Awake()
     {
         weaponParent = GetComponentInChildren<WeaponParent>();
+        gunParent = GetComponentInChildren<GunParent>();
     }
 
     private void Move()

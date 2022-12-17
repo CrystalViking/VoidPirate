@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.mao-test-h.urp-glitch": {
+      "version": "https://github.com/mao-test-h/URPGlitch.git?path=Assets/URPGlitch",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.render-pipelines.universal": "12.1.7"
+      },
+      "hash": "8a79a27a31f01801af34477840bbc27cafcc4a57"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.5",
       "depth": 0,

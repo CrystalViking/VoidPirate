@@ -10,7 +10,7 @@ public class Radio : MonoBehaviour
     public List<RadioStation> radioStations;
     public int currentStation;
 
-    public float waitBeforeOff = 30;
+    public float waitBeforeOff = 300;
     // Start is called before the first frame update
     void Start()
     {

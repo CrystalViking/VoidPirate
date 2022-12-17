@@ -10,20 +10,24 @@ public enum WeaponType
     AR,
     AutoSniper,
     Shotgun,
+    Laser,
     Special
 }
 
 public enum WeaponSlot
 {
-    Primary, Secondary, Melee
+    Primary, Secondary, Tertiary, Melee
 }
 
 
 [CreateAssetMenu(fileName = "new Weapon", menuName = "Items/Weapon")]
-public class Weapon : Item
+public class WeaponSO : Item
 {
     public GameObject prefab;
     public GameObject projectilePrefab;
+
+    //public EnumValueSO weaponType;
+    //public EnumValueSO weaponSlot;
 
     public float minDamage;
     public float maxDamage;
@@ -38,6 +42,11 @@ public class Weapon : Item
     public float projectileVelocity;
     public float weaponScreenShake;
     public float projectileForce;
+
+    public AudioClip shootSound;
+
+    public List<AudioClip> reloadPhases;
+    
 
 
     public int storedAmmo;

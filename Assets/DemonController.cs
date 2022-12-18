@@ -104,7 +104,7 @@ public class DemonController : Enemy, IEnemy
         if (Time.time > nextAttackTime)
         {
             int r = 0;
-            r = Random.Range(1, 3);
+            r = Random.Range(1, 2);
 
             if (r == 1)
             {

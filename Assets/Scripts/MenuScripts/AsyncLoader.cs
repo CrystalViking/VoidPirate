@@ -22,6 +22,25 @@ public class AsyncLoader : MonoBehaviour
         StartCoroutine(LoadLevelASync(levelToLoad));
     }
 
+    public void DefineRealm(string name = "Chaos")
+    {
+        PlayerPrefs.SetInt("shouldBeEstrella", 0);
+        PlayerPrefs.SetInt("shouldBeReaper", 0);
+        PlayerPrefs.SetInt("shouldBeAtaros", 0);
+        if (name == "Estrella")
+            PlayerPrefs.SetInt("shouldBeEstrella", 1);
+        else if (name == "Reaper")
+            PlayerPrefs.SetInt("shouldBeReaper", 1);
+        else if (name == "Ataros")
+            PlayerPrefs.SetInt("shouldBeAtaros", 1);
+        else if(name == "Chaos")
+        {
+            PlayerPrefs.SetInt("shouldBeEstrella", 1);
+            PlayerPrefs.SetInt("shouldBeReaper", 1);
+            PlayerPrefs.SetInt("shouldBeAtaros", 1);
+        }
+    }
+
     IEnumerator LoadLevelASync(string levelToLoad)
     {
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);

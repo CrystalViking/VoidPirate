@@ -57,7 +57,7 @@ public class AtarosController : Enemy, IEnemy
                 Move();
                 break;
             case (EnemyState.MoveReborned):
-                Move(speed * 2f);
+                Move(speed * 3f);
                 break;
             case (EnemyState.MeleeAttack):
                 Move(speed / 4f);
@@ -242,7 +242,7 @@ public class AtarosController : Enemy, IEnemy
                 {
                     int rR = 0;
 
-                    rR = Random.Range(1, 4);
+                    rR = Random.Range(1, 2);
 
                     if (rR == 1)
                     {
@@ -299,9 +299,10 @@ public class AtarosController : Enemy, IEnemy
         }
 
         anim.SetBool("IsMeleeing", false);
-        currState = EnemyState.MoveReborned;
-       /* if (health < 0)
-            currState = EnemyState.Die;*/
+        //currState = EnemyState.MoveReborned;
+        currState = EnemyState.Idle;
+        /* if (health < 0)
+             currState = EnemyState.Die;*/
     }
 
     IEnumerator Wait()

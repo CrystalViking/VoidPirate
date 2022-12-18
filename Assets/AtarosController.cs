@@ -295,6 +295,7 @@ public class AtarosController : Enemy, IEnemy
         {
             audioSources[0].Play();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(80f);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().HealthPoison(StatModApplicationType.AgentAppliedDebuff, 10, 5);
             damagedPlayer = true;
         }
 

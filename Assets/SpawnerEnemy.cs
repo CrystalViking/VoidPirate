@@ -107,7 +107,7 @@ public class SpawnerEnemy : MeleeEnemy
     protected  IEnumerator DelaySpawn()
     {       
         yield return new WaitForSeconds(enemyData.meleeAnimationDamageDelay);
-        if (!spawned && currState != EnemyState.Die)
+        if (!spawned && currState != EnemyState.Die && activeBehaviour)
         {
             X = Random.Range(0, allies.Length);
             spawnedAlly = Instantiate(allies[X], new Vector2(transform.position.x - 0.2f, transform.position.y), Quaternion.identity);

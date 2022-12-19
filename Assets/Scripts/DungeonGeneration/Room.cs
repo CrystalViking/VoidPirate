@@ -136,14 +136,12 @@ public class Room : MonoBehaviour
         return null;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
 
-
-    // private void OnDrawGizmos()
-    // {
-    //     Gizmos.color = Color.red;
-
-    //     Gizmos.DrawWireCube(transform.position, new Vector3(Width, Height, 0));
-    // }
+        Gizmos.DrawWireCube(transform.position, new Vector3(Width, Height, 0));
+    }
 
     public Vector3 GetRoomCentre()
     {

@@ -33,6 +33,7 @@ public class RangedEnemyProjectile : BaseEnemyProjectile
         else if (!(collision.CompareTag("Enemy") ||
             collision.CompareTag("Boss")||
             collision.CompareTag("Room") ||
+            collision.CompareTag("Projectile") ||
             collision.CompareTag("Untagged")))
         {
             Destroy(gameObject);

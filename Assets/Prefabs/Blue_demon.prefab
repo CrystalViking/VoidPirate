@@ -551,7 +551,7 @@ MonoBehaviour:
   attackRange: 6
   bullet: {fileID: 0}
   timeBetweenAttacks: 2
-  maxHealth: 7000
+  maxHealth: 6000
   isDead: 0
   particles: {fileID: 6049593262563155980}
   ally: {fileID: 0}
@@ -597,7 +597,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6beb0ac9c4a2aef40956e835890b15da, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -31,11 +31,11 @@ public class ObjectRoomSpawner : MonoBehaviour
     {
         int randomIteration = Random.Range(data.spawnerData.minSpawn, data.spawnerData.maxSpawn + 1);
 
-        for (int i = 0; i < randomIteration; i++)
-        {
-            int randomPos = Random.Range(0, grid.availablePoints.Count - 1);
-            GameObject go = Instantiate(data.spawnerData.itemToSpawn, grid.availablePoints[randomPos], Quaternion.identity, transform) as GameObject;
-            grid.availablePoints.RemoveAt(randomPos);
-        }
+            for (int i = 0; i < randomIteration; i++)
+            {
+                int randomPos = Random.Range(0, grid.availablePoints.Count - 1);
+                GameObject go = Instantiate(data.spawnerData.itemToSpawn, grid.availablePoints[randomPos], Quaternion.identity, transform) as GameObject;
+                grid.availablePoints.RemoveAt(randomPos);
+            }       
     }
 }

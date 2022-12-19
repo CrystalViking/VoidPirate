@@ -5,72 +5,76 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class SpaceshipDoor : MonoBehaviour
 {
-  [Space(10)]
-  [Header("Object references")]
-  [Tooltip("Populate this with the BoxCollider2D component from the DoorCollider gameObject")]
-  [SerializeField] private BoxCollider2D doorCollider;
+    [Space(10)]
+    [Header("Object references")]
+    [Tooltip("Populate this with the BoxCollider2D component from the DoorCollider gameObject")]
+    [SerializeField] private BoxCollider2D doorCollider;
 
-  [HideInInspector] public bool isBossRoomDoor = false;
-  private BoxCollider2D doorTrigger;
-  private bool isOpen = false;
-  private bool previouslyOpened = false;
-  private Animator animator;
+    [HideInInspector] public bool isBossRoomDoor = false;
+    private BoxCollider2D doorTrigger;
+    private bool isOpen = false;
+    private bool previouslyOpened = false;
+    private Animator animator;
 
-  private void Awake()
-  {
-    doorCollider.enabled = false;
-    animator = GetComponent<Animator>();
-    doorTrigger = GetComponent<BoxCollider2D>();
-  }
-
-  private void OnTriggerEnter2D(Collider2D collision)
-  {
-    // Later we can add check for player weapon collision here if it has one
-    if (collision.tag == "Player")
+    private void Awake()
     {
-      OpenDoor();
+        doorCollider.enabled = false;
+        animator = GetComponent<Animator>();
+        doorTrigger = GetComponent<BoxCollider2D>();
     }
-  }
 
-  private void OnEnable()
-  {
-
-  }
-
-  public void OpenDoor()
-  {
-    if (!isOpen)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-      isOpen = true;
-      previouslyOpened = true;
-      doorCollider.enabled = false;
-      doorTrigger.enabled = false;
+        // Later we can add check for player weapon collision here if it has one
+        if (collision.tag == "Player")
+        {
+            OpenDoor();
+        }
     }
-  }
 
-  public void LockDoor()
-  {
-    isOpen = false;
-    doorCollider.enabled = true;
-    doorTrigger.enabled = false;
-  }
-
-  public void UnlockDoor()
-  {
-    doorCollider.enabled = false;
-    doorTrigger.enabled = true;
-
-    if (previouslyOpened == true)
+    private void OnEnable()
     {
-      isOpen = false;
-      OpenDoor();
+        animator.SetBool(Animator.StringToHash("open"), isOpen);
     }
-  }
+
+    public void OpenDoor()
+    {
+        if (!isOpen)
+        {
+            isOpen = true;
+            previouslyOpened = true;
+            doorCollider.enabled = false;
+            doorTrigger.enabled = false;
+
+            animator.SetBool(Animator.StringToHash("open"), isOpen);
+        }
+    }
+
+    public void LockDoor()
+    {
+        isOpen = false;
+        doorCollider.enabled = true;
+        doorTrigger.enabled = false;
+
+        animator.SetBool(Animator.StringToHash("open"), isOpen);
+    }
+
+    public void UnlockDoor()
+    {
+        doorCollider.enabled = false;
+        doorTrigger.enabled = true;
+
+        if (previouslyOpened == true)
+        {
+            isOpen = false;
+            OpenDoor();
+        }
+    }
 
 #if UNITY_EDITOR
-  private void OnValidate()
-  {
-    HelperUtilities.ValidateCheckNullValue(this, nameof(doorCollider), doorCollider);
-  }
+    private void OnValidate()
+    {
+        HelperUtilities.ValidateCheckNullValue(this, nameof(doorCollider), doorCollider);
+    }
 #endif
 }

@@ -60,24 +60,36 @@ public class Room : MonoBehaviour
     {
         foreach (Door door in doors)
         {
-
             switch (door.doorType)
             {
                 case Door.DoorType.right:
                     if (!GetRight())
+                    {
                         door.gameObject.SetActive(false);
+                        door.doorWall.gameObject.SetActive(true);
+                    }
                     break;
                 case Door.DoorType.left:
                     if (!GetLeft())
+                    {
                         door.gameObject.SetActive(false);
+                        door.doorWall.gameObject.SetActive(true);
+                    }
                     break;
                 case Door.DoorType.top:
                     if (!GetTop())
+                    {
                         door.gameObject.SetActive(false);
+                        door.doorWall.gameObject.SetActive(true);
+
+                    }
                     break;
                 case Door.DoorType.bottom:
                     if (!GetBottom())
+                    {
                         door.gameObject.SetActive(false);
+                        door.doorWall.gameObject.SetActive(true);
+                    }
                     break;
             }
         }

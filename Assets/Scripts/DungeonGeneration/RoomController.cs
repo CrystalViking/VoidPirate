@@ -187,17 +187,14 @@ public class RoomController : MonoBehaviour
     {
         foreach (Room room in loadedRooms)
         {
-
             bool areAllEnemiesDead = true;
 
             List<IEnemy> enemies = new List<IEnemy>(room.GetComponentsInChildren<IEnemy>());
 
-            if(enemies.All(x => x.GetEnemyState() == EnemyState.Die))
+            if (enemies.All(x => x.GetEnemyState() == EnemyState.Die))
             {
                 enemies.Clear();
             }
-         
-            //Debug.Log(room.name);
 
             if (currRoom != room)
             {
@@ -206,15 +203,14 @@ public class RoomController : MonoBehaviour
                 {
                     foreach (IEnemy enemy in enemies)
                     {
-                        //enemy.isInRoom = false;
                         enemy.SetActiveBehaviourFalse();
                     }
                 }
 
                 foreach (Door door in room.GetComponentsInChildren<Door>())
                 {
-                    door.doorCollider.SetActive(false);
-                    door.CloseDoor();
+                    door.doorCollider.enabled = false;
+                    door.OpenDoor();
                 }
             }
             else
@@ -230,7 +226,7 @@ public class RoomController : MonoBehaviour
                         }
                     }
                 }
-              
+
                 //enemies.Length > 0
                 if (!areAllEnemiesDead)
                 {
@@ -241,22 +237,20 @@ public class RoomController : MonoBehaviour
 
                     foreach (Door door in room.GetComponentsInChildren<Door>())
                     {
-                        door.doorCollider.SetActive(true);
+                        door.doorCollider.enabled = true;
                         door.CloseDoor();
                     }
 
-                    
+
                 }
                 else
                 {
                     foreach (Door door in room.GetComponentsInChildren<Door>())
                     {
-                        door.doorCollider.SetActive(false);
+                        door.doorCollider.enabled = false;
                         door.OpenDoor();
                     }
                 }
-
-                
             }
         }
     }

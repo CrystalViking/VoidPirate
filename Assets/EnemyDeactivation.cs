@@ -21,22 +21,23 @@ public class EnemyDeactivation : MonoBehaviour
     {   
         if (Input.GetKeyDown(KeyCode.Space) && canEMP)
         {
-            enemies = FindAllEnemiesInRoom();
-            audioSource.Play();
-            foreach (GameObject enemy in enemies)
-            {
-                try
-                {
-                    enemy.GetComponent<IEnemy>().SetActiveBehaviourFalse();
-                }
-                catch { }
-            }
-            canEMP = false;
-            canvasEMP.enabled = false;
-            StartCoroutine(EMPCooldown());
-            StartCoroutine(EMPDuration());
+            EMP();
         }
     }
+
+    private void EMP()
+    {
+        enemies = FindAllEnemiesInRoom();
+        audioSource.Play();
+        foreach (GameObject enemy in enemies)
+        {
+             enemy.GetComponent<IEnemy>().SetActiveBehaviourFalse();
+        }
+        canEMP = false;
+        canvasEMP.enabled = false;
+        StartCoroutine(EMPCooldown());
+        StartCoroutine(EMPDuration());
+    }   
     IEnumerator EMPCooldown()
     {
         yield return new WaitForSeconds(cooldownEMP);
@@ -88,7 +89,7 @@ public class EnemyDeactivation : MonoBehaviour
 
     public List<GameObject> FindAllEnemiesInRoom()
     {
-        GameObject closest = FindClosestEnemy();
+        GameObject closest = FindPlayerRoom();
         List<GameObject> enes = new List<GameObject>();
         if (closest)
         {
@@ -102,8 +103,16 @@ public class EnemyDeactivation : MonoBehaviour
             {
                 try
                 {
-                    if (closest.GetComponent<IEnemy>().GetParent().transform.parent == go.GetComponent<IEnemy>().GetParent().transform.parent)
+                    if (closest.transform == go.GetComponent<IEnemy>().GetParent().transform.parent)
                     {
+                        if(go.GetComponent<SpawnerEnemy>())
+                        {
+                            List<GameObject> list = go.GetComponent<SpawnerEnemy>().GetMinionList();
+                            foreach (GameObject g in list)
+                            {
+                                enes.Add(g);
+                            }
+                        }
                         enes.Add(go);
                     }
                 }

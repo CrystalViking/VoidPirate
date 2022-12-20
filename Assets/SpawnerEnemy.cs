@@ -10,6 +10,8 @@ public class SpawnerEnemy : MeleeEnemy
     public GameObject[] allies;
     private int X;
     public GameObject spawnedAlly;
+    private List<GameObject> minion_list;
+
     private bool moneySpawned;
 
     void Start()
@@ -18,6 +20,7 @@ public class SpawnerEnemy : MeleeEnemy
         useRoomLogic = enemyData.useRoomLogic;
         activeBehaviour = enemyData.activeBehaviour;
         isUndestructible = false;
+        minion_list = new List<GameObject>();
 
         animator = GetComponent<SpawnerEnemyAnimator>();
 
@@ -34,6 +37,18 @@ public class SpawnerEnemy : MeleeEnemy
         {
             ScrollStates();
             SelectBehaviour();
+        }
+
+        if (minion_list.Count > 0)
+        {
+            foreach (GameObject m in minion_list)
+            {
+                if (!m)
+                {
+                    minion_list.Remove(m);
+                    break;
+                }
+            }
         }
 
     }
@@ -96,7 +111,7 @@ public class SpawnerEnemy : MeleeEnemy
     {
         enemyCalculations.SetNextAttackTime();
         yield return new WaitForSeconds(enemyData.meleeAnimationDelay);
-        if(spawnedAlly)
+        if(spawnedAlly && activeBehaviour)
             spawnedAlly.GetComponent<IEnemy>().SetActiveBehaviourTrue();
         currState = EnemyState.Idle;
         if (health < 0)
@@ -114,6 +129,7 @@ public class SpawnerEnemy : MeleeEnemy
             try
             {
                 spawnedAlly.transform.parent = transform.parent;
+                minion_list.Add(spawnedAlly);
             }
             catch { }
             spawned = true;
@@ -121,6 +137,11 @@ public class SpawnerEnemy : MeleeEnemy
         }
         audioSource.Stop();
 
+    }
+
+    public List<GameObject> GetMinionList()
+    {
+        return minion_list;
     }
 
     public override void TakeDamage(float damage)

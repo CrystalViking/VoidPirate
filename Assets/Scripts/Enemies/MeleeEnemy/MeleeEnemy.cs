@@ -165,7 +165,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
             if (health > enemyData.maxHealth)
                 health = enemyData.maxHealth;
             healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-            CheckDeath(healthBar, animator, transform.gameObject);
+            CheckDeath(healthBar, animator, gameObject);
         }
     }
 

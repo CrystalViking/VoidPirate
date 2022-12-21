@@ -168,7 +168,7 @@ public class ProtectorEnemy : MeleeEnemy
 
     protected override void CheckDeath()
     {
-        if (health <= 0)
+        /*if (health <= 0)
         {
             healthBar.SetHealthBarInActive();
             animator.SetIsDeadTrue();
@@ -190,6 +190,9 @@ public class ProtectorEnemy : MeleeEnemy
 
             Destroy(gameObject, enemyData.despawnTimer);
 
-        }
+        }*/
+        if (ally)
+            ReturnHP();
+        base.CheckDeath(healthBar, animator, gameObject);
     }
 }

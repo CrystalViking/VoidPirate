@@ -171,6 +171,6 @@ public class InsectEnemy : MeleeEnemy
             Destroy(gameObject, enemyData.despawnTimer);
 
         }*/
-        base.CheckDeath(healthBar, animator, transform.gameObject);
+        base.CheckDeath(healthBar, animator, gameObject);
     }
 }

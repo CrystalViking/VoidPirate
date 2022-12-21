@@ -152,25 +152,6 @@ public class InsectEnemy : MeleeEnemy
 
     protected override void CheckDeath()
     {
-        /*if (health <= 0)
-        {
-            healthBar.SetHealthBarInActive();
-            animator.SetIsDeadTrue();
-
-            currState = EnemyState.Die;          
-
-            if (useRoomLogic)
-                RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
-
-            if (!moneySpawned)
-            {
-                Instantiate(cashParticles, transform.position, Quaternion.identity);
-                moneySpawned = true;
-            }
-
-            Destroy(gameObject, enemyData.despawnTimer);
-
-        }*/
         base.CheckDeath(healthBar, animator, gameObject);
     }
 }

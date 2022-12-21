@@ -168,29 +168,6 @@ public class ProtectorEnemy : MeleeEnemy
 
     protected override void CheckDeath()
     {
-        /*if (health <= 0)
-        {
-            healthBar.SetHealthBarInActive();
-            animator.SetIsDeadTrue();
-
-            if(ally)
-                ReturnHP();
-
-            audioSource.Stop();
-            currState = EnemyState.Die;
-
-            if (useRoomLogic)
-                RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
-
-            if (!moneySpawned)
-            {
-                Instantiate(cashParticles, transform.position, Quaternion.identity);
-                moneySpawned = true;
-            }
-
-            Destroy(gameObject, enemyData.despawnTimer);
-
-        }*/
         if (ally)
             ReturnHP();
         base.CheckDeath(healthBar, animator, gameObject);

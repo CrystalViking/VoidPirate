@@ -168,8 +168,11 @@ public class ProtectorEnemy : MeleeEnemy
 
     protected override void CheckDeath()
     {
-        if (ally)
-            ReturnHP();
+        if (health <= 0)
+        {
+            if (ally)
+                ReturnHP();
+        }
         base.CheckDeath(healthBar, animator, gameObject);
     }
 }

@@ -103,6 +103,7 @@ public class PShipHealth : MonoBehaviour
     public void Die()
     {
         sceneInfo.isEventOn = false;
+        PlayerPrefs.SetInt("coinAmount", 0);
         Debug.Log("is Dead");
         StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
 

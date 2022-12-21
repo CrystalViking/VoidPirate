@@ -16,6 +16,7 @@ public class PlayerCurrency : MonoBehaviour
     void Start()
     {
         onPlayerCurrencyChange?.Invoke(total.ToString());
+        total = PlayerPrefs.GetInt("coinAmount", 0);
     }
 
     // Update is called once per frame
@@ -27,6 +28,7 @@ public class PlayerCurrency : MonoBehaviour
     public void AddCoins(int coinAmount)
     {
         total = total + coinAmount * singleCoinValue;
+        PlayerPrefs.SetInt("coinAmount", total);
     }
 
     public void SpendCoins(int amount)

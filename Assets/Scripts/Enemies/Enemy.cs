@@ -90,6 +90,11 @@ public abstract class Enemy : MonoBehaviour, IEnemy
         Debug.Log("Enemy: Take Damage");
     }
 
+    protected virtual void CheckDeath(HealthBar healthBar, IEnemyAnimator animator, GameObject gameObject)
+    {
+        Debug.Log("Enemy: Checking Death");
+    }
+
     protected virtual void CheckDeath()
     {
         Debug.Log("Enemy: Checking Death");

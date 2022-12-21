@@ -63,12 +63,10 @@ public class PlayerStats : ActorStats
 
     }
 
-    
-
-
     public override void Die()
     {
         base.Die();
+        PlayerPrefs.SetInt("coinAmount", 0);
         StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
     }
 

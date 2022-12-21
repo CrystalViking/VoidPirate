@@ -152,7 +152,7 @@ public class InsectEnemy : MeleeEnemy
 
     protected override void CheckDeath()
     {
-        if (health <= 0)
+        /*if (health <= 0)
         {
             healthBar.SetHealthBarInActive();
             animator.SetIsDeadTrue();
@@ -170,6 +170,7 @@ public class InsectEnemy : MeleeEnemy
 
             Destroy(gameObject, enemyData.despawnTimer);
 
-        }
+        }*/
+        base.CheckDeath(healthBar, animator, transform.gameObject);
     }
 }

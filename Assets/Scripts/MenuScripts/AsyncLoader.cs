@@ -41,6 +41,11 @@ public class AsyncLoader : MonoBehaviour
         }
     }
 
+    public void ResetPrefs()
+    {
+        PlayerPrefs.SetInt("coinAmount", 0);
+    }
+
     IEnumerator LoadLevelASync(string levelToLoad)
     {
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);

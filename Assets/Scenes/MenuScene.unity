@@ -6445,7 +6445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -6453,7 +6453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6477,7 +6477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: LoadLevelButton
+      value: ResetPrefs
       objectReference: {fileID: 0}
     - target: {fileID: 7725008787246943025, guid: 17b8393e1500d6e4fa0b5dd2c7a5d521, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

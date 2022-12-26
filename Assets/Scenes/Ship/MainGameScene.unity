@@ -921,9 +921,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.061013047
-    width: 0.99975455
-    height: 0.8793649
+    y: 0.069071375
+    width: 0.4899209
+    height: 0.41442823
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1029,7 +1029,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7777779, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1251,6 +1251,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3028380204826105601, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
   m_PrefabInstance: {fileID: 291525894}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1594254399
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592113, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177238564766592117, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
+      propertyPath: m_Name
+      value: SniperRiflePickable
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6fbd08af66aa09745b5426d42d15b49d, type: 3}
 --- !u!1 &1639409982
 GameObject:
   m_ObjectHideFlags: 0

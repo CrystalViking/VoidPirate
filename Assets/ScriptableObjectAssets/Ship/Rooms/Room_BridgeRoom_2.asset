@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaee06fe7c8b01f4991f91e39bba49b8, type: 3}
+  m_Name: Room_BridgeRoom_2
+  m_EditorClassIdentifier: 
+  guid: c631aa5e6a1d7b14c9f84973b9d49641
+  prefab: {fileID: 4327421925113694216, guid: 4327101c4c82e724f8b3226f455af0d5, type: 3}
+  previousPrefab: {fileID: 4327421925113694216, guid: 4327101c4c82e724f8b3226f455af0d5, type: 3}
+  roomNodeType: {fileID: 11400000, guid: 26260a8bb785a39459ea8001fff766cd, type: 2}
+  lowerBounds: {x: -10, y: -9}
+  upperBounds: {x: 10, y: 9}
+  doorwayList:
+  - position: {x: 0, y: 9}
+    orientation: 0
+    doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
+    doorwayStartCopyPos: {x: -3, y: 9}
+    doorwayCopyTileWidth: 5
+    doorwayCopyTileHeight: 3
+    isConnected: 0
+    isUnavailable: 0
+  - position: {x: 0, y: -9}
+    orientation: 2
+    doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
+    doorwayStartCopyPos: {x: -3, y: -7}
+    doorwayCopyTileWidth: 5
+    doorwayCopyTileHeight: 3
+    isConnected: 0
+    isUnavailable: 0
+  - position: {x: 10, y: 0}
+    orientation: 1
+    doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
+    doorwayStartCopyPos: {x: 7, y: 3}
+    doorwayCopyTileWidth: 5
+    doorwayCopyTileHeight: 5
+    isConnected: 0
+    isUnavailable: 0
+  - position: {x: -10, y: 0}
+    orientation: 3
+    doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
+    doorwayStartCopyPos: {x: -10, y: 3}
+    doorwayCopyTileWidth: 3
+    doorwayCopyTileHeight: 5
+    isConnected: 0
+    isUnavailable: 0
+  spawnPositionArray:
+  - {x: 29, y: 0}
+  enemiesByLevelList:
+  - spaceshipLevel: {fileID: 11400000, guid: 3e3a6ae8554011542941ce335944d940, type: 2}
+    spawnableObjectRatioList:
+    - spaceshipObject: {fileID: 11400000, guid: e8acc394bf41dcd4c998d540f0b503e3, type: 2}
+      ratio: 5
+    - spaceshipObject: {fileID: 11400000, guid: 01c3e672c06b59d448ce5128a34565f6, type: 2}
+      ratio: 5
+    - spaceshipObject: {fileID: 11400000, guid: f2c00f7e0cf073e46bcac31d71d29c39, type: 2}
+      ratio: 5
+    - spaceshipObject: {fileID: 11400000, guid: a0fdcdac699878e479c9871af76acfe2, type: 2}
+      ratio: 5
+    - spaceshipObject: {fileID: 11400000, guid: 526fc3f817ec5c94eaa740558c27963e, type: 2}
+      ratio: 5
+    - spaceshipObject: {fileID: 11400000, guid: 78eca8498d2a42a42b672772193440e1, type: 2}
+      ratio: 5
+    - spaceshipObject: {fileID: 11400000, guid: 7a8e5e1b0ac40274985814e63a90a076, type: 2}
+      ratio: 5
+  roomEnemySpawnParametersList:
+  - spaceshipLevel: {fileID: 11400000, guid: 3e3a6ae8554011542941ce335944d940, type: 2}
+    minTotalEnemiesToSpawn: 3
+    maxTotalEnemiesToSpawn: 5
+    minConcurrentEnemies: 2
+    maxConcurrentEnemies: 3
+    minSpawnInterval: 1
+    maxSpawnInterval: 2

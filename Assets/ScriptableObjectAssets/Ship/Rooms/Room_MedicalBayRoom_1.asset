@@ -12,49 +12,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaee06fe7c8b01f4991f91e39bba49b8, type: 3}
   m_Name: Room_MedicalBayRoom_1
   m_EditorClassIdentifier: 
-  guid: 3b3c8bfdcc0adaa46a299abf7bb7434b
+  guid: 190380204a618bb4aadcfd91f87c5505
   prefab: {fileID: 4327421925113694216, guid: 368c6f178ea10c640b1ae8e147b4bd62, type: 3}
   previousPrefab: {fileID: 4327421925113694216, guid: 368c6f178ea10c640b1ae8e147b4bd62, type: 3}
   roomNodeType: {fileID: 11400000, guid: 4a2e692f32b22fb458191bff8d1d3e37, type: 2}
-  lowerBounds: {x: -47, y: -24}
-  upperBounds: {x: -27, y: -6}
+  lowerBounds: {x: -10, y: -9}
+  upperBounds: {x: 10, y: 9}
   doorwayList:
-  - position: {x: 5, y: 39}
+  - position: {x: 0, y: 9}
     orientation: 0
     doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
-    doorwayStartCopyPos: {x: 2, y: 39}
+    doorwayStartCopyPos: {x: -3, y: 9}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 5
     isConnected: 0
     isUnavailable: 0
-  - position: {x: 5, y: 21}
+  - position: {x: 0, y: -9}
     orientation: 2
     doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
-    doorwayStartCopyPos: {x: 2, y: 25}
+    doorwayStartCopyPos: {x: -3, y: -5}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 5
     isConnected: 0
     isUnavailable: 0
-  - position: {x: 15, y: 30}
+  - position: {x: 10, y: 0}
     orientation: 1
     doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
-    doorwayStartCopyPos: {x: 10, y: 33}
+    doorwayStartCopyPos: {x: 5, y: 3}
     doorwayCopyTileWidth: 6
     doorwayCopyTileHeight: 6
     isConnected: 0
     isUnavailable: 0
-  - position: {x: -5, y: 30}
+  - position: {x: -10, y: 0}
     orientation: 3
     doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
-    doorwayStartCopyPos: {x: -5, y: 33}
+    doorwayStartCopyPos: {x: -10, y: 3}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 5
     isConnected: 0
     isUnavailable: 0
   spawnPositionArray:
-  - {x: 5, y: 30}
+  - {x: -38, y: 0}
   enemiesByLevelList:
-  - spaceshipLevel: {fileID: 11400000, guid: 5f96372a2a925ce42a9a6a114f34ca3b, type: 2}
+  - spaceshipLevel: {fileID: 11400000, guid: 3e3a6ae8554011542941ce335944d940, type: 2}
     spawnableObjectRatioList:
     - spaceshipObject: {fileID: 11400000, guid: e8acc394bf41dcd4c998d540f0b503e3, type: 2}
       ratio: 5
@@ -68,9 +68,11 @@ MonoBehaviour:
       ratio: 5
     - spaceshipObject: {fileID: 11400000, guid: 78eca8498d2a42a42b672772193440e1, type: 2}
       ratio: 5
+    - spaceshipObject: {fileID: 11400000, guid: 7a8e5e1b0ac40274985814e63a90a076, type: 2}
+      ratio: 5
   roomEnemySpawnParametersList:
-  - spaceshipLevel: {fileID: 11400000, guid: 5f96372a2a925ce42a9a6a114f34ca3b, type: 2}
-    minTotalEnemiesToSpawn: 2
+  - spaceshipLevel: {fileID: 11400000, guid: 3e3a6ae8554011542941ce335944d940, type: 2}
+    minTotalEnemiesToSpawn: 3
     maxTotalEnemiesToSpawn: 5
     minConcurrentEnemies: 2
     maxConcurrentEnemies: 3

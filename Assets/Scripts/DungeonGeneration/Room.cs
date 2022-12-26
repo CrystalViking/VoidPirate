@@ -56,6 +56,11 @@ public class Room : MonoBehaviour
         }
     }
 
+    public bool isBossRoom()
+    {
+        return name.Contains("End");
+    }
+
     public void RemoveUnconnectedDoors()
     {
         foreach (Door door in doors)
@@ -89,6 +94,44 @@ public class Room : MonoBehaviour
                     {
                         door.gameObject.SetActive(false);
                         door.doorWall.gameObject.SetActive(true);
+                    }
+                    break;
+            }
+        }
+    }
+
+    public void AddMissingDoors()
+    {
+        foreach (Door door in doors)
+        {
+            switch (door.doorType)
+            {
+                case Door.DoorType.right:
+                    if (GetRight())
+                    {
+                        door.gameObject.SetActive(true);
+                        door.doorWall.gameObject.SetActive(false);
+                    }
+                    break;
+                case Door.DoorType.left:
+                    if (GetLeft())
+                    {
+                        door.gameObject.SetActive(true);
+                        door.doorWall.gameObject.SetActive(false);
+                    }
+                    break;
+                case Door.DoorType.top:
+                    if (GetTop())
+                    {
+                        door.gameObject.SetActive(true);
+                        door.doorWall.gameObject.SetActive(false);
+                    }
+                    break;
+                case Door.DoorType.bottom:
+                    if (GetBottom())
+                    {
+                        door.gameObject.SetActive(true);
+                        door.doorWall.gameObject.SetActive(false);
                     }
                     break;
             }

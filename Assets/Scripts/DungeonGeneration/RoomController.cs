@@ -35,6 +35,33 @@ public class RoomController : MonoBehaviour
     private void Update()
     {
         UpdateRoomQueue();
+        CheckIfCanOpenBossRoom();
+    }
+
+    private void CheckIfCanOpenBossRoom()
+    {
+        if (AreEnoughRoomsCleared())
+        {
+            if (loadRoomQueue.Count == 0)
+            {
+                if (!spawnedBossRoom)
+                {
+                    StartCoroutine(SpawnBossRoom());
+                }
+                else if (spawnedBossRoom && !updatedRooms)
+                {
+                    foreach (Room room in loadedRooms)
+                    {
+                        room.RemoveUnconnectedDoors();
+                        room.AddMissingDoors();
+                    }
+
+                    UpdateRooms();
+                    updatedRooms = true;
+                }
+                return;
+            }
+        }
     }
 
     private void UpdateRoomQueue()
@@ -46,20 +73,20 @@ public class RoomController : MonoBehaviour
 
         if (loadRoomQueue.Count == 0)
         {
-            if (!spawnedBossRoom)
+            // if (!spawnedBossRoom)
+            // {
+            //     StartCoroutine(SpawnBossRoom());
+            // }
+            // else if (spawnedBossRoom && !updatedRooms)
+            // {
+            foreach (Room room in loadedRooms)
             {
-                StartCoroutine(SpawnBossRoom());
+                room.RemoveUnconnectedDoors();
             }
-            else if (spawnedBossRoom && !updatedRooms)
-            {
-                foreach (Room room in loadedRooms)
-                {
-                    room.RemoveUnconnectedDoors();
-                }
 
-                UpdateRooms();
-                updatedRooms = true;
-            }
+            UpdateRooms();
+            //     updatedRooms = true;
+            // }
             return;
         }
 
@@ -182,6 +209,37 @@ public class RoomController : MonoBehaviour
         UpdateRooms();
     }
 
+    private bool AreEnoughRoomsCleared()
+    {
+        int totalRoomCount = 0;
+        int clearedRoomCount = 0;
+
+        foreach (Room room in loadedRooms)
+        {
+            totalRoomCount++;
+            bool areAllEnemiesDead = true;
+
+            List<IEnemy> enemies = new List<IEnemy>(room.GetComponentsInChildren<IEnemy>());
+            if (enemies.Count > 0)
+            {
+                foreach (IEnemy enemy in enemies)
+                {
+                    if (enemy.GetEnemyState() != EnemyState.Die)
+                    {
+                        areAllEnemiesDead = false;
+                    }
+                }
+            }
+
+            if (areAllEnemiesDead)
+            {
+                clearedRoomCount++;
+            }
+        }
+        Debug.Log((clearedRoomCount > (totalRoomCount / 2)));
+        Debug.Log(clearedRoomCount + ", " + totalRoomCount);
+        return clearedRoomCount > (totalRoomCount / 2);
+    }
 
     public void UpdateRooms()
     {
@@ -198,7 +256,6 @@ public class RoomController : MonoBehaviour
 
             if (currRoom != room)
             {
-
                 if (enemies != null)
                 {
                     foreach (IEnemy enemy in enemies)
@@ -240,13 +297,16 @@ public class RoomController : MonoBehaviour
                         door.doorCollider.enabled = true;
                         door.CloseDoor();
                     }
-
-
                 }
                 else
                 {
                     foreach (Door door in room.GetComponentsInChildren<Door>())
                     {
+                        switch (door.doorType)
+                        {
+                            case Door.DoorType.left:
+                                break;
+                        }
                         door.doorCollider.enabled = false;
                         door.OpenDoor();
                     }

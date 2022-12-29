@@ -9,8 +9,12 @@ public class Timer : SingletonMonobehaviour<Timer>
 {
     public float timeRemaining = 10;
     public bool timerIsRunning = false;
+    public bool didEnergyEventSucceed = false;
+    public bool didOxygenEventSucceed = false;
     public Text timeText;
     public bool isOxygenShortage = false;
+    public bool isOxygenStationInGoodCondition;
+
     public bool isEnergyShortage = false;
 
     private void Start()
@@ -27,16 +31,20 @@ public class Timer : SingletonMonobehaviour<Timer>
         {
             isEnergyShortage = true;
         }
+
+        int number1 = Random.Range(0, 2);
+        isOxygenStationInGoodCondition = number1 == 0;
     }
+
     void Update()
     {
-        if (isOxygenShortage)
-        {
-            ProcessOxygenShortageEvent();
-        }
-        else if (isEnergyShortage)
+        if (isEnergyShortage)
         {
             ProcessEnergyShortageEvent();
+        }
+        else if (isOxygenShortage)
+        {
+            ProcessOxygenShortageEvent();
         }
     }
 
@@ -47,7 +55,7 @@ public class Timer : SingletonMonobehaviour<Timer>
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
+                DisplayTime(timeRemaining, "Oxygen shortage");
             }
             else
             {
@@ -66,7 +74,7 @@ public class Timer : SingletonMonobehaviour<Timer>
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
+                DisplayTime(timeRemaining, "Energy shortage");
             }
             else
             {
@@ -76,13 +84,18 @@ public class Timer : SingletonMonobehaviour<Timer>
                 timerIsRunning = false;
             }
         }
+        if ((didEnergyEventSucceed && isOxygenStationInGoodCondition) || (didEnergyEventSucceed && didOxygenEventSucceed))
+        {
+            timerIsRunning = false;
+            DisplayEventMessage("Event succeeded");
+        }
     }
-    void DisplayTime(float timeToDisplay)
+    void DisplayTime(float timeToDisplay, string eventName = "")
     {
         timeToDisplay += 1;
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeText.text = eventName + " " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void DisplayEventMessage(string message)

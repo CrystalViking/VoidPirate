@@ -8,47 +8,101 @@ public class OxygenTerminal : MonoBehaviour
     private Dictionary<GameObject, Color> originalColors;
     bool isInRange;
     bool isActive = true;
-    bool isInGoodCondition;
+    bool isFinished = false;
 
     [SerializeField] protected KeyCode itemInteractionCode = KeyCode.E;
     void Start()
     {
         StoreOriginalColors();
         UngreyOutObjects();
-
-        int number = Random.Range(0, 2);
-        isInGoodCondition = number == 0;
     }
 
     void Update()
     {
-        if (Timer.Instance.isOxygenShortage && Timer.Instance.timerIsRunning)
+        if (!Timer.Instance.didOxygenEventSucceed)
         {
-            InteractOnAction();
-            if (isActive)
+            if (Timer.Instance.isOxygenShortage && Timer.Instance.timerIsRunning)
             {
-                GreyOutObjects();
+                InteractOnActionForOxygenShortage();
+                if (isActive)
+                {
+                    GreyOutObjects();
+                }
+                else
+                {
+                    UngreyOutObjects();
+                }
+            }
+            else if (Timer.Instance.isEnergyShortage && Timer.Instance.timerIsRunning)
+            {
+                InteractOnActionForEnergyShortage();
+                if (isActive && !Timer.Instance.isOxygenStationInGoodCondition)
+                {
+                    BlackOutObjects();
+                }
+                else
+                {
+                    if (isActive && Timer.Instance.isOxygenStationInGoodCondition)
+                    {
+                        GreyOutObjects();
+                    }
+                    else
+                    {
+                        StartCoroutine("DoCheck");
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (Timer.Instance.isOxygenStationInGoodCondition)
+            {
+                StartCoroutine("DoCheck");
             }
             else
             {
-                UngreyOutObjects();
+                InteractOnActionForEnergyShortage();
+                BlackOutObjects();
             }
         }
-        else if (Timer.Instance.isEnergyShortage && Timer.Instance.timerIsRunning)
-        {
-            UngreyOutObjects();
-        }
-
     }
 
-    public void InteractOnAction()
+    IEnumerator DoCheck()
+    {
+        if (!isFinished)
+        {
+            yield return new WaitForSeconds(1f);
+            UngreyOutObjects();
+            isFinished = true;
+            Timer.Instance.isOxygenStationInGoodCondition = true;
+            Timer.Instance.didOxygenEventSucceed = true;
+        }
+    }
+
+    public void InteractOnActionForOxygenShortage()
     {
         if (isInRange)
         {
             if (Input.GetKeyDown(itemInteractionCode) && isActive)
             {
                 isActive = false;
+                Timer.Instance.isOxygenStationInGoodCondition = true;
+                Timer.Instance.didOxygenEventSucceed = true;
+
                 SetInfoAboutFinishedEvent();
+            }
+        }
+    }
+
+    public void InteractOnActionForEnergyShortage()
+    {
+        if (isInRange)
+        {
+            if (Input.GetKeyDown(itemInteractionCode) && isActive)
+            {
+                isActive = false;
+                Timer.Instance.isOxygenStationInGoodCondition = true;
+                Timer.Instance.didOxygenEventSucceed = true;
             }
         }
     }
@@ -96,6 +150,34 @@ public class OxygenTerminal : MonoBehaviour
                 color.r = 0.5f;
                 color.g = 0.5f;
                 color.b = 0.5f;
+
+                // Apply the updated color to the material
+                material.color = color;
+            }
+        }
+    }
+
+    public void BlackOutObjects()
+    {
+        // Iterate through the list of objects
+        foreach (GameObject obj in objectsToGreyOut)
+        {
+            // Get the object's renderer component
+            Renderer renderer = obj.GetComponent<Renderer>();
+
+            // Check if the object has a renderer component
+            if (renderer != null)
+            {
+                // Get the material of the renderer
+                Material material = renderer.material;
+
+                // Get the current color of the material
+                Color color = material.color;
+
+                // Set the color to a grey color
+                color.r = 0.1f;
+                color.g = 0.1f;
+                color.b = 0.1f;
 
                 // Apply the updated color to the material
                 material.color = color;

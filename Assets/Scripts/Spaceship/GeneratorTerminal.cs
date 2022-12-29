@@ -43,7 +43,12 @@ public class GeneratorTerminal : MonoBehaviour
             if (Input.GetKeyDown(itemInteractionCode) && isActive)
             {
                 isActive = false;
-                SetInfoAboutFinishedEvent();
+                Timer.Instance.didEnergyEventSucceed = true;
+                if (Timer.Instance.isOxygenStationInGoodCondition)
+                {
+                    Timer.Instance.didOxygenEventSucceed = true;
+                }
+                //SetInfoAboutFinishedEvent();
             }
         }
     }

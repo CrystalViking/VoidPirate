@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaee06fe7c8b01f4991f91e39bba49b8, type: 3}
+  m_Name: Room_EntranceRoom_1
+  m_EditorClassIdentifier: 
+  guid: f9d2295c781f3324bad8da7adb8d5f57
+  prefab: {fileID: 4327421925113694216, guid: 2673f27d5788fa34eb23e8ea65e2b2a0, type: 3}
+  previousPrefab: {fileID: 4327421925113694216, guid: 2673f27d5788fa34eb23e8ea65e2b2a0, type: 3}
+  roomNodeType: {fileID: 11400000, guid: 5f46f8f8278e22643a073ff71b256907, type: 2}
+  lowerBounds: {x: -10, y: -9}
+  upperBounds: {x: 10, y: 9}
+  doorwayList:
+  - position: {x: 0, y: 9}
+    orientation: 0
+    doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
+    doorwayStartCopyPos: {x: -3, y: 9}
+    doorwayCopyTileWidth: 5
+    doorwayCopyTileHeight: 5
+    isConnected: 0
+    isUnavailable: 0
+  - position: {x: 0, y: -9}
+    orientation: 2
+    doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
+    doorwayStartCopyPos: {x: -3, y: -5}
+    doorwayCopyTileWidth: 5
+    doorwayCopyTileHeight: 5
+    isConnected: 0
+    isUnavailable: 0
+  - position: {x: 10, y: 0}
+    orientation: 1
+    doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
+    doorwayStartCopyPos: {x: 5, y: 3}
+    doorwayCopyTileWidth: 6
+    doorwayCopyTileHeight: 6
+    isConnected: 0
+    isUnavailable: 0
+  - position: {x: -10, y: 0}
+    orientation: 3
+    doorPrefab: {fileID: 5518069951972688811, guid: fe476e5eace1b784bbecad9ddfbff3a8, type: 3}
+    doorwayStartCopyPos: {x: -10, y: 3}
+    doorwayCopyTileWidth: 5
+    doorwayCopyTileHeight: 5
+    isConnected: 0
+    isUnavailable: 0
+  spawnPositionArray:
+  - {x: 0, y: 0}
+  enemiesByLevelList: []
+  roomEnemySpawnParametersList: []

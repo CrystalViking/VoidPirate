@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: -1643171920660895409}
   - component: {fileID: 5514730672423851218}
   - component: {fileID: -6246522903740371323}
+  - component: {fileID: -9035541648866849053}
   m_Layer: 3
   m_Name: MechaHornetPet
   m_TagString: Enemy
@@ -748,6 +749,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-9035541648866849053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194148048386134219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2dc2a17d48b76408a50e469a1b330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6605636542176515717
 GameObject:
   m_ObjectHideFlags: 0

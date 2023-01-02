@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 7648696580091724357}
   - component: {fileID: 6601494718155222488}
   - component: {fileID: 8534295180027164057}
+  - component: {fileID: -6148088384533346461}
   m_Layer: 6
   m_Name: MechaHealer
   m_TagString: Enemy
@@ -502,6 +503,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6148088384533346461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497877406970540932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2dc2a17d48b76408a50e469a1b330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5919482083635756912
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,8 +15,15 @@ TagManager:
   - Floor
   - Projectile
   - EnemyProjectile
+  - GroundTilemap
+  - Decoration1Tilemap
+  - Decoration2Tilemap
+  - FrontTilemap
+  - MinimapTilemap
+  - CollisionTilemap
+  - CollitionTilemap
+  - WallsTilemap
   - Room
-  - Particles
   layers:
   - Default
   - TransparentFX
@@ -26,11 +33,10 @@ TagManager:
   - UI
   - Blocking Layer
   - Floor
+  - Room
+  - Wall
   - Player
-  - Weapon
-  - Particle System
-  - 
-  - 
+  - MiniMap
   - 
   - 
   - 
@@ -61,24 +67,42 @@ TagManager:
   - name: BlockingBlocks
     uniqueID: 2828808053
     locked: 0
-  - name: Door
-    uniqueID: 3613609851
-    locked: 0
   - name: Wall
     uniqueID: 1474003349
     locked: 0
-  - name: Item
-    uniqueID: 2243441277
+  - name: Ground
+    uniqueID: 3222806463
+    locked: 0
+  - name: Ground Decoration 1
+    uniqueID: 224834631
+    locked: 0
+  - name: Ground Decoration 2
+    uniqueID: 1030165769
     locked: 0
   - name: Enemies
     uniqueID: 87052025
     locked: 0
+  - name: Instances
+    uniqueID: 2832976691
+    locked: 0
+  - name: Front
+    uniqueID: 2466976895
+    locked: 0
+  - name: Collision
+    uniqueID: 3763490459
+    locked: 0
+  - name: Minimap
+    uniqueID: 2077223661
+    locked: 0
   - name: Top
     uniqueID: 2869036127
     locked: 0
+  - name: Item
+    uniqueID: 2243441277
+    locked: 0
+  - name: Door
+    uniqueID: 3613609851
+    locked: 0
   - name: UpperParticles (Stars)
     uniqueID: 2194243131
-    locked: 0
-  - name: Particles
-    uniqueID: 509006739
     locked: 0

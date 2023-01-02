@@ -35,6 +35,33 @@ public class RoomController : MonoBehaviour
     private void Update()
     {
         UpdateRoomQueue();
+        CheckIfCanOpenBossRoom();
+    }
+
+    private void CheckIfCanOpenBossRoom()
+    {
+        if (AreEnoughRoomsCleared())
+        {
+            if (loadRoomQueue.Count == 0)
+            {
+                if (!spawnedBossRoom)
+                {
+                    StartCoroutine(SpawnBossRoom());
+                }
+                else if (spawnedBossRoom && !updatedRooms)
+                {
+                    foreach (Room room in loadedRooms)
+                    {
+                        room.RemoveUnconnectedDoors();
+                        room.AddMissingDoors();
+                    }
+
+                    UpdateRooms();
+                    updatedRooms = true;
+                }
+                return;
+            }
+        }
     }
 
     private void UpdateRoomQueue()
@@ -46,20 +73,20 @@ public class RoomController : MonoBehaviour
 
         if (loadRoomQueue.Count == 0)
         {
-            if (!spawnedBossRoom)
+            // if (!spawnedBossRoom)
+            // {
+            //     StartCoroutine(SpawnBossRoom());
+            // }
+            // else if (spawnedBossRoom && !updatedRooms)
+            // {
+            foreach (Room room in loadedRooms)
             {
-                StartCoroutine(SpawnBossRoom());
+                room.RemoveUnconnectedDoors();
             }
-            else if (spawnedBossRoom && !updatedRooms)
-            {
-                foreach (Room room in loadedRooms)
-                {
-                    room.RemoveUnconnectedDoors();
-                }
 
-                UpdateRooms();
-                updatedRooms = true;
-            }
+            UpdateRooms();
+            //     updatedRooms = true;
+            // }
             return;
         }
 
@@ -182,39 +209,65 @@ public class RoomController : MonoBehaviour
         UpdateRooms();
     }
 
+    private bool AreEnoughRoomsCleared()
+    {
+        int totalRoomCount = 0;
+        int clearedRoomCount = 0;
+
+        foreach (Room room in loadedRooms)
+        {
+            totalRoomCount++;
+            bool areAllEnemiesDead = true;
+
+            List<IEnemy> enemies = new List<IEnemy>(room.GetComponentsInChildren<IEnemy>());
+            if (enemies.Count > 0)
+            {
+                foreach (IEnemy enemy in enemies)
+                {
+                    if (enemy.GetEnemyState() != EnemyState.Die)
+                    {
+                        areAllEnemiesDead = false;
+                    }
+                }
+            }
+
+            if (areAllEnemiesDead)
+            {
+                clearedRoomCount++;
+            }
+        }
+        Debug.Log((clearedRoomCount > (totalRoomCount / 2)));
+        Debug.Log(clearedRoomCount + ", " + totalRoomCount);
+        return clearedRoomCount > (totalRoomCount / 2);
+    }
 
     public void UpdateRooms()
     {
         foreach (Room room in loadedRooms)
         {
-
             bool areAllEnemiesDead = true;
 
             List<IEnemy> enemies = new List<IEnemy>(room.GetComponentsInChildren<IEnemy>());
 
-            if(enemies.All(x => x.GetEnemyState() == EnemyState.Die))
+            if (enemies.All(x => x.GetEnemyState() == EnemyState.Die))
             {
                 enemies.Clear();
             }
-         
-            //Debug.Log(room.name);
 
             if (currRoom != room)
             {
-
                 if (enemies != null)
                 {
                     foreach (IEnemy enemy in enemies)
                     {
-                        //enemy.isInRoom = false;
                         enemy.SetActiveBehaviourFalse();
                     }
                 }
 
                 foreach (Door door in room.GetComponentsInChildren<Door>())
                 {
-                    door.doorCollider.SetActive(false);
-                    door.CloseDoor();
+                    door.doorCollider.enabled = false;
+                    door.OpenDoor();
                 }
             }
             else
@@ -230,7 +283,7 @@ public class RoomController : MonoBehaviour
                         }
                     }
                 }
-              
+
                 //enemies.Length > 0
                 if (!areAllEnemiesDead)
                 {
@@ -241,22 +294,23 @@ public class RoomController : MonoBehaviour
 
                     foreach (Door door in room.GetComponentsInChildren<Door>())
                     {
-                        door.doorCollider.SetActive(true);
+                        door.doorCollider.enabled = true;
                         door.CloseDoor();
                     }
-
-                    
                 }
                 else
                 {
                     foreach (Door door in room.GetComponentsInChildren<Door>())
                     {
-                        door.doorCollider.SetActive(false);
+                        switch (door.doorType)
+                        {
+                            case Door.DoorType.left:
+                                break;
+                        }
+                        door.doorCollider.enabled = false;
                         door.OpenDoor();
                     }
                 }
-
-                
             }
         }
     }

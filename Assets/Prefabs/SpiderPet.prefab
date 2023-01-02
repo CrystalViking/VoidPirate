@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 1100571624304067790}
   - component: {fileID: 8308676992667636165}
   - component: {fileID: 1665737196315078852}
+  - component: {fileID: -771762642343262655}
   m_Layer: 3
   m_Name: SpiderPet
   m_TagString: Enemy
@@ -717,6 +718,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-771762642343262655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795759043171648832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2dc2a17d48b76408a50e469a1b330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6787852211158795022
 GameObject:
   m_ObjectHideFlags: 0

@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 1836149834788359347}
   - component: {fileID: 1061774884382259190}
   - component: {fileID: 7519237064540060957}
+  - component: {fileID: -7638474568114703849}
   m_Layer: 3
   m_Name: MadDroid
   m_TagString: Enemy
@@ -395,6 +396,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7638474568114703849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741157875844909433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2dc2a17d48b76408a50e469a1b330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4891308484905741287
 GameObject:
   m_ObjectHideFlags: 0

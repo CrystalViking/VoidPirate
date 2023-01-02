@@ -4,18 +4,18 @@ using UnityEngine;
 
 public enum Direction
 {
-  top = 0,
-  left = 1,
-  down = 2,
-  right = 3
+    top = 0,
+    left = 1,
+    down = 2,
+    right = 3
 };
 
 
 public class DungeonCrawlerController : MonoBehaviour
 {
 
-  public static List<Vector2Int> positionsVisited = new List<Vector2Int>();
-  private static readonly Dictionary<Direction, Vector2Int> directionMovementMap = new Dictionary<Direction, Vector2Int>
+    public static List<Vector2Int> positionsVisited = new List<Vector2Int>();
+    private static readonly Dictionary<Direction, Vector2Int> directionMovementMap = new Dictionary<Direction, Vector2Int>
     {
         {Direction.top, Vector2Int.up},
         {Direction.left, Vector2Int.left},
@@ -44,6 +44,6 @@ public class DungeonCrawlerController : MonoBehaviour
       }
     }
 
-    return positionsVisited;
-  }
+        return positionsVisited;
+    }
 }

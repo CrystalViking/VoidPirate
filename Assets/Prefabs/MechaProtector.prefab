@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: -1594622906227680424}
   - component: {fileID: 1179051317507900478}
   - component: {fileID: 4520053658433887049}
+  - component: {fileID: 8267725928153392205}
   m_Layer: 3
   m_Name: MechaProtector
   m_TagString: Enemy
@@ -497,7 +498,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 87052025
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 338213056, guid: 845007abccff4bf4899043613d4da974, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -704,6 +705,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8267725928153392205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333657171559035164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2dc2a17d48b76408a50e469a1b330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8231368053138541944
 PrefabInstance:
   m_ObjectHideFlags: 0

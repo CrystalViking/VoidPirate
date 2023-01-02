@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 6280760514743710727}
   - component: {fileID: 3664300212637015685}
   - component: {fileID: -4545514394504858469}
+  - component: {fileID: 7912515045118945851}
   m_Layer: 6
   m_Name: MechaSpawner
   m_TagString: Enemy
@@ -362,6 +363,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7912515045118945851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999383237732963413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2dc2a17d48b76408a50e469a1b330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5411974682464891331
 GameObject:
   m_ObjectHideFlags: 0

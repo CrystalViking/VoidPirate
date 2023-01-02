@@ -23,6 +23,7 @@ public class RoomController : MonoBehaviour
     bool isLoadingRoom = false;
     bool spawnedBossRoom = false;
     bool updatedRooms = false;
+    private bool shouldActiveEnemy = true;
 
     private void Start()
     {
@@ -206,6 +207,7 @@ public class RoomController : MonoBehaviour
     {
         //yield return new WaitForSeconds(0.2f);
         yield return new WaitForSeconds(0.0f);
+        shouldActiveEnemy = true;
         UpdateRooms();
     }
 
@@ -236,8 +238,8 @@ public class RoomController : MonoBehaviour
                 clearedRoomCount++;
             }
         }
-        Debug.Log((clearedRoomCount > (totalRoomCount / 2)));
-        Debug.Log(clearedRoomCount + ", " + totalRoomCount);
+        //Debug.Log((clearedRoomCount > (totalRoomCount / 2)));
+        //Debug.Log(clearedRoomCount + ", " + totalRoomCount);
         return clearedRoomCount > (totalRoomCount / 2);
     }
 
@@ -287,9 +289,13 @@ public class RoomController : MonoBehaviour
                 //enemies.Length > 0
                 if (!areAllEnemiesDead)
                 {
-                    foreach (IEnemy enemy in enemies)
+                    if (shouldActiveEnemy)
                     {
-                        enemy.SetActiveBehaviourTrue();
+                        foreach (IEnemy enemy in enemies)
+                        {
+                            enemy.SetActiveBehaviourTrue();
+                        }
+                        shouldActiveEnemy = false;
                     }
 
                     foreach (Door door in room.GetComponentsInChildren<Door>())

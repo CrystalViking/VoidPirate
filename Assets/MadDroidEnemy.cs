@@ -74,7 +74,12 @@ public class MadDroidEnemy : RangedEnemy
 
   }
 
-  public void FollowAndAttack()
+    public new void PassiveBehaviour()
+    {
+        currState = EnemyState.Idle;
+    }
+
+    public void FollowAndAttack()
   {
     animator.SetIsMovingOrAttackingTrue();
     transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShopWeaponManager : MonoBehaviour
 {
     [SerializeField]
-    List<WeaponSO> weaponDataList;
+    List<ShopWeaponSO> weaponDataList;
 
     [SerializeField]
     GameObject button;
@@ -26,7 +26,13 @@ public class ShopWeaponManager : MonoBehaviour
 
     void PopulateMenuContainer()
     {
+        if(weaponDataList.Count > 0)
+        {
+            foreach(ShopWeaponSO weapon in weaponDataList)
+            {
 
+            }
+        }
     }
 
 

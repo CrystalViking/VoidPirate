@@ -16,6 +16,7 @@ public class Timer : SingletonMonobehaviour<Timer>
     public bool isOxygenStationInGoodCondition;
 
     public bool isEnergyShortage = false;
+    public float lightLevel = 1f;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class Timer : SingletonMonobehaviour<Timer>
         else
         {
             isEnergyShortage = true;
+            lightLevel = 0.65f;
         }
 
         int number1 = Random.Range(0, 2);
@@ -46,6 +48,9 @@ public class Timer : SingletonMonobehaviour<Timer>
         {
             ProcessOxygenShortageEvent();
         }
+
+        // GameResources.Instance.dimmedMaterial.SetFloat("Alpha_Slider", lightLevel);
+        GameResources.Instance.litMaterial.SetFloat("Alpha_Slider", lightLevel);
     }
 
     void ProcessOxygenShortageEvent()
@@ -87,6 +92,7 @@ public class Timer : SingletonMonobehaviour<Timer>
         if ((didEnergyEventSucceed && isOxygenStationInGoodCondition) || (didEnergyEventSucceed && didOxygenEventSucceed))
         {
             timerIsRunning = false;
+            lightLevel = 1f;
             DisplayEventMessage("Event succeeded");
         }
     }

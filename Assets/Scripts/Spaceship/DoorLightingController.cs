@@ -33,7 +33,7 @@ public class DoorLightingController : MonoBehaviour
     {
         spriteRenderer.material = material;
 
-        for (float i = 0.05f; i <= 1f; i += Time.deltaTime / Settings.fadeInTime)
+        for (float i = 0.05f; i <= Timer.Instance.lightLevel; i += Time.deltaTime / Settings.fadeInTime)
         {
             material.SetFloat("Alpha_Slider", i);
             yield return null;

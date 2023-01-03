@@ -10,5 +10,4 @@ public static class Settings
     public const int maxSpaceshipBuildAttempts = 10;
     public const int maxChildCorridors = 4;
     public const float fadeInTime = 0.5f;
-
 }

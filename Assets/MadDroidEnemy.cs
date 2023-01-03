@@ -112,28 +112,9 @@ public class MadDroidEnemy : RangedEnemy
     }
   }
 
-  protected override void CheckDeath()
-  {
-    if (health <= 0)
+    protected override void CheckDeath()
     {
-      DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
-      destroyedEvent.CallDestroyedEvent(false, 1);
-      healthBar.SetHealthBarInActive();
-      animator.SetIsDeadTrue();
-
-      currState = EnemyState.Die;
-
-      if (useRoomLogic)
-        RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
-
-      if (!moneySpawned)
-      {
-        Instantiate(cashParticles, transform.position, Quaternion.identity);
-        moneySpawned = true;
-      }
-
-      Destroy(gameObject, enemyData.despawnTimer);
+        base.CheckDeath(healthBar, animator, gameObject);
     }
-  }
 
 }

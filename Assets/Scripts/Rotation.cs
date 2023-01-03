@@ -5,6 +5,7 @@ using UnityEngine;
 public class Rotation : MonoBehaviour
 {
     GameObject player;
+    [SerializeField] string direction;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -12,14 +13,29 @@ public class Rotation : MonoBehaviour
 
     void Update()
     {
-        if (this.GetComponent<IEnemy>().GetEnemyState() != EnemyState.Die) {
-            if ((player.transform.position.x < transform.position.x))
+        if (this.GetComponent<IEnemy>().GetEnemyState() != EnemyState.Die) 
+        {
+            if (direction == "left")
             {
-                transform.eulerAngles = new Vector3(0, 0, 0);
+                if ((player.transform.position.x < transform.position.x))
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                }
+                else
+                {
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                }
             }
             else
             {
-                transform.eulerAngles = new Vector3(0, 180, 0);
+                if ((player.transform.position.x < transform.position.x))
+                {
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                }
+                else
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                }
             }
         }     
     }

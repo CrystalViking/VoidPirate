@@ -27,8 +27,8 @@ public class RangedEnemy : Enemy, IRangedEnemy
 
 
     enemyCalculations = GetComponent<RangedEnemyCalculations>();
-    enemyMovement.SetPlayerTransform(GameObject.FindGameObjectWithTag("Player").transform);
-  }
+    enemyMovement.SetPlayerTransform(GameObject.FindGameObjectWithTag("Player").transform);  
+    }
 
 
   void Update()
@@ -75,7 +75,8 @@ public class RangedEnemy : Enemy, IRangedEnemy
   public void PassiveBehaviour()
   {
     currState = EnemyState.Idle;
-  }
+    enemyCalculations.SetNextAttackTime();
+    }
 
   public void ActiveBehaviour()
   {
@@ -132,11 +133,11 @@ public class RangedEnemy : Enemy, IRangedEnemy
       if (health > enemyData.maxHealth)
         health = enemyData.maxHealth;
       healthBar.SetHealthBarValue(enemyCalculations.CalculateHealthPercentage(health));
-      CheckDeath();
+      CheckDeath(healthBar, animator, gameObject);
     }
   }
 
-  protected override void CheckDeath()
+  protected override void CheckDeath(HealthBar healthBar, IEnemyAnimator animator, GameObject gameObject)
   {
     if (health <= 0)
     {

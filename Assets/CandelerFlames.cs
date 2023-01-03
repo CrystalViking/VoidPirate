@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EstrellaSaws_v1_1 : BaseEnemyProjectile
+public class CandelerFlames : EstrellaSaws_v1_1
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +26,13 @@ public class EstrellaSaws_v1_1 : BaseEnemyProjectile
 
     public override void OnTriggerBehavior(Collider2D collision)
     {
-        if (!(collision.CompareTag("Enemy") || 
-            collision.CompareTag("Boss") || 
-            collision.CompareTag("Projectile") || 
+        if (!(collision.CompareTag("Enemy") ||
+            collision.CompareTag("Boss") ||
+            collision.CompareTag("Projectile") ||
             collision.CompareTag("PlayerProjectile") ||
             collision.CompareTag("Room") ||
+            collision.CompareTag("Wall") ||
+            collision.CompareTag("Door") ||
             collision.CompareTag("Player") ||
             collision.CompareTag("Untagged")))
         {
@@ -40,7 +41,7 @@ public class EstrellaSaws_v1_1 : BaseEnemyProjectile
         else if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerStats>().TakeDamage(damage);
-            //collision.GetComponent<PlayerStats>().HealthPoison(StatModApplicationType.EntityAppliedDebuff, 10, 10);
+            collision.GetComponent<PlayerStats>().HealthPoison(StatModApplicationType.EntityAppliedDebuff, 10, 4);
             Destroy(gameObject);
         }
         else
@@ -49,8 +50,4 @@ public class EstrellaSaws_v1_1 : BaseEnemyProjectile
         }
     }
 
-    public void SetGameObject(GameObject x)
-    {
-        target = x;
-    }
 }

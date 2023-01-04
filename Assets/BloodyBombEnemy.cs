@@ -80,8 +80,8 @@ public class BloodyBombEnemy : MeleeEnemy
     {
         if (!isUndestructible)
         {
-            if (!particles.isPlaying)
-                particles.Play();
+            /*if (!particles.isPlaying)
+                particles.Play();*/
             healthBar.SetHealthBarActive();
             health -= damage;
             if (health > enemyData.maxHealth)

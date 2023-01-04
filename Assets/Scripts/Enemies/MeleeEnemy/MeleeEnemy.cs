@@ -186,7 +186,11 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
 
             if (!moneySpawned)
             {
-                Instantiate(cashParticles, transform.position, Quaternion.identity);
+                try
+                {
+                    Instantiate(cashParticles, transform.position, Quaternion.identity);
+                }
+                catch { }
                 moneySpawned = true;
             }
             Destroy(gameObject, enemyData.despawnTimer);

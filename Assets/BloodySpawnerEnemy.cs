@@ -29,6 +29,7 @@ public class BloodySpawnerEnemy : RangedEnemy
 
         enemyCalculations = GetComponent<RangedEnemyCalculations>();
         enemyMovement.SetPlayerTransform(GameObject.FindGameObjectWithTag("Player").transform);
+
     }
 
     void Update()
@@ -94,6 +95,7 @@ public class BloodySpawnerEnemy : RangedEnemy
     public new void PassiveBehaviour()
     {
         currState = EnemyState.Idle;
+        enemyCalculations.SetNextAttackTime();
     }
 
     public override void Idle()

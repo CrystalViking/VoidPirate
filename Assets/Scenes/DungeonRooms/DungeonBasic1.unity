@@ -6245,6 +6245,7 @@ GameObject:
   - component: {fileID: 1508527511}
   - component: {fileID: 1508527510}
   - component: {fileID: 1508527509}
+  - component: {fileID: 1508527513}
   m_Layer: 6
   m_Name: Room (1)
   m_TagString: Room
@@ -6338,6 +6339,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1508527513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508527508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f38eceb8eaa7f48ba61540709dae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 1750339843}
+  spawner:
+    name: 
+    spawnerData: {fileID: 11400000, guid: 4645cf86dfc189143b0fee5d85bf392d, type: 2}
 --- !u!1 &1523296512
 GameObject:
   m_ObjectHideFlags: 0

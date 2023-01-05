@@ -105,6 +105,12 @@ public class RoomController : MonoBehaviour
         if (loadRoomQueue.Count == 0)
         {
             Room bossRoom = loadedRooms[loadedRooms.Count - 1];
+
+            if (currRoom.X == bossRoom.X && currRoom.Y == bossRoom.Y)
+            {
+                bossRoom = loadedRooms[loadedRooms.Count - 2];
+            }
+
             Vector2Int tempRoom = new Vector2Int(bossRoom.X, bossRoom.Y);
             Destroy(bossRoom.gameObject);
             var roomToRemove = loadedRooms.Single(r => r.X == tempRoom.x && r.Y == tempRoom.y);

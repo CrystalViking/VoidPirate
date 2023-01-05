@@ -170,28 +170,13 @@ public class ProtectorEnemy : MeleeEnemy
   {
     if (health <= 0)
     {
-      DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
-      destroyedEvent.CallDestroyedEvent(false, 1);
-      healthBar.SetHealthBarInActive();
-      animator.SetIsDeadTrue();
 
-      if (ally)
-        ReturnHP();
-
-      audioSource.Stop();
-      currState = EnemyState.Die;
-
-      if (useRoomLogic)
-        RoomController.instance.StartCoroutine(RoomController.instance.RoomCorutine());
-
-      if (!moneySpawned)
-      {
-        Instantiate(cashParticles, transform.position, Quaternion.identity);
-        moneySpawned = true;
-      }
-
-      Destroy(gameObject, enemyData.despawnTimer);
-
+            if (ally)
+            {
+                ReturnHP();
+                audioSource.Stop();
+            }
     }
+        base.CheckDeath(healthBar, animator, gameObject);
   }
 }

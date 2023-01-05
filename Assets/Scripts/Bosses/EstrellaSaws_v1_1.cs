@@ -21,6 +21,7 @@ public class EstrellaSaws_v1_1 : BaseEnemyProjectile
         base.InitProjectile();
 
         Vector2 moveDir = (target.transform.position - transform.position).normalized * speed;
+        bullet.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(target.transform.position - transform.position));
         bullet.velocity = new Vector2(moveDir.x, moveDir.y);
     }
 

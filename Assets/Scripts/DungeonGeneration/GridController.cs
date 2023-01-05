@@ -38,10 +38,21 @@ public class GridController : MonoBehaviour
                 go.GetComponent<Transform>().position = new Vector2(x - (grid.columns - grid.horizontalOffset), y - (grid.rows - grid.verticalOffset));
                 go.name = "X: " + x + ", Y: " + y;
                 availablePoints.Add(go.transform.position);
-                
+
             }
         }
 
-        GetComponentInParent<ObjectRoomSpawner>().InitialiseObjectSpawning();
+        ObjectRoomSpawner objectRoomSpawner = GetComponentInParent<ObjectRoomSpawner>();
+        RoomObstacle roomObstacle = GetComponentInParent<RoomObstacle>();
+
+        if (roomObstacle)
+        {
+            roomObstacle.SpawnObstacles();
+        }
+
+        if (objectRoomSpawner)
+        {
+            objectRoomSpawner.InitialiseObjectSpawning();
+        }
     }
 }

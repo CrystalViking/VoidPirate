@@ -43,7 +43,6 @@ public class RoomLightingController : MonoBehaviour
     private IEnumerator FadeInRoomLightingRoutine(InstantiatedRoom instantiatedRoom)
     {
         Material material = new Material(GameResources.Instance.variableLitShader);
-
         instantiatedRoom.groundTilemap.GetComponent<TilemapRenderer>().material = material;
         instantiatedRoom.wallsTilemap.GetComponent<TilemapRenderer>().material = material;
         instantiatedRoom.decoration1Tilemap.GetComponent<TilemapRenderer>().material = material;
@@ -51,7 +50,7 @@ public class RoomLightingController : MonoBehaviour
         instantiatedRoom.frontTilemap.GetComponent<TilemapRenderer>().material = material;
         instantiatedRoom.minimapTilemap.GetComponent<TilemapRenderer>().material = material;
 
-        for (float i = 0.05f; i <= 1f; i += Time.deltaTime / Settings.fadeInTime)
+        for (float i = 0.05f; i <= Timer.Instance.lightLevel; i += Time.deltaTime / Settings.fadeInTime)
         {
             material.SetFloat("Alpha_Slider", i);
             yield return null;

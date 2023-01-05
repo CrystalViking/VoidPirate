@@ -175,7 +175,7 @@ TextureImporter:
         width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,6 +183,27 @@ TextureImporter:
       bones: []
       spriteID: 51aa4b9cdaf095540ae767413056f45e
       internalID: 485656511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props and items x2_4
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b58c4f62e6eb8e0408a7bfd44a72ab87
+      internalID: -496288067
       vertices: []
       indices: 
       edges: []
@@ -200,6 +221,7 @@ TextureImporter:
     nameFileIdTable:
       props and items x2_3: 485656511
       props and items x2_1: -657928619
+      props and items x2_4: -496288067
       props and items x2_2: 149694507
       props and items x2_0: 1650439601
   spritePackingTag: 

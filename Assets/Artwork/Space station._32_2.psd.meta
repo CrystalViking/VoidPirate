@@ -5459,7 +5459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Space station._32_2_255
+      name: Space station.turret1
       rect:
         serializedVersion: 2
         x: 96
@@ -16400,7 +16400,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Space station._32_2_776
+      name: Space station.barrel1
       rect:
         serializedVersion: 2
         x: 640
@@ -17912,13 +17912,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Space station._32_2_848
+      name: Space station.box1
       rect:
         serializedVersion: 2
         x: 256
-        y: 416
+        y: 386
         width: 32
-        height: 32
+        height: 36
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -18797,8 +18797,8 @@ TextureImporter:
       name: Space station._32_2_890
       rect:
         serializedVersion: 2
-        x: 256
-        y: 384
+        x: 0
+        y: 288
         width: 32
         height: 32
       alignment: 0
@@ -29974,7 +29974,7 @@ TextureImporter:
         width: 57
         height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -30000,11 +30000,11 @@ TextureImporter:
       Space station._32_2_305: 2038293655
       Space station._32_2_611: 1500178746
       Space station._32_2_183: -1886956770
+      Space station._32_2_283: 1820847382
       Space station._32_2_310: -1239339965
       Space station._32_2_240: 219248485
       Space station._32_2_398: 650038197
       Space station._32_2_1217: 774611897
-      Space station._32_2_232: 237280101
       Space station._32_2_434: 2026575979
       Space station._32_2_551: 1337718095
       Space station._32_2_839: -1731602280
@@ -30293,7 +30293,6 @@ TextureImporter:
       Space station._32_2_189: -479191566
       Space station._32_2_66: -755657020
       Space station._32_2_721: -1072445321
-      Space station._32_2_848: 2048650664
       Space station._32_2_317: -733745952
       Space station._32_2_1003: 745250701
       Space station._32_2_1237: 375530089
@@ -30367,8 +30366,8 @@ TextureImporter:
       Space station._32_2_433: -2099807546
       Space station._32_2_376: -1542299
       Space station._32_2_1414: -390234877
-      Space station._32_2_237: -270850271
       Space station._32_2_966: -580397687
+      Space station._32_2_237: -270850271
       Space station._32_2_274: -784736380
       Space station._32_2_431: -914267272
       Space station._32_2_1149: -320539348
@@ -30704,6 +30703,7 @@ TextureImporter:
       Space station._32_2_743: -1056369910
       Space station._32_2_31: 1178548002
       Space station._32_2_1250: 854246671
+      Space station.barrel1: 876569414
       Space station._32_2_1035: 1513163339
       Space station._32_2_258: 1717519492
       Space station._32_2_1224: -204199294
@@ -30827,6 +30827,7 @@ TextureImporter:
       Space station._32_2_868: 1030461206
       Space station._32_2_857: -1562816741
       Space station._32_2_1180: 1082851086
+      Space station.turret1: 1991668631
       Space station._32_2_540: 134257945
       Space station._32_2_85: -1418555560
       Space station._32_2_1044: 1413714010
@@ -30974,7 +30975,7 @@ TextureImporter:
       Space station._32_2_243: 90307032
       Space station._32_2_1104: -1133349846
       Space station._32_2_534: 646973253
-      Space station._32_2_255: 1991668631
+      Space station._32_2_255: 1458790490
       Space station._32_2_428: -1422022428
       Space station._32_2_1025: -383646997
       Space station._32_2_1143: 931457254
@@ -31208,7 +31209,6 @@ TextureImporter:
       Space station._32_2_873: 1345870462
       Space station._32_2_362: -1845119801
       Space station._32_2_1265: -1533854266
-      Space station._32_2_776: 876569414
       Space station._32_2_490: 935913543
       Space station._32_2_1316: 203604060
       Space station._32_2_302: -636390101
@@ -31420,11 +31420,12 @@ TextureImporter:
       Space station._32_2_634: 664058644
       Space station._32_2_27: 1458609317
       Space station._32_2_94: 1032324564
+      Space station.box1: 2048650664
+      Space station._32_2_357: 21322063
       Space station._32_2_965: 137932696
       Space station._32_2_583: -169365758
+      Space station._32_2_232: 237280101
       Space station._32_2_261: 1766105737
-      Space station._32_2_357: 21322063
-      Space station._32_2_283: 1820847382
       Space station._32_2_1295: 252533305
   spritePackingTag: 
   pSDRemoveMatte: 0

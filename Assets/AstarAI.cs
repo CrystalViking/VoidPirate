@@ -6,9 +6,10 @@ using Pathfinding;
 public class AstarAI : MonoBehaviour
 {
     public static AstarAI instance;
-    public Transform target;
+    private Transform target;
+    private GameObject player;
 
-    public float speed = 200f;
+
     public float nextWaypointDistance = 0f;
     Path path;
     int currentWaypoint = 0;
@@ -19,13 +20,15 @@ public class AstarAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        target = player.transform;
         instance = this;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
         InvokeRepeating("UpdatePath", 0f, .5f);
         
     }
+   
     void UpdatePath()
     {
         if (seeker.IsDone())
@@ -57,10 +60,8 @@ public class AstarAI : MonoBehaviour
         }
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
-        
         //rb.velocity = force;
         rb.velocity = Vector2.SmoothDamp(rb.velocity, force, ref currentVelocity, 0.5f);
-
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         if(distance < nextWaypointDistance)
         {
@@ -71,6 +72,5 @@ public class AstarAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move(400f);
     }
 }

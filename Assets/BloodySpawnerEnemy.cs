@@ -10,6 +10,8 @@ public class BloodySpawnerEnemy : RangedEnemy
     public GameObject bomber;
     private GameObject[] bombs;
     private bool spawned;
+    public AstarAI astar;
+
 
     void Start()
     {
@@ -108,7 +110,8 @@ public class BloodySpawnerEnemy : RangedEnemy
     {
         animator.SetIsAttackingFalse();
         animator.SetIsMovingTrue();
-        transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+        //transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+        astar.Move(enemyData.speed * 100);
     }
 
     public new void Attack()

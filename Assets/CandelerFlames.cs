@@ -31,8 +31,6 @@ public class CandelerFlames : EstrellaSaws_v1_1
             collision.CompareTag("Projectile") ||
             collision.CompareTag("PlayerProjectile") ||
             collision.CompareTag("Room") ||
-            collision.CompareTag("Wall") ||
-            collision.CompareTag("Door") ||
             collision.CompareTag("Player") ||
             collision.CompareTag("Untagged")))
         {

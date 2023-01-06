@@ -1017,7 +1017,7 @@ Canvas:
   m_GameObject: {fileID: 3258912619541223588}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1026,7 +1026,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -2085929925
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3258912619541223586
@@ -2833,6 +2833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef97ef9e22d93e940acf5ecc400dd22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1001 &808892756469373792
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaee06fe7c8b01f4991f91e39bba49b8, type: 3}
-  m_Name: Room_TutorialRoom_4
+  m_Name: Room_TutorialRoom_5
   m_EditorClassIdentifier: 
-  guid: 95add09d1b4329f498b045dd07a9733b
-  prefab: {fileID: 4327421925113694216, guid: 4f6b5cb3b55447b468d9cc668e6d4dff, type: 3}
-  previousPrefab: {fileID: 4327421925113694216, guid: 4f6b5cb3b55447b468d9cc668e6d4dff, type: 3}
-  roomNodeType: {fileID: 11400000, guid: 1dc8a4e21f00f05488ad0e37a63e72db, type: 2}
+  guid: 72183ad0368460344a2d2015a5016692
+  prefab: {fileID: 4327421925113694216, guid: c3949438dd0482743b27660b9634a482, type: 3}
+  previousPrefab: {fileID: 4327421925113694216, guid: c3949438dd0482743b27660b9634a482, type: 3}
+  roomNodeType: {fileID: 11400000, guid: ca30b04ea0b62cf4286b01f7cef368bd, type: 2}
   lowerBounds: {x: -10, y: -9}
   upperBounds: {x: 10, y: 9}
   doorwayList:
@@ -52,23 +52,6 @@ MonoBehaviour:
     isConnected: 0
     isUnavailable: 0
   spawnPositionArray:
-  - {x: 116, y: 0}
-  enemiesByLevelList:
-  - spaceshipLevel: {fileID: 11400000, guid: 4f043e90033f61b4da3474631fa669f9, type: 2}
-    spawnableObjectRatioList:
-    - spaceshipObject: {fileID: 11400000, guid: a0fdcdac699878e479c9871af76acfe2, type: 2}
-      ratio: 5
-    - spaceshipObject: {fileID: 11400000, guid: 526fc3f817ec5c94eaa740558c27963e, type: 2}
-      ratio: 5
-    - spaceshipObject: {fileID: 11400000, guid: 7a8e5e1b0ac40274985814e63a90a076, type: 2}
-      ratio: 5
-    - spaceshipObject: {fileID: 11400000, guid: 01c3e672c06b59d448ce5128a34565f6, type: 2}
-      ratio: 5
-  roomEnemySpawnParametersList:
-  - spaceshipLevel: {fileID: 11400000, guid: 4f043e90033f61b4da3474631fa669f9, type: 2}
-    minTotalEnemiesToSpawn: 5
-    maxTotalEnemiesToSpawn: 5
-    minConcurrentEnemies: 5
-    maxConcurrentEnemies: 5
-    minSpawnInterval: 0
-    maxSpawnInterval: 0
+  - {x: 145, y: 0}
+  enemiesByLevelList: []
+  roomEnemySpawnParametersList: []

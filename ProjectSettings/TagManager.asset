@@ -24,6 +24,7 @@ TagManager:
   - CollitionTilemap
   - WallsTilemap
   - Room
+  - Particles
   layers:
   - Default
   - TransparentFX
@@ -105,4 +106,10 @@ TagManager:
     locked: 0
   - name: UpperParticles (Stars)
     uniqueID: 2194243131
+    locked: 0
+  - name: UI
+    uniqueID: 2209037371
+    locked: 0
+  - name: Cross
+    uniqueID: 4043047711
     locked: 0

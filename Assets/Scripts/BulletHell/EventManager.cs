@@ -6,7 +6,8 @@ public class EventManager : MonoBehaviour
 {
     [SerializeField]
     private SceneInfo sceneInfo;
-    public GameObject[] ObjectsList;
+    public GameObject[] eventObjectsList;
+    public GameObject[] defaultObjectsList;
     private int index;
     private bool eventOn = false;
     public Animator alarm;
@@ -22,10 +23,14 @@ public class EventManager : MonoBehaviour
        instance = this;
         if (sceneInfo.isEventOn == true)
         {
+            foreach (GameObject obj in defaultObjectsList)
+            {
+                obj.SetActive(false);
+            }
             audioSource.Play();
             alarm.SetBool("isAlarmOn", true);
-            index = Random.Range(0, ObjectsList.Length);
-            ObjectsList[index].SetActive(true);
+            index = Random.Range(0, eventObjectsList.Length);
+            eventObjectsList[index].SetActive(true);
         }
     }
 
@@ -35,7 +40,7 @@ public class EventManager : MonoBehaviour
         if (sceneInfo.isEventOn == true)
         {
             if (eventOn == false)
-                TargetIndicator.instance.MarkTarget(ObjectsList[index].transform);
+                TargetIndicator.instance.MarkTarget(eventObjectsList[index].transform);
             else if (eventOn == true)
                 TargetIndicator.instance.MarkTarget(anyObject.transform);
         }

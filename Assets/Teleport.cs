@@ -15,8 +15,6 @@ public class Teleport : MonoBehaviour
     private bool isInRange;
     private bool isActive = false;
     public Animator anim;
-    public float transitionTime;
-    public Animator crossFade;
     // Start is called before the first frame update
     void Start()
     {

@@ -5310,7 +5310,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -5403,6 +5403,7 @@ MonoBehaviour:
   bite: {fileID: 4250621684229092451}
   particles: {fileID: 5191185405235799189}
   cashParticles: {fileID: 0}
+  astar: {fileID: 0}
   boom: {fileID: 2110854615661048019}
 --- !u!82 &2769289908278804911
 AudioSource:

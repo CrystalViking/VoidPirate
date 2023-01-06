@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,10 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler
+public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     [SerializeField]
-    ShopWeaponSO shopOptionData;
+    public ShopWeaponSO shopOptionData;
 
 
     public TMP_Text titleText;
@@ -21,7 +22,13 @@ public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler
 
     private void Start()
     {
+        GetComponentInParent<ShopCoinManager>().PurchaseFinished += PurchaseFinished;
         titleText.text = shopOptionData.title;
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -30,4 +37,27 @@ public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler
         descriptionText.text = shopOptionData?.description;
         priceText.text = "PRICE: " + shopOptionData?.price.ToString();
     }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        GetComponentInParent<ShopCoinManager>().Purchase(shopOptionData.price, shopOptionData.title);
+    }
+
+    private void PurchaseFinished(object sender, ItemPurchasedEventArgs e)
+    {
+        var player = GameObject.FindGameObjectWithTag("Player");
+
+        if(gameObject.GetComponent<ShopItemTemplate>().shopOptionData.title == e.TitleText)
+        {
+            gameObject.SetActive(false);
+            player.GetComponentInChildren<GunManager>()
+                .AddGun(gameObject.GetComponent<ShopItemTemplate>().shopOptionData.weaponSO.prefab);
+        }
+
+    }
+
+
 }
+
+
+

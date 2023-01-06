@@ -2461,6 +2461,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8192789973166281624}
+  - component: {fileID: 7960590014744014195}
   m_Layer: 5
   m_Name: WeaponListHolder
   m_TagString: Untagged
@@ -2489,6 +2490,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 286}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7960590014744014195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153589002837412520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5ffc6d739dc4d48b273c077ec669f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopWeaponsSO: []
+  shopOptionsGO: []
+  shopOptions: []
 --- !u!1 &7213601308848285919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,7 +2620,7 @@ PrefabInstance:
     - target: {fileID: 813590468066416077, guid: 2d43424954fc2a54a985ae2654f0a5a3, type: 3}
       propertyPath: shopOptionData
       value: 
-      objectReference: {fileID: 11400000, guid: dc8c1db467c1af04b9ea5f53167f1670, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 813590468066416077, guid: 2d43424954fc2a54a985ae2654f0a5a3, type: 3}
       propertyPath: descriptionText
       value: 

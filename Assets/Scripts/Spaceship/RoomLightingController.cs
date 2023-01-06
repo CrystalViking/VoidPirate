@@ -52,6 +52,7 @@ public class RoomLightingController : MonoBehaviour
 
         for (float i = 0.05f; i <= Timer.Instance.lightLevel; i += Time.deltaTime / Settings.fadeInTime)
         {
+            Debug.Log(Timer.Instance.lightLevel);
             material.SetFloat("Alpha_Slider", i);
             yield return null;
         }

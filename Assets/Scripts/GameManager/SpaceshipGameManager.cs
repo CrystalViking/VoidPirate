@@ -21,11 +21,13 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
     [HideInInspector] public GameState previousGameState;
     private SpaceshipRoom currentRoom;
     private SpaceshipRoom previousRoom;
+    Timer timer;
 
     void Start()
     {
         previousGameState = GameState.gameStarted;
         gameState = GameState.gameStarted;
+        timer = GetComponent<Timer>();
     }
 
     void Update()
@@ -39,6 +41,16 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
         {
             gameState = GameState.gameStarted;
         }
+    }
+
+    void DisableTimer()
+    {
+        timer.enabled = false;
+    }
+
+    void EnableTimer()
+    {
+        timer.enabled = true;
     }
 
     private void OnEnable()
@@ -61,6 +73,17 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
         switch (gameState)
         {
             case GameState.gameStarted:
+                if (currentSpaceshipListIndex == 1)
+                {
+                    DisableTimer();
+                    GameResources.Instance.litMaterial.SetFloat("Alpha_Slider", 1);
+
+                }
+                else
+                {
+                    EnableTimer();
+                }
+
                 PlaySpaceshipLevel(currentSpaceshipListIndex);
                 gameState = GameState.playingLevel;
                 break;

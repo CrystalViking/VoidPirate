@@ -49,7 +49,6 @@ public class Timer : SingletonMonobehaviour<Timer>
             ProcessOxygenShortageEvent();
         }
 
-        // GameResources.Instance.dimmedMaterial.SetFloat("Alpha_Slider", lightLevel);
         GameResources.Instance.litMaterial.SetFloat("Alpha_Slider", lightLevel);
     }
 

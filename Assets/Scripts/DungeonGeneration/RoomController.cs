@@ -24,6 +24,7 @@ public class RoomController : MonoBehaviour
     bool spawnedBossRoom = false;
     bool updatedRooms = false;
     private bool shouldActiveEnemy = true;
+    private GameObject boss;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class RoomController : MonoBehaviour
     {
         UpdateRoomQueue();
         CheckIfCanOpenBossRoom();
+        MarkBoss();
     }
 
     private void CheckIfCanOpenBossRoom()
@@ -247,6 +249,14 @@ public class RoomController : MonoBehaviour
         //Debug.Log((clearedRoomCount > (totalRoomCount / 2)));
         //Debug.Log(clearedRoomCount + ", " + totalRoomCount);
         return clearedRoomCount > (totalRoomCount / 2);
+    }
+    private void MarkBoss()
+    {
+        boss = GameObject.FindGameObjectWithTag("Boss");
+        if(boss != null)
+        {
+            TargetIndicator.instance.MarkTarget(boss.transform);
+        }
     }
 
     public void UpdateRooms()

@@ -54,7 +54,7 @@ public class PShipHealth : MonoBehaviour
             dmgTaken = 0;
             ScreenShakeController.instance.StartShake(1f, 3f);
             sceneInfo.isEventOn = true;
-            StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipEvent"));
+            StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
         }
     }
 
@@ -105,7 +105,7 @@ public class PShipHealth : MonoBehaviour
         sceneInfo.isEventOn = false;
         PlayerPrefs.SetInt("coinAmount", 0);
         Debug.Log("is Dead");
-        StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
+        StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
 
     }
 }

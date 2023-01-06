@@ -14,8 +14,8 @@ public class TransitionSceneTimer : MonoBehaviour
 
     IEnumerator Transit()
     {
-        yield return new WaitForSeconds(17f);
-        StartCoroutine(loader.LoadScene("LobbyShip"));
+        yield return new WaitForSeconds(10f);
+        StartCoroutine(loader.LoadScene("LobbyShipFinal"));
     }
 
     

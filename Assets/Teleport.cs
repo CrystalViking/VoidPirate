@@ -9,7 +9,6 @@ public class Teleport : MonoBehaviour
     [Header("Menu Screens")]
     [SerializeField] private GameObject loadingScreen;
 
-
     [Header("Slider")]
     [SerializeField] private Slider loadingSlider;
     private bool isInRange;

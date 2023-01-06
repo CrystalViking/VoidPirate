@@ -53,7 +53,7 @@ public class CountdownTimer : MonoBehaviour
             DestroyAllComponents();
             sceneInfo.isEventOn = false;
             PlayerPrefs.DeleteKey("shipHealth");
-            StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
+            StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
         }
     }
 

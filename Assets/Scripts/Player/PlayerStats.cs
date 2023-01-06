@@ -67,7 +67,7 @@ public class PlayerStats : ActorStats
     {
         base.Die();
         PlayerPrefs.SetInt("coinAmount", 0);
-        StartCoroutine(SceneLoader.instance.LoadScene("LobbyShip"));
+        StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
     }
 
     private void Update()

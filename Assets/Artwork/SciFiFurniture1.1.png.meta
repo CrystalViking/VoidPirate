@@ -109,8 +109,8 @@ TextureImporter:
         serializedVersion: 2
         x: 48
         y: 672
-        width: 96
-        height: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -464,10 +464,10 @@ TextureImporter:
       name: SciFiFurniture1.1_17
       rect:
         serializedVersion: 2
-        x: 417
+        x: 624
         y: 480
-        width: 303
-        height: 75
+        width: 96
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -485,10 +485,10 @@ TextureImporter:
       name: SciFiFurniture1.1_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 288
-        width: 240
-        height: 192
+        x: 159
+        y: 347
+        width: 18
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1027,6 +1027,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SciFiFurniture1.1_44
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 144
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a52b320804812848b47ba45a03bfe2c
+      internalID: 108688276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SciFiFurniture1.1_45
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 480
+        width: 63
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa513f6d679da744add63e4f1e0f327
+      internalID: -564122696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1042,6 +1084,7 @@ TextureImporter:
       SciFiFurniture1.1_22: -10045566
       SciFiFurniture1.1_39: 334411408
       SciFiFurniture1.1_9: 185010275
+      SciFiFurniture1.1_44: 108688276
       SciFiFurniture1.1_23: 378746660
       SciFiFurniture1.1_30: 320828439
       SciFiFurniture1.1_20: -437089657
@@ -1073,14 +1116,15 @@ TextureImporter:
       SciFiFurniture1.1_27: 1114612852
       SciFiFurniture1.1_17: -2044664924
       SciFiFurniture1.1_3: -2130255360
+      SciFiFurniture1.1_45: -564122696
       SciFiFurniture1.1_43: -684204822
+      SciFiFurniture1.1_29: 950210612
       SciFiFurniture1.1_41: 1934387312
-      SciFiFurniture1.1_16: 1452871376
       SciFiFurniture1.1_36: 1876150012
-      SciFiFurniture1.1_26: -1524897982
+      SciFiFurniture1.1_16: 1452871376
       SciFiFurniture1.1_14: 505265971
       SciFiFurniture1.1_40: -494243529
-      SciFiFurniture1.1_29: 950210612
+      SciFiFurniture1.1_26: -1524897982
       SciFiFurniture1.1_2: 1573330258
   spritePackingTag: 
   pSDRemoveMatte: 0

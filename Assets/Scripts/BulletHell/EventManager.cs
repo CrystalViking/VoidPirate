@@ -32,10 +32,13 @@ public class EventManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (eventOn == false)
-            TargetIndicator.instance.MarkTarget(ObjectsList[index].transform);
-        else if(eventOn == true)
-            TargetIndicator.instance.MarkTarget(anyObject.transform);
+        if (sceneInfo.isEventOn == true)
+        {
+            if (eventOn == false)
+                TargetIndicator.instance.MarkTarget(ObjectsList[index].transform);
+            else if (eventOn == true)
+                TargetIndicator.instance.MarkTarget(anyObject.transform);
+        }
     }
 
     public void EventComplete()

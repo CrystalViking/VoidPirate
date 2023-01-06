@@ -24,6 +24,9 @@ public class RoomController : MonoBehaviour
     bool spawnedBossRoom = false;
     bool updatedRooms = false;
     private bool shouldActiveEnemy = true;
+    private int shouldBeEstrella;
+    private int shouldBeReaper;
+    private int shouldBeAtaros;
 
     private void Start()
     {
@@ -31,6 +34,9 @@ public class RoomController : MonoBehaviour
         // LoadRoom("Test", 1, 0);
         // LoadRoom("Test", -1, 0);
         // LoadRoom("Test", -2, 0);
+        shouldBeEstrella = PlayerPrefs.GetInt("shouldBeEstrella", 1);
+        shouldBeReaper = PlayerPrefs.GetInt("shouldBeReaper", 1);
+        shouldBeAtaros = PlayerPrefs.GetInt("shouldBeAtaros", 1);
     }
 
     private void Update()
@@ -191,11 +197,49 @@ public class RoomController : MonoBehaviour
 
     public string GetRandomRoomName()
     {
+
         string[] possibleRooms = new string[]
         {
+        //"Empty"
+        "Basic1"
+        };
+
+        if (!(shouldBeEstrella == 1 && shouldBeReaper == 1 && shouldBeAtaros == 1))
+        {
+            if (shouldBeEstrella == 1)
+            {
+                possibleRooms = new string[]
+                {
+                //"Empty",
+                "Estrella"
+                };
+            }
+            else if (shouldBeReaper == 1)
+            {
+                possibleRooms = new string[]
+                {
+                //"Empty",
+                "Reaper"
+                };
+            }
+            else if (shouldBeAtaros == 1)
+            {
+                possibleRooms = new string[]
+                {
+                //"Empty",
+                "Ataros"
+                };
+            }
+        }
+        else
+        {
+            possibleRooms = new string[]
+            {
             //"Empty",
             "Basic1"
-        };
+            };
+        }
+
 
         return possibleRooms[Random.Range(0, possibleRooms.Length)];
     }

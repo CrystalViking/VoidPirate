@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class ShopWeaponManager : MonoBehaviour
 {
-    [SerializeField]
-    List<WeaponSO> weaponDataList;
+    //[SerializeField]
+    //List<ShopWeaponSO> weaponDataList;
 
-    [SerializeField]
-    GameObject button;
+    //[SerializeField]
+    //GameObject button;
 
-    [SerializeField]
-    GameObject contentContainer;
+    //[SerializeField]
+    //GameObject contentContainer;
+
+    public ShopWeaponSO[] shopWeaponsSO;
+    public GameObject[] shopOptionsGO;
+    public ShopItemTemplate[] shopOptions;
+
+    
 
     void Start()
     {
-        
+        LoadPanels();
+        ActivatePanels();
     }
 
     
@@ -24,11 +31,34 @@ public class ShopWeaponManager : MonoBehaviour
         
     }
 
-    void PopulateMenuContainer()
-    {
+    //void PopulateMenuContainer()
+    //{
+    //    if(weaponDataList.Count > 0)
+    //    {
+    //        foreach(ShopWeaponSO weapon in weaponDataList)
+    //        {
 
+    //        }
+    //    }
+    //}
+
+
+    public void LoadPanels()
+    {
+        for (int i = 0; i < shopOptions.Length; i++)
+        {
+            shopOptions[i].shopOptionData = shopWeaponsSO[i];
+            
+        }
     }
 
+    public void ActivatePanels()
+    {
+        for(int i = 0; i < shopWeaponsSO.Length; i++)
+        {
+            shopOptionsGO[i].SetActive(true);
+        }
+    }
 
     void InitVariables()
     {

@@ -6,6 +6,7 @@ public class MadDroidEnemy : RangedEnemy
 {
   new private MadEnemyAnimator animator;
   private bool moneySpawned;
+  public AstarAI astar;
 
   void Start()
   {
@@ -80,9 +81,10 @@ public class MadDroidEnemy : RangedEnemy
     }
 
     public void FollowAndAttack()
-  {
+    {
     animator.SetIsMovingOrAttackingTrue();
-    transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+    //transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+    astar.Move(enemyData.speed * 100);
     if (enemyCalculations.CanAttack())
     {
       audioSource.Play();
@@ -90,7 +92,7 @@ public class MadDroidEnemy : RangedEnemy
       enemyCalculations.SetNextAttackTime();
     }
 
-  }
+    }
 
   public override void Idle()
   {

@@ -119,7 +119,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 87052025
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2208521, guid: 8be292b4136bf984ab2d813ecbff7135, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -191,7 +191,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -247,12 +247,13 @@ MonoBehaviour:
   bite: {fileID: 0}
   particles: {fileID: 4930504612266797269}
   cashParticles: {fileID: 6322897744201289345, guid: 385075da9f072b340bc40ac43bd1ffb2, type: 3}
+  astar: {fileID: 0}
   allies:
-  - {fileID: 741157875844909433, guid: 20b6179aa778a834999341768e9b5c6b, type: 3}
-  - {fileID: 3039306468364581178, guid: 8c24802cc3408ab479c97e0bef696cd3, type: 3}
+  - {fileID: 6527696923855452126, guid: e50c49bc5993b1e40ad6eda11d69afe6, type: 3}
+  - {fileID: 4509543153190773792, guid: 8de3662568bcb324db817deac5528329, type: 3}
   - {fileID: 6194148048386134219, guid: 4a557e7390244ac48956424b9abd8012, type: 3}
-  - {fileID: 5795759043171648832, guid: 04c9123d5cff2b14f8b48aa7a4d6d687, type: 3}
-  - {fileID: 4497877406970540932, guid: b0d9dd31b8f81064f86703d917ab521b, type: 3}
+  - {fileID: 4193533575541446100, guid: 58af7688ebaab2b448f2b42557885cab, type: 3}
+  - {fileID: 4879424250957457299, guid: 61d75be6ea442c14cb08f5f12911c179, type: 3}
   spawnedAlly: {fileID: 0}
 --- !u!114 &3664300212637015685
 MonoBehaviour:

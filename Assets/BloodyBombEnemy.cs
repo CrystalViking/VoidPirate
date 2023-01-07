@@ -59,7 +59,8 @@ public class BloodyBombEnemy : MeleeEnemy
             audioSource.Play();
 
         transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed * random_booster);
-        if(Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) < 0.5f)
+        //astar.Move(enemyData.speed * 25 * random_booster);
+        if (Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) < 0.5f)
         {
             Explode();
         }

@@ -435,7 +435,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -516,6 +516,7 @@ MonoBehaviour:
   bite: {fileID: 0}
   particles: {fileID: 2825313984213811732}
   cashParticles: {fileID: 6322897744201289345, guid: 385075da9f072b340bc40ac43bd1ffb2, type: 3}
+  astar: {fileID: 0}
   ghost: {fileID: 7518258550453179772, guid: 4833eeb8550889f4281e81ab1c9f24b6, type: 3}
   spawnedAlly: {fileID: 0}
 --- !u!82 &211891362749251913

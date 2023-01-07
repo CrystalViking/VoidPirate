@@ -13,6 +13,7 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
     public ParticleSystem particles;
     public GameObject cashParticles;
     private bool moneySpawned;
+    public AstarAI astar;
 
     public int Health { get; set; }
 
@@ -121,7 +122,8 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
         if (!audioSource.isPlaying)
             audioSource.Play();
 
-        transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+        //transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+        astar.Move(enemyData.speed * 150);
 
     }
 

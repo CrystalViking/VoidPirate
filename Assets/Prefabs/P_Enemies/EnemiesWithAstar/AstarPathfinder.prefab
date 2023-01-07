@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3722440834100811782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3722440834100811783}
+  - component: {fileID: 3722440834100811776}
+  - component: {fileID: 3722440834100811777}
+  m_Layer: 0
+  m_Name: AstarPathfinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3722440834100811783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722440834100811782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -34.6, y: 8.1, z: -4.9224286}
+  m_LocalScale: {x: 5.2625, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3722440834100811776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722440834100811782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAAAIIew4ZVPxcwIAACsFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMFy2jAQ/RVG58LYBgfcW2sI6SEJE9rJxRdhr7EGWfJIcoBk+PeuZBu77gnxdt/u26eVvwgTuoLUSLVVLHuWGZDvE2LP5NukDz7BhR6l2LNP6HLeWWYKm0Rdzhs1TCLuW5qWJRjF0h/iyG2yh2AtWC5VucmOEEttNMI55RowpKSxbIHQ14Rc8GcaWcoVT8HSnj7xFHmTGx5TEAbUINWfhUG4Wq4ifzP1wpbWkRpOLVJOywoyO0BPDaJo1hGC8GEWumSBA7Z5ngunknOmW33EXCs3f0wrXeN0mJAxivM6Ud7sAYEC2LEwtuqQ/prnGkwrTtHrmik0rqlLfsrGzZLqU6Pwg/Ladlp40YMT1lR9/i9h6rtwrmT51DX2PdvEFCw9vdFrSrUZ+D2E17123zl1pvxEDxzeCxAvcqtkLTIMGlVbaq0hWPd/77PFBaSnHm+kjsC66q33RvdkZ7i58S8xZ+XBWblogD2XznK3E6Dwen6hYLcxui2BqFXxR8NvehyuVht4ZEobDLVTCivvIGtlU8nGeWanqU0slQAHt6IrEJSb6w7LmPEdjmKDtqPII7WPqG3exrq3MaI4uM/3vFFoJ8/3y9KFPD+DLl5rw5mAXrQNvKBPsRSiWbGhJx1tX6ucpgPasWbZv6tFoox6Xk6DMF2t5kuaT4Nl6s8XOZ2HB2+RLyLido8JnJPyXSO0tQdvTfTFBe5Z922ZbBWt3Lpnip637LOUA8uZyOU+VQDitalwFw4Km+DTzDYZQ4P2YAwT7r7JV0K4TE+QJfdCiZt0czGKJn2VhFTsQxqLJCR2H5OEWPi+yzsFHwzOtnlX7EZufwFQSwMEFAAACAgAAAgh7OcYbYVtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJJlSqKBQVqikWmyhYWxeWKarpF5sqGxSVqisWmSgUmaiaVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7DhlU/FzAgAAKwUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7OcYbYVtAAAAeAAAAAkAJAAAAAAAAAAAAAAAwAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB4AwAAAAA=
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 0
+  maxNearestNodeDistance: 100
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames: []
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 10
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1
+--- !u!114 &3722440834100811777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722440834100811782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06dd23c83914b25489ffafdddddc1365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

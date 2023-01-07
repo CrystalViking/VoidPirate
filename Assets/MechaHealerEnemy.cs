@@ -39,8 +39,19 @@ public class MechaHealerEnemy : MeleeEnemy
     }
 
   }
+    void FixedUpdate()
+    {
+        if (currState == EnemyState.Follow)
+        {
+            if (useAStar)
+            {
+                astar.Move(enemyData.speed * 200);
+            }
+        }
+    }
 
-  public new void ScrollStates()
+
+    public new void ScrollStates()
   {
     switch (currState)
     {
@@ -143,8 +154,10 @@ public class MechaHealerEnemy : MeleeEnemy
     animator.SetIsHealingFalse();
 
     if (useAStar)
-        astar.Move(enemyData.speed * 150);
-    else
+        {
+            //astar.Move(enemyData.speed * 150);
+        }
+        else
         transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
     }
 

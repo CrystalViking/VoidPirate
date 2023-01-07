@@ -35,6 +35,16 @@ public class InsectEnemy : MeleeEnemy
     }
 
   }
+    void FixedUpdate()
+    {
+        if (currState == EnemyState.Follow)
+        {
+            if (useAStar)
+            {
+                astar.Move(enemyData.speed * 200);
+            }
+        }
+    }
 
   public new void ScrollStates()
   {
@@ -103,7 +113,9 @@ public class InsectEnemy : MeleeEnemy
       audioSource.Play();
 
         if (useAStar)
-            astar.Move(enemyData.speed * 400);
+        {
+            //astar.Move(enemyData.speed * 400);
+        }
         else
             transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
 

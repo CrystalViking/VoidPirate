@@ -35,8 +35,18 @@ public class MadDroidEnemy : RangedEnemy
     }
 
   }
+    void FixedUpdate()
+    {
+        if (currState == EnemyState.FollowAndAttack)
+        {
+            if (useAStar)
+            {
+                astar.Move(enemyData.speed * 200);
+            }
+        }
+    }
 
-  public new void ScrollStates()
+    public new void ScrollStates()
   {
     switch (currState)
     {
@@ -84,7 +94,9 @@ public class MadDroidEnemy : RangedEnemy
     {
         animator.SetIsMovingOrAttackingTrue();
         if (useAStar)
-            astar.Move(enemyData.speed * 200);
+        {
+            //astar.Move(enemyData.speed * 200);
+        }
         else
             transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
         if (enemyCalculations.CanAttack())

@@ -29,6 +29,8 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
     public GameObject text3;
     public GameObject text4;
     public GameObject text5;
+    public GameObject canvas;
+
 
     void Start()
     {
@@ -154,6 +156,10 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
                     text5.SetActive(true);
                     break;
             }
+        }
+        else
+        {
+            canvas.SetActive(false);
         }
 
         currentRoom = room;

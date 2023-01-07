@@ -183,7 +183,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'PRESS ''SPACEBAR'' TO USE EMP
 
-    WHICH STUNS ENEMIES FOR X SECONDS'
+    WHICH STUNS ENEMIES FOR 4 SECONDS AND
+    HAS 10 SECOND COOLDOWN
+
+    REMEMBER TO RELOAD YOUR WEAPON ''R'''
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ccdee2e5594856b4ea8ed6092f7906b6, type: 2}
   m_sharedMaterial: {fileID: -5015307483134045834, guid: ccdee2e5594856b4ea8ed6092f7906b6, type: 2}
@@ -246,7 +249,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -212.03162, y: -106.1803, z: -213.39075, w: -107.38495}
+  m_margin: {x: -218.75543, y: -106.1803, z: -218.76971, w: -107.38495}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1401,9 +1404,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.069936424
     y: 0
-    width: 1
+    width: 0.86063176
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2497,7 +2500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "PRESS 'WASD' TO MOVE \n'ESC' FOR PAUSE MENU"
+  m_text: "PRESS 'WASD' TO MOVE \n'ESC' TO PAUSE THE GAME"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ccdee2e5594856b4ea8ed6092f7906b6, type: 2}
   m_sharedMaterial: {fileID: -5015307483134045834, guid: ccdee2e5594856b4ea8ed6092f7906b6, type: 2}

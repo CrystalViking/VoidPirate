@@ -5,10 +5,14 @@ using UnityEngine;
 public class MusicPicker : MonoBehaviour
 {
     public AudioSource[] audioSources;
+    public AudioSource[] bossAudioSources;
     private GameObject player;
+    private int i;
     void Start()
     {
-        audioSources[0].Play();
+        i = Random.Range(0, audioSources.Length);
+        Debug.Log(i);
+        audioSources[i].Play();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -19,22 +23,22 @@ public class MusicPicker : MonoBehaviour
         {
             if (FindPlayerRoom() == FindBoss().GetComponent<IEnemy>().GetParent().transform.parent.gameObject)
             {
-                audioSources[0].Stop();
-                if (!audioSources[1].isPlaying)
-                    audioSources[1].Play();
+                audioSources[i].Stop();
+                if (!bossAudioSources[0].isPlaying)
+                    bossAudioSources[0].Play();
             }
             else
             {
-                audioSources[1].Stop();
-                if (!audioSources[0].isPlaying)
-                    audioSources[0].Play();
+                bossAudioSources[0].Stop();
+                if (!audioSources[i].isPlaying)
+                    audioSources[i].Play();
             }
         }
         catch 
         {
-            audioSources[1].Stop();
-            if (!audioSources[0].isPlaying)
-                audioSources[0].Play();
+            bossAudioSources[0].Stop();
+            if (!audioSources[i].isPlaying)
+                audioSources[i].Play();
         }
     }
 

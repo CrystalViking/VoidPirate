@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8836956139156992219, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player WeaponParent
       objectReference: {fileID: 0}
     - target: {fileID: 8836956139156992219, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_Layer
@@ -240,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 765647099, guid: 63aae214d63ac39429777d3d6b1cb48e, type: 3}
     - target: {fileID: 8836956139156992241, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8836956139156992241, guid: 6641a87918f9ddf40bbabb5cda37793f, type: 3}
       propertyPath: m_SortingLayerID
@@ -827,6 +827,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSources:
   - {fileID: 3137756527702394533}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bossAudioSources:
   - {fileID: 8979692792700849746}
 --- !u!1001 &9017242840629270111
 PrefabInstance:

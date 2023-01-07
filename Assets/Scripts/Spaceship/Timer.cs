@@ -18,7 +18,7 @@ public class Timer : SingletonMonobehaviour<Timer>
     public bool isEnergyShortage = false;
     public float lightLevel = 1f;
 
-    private void Start()
+    void Start()
     {
         timerIsRunning = true;
 
@@ -27,6 +27,7 @@ public class Timer : SingletonMonobehaviour<Timer>
         if (number == 0)
         {
             isOxygenShortage = true;
+            didEnergyEventSucceed = true;
         }
         else
         {
@@ -73,28 +74,45 @@ public class Timer : SingletonMonobehaviour<Timer>
 
     void ProcessEnergyShortageEvent()
     {
-        if (timerIsRunning)
+        DisplayEventMessage("Energy shortage");
+
+        if (didEnergyEventSucceed)
         {
-            if (timeRemaining > 0)
+            lightLevel = 1f;
+            EnableBridgeRoomDoors();
+        }
+        else
+        {
+            DisableBridgeRoomDoors();
+        }
+
+        if (!didOxygenEventSucceed)
+        {
+            if (timerIsRunning)
             {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining, "Energy shortage");
-            }
-            else
-            {
-                Debug.Log("Time has run out!");
-                DisplayEventMessage("Critically low energy level");
-                timeRemaining = 0;
-                timerIsRunning = false;
+                if (timeRemaining > 0)
+                {
+                    timeRemaining -= Time.deltaTime;
+                    DisplayTime(timeRemaining, "Energy & Oxygen shortage");
+                }
+                else
+                {
+                    Debug.Log("Time has run out!");
+                    DisplayEventMessage("Critically low oxygen level");
+                    timeRemaining = 0;
+                    timerIsRunning = false;
+                    // start suffocating player
+                }
             }
         }
+
         if ((didEnergyEventSucceed && isOxygenStationInGoodCondition) || (didEnergyEventSucceed && didOxygenEventSucceed))
         {
             timerIsRunning = false;
-            lightLevel = 1f;
             DisplayEventMessage("Event succeeded");
         }
     }
+
     void DisplayTime(float timeToDisplay, string eventName = "")
     {
         timeToDisplay += 1;
@@ -106,5 +124,38 @@ public class Timer : SingletonMonobehaviour<Timer>
     public void DisplayEventMessage(string message)
     {
         timeText.text = message;
+    }
+
+    public void DisableBridgeRoomDoors()
+    {
+        Dictionary<string, SpaceshipRoom> dictionary = SpaceshipBuilder.Instance.spaceshipBuilderRoomDictionary;
+
+        foreach (KeyValuePair<string, SpaceshipRoom> keyValuePair in dictionary)
+        {
+            SpaceshipRoom room = keyValuePair.Value;
+            Debug.Log(room.roomNodeType.roomNodeTypeName);
+            if (room.roomNodeType.roomNodeTypeName == "Bridge Room")
+            {
+                room.instantiatedRoom.LockDoors();
+                room.instantiatedRoom.EventCloseDoors();
+            }
+        }
+    }
+
+    public void EnableBridgeRoomDoors()
+    {
+        Dictionary<string, SpaceshipRoom> dictionary = SpaceshipBuilder.Instance.spaceshipBuilderRoomDictionary;
+
+        foreach (KeyValuePair<string, SpaceshipRoom> keyValuePair in dictionary)
+        {
+            SpaceshipRoom room = keyValuePair.Value;
+
+            if (room.roomNodeType.roomNodeTypeName == "Bridge Room")
+            {
+                room.instantiatedRoom.UnlockDoors(0.1f);
+                room.instantiatedRoom.EventOpenDoors();
+
+            }
+        }
     }
 }

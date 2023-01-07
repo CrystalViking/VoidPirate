@@ -109,6 +109,24 @@ public class InstantiatedRoom : MonoBehaviour
         DisableRoomCollider();
     }
 
+    public void EventCloseDoors()
+    {
+        SpaceshipDoor[] doorArray = GetComponentsInChildren<SpaceshipDoor>();
+        foreach (SpaceshipDoor door in doorArray)
+        {
+            door.canBeOpened = false;
+        }
+    }
+
+    public void EventOpenDoors()
+    {
+        SpaceshipDoor[] doorArray = GetComponentsInChildren<SpaceshipDoor>();
+        foreach (SpaceshipDoor door in doorArray)
+        {
+            door.canBeOpened = true;
+        }
+    }
+
     public void UnlockDoors(float doorUnlockDelay)
     {
         StartCoroutine(UnlockDoorsRoutine(doorUnlockDelay));

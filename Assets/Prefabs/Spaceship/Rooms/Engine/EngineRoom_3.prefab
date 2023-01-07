@@ -8183,6 +8183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToGreyOut:
   - {fileID: 5980660728804507682}
+  - {fileID: 2534062542347180857}
   itemInteractionCode: 101
 --- !u!224 &8956109571454492850 stripped
 RectTransform:
@@ -8258,6 +8259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b426ce41e8eac5428041e8d9eb38b50, type: 3}
+--- !u!1 &2534062542347180857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2254488108110993185, guid: 6b426ce41e8eac5428041e8d9eb38b50, type: 3}
+  m_PrefabInstance: {fileID: 4351392624699395096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8992229761187923337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4659415658054486417, guid: 6b426ce41e8eac5428041e8d9eb38b50, type: 3}

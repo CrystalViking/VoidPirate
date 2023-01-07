@@ -10868,6 +10868,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -5037203417330703516, guid: 6e6a396af90f59f4bb795b4dc61674f4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6e6a396af90f59f4bb795b4dc61674f4, type: 3}
+--- !u!114 &1343599552 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6715612363950059216, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
+  m_PrefabInstance: {fileID: 1757061462}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45239e93e59fba54481cff90894c0166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1359516400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8706115713578166082, guid: bad04a000906d0f479a43b2962a4078c, type: 3}
@@ -11485,6 +11496,18 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 25738253768971179, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 25738253768971179, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1343599552}
+    - target: {fileID: 25738253768971179, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActivePause
+      objectReference: {fileID: 0}
     - target: {fileID: 25738253901845004, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
       propertyPath: m_text
       value: MAIN MENU
@@ -11627,7 +11650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7741633188466435996, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7741633188917396045, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
       propertyPath: hudCanvas

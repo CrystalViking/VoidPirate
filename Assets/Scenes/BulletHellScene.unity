@@ -1985,6 +1985,17 @@ MonoBehaviour:
   verticalJumpLowValue: 0.02
   scanLineJiterHighValue: 0.5
   verticalJumpHighValue: 0.05
+--- !u!114 &1713978554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5889312836101792147, guid: 1ef1839edc4588f43b5ec33367e8b6f3, type: 3}
+  m_PrefabInstance: {fileID: 8474554743603399997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713978542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45239e93e59fba54481cff90894c0166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1716406938
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,6 +2049,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 25738253768971179, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 25738253768971179, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1713978554}
+    - target: {fileID: 25738253768971179, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActivePause
+      objectReference: {fileID: 0}
     - target: {fileID: 7741633188466435168, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [DisallowMultipleComponent]
 public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
@@ -22,6 +23,12 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
     private SpaceshipRoom currentRoom;
     private SpaceshipRoom previousRoom;
     Timer timer;
+    public GameObject text0;
+    public GameObject text1;
+    public GameObject text2;
+    public GameObject text3;
+    public GameObject text4;
+    public GameObject text5;
 
     void Start()
     {
@@ -93,6 +100,62 @@ public class SpaceshipGameManager : SingletonMonobehaviour<SpaceshipGameManager>
     public void SetCurrentRoom(SpaceshipRoom room)
     {
         previousRoom = currentRoom;
+
+        if (currentSpaceshipListIndex == 1)
+        {
+            switch (room.roomNodeType.roomNodeTypeName)
+            {
+                case ("Entrance"):
+                    text0.SetActive(true);
+                    text1.SetActive(false);
+                    text2.SetActive(false);
+                    text3.SetActive(false);
+                    text4.SetActive(false);
+                    text5.SetActive(false);
+                    break;
+                case ("Tutorial room 1"):
+                    text0.SetActive(false);
+                    text1.SetActive(true);
+                    text2.SetActive(false);
+                    text3.SetActive(false);
+                    text4.SetActive(false);
+                    text5.SetActive(false);
+                    break;
+                case ("Tutorial room 2"):
+                    text0.SetActive(false);
+                    text1.SetActive(false);
+                    text2.SetActive(true);
+                    text3.SetActive(false);
+                    text4.SetActive(false);
+                    text5.SetActive(false);
+                    break;
+                case ("Tutorial room 3"):
+                    text0.SetActive(false);
+                    text1.SetActive(false);
+                    text2.SetActive(false);
+                    text3.SetActive(true);
+                    text4.SetActive(false);
+                    text5.SetActive(false);
+                    break;
+                case ("Tutorial room 4"):
+                    text0.SetActive(false);
+                    text1.SetActive(false);
+                    text2.SetActive(false);
+                    text3.SetActive(false);
+                    text4.SetActive(true);
+                    text5.SetActive(false);
+                    break;
+                case ("Tutorial room 5"):
+                    text0.SetActive(false);
+                    text1.SetActive(false);
+                    text2.SetActive(false);
+                    text3.SetActive(false);
+                    text4.SetActive(false);
+                    text5.SetActive(true);
+                    break;
+            }
+        }
+
         currentRoom = room;
     }
 

@@ -102,11 +102,13 @@ public class InsectEnemy : MeleeEnemy
     if (!audioSource.isPlaying)
       audioSource.Play();
 
-        //transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
-        astar.Move(enemyData.speed * 150);
-        
+        if (useAStar)
+            astar.Move(enemyData.speed * 150);
+        else
+            transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
 
-  }
+
+    }
 
   public override void Idle()
   {

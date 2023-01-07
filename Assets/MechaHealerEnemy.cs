@@ -142,9 +142,11 @@ public class MechaHealerEnemy : MeleeEnemy
     animator.SetIsAttackingFalse();
     animator.SetIsHealingFalse();
 
-    //transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
-    astar.Move(enemyData.speed * 100);
-  }
+    if (useAStar)
+        astar.Move(enemyData.speed * 150);
+    else
+        transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+    }
 
   public override void Idle()
   {

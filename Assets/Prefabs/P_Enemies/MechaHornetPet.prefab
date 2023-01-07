@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1423106806149054408}
   - component: {fileID: 686858909187597613}
   - component: {fileID: 5177434701933556076}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7116124018604651004}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 5170873228093603128}
   - component: {fileID: 5654045846317632131}
   - component: {fileID: 3516504123213403788}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 2866450830396744037}
   - component: {fileID: 3564770639565640290}
   - component: {fileID: 2334232301821664071}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 5514730672423851218}
   - component: {fileID: -6246522903740371323}
   - component: {fileID: -9035541648866849053}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: MechaHornetPet
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -452,6 +452,7 @@ MonoBehaviour:
   activeBehaviour: 0
   currState: 0
   isUndestructible: 0
+  useAStar: 0
   health: 0
   projectile: {fileID: 320230852668635978, guid: 72985f575cb065749a2d64a3307aa9cd, type: 3}
   spit: {fileID: -6246522903740371323}
@@ -771,7 +772,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4973492527546390158}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5500304089450434061}
   - component: {fileID: 7880057456447495335}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -900,6 +901,10 @@ PrefabInstance:
     - target: {fileID: 3532330730875452193, guid: f43bcc0075f1f814dab1aad265b36244, type: 3}
       propertyPath: m_Name
       value: MechaParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532330730875452193, guid: f43bcc0075f1f814dab1aad265b36244, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3532330730875452193, guid: f43bcc0075f1f814dab1aad265b36244, type: 3}
       propertyPath: m_IsActive

@@ -123,7 +123,9 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
             audioSource.Play();
 
         if (useAStar)
-            astar.Move(enemyData.speed * 150);
+        {
+            astar.Move(enemyData.speed * 400);
+        }
         else
             transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
 

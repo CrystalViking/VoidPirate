@@ -112,7 +112,7 @@ public class BloodySpawnerEnemy : RangedEnemy
         animator.SetIsMovingTrue();
 
         if (useAStar)
-            astar.Move(enemyData.speed * 150);
+            astar.Move(enemyData.speed * 200);
         else
             transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
     }

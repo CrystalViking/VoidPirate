@@ -13,6 +13,7 @@ public class SpaceshipDoor : MonoBehaviour
     [HideInInspector] public bool isBossRoomDoor = false;
     private BoxCollider2D doorTrigger;
     private bool isOpen = false;
+    public bool canBeOpened = true;
     private bool previouslyOpened = false;
     private Animator animator;
 
@@ -26,7 +27,7 @@ public class SpaceshipDoor : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Later we can add check for player weapon collision here if it has one
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && canBeOpened)
         {
             OpenDoor();
         }

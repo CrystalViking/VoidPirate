@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b85b3ad0bbed51d45ac02ca59d929516, type: 3}
-  m_Name: DungeonGenerationData
+  m_Script: {fileID: 11500000, guid: 78a26385f7dfdba469dd6d5e9124ce40, type: 3}
+  m_Name: BossSpawner_Ataros
   m_EditorClassIdentifier: 
-  numberOfCrawlers: 1
-  interationMin: 2
-  iterationMax: 2
+  nameOfGroup: Boss
+  itemToSpawn: {fileID: 2019760905888046007, guid: ca9ed9f006e7a084aa1518611d5dceb4, type: 3}
+  minSpawn: 1
+  maxSpawn: 1

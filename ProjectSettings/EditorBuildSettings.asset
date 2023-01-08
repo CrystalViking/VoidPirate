@@ -33,13 +33,13 @@ EditorBuildSettings:
     path: Assets/Scenes/DungeonRooms/DungeonEmpty.unity
     guid: c26d3abea347dd24f82b0491d04b1374
   - enabled: 1
-    path: Assets/Scenes/DungeonRooms/DungeonEnd.unity
+    path: Assets/Scenes/DungeonRooms/Ataros/DungeonEndAtaros.unity
     guid: 5e8f564c34a0c234ea0bd08ef09a038f
   - enabled: 1
     path: Assets/Scenes/DungeonRooms/DungeonMain.unity
     guid: 6f375a98982666541afc21768a7225a9
   - enabled: 1
-    path: Assets/Scenes/DungeonRooms/DungeonStart.unity
+    path: Assets/Scenes/DungeonRooms/Ataros/DungeonStartAtaros.unity
     guid: b40cd53462bf0e445b290c91344e9b53
   - enabled: 1
     path: Assets/Scenes/TransitionScene.unity
@@ -48,13 +48,13 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverScene.unity
     guid: 1ebe47c60a203e64080bc62efa053be4
   - enabled: 1
-    path: Assets/Scenes/DungeonRooms/DungeonAtaros.unity
+    path: Assets/Scenes/DungeonRooms/Ataros/DungeonAtaros.unity
     guid: 3af298be7be0bc5428375822795f2934
   - enabled: 1
     path: Assets/Scenes/DungeonRooms/DungeonEstrella.unity
     guid: 763743d59c52b6f4f8765ec849bd984e
   - enabled: 1
-    path: Assets/Scenes/DungeonRooms/DungeonReaper.unity
+    path: Assets/Scenes/DungeonRooms/Reaper/DungeonReaper.unity
     guid: 1475f4ff7781d2742b638d577df2e2f9
   - enabled: 1
     path: Assets/Scenes/DungeonRooms/DungeonEnd2.unity
@@ -68,4 +68,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ship/MainGameScene.unity
     guid: 7daa33b2c906ed14189dc9fd1ee09e7e
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/DungeonBasic0.unity
+    guid: b16ebb78075675142b598104da5c9b7a
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/Reaper/DungeonStartReaper.unity
+    guid: 86d78262900ca084abc1b9232474fe43
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/Reaper/DungeonEndReaper.unity
+    guid: f71580a0421ff5447b9d449df7458d79
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/Estrella/DungeonStartEstrella.unity
+    guid: 648c48d0c06846143933f7bc03abf149
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/Estrella/DungeonEstrella.unity
+    guid: 9b07f09880ac1f145b82d96a0da0422d
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/Estrella/DungeonEndEstrella.unity
+    guid: e868aca61a900ef4f8e1f8ef68b94025
   m_configObjects: {}

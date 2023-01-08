@@ -54,7 +54,7 @@ MonoBehaviour:
   spawnPositionArray:
   - {x: 87, y: 24}
   enemiesByLevelList:
-  - spaceshipLevel: {fileID: 11400000, guid: 5f96372a2a925ce42a9a6a114f34ca3b, type: 2}
+  - spaceshipLevel: {fileID: 11400000, guid: 3e3a6ae8554011542941ce335944d940, type: 2}
     spawnableObjectRatioList:
     - spaceshipObject: {fileID: 11400000, guid: e8acc394bf41dcd4c998d540f0b503e3, type: 2}
       ratio: 5
@@ -69,7 +69,7 @@ MonoBehaviour:
     - spaceshipObject: {fileID: 11400000, guid: 7a8e5e1b0ac40274985814e63a90a076, type: 2}
       ratio: 5
   roomEnemySpawnParametersList:
-  - spaceshipLevel: {fileID: 11400000, guid: 5f96372a2a925ce42a9a6a114f34ca3b, type: 2}
+  - spaceshipLevel: {fileID: 11400000, guid: 3e3a6ae8554011542941ce335944d940, type: 2}
     minTotalEnemiesToSpawn: 3
     maxTotalEnemiesToSpawn: 5
     minConcurrentEnemies: 2

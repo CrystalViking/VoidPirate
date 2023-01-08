@@ -10,7 +10,7 @@ public class InfiniteScrollEvent : MonoBehaviour
     Vector2 offset;
 
 
-    public float xVelocity, yVelocity;
+    public float xVelocity, yVelocity, xVelocity2, yVelocity2;
 
 
     private void Awake()
@@ -23,6 +23,11 @@ public class InfiniteScrollEvent : MonoBehaviour
         if(sceneInfo.isEventOn)
         {
             offset = new Vector2(xVelocity, yVelocity);
+            material.mainTextureOffset += offset * Time.deltaTime;
+        }
+        else
+        {
+            offset = new Vector2(xVelocity2, yVelocity2);
             material.mainTextureOffset += offset * Time.deltaTime;
         }
         

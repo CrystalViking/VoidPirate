@@ -15,7 +15,6 @@ public class HoldEvent : MonoBehaviour
     public string key = "e";
     private bool inRange = false;
     public Slider slider;
-    public TextMeshProUGUI text;
     public GameObject chargeBar;
     public GameObject helpText;
     [SerializeField]
@@ -59,11 +58,16 @@ public class HoldEvent : MonoBehaviour
             TargetIndicator.instance.MarkTarget(anyObject.transform);
         }
         */
-        helpText.SetActive(true);
+        
 
             if (inRange)
             {
+                helpText.SetActive(true);
                 CheckIfButtonHeld();
+            }
+            else if(!inRange)
+            {
+                helpText.SetActive(false);
             }
         //}
     }

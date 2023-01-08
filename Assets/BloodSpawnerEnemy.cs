@@ -8,6 +8,7 @@ public class BloodSpawnerEnemy : MeleeEnemy
     private bool attacked;
     private bool moneySpawned;
     private Task jump;
+    private Task jumpControl;
     private bool targetset = false;
     private Vector2 target;
     //public AudioSource bite;
@@ -112,6 +113,7 @@ public class BloodSpawnerEnemy : MeleeEnemy
         {
             target = GameObject.FindGameObjectWithTag("Player").transform.position;
             jump = new Task(TeleportCoroutine(target));
+            jumpControl = new Task(JumpControl());
             targetset = true;
         }      
         delayDMG = new Task(DelayDMG());
@@ -131,10 +133,16 @@ public class BloodSpawnerEnemy : MeleeEnemy
         }
     }
 
+    IEnumerator JumpControl()
+    {
+        yield return new WaitForSeconds(1f);
+        jump.Stop();
+    }
+
     public override void Follow()
     {
         animator.SetIsMovingTrue();
-        animator.SetIsAttackingFalse();
+        animator.SetIsAttackingFalse();      
         if (!audioSource.isPlaying)
         audioSource.Play();
 

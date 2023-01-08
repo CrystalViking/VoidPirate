@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2018214742834061150}
   - component: {fileID: 6383078083482528802}
   - component: {fileID: 2782498916087429607}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3046482140207400557}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 8300249441999029583}
   - component: {fileID: 4784391670049887554}
   - component: {fileID: 8587918203681627980}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 2279258069427269562}
   - component: {fileID: 7651812837102157247}
   - component: {fileID: 1702921097433522146}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: BloodSpider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -448,10 +448,12 @@ MonoBehaviour:
   activeBehaviour: 0
   currState: 0
   isUndestructible: 0
+  useAStar: 0
   health: 0
   bite: {fileID: 2279258069427269562}
   particles: {fileID: 8229128044495412079}
   cashParticles: {fileID: 6322897744201289345, guid: dc36fd2c9506aa14694be35864a4a1de, type: 3}
+  astar: {fileID: 0}
 --- !u!82 &6605102743197931880
 AudioSource:
   m_ObjectHideFlags: 0
@@ -560,7 +562,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9958bb22bbe85594497552a210e3273f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -678,7 +680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8886970724936941958}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,7 +717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2712640771319586863}
   - component: {fileID: 2933484588817944040}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -807,7 +809,7 @@ GameObject:
   - component: {fileID: 4777982400432497857}
   - component: {fileID: 2269594505813031937}
   - component: {fileID: 3152073252683087542}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,6 +884,10 @@ PrefabInstance:
     - target: {fileID: 3532330730875452193, guid: f43bcc0075f1f814dab1aad265b36244, type: 3}
       propertyPath: m_Name
       value: MechaParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532330730875452193, guid: f43bcc0075f1f814dab1aad265b36244, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3532330730875452193, guid: f43bcc0075f1f814dab1aad265b36244, type: 3}
       propertyPath: m_IsActive

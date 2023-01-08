@@ -19,6 +19,12 @@ public class ConsumableInventory : MonoBehaviour
     [SerializeField]
     private UnityEvent<string> onMedkitStackChanged;
 
+    [Header("Sound Effects")]
+    public AudioSource audioSource;
+    public AudioClip medkitUsage;
+    public AudioClip energeticUsage;
+    public AudioClip itemPickup;
+
     void Start()
     {
         scriptableMedkits = new List<ScriptableMedkit>();
@@ -30,8 +36,10 @@ public class ConsumableInventory : MonoBehaviour
     {
         if(scriptableMedkits != null && scriptableMedkits.Count < 10)
         {
-            scriptableMedkits.Add(medkit); 
-
+            scriptableMedkits.Add(medkit);
+            audioSource.clip = itemPickup;
+            audioSource.volume = 0.6f;
+            audioSource.Play();
             onMedkitStackChanged?.Invoke(scriptableMedkits.Count.ToString());
         }
     }
@@ -41,6 +49,9 @@ public class ConsumableInventory : MonoBehaviour
         if(scriptableMedkits != null && scriptableMedkits.Count > 0)
         {
             HealPlayer(scriptableMedkits.Last());
+            audioSource.clip = medkitUsage;
+            audioSource.volume = 0.5f;
+            audioSource.Play();
             scriptableMedkits.RemoveAt(scriptableMedkits.Count - 1);
 
             onMedkitStackChanged?.Invoke(scriptableMedkits.Count.ToString());
@@ -53,6 +64,9 @@ public class ConsumableInventory : MonoBehaviour
         if(scriptableEnergyDrinks != null && scriptableEnergyDrinks.Count > 0)
         {
             EnergizePlayer(scriptableEnergyDrinks.Last());
+            audioSource.clip = energeticUsage;
+            audioSource.volume = 0.3f;
+            audioSource.Play();
             scriptableEnergyDrinks.RemoveAt(scriptableEnergyDrinks.Count - 1);
 
             onEnergyStackChanged?.Invoke(scriptableEnergyDrinks.Count.ToString());
@@ -75,7 +89,9 @@ public class ConsumableInventory : MonoBehaviour
         if (scriptableEnergyDrinks != null && scriptableEnergyDrinks.Count < 10)
         {
             scriptableEnergyDrinks.Add(energyDrink);
-
+            audioSource.clip = itemPickup;
+            audioSource.volume = 0.6f;
+            audioSource.Play();
             onEnergyStackChanged?.Invoke(scriptableEnergyDrinks.Count.ToString());
         }
     }

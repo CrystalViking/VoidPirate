@@ -50,11 +50,13 @@ public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler, IPointerCli
         if(gameObject.GetComponent<ShopItemTemplate>().shopOptionData.title == e.TitleText)
         {
             gameObject.SetActive(false);
+            GetComponentInParent<GeneralShopManager>().AddWeaponToWeaponListHolder(shopOptionData.weaponSO);
+
             player.GetComponentInChildren<GunManager>()
                 .AddGun(gameObject.GetComponent<ShopItemTemplate>().shopOptionData.weaponSO.prefab);
 
             //GameObject.FindGameObjectWithTag("SelectWeaponListHolder").GetComponent<SelectWeaponManager>().AddWeaponToList(shopOptionData.weaponSO);
-            GetComponentInParent<GeneralShopManager>().AddWeaponToWeaponListHolder(shopOptionData.weaponSO);
+            
         }
 
     }

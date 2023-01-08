@@ -49,6 +49,7 @@ MonoBehaviour:
   cooldownEMP: 10
   enemyDeactivationTime: 4
   audioSource: {fileID: -5332218605556857182}
+  canvasEMP: {fileID: 0}
 --- !u!82 &-5332218605556857182
 AudioSource:
   m_ObjectHideFlags: 0
@@ -61,7 +62,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 24a3f8f50d5f4cd4bb25a8b91a961b97, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.08
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0

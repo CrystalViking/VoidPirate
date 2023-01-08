@@ -17,6 +17,10 @@ public class GunManager : MonoBehaviour
 
     private HudScript hudScript;
 
+    [Header("Sound Effects")]
+    public AudioSource audioSource;
+    public AudioClip itemPickup;
+
 
     void Start()
     {
@@ -117,7 +121,10 @@ public class GunManager : MonoBehaviour
 
     public void AddAmmoToCurrentWeaponType(WeaponType weaponType, int currentStoredAmmoAdded)
     {
-        for(int i = 0; i < transform.childCount; i++)
+        audioSource.clip = itemPickup;
+        audioSource.volume = 0.6f;
+        audioSource.Play();
+        for (int i = 0; i < transform.childCount; i++)
         {
             if(transform.GetChild(i)?.GetComponent<IWeaponData>().GetWeaponType() == weaponType)
             {

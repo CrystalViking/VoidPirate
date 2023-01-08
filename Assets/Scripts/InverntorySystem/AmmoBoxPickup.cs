@@ -41,7 +41,7 @@ public class AmmoBoxPickup : PickableItem, IPickable
     public override void InteractOnPickup()
     {
         if(Input.GetKeyDown(itemPickupCode) && isInRange)
-        {
+        {          
             ReplenishAmmo();
 
             if (destroyOnPickUp)

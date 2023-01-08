@@ -21,7 +21,7 @@ public class SoundSaveController : MonoBehaviour
 
     void LoadValues()
     {
-        float soundValue = PlayerPrefs.GetFloat("SoundVolume", 0.8f);
+        float soundValue = PlayerPrefs.GetFloat("SoundVolume", 3.0f);
 
         if(soundSlider)
             soundSlider.value = soundValue;

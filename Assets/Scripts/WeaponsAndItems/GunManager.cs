@@ -171,6 +171,65 @@ public class GunManager : MonoBehaviour
         }
     }
 
+    public string GetWeaponNamePrimary()
+    {
+        if(transform.childCount > 0)
+        {
+            for(int i = 0; i < transform.childCount; i++)
+            {
+                if(transform.GetChild(i).GetComponent<IWeaponData>().GetWeaponSlot() == WeaponSlot.Primary)
+                {
+                    if(transform.GetChild(i).gameObject.activeSelf == true)
+                    {
+                        return transform.GetChild(i).gameObject.GetComponent<IWeaponData>().GetWeaponData().ItemName.ToUpper();
+                    }
+                    else
+                    {
+                        transform.GetChild(i).gameObject.SetActive(true);
+                        string info = transform.GetChild(i).gameObject.GetComponent<IWeaponData>().GetWeaponData().ItemName.ToUpper();
+                        transform.GetChild(i).gameObject.SetActive(false);
+                        return info;
+                    }
+                        
+                }               
+            }
+        }
+        else
+        {
+            return "***";
+        }
+        return "***";
+    }
+
+    public string GetWeaponNameSecondary()
+    {
+        if (transform.childCount > 0)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                if (transform.GetChild(i).GetComponent<IWeaponData>().GetWeaponSlot() == WeaponSlot.Secondary)
+                {
+                    if (transform.GetChild(i).gameObject.activeSelf == true)
+                    {
+                        return transform.GetChild(i).gameObject.GetComponent<IWeaponData>().GetWeaponData().ItemName.ToUpper();
+                    }
+                    else
+                    {
+                        transform.GetChild(i).gameObject.SetActive(true);
+                        string info = transform.GetChild(i).gameObject.GetComponent<IWeaponData>().GetWeaponData().ItemName.ToUpper();
+                        transform.GetChild(i).gameObject.SetActive(false);
+                        return info;
+                    }
+                }
+            }
+        }
+        else
+        {
+            return "***";
+        }
+        return "***";
+    }
+
     public void RemoveGun(int index)
     {
         for(int i = 0; i < transform.childCount; i++)

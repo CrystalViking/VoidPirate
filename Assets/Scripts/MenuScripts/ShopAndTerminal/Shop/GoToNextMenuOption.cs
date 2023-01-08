@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CraftANewWeaponOption : MonoBehaviour, IPointerClickHandler
+public class GoToNextMenuOption : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField]
-    Image correspondingImage;
+    //[SerializeField]
+    //Image correspondingImage;
 
     [SerializeField]
-    GameObject mainMenu;
+    GameObject currentMenu;
 
     [SerializeField]
-    GameObject weaponMenu;
+    GameObject nextMenu;
     
     void Start()
     {
@@ -28,9 +28,9 @@ public class CraftANewWeaponOption : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(mainMenu != null)
-            mainMenu.SetActive(false);
-        if(weaponMenu != null)
-            weaponMenu.SetActive(true);
+        if(currentMenu != null)
+            currentMenu.SetActive(false);
+        if(nextMenu != null)
+            nextMenu.SetActive(true);
     }
 }

@@ -59,7 +59,11 @@ public class GunShooting : MonoBehaviour, IWeaponData
     void Update()
     {
         isActive = gameObject.activeInHierarchy;
-        TakeInput();
+        if(GetComponentInParent<PlayerMovement>().IsMovementActive())
+        {
+            TakeInput();
+        }
+        
         isReloading = gunReloading.IsReloading();
     }
 

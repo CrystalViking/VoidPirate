@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerCurrency : MonoBehaviour
+public class PlayerCurrency : MonoBehaviour, IDataPersistence
 {
     public int total;
     CharacterStat statSingleCoinValue;
@@ -16,7 +16,8 @@ public class PlayerCurrency : MonoBehaviour
     void Start()
     {
         onPlayerCurrencyChange?.Invoke(total.ToString());
-        total = PlayerPrefs.GetInt("coinAmount", 0);
+        //total = PlayerPrefs.GetInt("coinAmount", 0);
+        total = 0;
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class PlayerCurrency : MonoBehaviour
     public void AddCoins(int coinAmount)
     {
         total = total + coinAmount * singleCoinValue;
-        PlayerPrefs.SetInt("coinAmount", total);
+        //PlayerPrefs.SetInt("coinAmount", total);
     }
 
     public void SpendCoins(int amount)
@@ -42,5 +43,15 @@ public class PlayerCurrency : MonoBehaviour
     public void SetSingleCoinValue(int value)
     {
         singleCoinValue = value;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.total = data.coinCount;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.coinCount = total;
     }
 }

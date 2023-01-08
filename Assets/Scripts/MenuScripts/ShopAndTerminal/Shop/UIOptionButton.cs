@@ -16,7 +16,10 @@ public class UIOptionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     Image image;
     AudioSource audioSource;
 
-    
+    private void OnDisable()
+    {
+        image.gameObject.SetActive(false);
+    }
 
     void Start()
     {

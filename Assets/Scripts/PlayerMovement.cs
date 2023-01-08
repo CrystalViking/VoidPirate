@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private bool LOOKING_LEFT;
     private bool LOOKING_RIGHT;
 
-    
+    private bool movementActive = true;
 
     private void Start()
     {
@@ -33,13 +33,15 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        SetMousePointerFromInput();
-        if(weaponParent_on)
-            UpdateWeaponParent();
-        GetSpeed();
-        TakeInput();
-        Move();
-        
+        if (movementActive)
+        {
+            SetMousePointerFromInput();
+            if (weaponParent_on)
+                UpdateWeaponParent();
+            GetSpeed();
+            TakeInput();
+            Move();
+        }   
     }
 
     private void UpdateWeaponParent()
@@ -176,5 +178,20 @@ public class PlayerMovement : MonoBehaviour
     {
         speed = playerStats.GetSpeed();
         return speed;
+    }
+
+    public void ActivateMovement()
+    {
+        movementActive = true;
+    }
+
+    public void DeactivateMovement()
+    {
+        movementActive = false;
+    }
+
+    public bool IsMovementActive()
+    {
+        return movementActive;
     }
 }

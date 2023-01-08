@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: MeleeEnemyData
   m_EditorClassIdentifier: 
   speed: 3
-  lineOfSight: 7.44
-  attackRange: 0.75
+  lineOfSight: 20
+  attackRange: 1
   timeBetweenAttacks: 1
   meleeDamage: 30
   maxHealth: 300
   meleeAnimationDelay: 1
   meleeAnimationDamageDelay: 1
-  useRoomLogic: 1
-  activeBehaviour: 0
+  useRoomLogic: 0
+  activeBehaviour: 1
   despawnTimer: 1

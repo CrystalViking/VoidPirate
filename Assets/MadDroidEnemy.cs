@@ -35,8 +35,18 @@ public class MadDroidEnemy : RangedEnemy
     }
 
   }
+    void FixedUpdate()
+    {
+        if (currState == EnemyState.FollowAndAttack)
+        {
+            if (useAStar)
+            {
+                astar.Move(enemyData.speed * 200);
+            }
+        }
+    }
 
-  public new void ScrollStates()
+    public new void ScrollStates()
   {
     switch (currState)
     {
@@ -82,15 +92,19 @@ public class MadDroidEnemy : RangedEnemy
 
     public void FollowAndAttack()
     {
-    animator.SetIsMovingOrAttackingTrue();
-    //transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
-    astar.Move(enemyData.speed * 100);
-    if (enemyCalculations.CanAttack())
-    {
-      audioSource.Play();
-      Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
-      enemyCalculations.SetNextAttackTime();
-    }
+        animator.SetIsMovingOrAttackingTrue();
+        if (useAStar)
+        {
+            //astar.Move(enemyData.speed * 200);
+        }
+        else
+            transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
+        if (enemyCalculations.CanAttack())
+        {
+         audioSource.Play();
+         Instantiate(projectile, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z), Quaternion.identity);
+         enemyCalculations.SetNextAttackTime();
+        }
 
     }
 

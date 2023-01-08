@@ -49,6 +49,16 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
         }
 
     }
+    void FixedUpdate()
+    {
+        if(currState == EnemyState.Follow)
+        {
+            if (useAStar)
+            {
+                astar.Move(enemyData.speed * 200);
+            }
+        }
+    }
 
 
     public void ScrollStates()
@@ -122,8 +132,12 @@ public class MeleeEnemy : Enemy, IMeleeEnemy
         if (!audioSource.isPlaying)
             audioSource.Play();
 
-        //transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
-        astar.Move(enemyData.speed * 150);
+        if (useAStar)
+        {
+            //astar.Move(enemyData.speed * 400);
+        }
+        else
+            transform.position = enemyMovement.MoveEnemy(transform.position, enemyData.speed);
 
     }
 

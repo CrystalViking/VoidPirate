@@ -24,8 +24,6 @@ public class RangedEnemy : Enemy, IRangedEnemy
 
     healthBar = GetComponent<HealthBar>();
 
-
-
     enemyCalculations = GetComponent<RangedEnemyCalculations>();
     enemyMovement.SetPlayerTransform(GameObject.FindGameObjectWithTag("Player").transform);  
     }

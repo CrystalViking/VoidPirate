@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: InsectEnemyData
   m_EditorClassIdentifier: 
   speed: 4
-  lineOfSight: 10.44
-  attackRange: 0.85
+  lineOfSight: 25
+  attackRange: 1
   timeBetweenAttacks: 0.85
   meleeDamage: 40
   maxHealth: 500
   meleeAnimationDelay: 0.52125
   meleeAnimationDamageDelay: 0.52125
-  useRoomLogic: 1
-  activeBehaviour: 0
+  useRoomLogic: 0
+  activeBehaviour: 1
   despawnTimer: 1

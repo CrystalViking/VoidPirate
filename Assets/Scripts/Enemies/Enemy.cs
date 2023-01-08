@@ -42,6 +42,8 @@ public abstract class Enemy : MonoBehaviour, IEnemy
     public bool activeBehaviour = false;
     public EnemyState currState = EnemyState.Idle;
     public bool isUndestructible = false;
+    [SerializeField]
+    public bool useAStar = false;
 
 
     public float health;

@@ -23,10 +23,10 @@ public class Teleport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            isActive = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    isActive = true;
+        //}
         if (isActive)
         {
             anim.SetTrigger("Active");

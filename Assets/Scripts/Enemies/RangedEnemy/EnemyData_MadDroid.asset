@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: EnemyData_MadDroid
   m_EditorClassIdentifier: 
   speed: 2
-  lineOfSight: 7
+  lineOfSight: 25
   attackRange: 10
   timeBetweenAttacks: 0.2
   meleeDamage: 0
   maxHealth: 700
   meleeAnimationDelay: 0
   meleeAnimationDamageDelay: 0
-  useRoomLogic: 1
-  activeBehaviour: 0
+  useRoomLogic: 0
+  activeBehaviour: 1
   despawnTimer: 1

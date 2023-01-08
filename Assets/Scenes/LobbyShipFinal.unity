@@ -12457,7 +12457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7741633188466435996, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7741633188917396045, guid: ac131bd9002268946bab81c343d95b8a, type: 3}
       propertyPath: hudCanvas
@@ -14904,10 +14904,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3991678813646099594, guid: e4bc2f1ab2a3c074a95cc65dca3cfece, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 1575557505, guid: e4bc2f1ab2a3c074a95cc65dca3cfece, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 594414578}
     - target: {fileID: 5208175698197539601, guid: e4bc2f1ab2a3c074a95cc65dca3cfece, type: 3}
       propertyPath: m_Name
       value: ChairParent
@@ -15148,10 +15148,6 @@ PrefabInstance:
       propertyPath: alarm
       value: 
       objectReference: {fileID: 947414081}
-    - target: {fileID: 2306516369157595718, guid: 10029e3dafb63c74ba46b65f3a6db0c3, type: 3}
-      propertyPath: anyObject
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2306516369306958049, guid: 10029e3dafb63c74ba46b65f3a6db0c3, type: 3}
       propertyPath: m_Camera
       value: 

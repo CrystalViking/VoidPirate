@@ -27,7 +27,7 @@ public class RoomObstacle : MonoBehaviour
         switch (randomMethodNumber)
         {
             case (1):
-                obstacleList = new List<int>() { 115, 16, 17, 18, 79, 150, 21, 25, 56, 97, 28 };
+                obstacleList = new List<int>() { 16, 17, 18, 21, 25, 28, 56, 79, 97, 115, 150 };
                 break;
             case (2):
                 obstacleList = new List<int>() { 0, 28, 42, 56, 70, 84, 98, 112, 126, 140, 154, 168 };
@@ -36,22 +36,22 @@ public class RoomObstacle : MonoBehaviour
                 obstacleList = new List<int>() { 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 51, 75, 76, 77, 78, 79, 80, 105, 129, 130, 131, 132, 133, 134, 159 };
                 break;
             case (4):
-                obstacleList = new List<int>() { 143, 158, 124, 128, 133, 137, 105, 109, 112, 116, 90, 91 };
+                obstacleList = new List<int>() { 90, 91, 105, 109, 112, 116, 124, 128, 133, 137, 143, 158 };
                 break;
             case (5):
                 obstacleList = new List<int>() { 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 75, 76, 77, 78, 79, 80, 130, 131, 132, 133, 134 };
                 break;
             case (7):
-                obstacleList = new List<int>() { 174, 145, 146, 154, 125, 134, 104, 105, 114, 115, 93, 66, 67, 68, 48 };
+                obstacleList = new List<int>() { 48, 66, 67, 68, 93, 104, 105, 114, 115, 125, 134, 145, 146, 154, 174 };
                 break;
             case (8):
-                obstacleList = new List<int>() { 142, 144, 155, 157, 123, 128, 136, 109, 90, 63, 71, 76, 42, 44, 55, 57 };
+                obstacleList = new List<int>() { 42, 44, 55, 57, 63, 71, 76, 90, 109, 123, 128, 136, 142, 144, 155, 157 };
                 break;
             case (9):
-                obstacleList = new List<int>() { 173, 177, 144, 127, 135, 108, 112, 83, 90, 68, 77, 41, 46, 52, 23, 15 };
+                obstacleList = new List<int>() { 15, 23, 41, 46, 52, 68, 77, 83, 90, 108, 112, 127, 135, 144, 173, 177 };
                 break;
             case (10):
-                obstacleList = new List<int>() { 167, 172, 141, 148, 151, 158, 122, 137, 62, 77, 41, 48, 51, 58, 27, 32 };
+                obstacleList = new List<int>() { 27, 32, 41, 48, 51, 58, 62, 77, 122, 137, 141, 148, 151, 158, 167, 172 };
                 break;
         }
 

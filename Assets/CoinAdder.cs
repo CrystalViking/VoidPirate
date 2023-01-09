@@ -10,13 +10,13 @@ public class CoinAdder : MonoBehaviour
 
     private void Start()
     {
-        //coinAmount = PlayerPrefs.GetInt("coinAmount", 0);
-        //text.SetText(coinAmount.ToString());
+        coinAmount = PlayerPrefs.GetInt("coinAmount", 0);
+        text.SetText(coinAmount.ToString());
     }
 
     void Update()
     {
-        //coinAmount = PlayerPrefs.GetInt("coinAmount", 0);
-        //text.SetText(coinAmount.ToString());
+        coinAmount = PlayerPrefs.GetInt("coinAmount", 0);
+        text.SetText(coinAmount.ToString());
     }
 }

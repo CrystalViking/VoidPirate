@@ -56,7 +56,7 @@ public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler, IPointerCli
                 .AddGun(gameObject.GetComponent<ShopItemTemplate>().shopOptionData.weaponSO.prefab);
 
             //GameObject.FindGameObjectWithTag("SelectWeaponListHolder").GetComponent<SelectWeaponManager>().AddWeaponToList(shopOptionData.weaponSO);
-            
+            DataPersistenceManager.instance.SaveGame();
         }
 
     }

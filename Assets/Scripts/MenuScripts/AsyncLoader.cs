@@ -8,15 +8,33 @@ public class AsyncLoader : MonoBehaviour
 {
     [Header("Menu Screens")]
     [SerializeField] private GameObject loadingScreen;
-    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject currentScreen;
 
 
     [Header("Slider")]
     [SerializeField] private Slider loadingSlider;
 
+    public void LoadNewGameButton(string levelToLoad)
+    {
+        if(currentScreen != null)
+            currentScreen.SetActive(false);
+        loadingScreen.SetActive(true);
+
+        DataPersistenceManager.instance.NewGame();
+
+        StartCoroutine(LoadLevelASync(levelToLoad));
+    }
+
+    public void ContinueGameButton(string levelToLoad)
+    {
+
+    }
+
+
     public void LoadLevelButton(string levelToLoad)
     {
-        mainMenu.SetActive(false);
+        if (currentScreen != null)
+            currentScreen.SetActive(false);
         loadingScreen.SetActive(true);
 
         StartCoroutine(LoadLevelASync(levelToLoad));

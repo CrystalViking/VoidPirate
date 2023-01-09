@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine.Events;
 
 
-public class ShopCoinManager : MonoBehaviour
+public class ShopCoinManager : MonoBehaviour, IDataPersistence
 {
     
     [SerializeField]
@@ -70,8 +70,17 @@ public class ShopCoinManager : MonoBehaviour
         }
     }
 
+    public void LoadData(GameData data)
+    {
+        totalCoins = data.totalCoinCount;
+        totalCoins += data.coinCount;
+        data.coinCount = 0;
+    }
 
-
+    public void SaveData(GameData data)
+    {
+        data.totalCoinCount = totalCoins;
+    }
 }
 
 public class ItemPurchasedEventArgs : EventArgs

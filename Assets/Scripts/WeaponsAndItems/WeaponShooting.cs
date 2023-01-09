@@ -104,7 +104,7 @@ public class WeaponShooting : MonoBehaviour
                 Vector2 myPos = transform.position;
                 Vector2 direction = (mousePos - myPos).normalized;
                 spell.GetComponent<Rigidbody2D>().velocity = direction * currentWeapon.projectileForce;
-                spell.GetComponent<TestProjectile>().damage = Random.Range(currentWeapon.minDamage, currentWeapon.maxDamage);
+                spell.GetComponent<IProjectile>().Damage = Random.Range(currentWeapon.minDamage, currentWeapon.maxDamage);
                 spell.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(mousePos - myPos));
 
 

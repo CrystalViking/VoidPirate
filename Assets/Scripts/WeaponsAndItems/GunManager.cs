@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunManager : MonoBehaviour
+public class GunManager : MonoBehaviour, IDataPersistence
 {
     // Start is called before the first frame update
 
@@ -242,9 +242,6 @@ public class GunManager : MonoBehaviour
         }
     }
 
-
-
-
     public void AddGun(GameObject equipabbleWeapon)
     {
         if(transform.childCount > 0)
@@ -284,8 +281,8 @@ public class GunManager : MonoBehaviour
             selectedWeapon = transform.childCount - 1;
             SelectGun();
         }
-        
 
+        //DataPersistenceManager.instance.SaveGame();
         
     }
 
@@ -298,5 +295,70 @@ public class GunManager : MonoBehaviour
 
         //GameObject go = Instantiate(A, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         //go.transform.parent = GameObject.Find("Stage Scroll").transform;
+    }
+
+    public void LoadData(GameData data)
+    {
+        
+        
+        //check the scene here on in DataPersistenceManager
+        if (DataPersistenceManager.instance.HasGameData())
+        {
+            Reinstantiate(data);
+        }
+        
+        
+    }
+
+    public void SaveData(GameData data)
+    {
+        if (FindObjectOfType<EventManager>() != null && !FindObjectOfType<EventManager>().EventStatus())
+        {
+            //check the scene here on in DataPersistenceManager
+            if (DataPersistenceManager.instance.HasGameData())
+            {
+                //data.primaryWeapon = new SavableWeapon()
+
+                foreach(Transform weapon in transform)
+                {
+                    if(weapon?.gameObject.GetComponent<IWeaponData>().GetWeaponSlot() == WeaponSlot.Primary)
+                    {
+                        data.primaryWeapon = new SavableWeapon(weapon.gameObject.GetComponent<IWeaponData>().GetWeaponData().ItemName);
+                    }
+                    if (weapon?.gameObject.GetComponent<IWeaponData>().GetWeaponSlot() == WeaponSlot.Secondary)
+                    {
+                        data.secondaryWeapon = new SavableWeapon(weapon.gameObject.GetComponent<IWeaponData>().GetWeaponData().ItemName);
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void Reinstantiate(GameData data)
+    {
+        var weaponIds = GetComponent<WeaponIdentification>().weaponIds;
+
+        if (data.primaryWeapon != null)
+        {
+            foreach (var weaponId in weaponIds)
+            {
+                if(data.primaryWeapon.id == weaponId.prefab.GetComponent<IWeaponData>().GetWeaponData().ItemName)
+                {
+                    AddGun(weaponId.prefab);
+                }
+            }
+        }
+        if(data.secondaryWeapon != null)
+        {
+            foreach (var weaponId in weaponIds)
+            {
+                if (data.secondaryWeapon.id == weaponId.prefab.GetComponent<IWeaponData>().GetWeaponData().ItemName)
+                {
+                    AddGun(weaponId.prefab);
+                }
+            }
+        }
+        
     }
 }

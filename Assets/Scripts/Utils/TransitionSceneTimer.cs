@@ -18,7 +18,9 @@ public class TransitionSceneTimer : MonoBehaviour
     IEnumerator Transit()
     {
         yield return new WaitForSeconds(10f);
-        StartCoroutine(loader.LoadScene("LobbyShipFinal"));
+
+        GetComponentInChildren<AsyncLoader>().LoadLevelButton("LobbyShipFinal");
+        //StartCoroutine(loader.LoadScene("LobbyShipFinal"));
     }
 
     

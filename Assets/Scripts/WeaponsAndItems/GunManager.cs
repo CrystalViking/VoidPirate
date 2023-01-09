@@ -110,6 +110,9 @@ public class GunManager : MonoBehaviour
 
     public void AddAmmoToCurrentWeaponSlot(WeaponSlot weaponSlot, int ammo)
     {
+        audioSource.clip = itemPickup;
+        audioSource.volume = 0.6f;
+        audioSource.Play();
         for (int i = 0; i < transform.childCount; i++)
         {
             if (transform.GetChild(i)?.GetComponent<IWeaponData>().GetWeaponSlot() == weaponSlot)

@@ -18,6 +18,10 @@ public class Door : MonoBehaviour
     private float widthOffset = 3.5f;
     private Animator animator;
 
+    [Header("Sounds")]
+    public AudioSource audioSource;
+    public float volume;
+
     private bool playerCanEnter;
 
     public bool PlayerCanEnter
@@ -47,7 +51,7 @@ public class Door : MonoBehaviour
 
     public void OpenDoor()
     {
-        playerCanEnter = true;
+        playerCanEnter = true;       
         animator.SetBool(Animator.StringToHash("open"), true);
     }
 
@@ -55,6 +59,9 @@ public class Door : MonoBehaviour
     {
         playerCanEnter = false;
         animator.SetBool(Animator.StringToHash("open"), false);
+        audioSource.Play();
+        //audioSource.volume = volume;
+        audioSource.volume = 0.4f;
     }
 
     private void OnEnable()

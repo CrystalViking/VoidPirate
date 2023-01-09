@@ -21,6 +21,9 @@ public class PShipHealth : MonoBehaviour
     [SerializeField]
     private UnityEvent<string> textOnHealthChanged;
 
+    [Header("Sound Effects")]
+    public AudioSource audioSource;
+
     private void Start()
     {
         dmgTaken = 0;
@@ -79,10 +82,16 @@ public class PShipHealth : MonoBehaviour
         }
     }
 
+    public float GetHealth()
+    {
+        return health;
+    }
+
     public void TakeDamage(float damage)
     {
         if(!isDead)
         {
+            audioSource.Play();
             health -= damage;
             dmgTaken += damage;
             PlayerPrefs.SetFloat("shipHealth", health);

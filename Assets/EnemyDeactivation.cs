@@ -9,9 +9,13 @@ public class EnemyDeactivation : MonoBehaviour
     private bool canEMP;
     public float cooldownEMP;
     public float enemyDeactivationTime;
-    public AudioSource audioSource;
+    
     public Canvas canvasEMP; 
     public bool isTutorialOrShipLevel = false;
+
+    [Header("Sound effects")]
+    public AudioSource audioSource;
+    public AudioSource audioSource2;
     void Start()
     {
         canEMP = true;
@@ -46,7 +50,8 @@ public class EnemyDeactivation : MonoBehaviour
     IEnumerator EMPCooldown()
     {
         yield return new WaitForSeconds(cooldownEMP);
-            canEMP = true;
+        audioSource2.Play();
+        canEMP = true;
         if (canvasEMP)
             canvasEMP.enabled = true;
     }

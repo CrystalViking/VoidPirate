@@ -4898,8 +4898,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 509006739
-  m_SortingLayer: 0
+  m_SortingLayerID: -2100724165
+  m_SortingLayer: 15
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4945,7 +4945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 6322897744201289351}
   audioSource: {fileID: 5836089140163749306}
-  volume: 0.4
+  volume: 0.7
 --- !u!82 &5836089140163749306
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4956,7 +4956,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 29c92fd00c0e28742906c4041fa5cc64, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 82655812d88e469449ea4cdee441d365, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

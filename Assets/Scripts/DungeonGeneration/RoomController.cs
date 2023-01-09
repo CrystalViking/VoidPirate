@@ -31,10 +31,6 @@ public class RoomController : MonoBehaviour
 
     private void Start()
     {
-        // LoadRoom("Test", 0, 0);
-        // LoadRoom("Test", 1, 0);
-        // LoadRoom("Test", -1, 0);
-        // LoadRoom("Test", -2, 0);
         shouldBeEstrella = PlayerPrefs.GetInt("shouldBeEstrella", 1);
         shouldBeReaper = PlayerPrefs.GetInt("shouldBeReaper", 1);
         shouldBeAtaros = PlayerPrefs.GetInt("shouldBeAtaros", 1);

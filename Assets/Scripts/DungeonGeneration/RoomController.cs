@@ -52,9 +52,6 @@ public class RoomController : MonoBehaviour
         {
             currentLevel = "Ataros";
         }
-
-        currentLevel = "Ataros";
-
     }
 
     private void Update()

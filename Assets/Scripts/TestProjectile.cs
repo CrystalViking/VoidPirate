@@ -6,7 +6,7 @@ public class TestProjectile : MonoBehaviour, IProjectile
 {
 
     //public float damage;
-    private float delay = 1;
+    protected float delay = 1;
 
     public float Damage { get; set; }
 

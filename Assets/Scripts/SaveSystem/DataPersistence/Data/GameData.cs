@@ -23,7 +23,8 @@ public class GameData
     public bool atarosCoordinatesUnlocked;
     public bool atarosUnlocked;
 
-
+    public bool ifBossLevel;
+    public string currentLevel;
 
 
     public GameData()

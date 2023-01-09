@@ -18,12 +18,15 @@ public class RadioController : MonoBehaviour, IInteractable
     void Start()
     {
         radio = GetComponent<Radio>();
+        //radio.NavigateStations(true);
+        //radio.PlayRadio();
     }
 
     // Update is called once per frame
     void Update()
     {
         InteractOnAction();
+       
     }
 
     void OnTriggerEnter2D(Collider2D collision)

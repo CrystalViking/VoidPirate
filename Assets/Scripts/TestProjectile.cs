@@ -10,7 +10,7 @@ public class TestProjectile : MonoBehaviour, IProjectile
 
     public float Damage { get; set; }
 
-    void WaitAndDestroy()
+    protected virtual void WaitAndDestroy()
     {
         Destroy(gameObject, delay);
     }
@@ -20,7 +20,7 @@ public class TestProjectile : MonoBehaviour, IProjectile
         CollisionBehavior(collision);
     }
 
-    public void CollisionBehavior(Collider2D collision)
+    public virtual void CollisionBehavior(Collider2D collision)
     {
         if (collision.tag == "Wall" || collision.tag == "Door")
         {

@@ -6,6 +6,7 @@ public class MoneyParticles : MonoBehaviour
 {
     public ParticleSystem particles;
     private ParticleSystem.MainModule _main;
+    private float time = 0;
     [Header("Music")]
     public AudioSource audioSource;
     public float volume = 1;
@@ -13,7 +14,18 @@ public class MoneyParticles : MonoBehaviour
     void Start()
     {
         _main = particles.main;
-        StartCoroutine(ThingsLater());
+        time = Time.time + 5.0f;
+    }
+
+    private void Update()
+    {
+        if(time < Time.time)
+        {
+            if(particles.particleCount <= 0)
+            {
+                StartCoroutine(ThingsLater());
+            }
+        }
     }
 
     public void OnParticleCollision(GameObject other)
@@ -25,14 +37,11 @@ public class MoneyParticles : MonoBehaviour
             audioSource.Play();
         }
     }
-    void Update()
-    {
-        
-    }
 
     IEnumerator ThingsLater()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(1.0f);
         Destroy(gameObject);
     }
+
 }

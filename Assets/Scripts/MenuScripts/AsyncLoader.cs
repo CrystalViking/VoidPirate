@@ -40,6 +40,8 @@ public class AsyncLoader : MonoBehaviour
         StartCoroutine(LoadLevelASync(levelToLoad));
     }
 
+
+    // defining realm presumably in lobby ship
     public void DefineRealm(string name = "Chaos")
     {
         PlayerPrefs.SetInt("shouldBeEstrella", 0);
@@ -57,6 +59,7 @@ public class AsyncLoader : MonoBehaviour
             PlayerPrefs.SetInt("shouldBeReaper", 1);
             PlayerPrefs.SetInt("shouldBeAtaros", 1);
         }
+
     }
 
     public void ResetPrefs()

@@ -32,6 +32,7 @@ public class RoomController : MonoBehaviour
 
     private void Start()
     {
+        // Setting up level logic
         shouldBeEstrella = PlayerPrefs.GetInt("shouldBeEstrella", 1);
         shouldBeReaper = PlayerPrefs.GetInt("shouldBeReaper", 1);
         shouldBeAtaros = PlayerPrefs.GetInt("shouldBeAtaros", 1);

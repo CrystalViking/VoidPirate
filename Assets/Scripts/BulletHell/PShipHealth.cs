@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using TMPro;
 
 public class PShipHealth : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PShipHealth : MonoBehaviour
     public float health;
     private bool isDead;
     private float dmgTaken;
+    public TMP_Text warningText;
 
     private int healthSetOnStart = 0;
 
@@ -52,10 +54,14 @@ public class PShipHealth : MonoBehaviour
 
     private void Update()
     {
+        if (dmgTaken >= 250)
+        {
+            warningText.gameObject.SetActive(true);
+        }
         if (dmgTaken >= 300)
         {
             dmgTaken = 0;
-            ScreenShakeController.instance.StartShake(1f, 3f);
+            ScreenShakeController.instance.StartShake(2f, 3f);
             sceneInfo.isEventOn = true;
             StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
         }

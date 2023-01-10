@@ -8,11 +8,11 @@ public class GameData
     public int coinCount;
     public int totalCoinCount;
 
-    //public List<SavableWeapon> savableWeapons;
 
     public SavableWeapon primaryWeapon;
     public SavableWeapon secondaryWeapon;
 
+    public bool newGame;
 
     public bool estrellaCoordinatesUnlocked;
     public bool estrellaAwailable;
@@ -25,6 +25,15 @@ public class GameData
 
     public bool ifBossLevel;
     public string currentLevel;
+
+
+    public int bulletHellProbability;
+
+    public LobbyTravelState lobbyTravelState;
+
+    public LobbyBossState lobbyBossState;
+
+    public LevelRealm levelRealm;
 
 
     public GameData()
@@ -53,3 +62,27 @@ public class SavableSelectOption
 {
 
 }
+
+
+
+public enum LobbyTravelState
+{
+    OnLevel,
+    ReadyToTravel
+}
+
+public enum LobbyBossState
+{
+    bossLocationUnknown,
+    bossLocationUnlocked,
+    bossLocationSet,
+    bossDefeated
+}
+
+public enum LevelRealm
+{
+    EstrellaRealm,
+    ReaperRealm,
+    AtarosRealm
+}
+

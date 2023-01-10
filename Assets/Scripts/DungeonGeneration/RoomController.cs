@@ -27,6 +27,7 @@ public class RoomController : MonoBehaviour
     private int shouldBeEstrella;
     private int shouldBeReaper;
     private int shouldBeAtaros;
+    public string currentLevel = "Reaper";
 
 
     private void Start()
@@ -34,6 +35,19 @@ public class RoomController : MonoBehaviour
         shouldBeEstrella = PlayerPrefs.GetInt("shouldBeEstrella", 1);
         shouldBeReaper = PlayerPrefs.GetInt("shouldBeReaper", 1);
         shouldBeAtaros = PlayerPrefs.GetInt("shouldBeAtaros", 1);
+
+        if (shouldBeEstrella == 1)
+        {
+            currentLevel = "Estrella";
+        }
+        else if (shouldBeReaper == 1)
+        {
+            currentLevel = "Reaper";
+        }
+        else if (shouldBeAtaros == 1)
+        {
+            currentLevel = "Ataros";
+        }
     }
 
     private void Update()
@@ -118,7 +132,7 @@ public class RoomController : MonoBehaviour
             Destroy(bossRoom.gameObject);
             var roomToRemove = loadedRooms.Single(r => r.X == tempRoom.x && r.Y == tempRoom.y);
             loadedRooms.Remove(roomToRemove);
-            LoadRoom("End", tempRoom.x, tempRoom.y);
+            LoadRoom("End" + currentLevel, tempRoom.x, tempRoom.y);
         }
     }
 
@@ -194,49 +208,10 @@ public class RoomController : MonoBehaviour
 
     public string GetRandomRoomName()
     {
-
         string[] possibleRooms = new string[]
         {
-        //"Empty"
-        "Basic1"
+        currentLevel
         };
-
-        if (!(shouldBeEstrella == 1 && shouldBeReaper == 1 && shouldBeAtaros == 1))
-        {
-            if (shouldBeEstrella == 1)
-            {
-                possibleRooms = new string[]
-                {
-                //"Empty",
-                "Estrella"
-                };
-            }
-            else if (shouldBeReaper == 1)
-            {
-                possibleRooms = new string[]
-                {
-                //"Empty",
-                "Reaper"
-                };
-            }
-            else if (shouldBeAtaros == 1)
-            {
-                possibleRooms = new string[]
-                {
-                //"Empty",
-                "Ataros"
-                };
-            }
-        }
-        else
-        {
-            possibleRooms = new string[]
-            {
-            //"Empty",
-            "Basic1"
-            };
-        }
-
 
         return possibleRooms[Random.Range(0, possibleRooms.Length)];
     }

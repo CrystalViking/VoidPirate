@@ -16,15 +16,23 @@ public class GameData
 
     public bool estrellaCoordinatesUnlocked;
     public bool estrellaAwailable;
+    public bool estrellaDefeated;
 
     public bool reaperCoordinatesUnlocked;
     public bool reaperAwailable;
+    public bool reaperDefeated;
 
     public bool atarosCoordinatesUnlocked;
     public bool atarosUnlocked;
+    public bool atarosDefeated;
+
+
+    public bool levelFinished;
 
     public bool ifBossLevel;
     public string currentLevel;
+
+
 
 
     public int bulletHellProbability;

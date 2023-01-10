@@ -27,28 +27,16 @@ public class RoomController : MonoBehaviour
     private int shouldBeEstrella;
     private int shouldBeReaper;
     private int shouldBeAtaros;
+    public string isBoss = "No";
     public string currentLevel = "Reaper";
 
 
     private void Start()
     {
         // Setting up level logic
-        shouldBeEstrella = PlayerPrefs.GetInt("shouldBeEstrella", 1);
-        shouldBeReaper = PlayerPrefs.GetInt("shouldBeReaper", 1);
-        shouldBeAtaros = PlayerPrefs.GetInt("shouldBeAtaros", 1);
+        isBoss = PlayerPrefs.GetString("isBoss", "No");
+        currentLevel = PlayerPrefs.GetString("nameOfBoss", "Estrella");
 
-        if (shouldBeEstrella == 1)
-        {
-            currentLevel = "Estrella";
-        }
-        else if (shouldBeReaper == 1)
-        {
-            currentLevel = "Reaper";
-        }
-        else if (shouldBeAtaros == 1)
-        {
-            currentLevel = "Ataros";
-        }
     }
 
     private void Update()
@@ -133,7 +121,10 @@ public class RoomController : MonoBehaviour
             Destroy(bossRoom.gameObject);
             var roomToRemove = loadedRooms.Single(r => r.X == tempRoom.x && r.Y == tempRoom.y);
             loadedRooms.Remove(roomToRemove);
-            LoadRoom("End" + currentLevel, tempRoom.x, tempRoom.y);
+            if(isBoss == "Yes")
+                LoadRoom("End" + currentLevel, tempRoom.x, tempRoom.y);
+            else
+                LoadRoom("End2" + currentLevel, tempRoom.x, tempRoom.y);
         }
     }
 

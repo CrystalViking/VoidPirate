@@ -30,7 +30,6 @@ public class AsyncLoader : MonoBehaviour
 
     }
 
-
     public void LoadLevelButton(string levelToLoad)
     {
         if (currentScreen != null)
@@ -42,24 +41,14 @@ public class AsyncLoader : MonoBehaviour
 
 
     // defining realm presumably in lobby ship
-    public void DefineRealm(string name = "Chaos")
+    public void DefineRealm(string name = "Estrella")
     {
-        PlayerPrefs.SetInt("shouldBeEstrella", 0);
-        PlayerPrefs.SetInt("shouldBeReaper", 0);
-        PlayerPrefs.SetInt("shouldBeAtaros", 0);
-        if (name == "Estrella")
-            PlayerPrefs.SetInt("shouldBeEstrella", 1);
-        else if (name == "Reaper")
-            PlayerPrefs.SetInt("shouldBeReaper", 1);
-        else if (name == "Ataros")
-            PlayerPrefs.SetInt("shouldBeAtaros", 1);
-        else if(name == "Chaos")
-        {
-            PlayerPrefs.SetInt("shouldBeEstrella", 1);
-            PlayerPrefs.SetInt("shouldBeReaper", 1);
-            PlayerPrefs.SetInt("shouldBeAtaros", 1);
-        }
+        PlayerPrefs.SetString("nameOfBoss", name);         
+    }
 
+    public void WillBeBossRoom(string name = "No")
+    {
+        PlayerPrefs.SetString("isBoss", name);
     }
 
     public void ResetPrefs()

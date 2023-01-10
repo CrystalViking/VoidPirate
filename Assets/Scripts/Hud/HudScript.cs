@@ -27,7 +27,7 @@ public class HudScript : MonoBehaviour
     public void UpdateWeaponUI(WeaponSO weapon, int magAmmo, int ammoLeft)
     {
         if (weapon != null)
-            weaponUI.UpdateInfo(weapon.Icon, magAmmo, ammoLeft);
+            weaponUI?.UpdateInfo(weapon.Icon, magAmmo, ammoLeft);
     }
 
     public void UpdateWeaponAmmoInfo(int mag, int left)

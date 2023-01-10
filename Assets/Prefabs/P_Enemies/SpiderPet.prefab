@@ -393,7 +393,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 87052025
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 873458962, guid: 5b15c84c88427f841aeb18d67b782b7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -438,10 +438,12 @@ MonoBehaviour:
   activeBehaviour: 0
   currState: 0
   isUndestructible: 0
+  useAStar: 0
   health: 0
   bite: {fileID: 1665737196315078852}
   particles: {fileID: 1626219636411680958}
   cashParticles: {fileID: 6322897744201289345, guid: dc36fd2c9506aa14694be35864a4a1de, type: 3}
+  astar: {fileID: 0}
 --- !u!114 &8693641423844505211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,7 +636,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5e59e6b00160b8f4baa771aad232429e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

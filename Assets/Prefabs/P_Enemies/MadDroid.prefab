@@ -295,11 +295,13 @@ MonoBehaviour:
   activeBehaviour: 0
   currState: 0
   isUndestructible: 0
+  useAStar: 0
   health: 0
   projectile: {fileID: 320230852668635978, guid: 3ec6a9f1a19d4584cbc566637a131b42, type: 3}
   spit: {fileID: 0}
   particles: {fileID: 4158814081633822426}
   cashParticles: {fileID: 6322897744201289345, guid: 385075da9f072b340bc40ac43bd1ffb2, type: 3}
+  astar: {fileID: 0}
 --- !u!82 &7519237064540060957
 AudioSource:
   m_ObjectHideFlags: 0
@@ -312,7 +314,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0989eb5e7bb77dc42991833727b9e0c8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.05
+  m_Volume: 0.07
   m_Pitch: 1
   Loop: 0
   Mute: 0

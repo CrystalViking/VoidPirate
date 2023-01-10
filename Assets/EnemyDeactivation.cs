@@ -9,8 +9,13 @@ public class EnemyDeactivation : MonoBehaviour
     private bool canEMP;
     public float cooldownEMP;
     public float enemyDeactivationTime;
-    public AudioSource audioSource;
+    
     public Canvas canvasEMP; 
+    public bool isTutorialOrShipLevel = false;
+
+    [Header("Sound effects")]
+    public AudioSource audioSource;
+    public AudioSource audioSource2;
     void Start()
     {
         canEMP = true;
@@ -27,21 +32,27 @@ public class EnemyDeactivation : MonoBehaviour
 
     private void EMP()
     {
-        enemies = FindAllEnemiesInRoom();
+        if (isTutorialOrShipLevel)
+            enemies = FindAllEnemies();
+        else
+            enemies = FindAllEnemiesInRoom();
         audioSource.Play();
         foreach (GameObject enemy in enemies)
         {
              enemy.GetComponent<IEnemy>().SetActiveBehaviourFalse();
         }
         canEMP = false;
-        canvasEMP.enabled = false;
+        if(canvasEMP)
+            canvasEMP.enabled = false;
         StartCoroutine(EMPCooldown());
         StartCoroutine(EMPDuration());
     }   
     IEnumerator EMPCooldown()
     {
         yield return new WaitForSeconds(cooldownEMP);
-            canEMP = true;
+        audioSource2.Play();
+        canEMP = true;
+        if (canvasEMP)
             canvasEMP.enabled = true;
     }
 
@@ -119,6 +130,36 @@ public class EnemyDeactivation : MonoBehaviour
                 catch { }
             }
         }
+        return enes;
+    }
+
+    public List<GameObject> FindAllEnemies()
+    {
+        List<GameObject> enes = new List<GameObject>();
+        GameObject[] goen;
+        GameObject[] gobo;
+        GameObject[] gos;
+        goen = GameObject.FindGameObjectsWithTag("Enemy");
+        gobo = GameObject.FindGameObjectsWithTag("Boss");
+        gos = goen.Concat(gobo).ToArray();
+        foreach (GameObject go in gos)
+        {
+            try
+            {
+
+                if (go.GetComponent<SpawnerEnemy>())
+                {
+                    List<GameObject> list = go.GetComponent<SpawnerEnemy>().GetMinionList();
+                    foreach (GameObject g in list)
+                    {
+                        enes.Add(g);
+                    }
+                }
+                enes.Add(go);
+                    
+            }
+            catch { }
+        }      
         return enes;
     }
 

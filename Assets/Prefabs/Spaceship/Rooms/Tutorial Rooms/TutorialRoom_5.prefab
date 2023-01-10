@@ -6836,13 +6836,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8639139188072512284, guid: 9de133ecbf5e7a64f95a29a8d427bfd7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: LobbyShipFinal
+      value: LobbyShipTutorial
       objectReference: {fileID: 0}
     - target: {fileID: 8639139188072512284, guid: 9de133ecbf5e7a64f95a29a8d427bfd7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3021336804397976225, guid: 9de133ecbf5e7a64f95a29a8d427bfd7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9de133ecbf5e7a64f95a29a8d427bfd7, type: 3}
 --- !u!1 &2363038321729693392 stripped
 GameObject:

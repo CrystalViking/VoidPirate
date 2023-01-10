@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class MusicPicker : MonoBehaviour
 {
+    [Header("Music")]
     public AudioSource[] audioSources;
     public AudioSource[] bossAudioSources;
+    public float volume = 0.06f;
     private GameObject player;
     private int i;
     void Start()
     {
         i = Random.Range(0, audioSources.Length);
         Debug.Log(i);
+        foreach(AudioSource audioSource in audioSources)
+        {
+            audioSource.volume = volume;
+        }
+        foreach (AudioSource audioSource in bossAudioSources)
+        {
+            audioSource.volume = volume;
+        }
         audioSources[i].Play();
         player = GameObject.FindGameObjectWithTag("Player");
     }

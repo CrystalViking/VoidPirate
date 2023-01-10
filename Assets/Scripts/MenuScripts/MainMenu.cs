@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,10 +14,15 @@ public class MainMenu : MonoBehaviour
 
     public GameObject controlsScreen;
 
+    [SerializeField] private GameObject continueGameButton;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(!DataPersistenceManager.instance.HasGameData())
+        {
+            continueGameButton.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -25,9 +31,16 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void StartGame()
+    public void StartNewGame()
     {
-        SceneManager.LoadScene(firstLevel);
+        //SceneManager.LoadScene(firstLevel);
+
+        //DataPersistenceManager.instance.NewGame();
+    }
+
+    public void ContinueGame()
+    {
+
     }
 
     public void StartTestLevel()

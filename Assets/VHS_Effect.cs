@@ -42,8 +42,12 @@ public class VHS_Effect : MonoBehaviour
         }
         else
         {
-            analogGlitch.scanLineJitter.value = 0.0f;
-            analogGlitch.verticalJump.value = 0.0f;
+            try
+            {
+                analogGlitch.scanLineJitter.value = 0.0f;
+                analogGlitch.verticalJump.value = 0.0f;
+            }
+            catch { }
         }
     }
 }

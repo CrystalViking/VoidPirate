@@ -54,4 +54,9 @@ public class EventManager : MonoBehaviour
         eventOn = true;
         
     }
+
+    public bool EventStatus()
+    {
+        return eventOn;
+    }
 }

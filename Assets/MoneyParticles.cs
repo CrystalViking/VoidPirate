@@ -6,6 +6,10 @@ public class MoneyParticles : MonoBehaviour
 {
     public ParticleSystem particles;
     private ParticleSystem.MainModule _main;
+    [Header("Music")]
+    public AudioSource audioSource;
+    public float volume = 1;
+
     void Start()
     {
         _main = particles.main;
@@ -17,6 +21,8 @@ public class MoneyParticles : MonoBehaviour
         if(other.tag == "Player")
         {
             other.GetComponent<PlayerCurrency>().AddCoins(1);
+            audioSource.volume = volume;
+            audioSource.Play();
         }
     }
     void Update()

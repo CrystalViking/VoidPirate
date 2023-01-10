@@ -2249,6 +2249,8 @@ MonoBehaviour:
   doorType: 1
   doorWall: {fileID: 1756929109}
   isDeleted: 0
+  audioSource: {fileID: 0}
+  volume: 0
 --- !u!61 &625151597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2494,6 +2496,8 @@ MonoBehaviour:
   doorType: 2
   doorWall: {fileID: 887270498}
   isDeleted: 0
+  audioSource: {fileID: 0}
+  volume: 0
 --- !u!61 &701375817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5057,6 +5061,8 @@ MonoBehaviour:
   doorType: 0
   doorWall: {fileID: 474741536}
   isDeleted: 0
+  audioSource: {fileID: 0}
+  volume: 0
 --- !u!61 &1272901370
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7205,6 +7211,8 @@ MonoBehaviour:
   doorType: 3
   doorWall: {fileID: 1424277520}
   isDeleted: 0
+  audioSource: {fileID: 0}
+  volume: 0
 --- !u!61 &1795570600
 BoxCollider2D:
   m_ObjectHideFlags: 0

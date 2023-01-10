@@ -271,6 +271,7 @@ MonoBehaviour:
   activeBehaviour: 0
   currState: 0
   isUndestructible: 0
+  useAStar: 0
   health: 0
   projectile: {fileID: 752237071657277670, guid: 6bfa427264f33ba4b8a93576a3aa3ee1, type: 3}
   spit: {fileID: 2732269435234187238}
@@ -284,6 +285,7 @@ MonoBehaviour:
   - {fileID: 7030319937777297249}
   target: {fileID: 6999252977874496758}
   bomber: {fileID: 8083520044484619311, guid: aea93b51de40b1a4ab3b81e4f6f67712, type: 3}
+  astar: {fileID: 0}
 --- !u!82 &6568001721230637681
 AudioSource:
   m_ObjectHideFlags: 0
@@ -296,7 +298,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6b2407dd5e8c52145bb225591a7b5ea1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -404,7 +406,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4f456cc76db88bb4590e44f541431eae, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

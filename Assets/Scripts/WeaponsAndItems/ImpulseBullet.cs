@@ -21,7 +21,7 @@ public class ImpulseBullet : MonoBehaviour, IBulletShoot
     {
         GameObject spell = Instantiate(weaponData.projectilePrefab, firePoint.position, Quaternion.identity);
         spell.GetComponent<Rigidbody2D>().velocity = firePoint.right * weaponData.projectileForce;
-        spell.GetComponent<TestProjectile>().damage = UnityEngine.Random.Range(weaponData.minDamage, weaponData.maxDamage);
+        spell.GetComponent<IProjectile>().Damage = UnityEngine.Random.Range(weaponData.minDamage, weaponData.maxDamage);
         spell.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(firePoint.right));
     }
 

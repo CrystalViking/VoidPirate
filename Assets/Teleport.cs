@@ -14,6 +14,7 @@ public class Teleport : MonoBehaviour
     private bool isInRange;
     private bool isActive = false;
     public Animator anim;
+    public string levelToLoad;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,7 @@ public class Teleport : MonoBehaviour
             anim.SetTrigger("Active");
             if (isInRange)
             {
-                LoadLevelButton("DungeonMain");
+                LoadLevelButton(levelToLoad);
             }
         }
     }
@@ -63,5 +64,9 @@ public class Teleport : MonoBehaviour
             loadingSlider.value = progressValue;
             yield return null;
         }
+    }
+    public void SetActive()
+    {
+        isActive = true;
     }
 }

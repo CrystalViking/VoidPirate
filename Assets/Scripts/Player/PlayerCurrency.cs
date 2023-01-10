@@ -52,6 +52,7 @@ public class PlayerCurrency : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
-        data.coinCount = total;
+        //data.totalCoinCount = total;
+        data.coinCount = this.total;
     }
 }

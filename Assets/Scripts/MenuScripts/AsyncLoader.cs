@@ -21,6 +21,7 @@ public class AsyncLoader : MonoBehaviour
         loadingScreen.SetActive(true);
 
         DataPersistenceManager.instance.NewGame();
+        DataPersistenceManager.instance.SaveGame();
 
         StartCoroutine(LoadLevelASync(levelToLoad));
     }

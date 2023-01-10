@@ -18,10 +18,12 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
     public bool reaperDefeated;
 
     public bool atarosCoordinatesUnlocked;
-    public bool atarosUnlocked;
+    public bool atarosAwailable;
     public bool atarosDefeated;
 
     public bool levelFinished;
+
+    public bool ifBossLevel;
 
     public string currentLevel;
 
@@ -53,8 +55,10 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
         reaperDefeated = data.reaperDefeated;
 
         atarosCoordinatesUnlocked = data.atarosCoordinatesUnlocked;
-        atarosUnlocked = data.atarosDefeated;
+        atarosAwailable = data.atarosAwailable;
         atarosDefeated = data.atarosDefeated;
+
+        ifBossLevel = data.ifBossLevel;
 
         levelFinished = data.levelFinished;
         currentLevel = data.currentLevel;
@@ -62,6 +66,57 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
-        throw new System.NotImplementedException();
+        data.lobbyTravelState = travelState;
+        data.lobbyBossState = bossState;
+        data.levelRealm = levelRealm;
+
+        data.estrellaCoordinatesUnlocked = estrellaCoordinatesUnlocked;
+        data.estrellaAwailable = estrellaAwailable;
+        data.estrellaDefeated = estrellaDefeated;
+
+        data.reaperCoordinatesUnlocked = reaperCoordinatesUnlocked;
+        data.reaperAwailable = reaperAwailable;
+        data.reaperDefeated = reaperDefeated;
+
+        data.atarosCoordinatesUnlocked = atarosCoordinatesUnlocked;
+        data.atarosAwailable = atarosAwailable;
+        data.atarosDefeated = atarosDefeated;
+
+        data.ifBossLevel = ifBossLevel;
+
+        data.levelFinished = levelFinished;
+        data.currentLevel = currentLevel;
+
+    }
+
+    public void SetLevelOnTerminal()
+    {
+        if (bossState == LobbyBossState.bossLocationUnknown)
+        {
+            if (travelState == LobbyTravelState.OnDungeonLevel)
+            {
+                switch (levelRealm)
+                {
+                    case (LevelRealm.EstrellaRealm):
+                        //set teleport to estrella dungeon
+                        break;
+                    case (LevelRealm.ReaperRealm):
+                        //set teleport to reaper realm
+                        break;
+                    case (LevelRealm.AtarosRealm):
+                        //set teleport to ataros realm
+                        break;
+                }
+            }
+            else if (travelState == LobbyTravelState.OnSpaceshipLevel)
+            {
+                // set teleport point to Spaceship
+
+            }
+            else if (travelState == LobbyTravelState.ReadyToTravel)
+            {
+                // calculate probability of spaceship and set travel point to next level
+            }
+        }
     }
 }

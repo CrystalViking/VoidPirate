@@ -23,7 +23,7 @@ public class GameData
     public bool reaperDefeated;
 
     public bool atarosCoordinatesUnlocked;
-    public bool atarosUnlocked;
+    public bool atarosAwailable;
     public bool atarosDefeated;
 
 
@@ -34,6 +34,7 @@ public class GameData
 
 
 
+    public int spaceshipProbability;
 
     public int bulletHellProbability;
 
@@ -75,22 +76,26 @@ public class SavableSelectOption
 
 public enum LobbyTravelState
 {
-    OnLevel,
-    ReadyToTravel
+    OnDungeonLevel = 100,
+    OnSpaceshipLevel = 200,
+    ReadyToTravel = 300
 }
 
 public enum LobbyBossState
 {
-    bossLocationUnknown,
-    bossLocationUnlocked,
-    bossLocationSet,
-    bossDefeated
+    bossLocationUnknown = 100,
+    bossLocationUnlocked = 200,
+    bossLocationSet = 300,
+    bossDefeated = 400
 }
 
 public enum LevelRealm
 {
-    EstrellaRealm,
-    ReaperRealm,
-    AtarosRealm
+    EstrellaRealm = 100,
+    ReaperRealm = 200,
+    AtarosRealm = 300,
 }
+
+
+
 

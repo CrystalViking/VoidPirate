@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142e96446daec4d469aec77f204d32bd, type: 3}
+  m_Name: HeavyImpulsePistol
+  m_EditorClassIdentifier: 
+  ItemName: Heavy Impulse Pistol
+  ItemDescription: Impulse pistol
+  Icon: {fileID: 21300000, guid: 74119dd7969ee4b4c9ad2944bfe6e835, type: 3}
+  prefab: {fileID: 3630769865159893382, guid: 76d3f1c73094fe04fbf1570e79ee99bc, type: 3}
+  projectilePrefab: {fileID: 7030676788894008369, guid: c2c98ed91c79f8240aa3770b75a0e729, type: 3}
+  minDamage: 260
+  maxDamage: 340
+  spread: 0
+  range: 0
+  reloadTime: 1.5
+  timeBetweenShots: 0
+  magazineSize: 25
+  bulletsPerTap: 0
+  allowButtonHold: 0
+  weaponType: 1
+  weaponSlot: 1
+  projectileVelocity: 0
+  weaponScreenShake: 0
+  projectileForce: 20
+  shootSound: {fileID: 8300000, guid: 5ff5bd936a30a904da907f35c8dd382e, type: 3}
+  reloadPhases:
+  - {fileID: 8300000, guid: f84a2bf3a6b43994a970dab1c4bc6fe8, type: 3}
+  storedAmmo: 250
+  fireRate: 1

@@ -372,7 +372,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87673125}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5f38eceb8eaa7f48ba61540709dae40, type: 3}
   m_Name: 
@@ -3632,6 +3632,8 @@ MonoBehaviour:
   doorType: 0
   doorWall: {fileID: 1476003795}
   isDeleted: 0
+  audioSource: {fileID: 0}
+  volume: 0
 --- !u!61 &1016954124
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5001,6 +5003,8 @@ MonoBehaviour:
   doorType: 1
   doorWall: {fileID: 676549596}
   isDeleted: 0
+  audioSource: {fileID: 0}
+  volume: 0
 --- !u!61 &1385929543
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6513,6 +6517,8 @@ MonoBehaviour:
   doorType: 2
   doorWall: {fileID: 295518248}
   isDeleted: 0
+  audioSource: {fileID: 0}
+  volume: 0
 --- !u!61 &1609745454
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7049,6 +7055,8 @@ MonoBehaviour:
   doorType: 3
   doorWall: {fileID: 351344656}
   isDeleted: 0
+  audioSource: {fileID: 0}
+  volume: 0
 --- !u!61 &1801332488
 BoxCollider2D:
   m_ObjectHideFlags: 0

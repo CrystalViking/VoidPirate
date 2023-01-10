@@ -5,18 +5,51 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
-    [SerializeField] private int index;
+    bool isInRange;
+    bool isActive = true;
+
     [SerializeField]
     private SceneInfo sceneInfo;
-    void OnTriggerEnter2D(Collider2D other)
+
+    [SerializeField] string location_name;
+
+    [SerializeField] protected KeyCode itemInteractionCode = KeyCode.E;
+
+    public GameObject helpCanvas;
+    void Update()
     {
-        if (other.gameObject.CompareTag("Player"))
+        InteractOnAction();
+    }
+
+    public void InteractOnAction()
+    {
+        if (isInRange)
         {
-            sceneInfo.isEventOn = false;
-
-            DataPersistenceManager.instance.SaveGame();
-
-            StartCoroutine(SceneLoader.instance.LoadScene("BulletHellScene"));
+            helpCanvas.SetActive(true);
+            if (Input.GetKeyDown(itemInteractionCode) && isActive)
+            {
+                sceneInfo.isEventOn = false;
+                DataPersistenceManager.instance.SaveGame();
+                StartCoroutine(SceneLoader.instance.LoadScene(location_name));
+            }
         }
+        else if (!isInRange)
+        {
+            helpCanvas.SetActive(false);
+        }
+    }
+
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+            isInRange = true;
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+            isInRange = false;
     }
 }

@@ -3631,8 +3631,8 @@ MonoBehaviour:
   doorType: 0
   doorWall: {fileID: 1476003795}
   isDeleted: 0
-  audioSource: {fileID: 0}
-  volume: 0
+  audioSource: {fileID: 1016954125}
+  volume: 0.7
 --- !u!61 &1016954124
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3659,6 +3659,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!82 &1016954125 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2758905448326490877, guid: 495ac41d57530034494001069f3faea7, type: 3}
+  m_PrefabInstance: {fileID: 1016954120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1036147293
 GameObject:
   m_ObjectHideFlags: 0
@@ -4403,7 +4408,7 @@ GameObject:
   - component: {fileID: 1254286816}
   m_Layer: 6
   m_Name: RightWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5068,8 +5073,8 @@ MonoBehaviour:
   doorType: 1
   doorWall: {fileID: 676549596}
   isDeleted: 0
-  audioSource: {fileID: 0}
-  volume: 0
+  audioSource: {fileID: 1016954125}
+  volume: 0.7
 --- !u!61 &1385929543
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6582,8 +6587,8 @@ MonoBehaviour:
   doorType: 2
   doorWall: {fileID: 295518248}
   isDeleted: 0
-  audioSource: {fileID: 0}
-  volume: 0
+  audioSource: {fileID: 1016954125}
+  volume: 0.7
 --- !u!61 &1609745454
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6733,7 +6738,7 @@ GameObject:
   - component: {fileID: 1628915161}
   m_Layer: 6
   m_Name: LeftWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7120,8 +7125,8 @@ MonoBehaviour:
   doorType: 3
   doorWall: {fileID: 351344656}
   isDeleted: 0
-  audioSource: {fileID: 0}
-  volume: 0
+  audioSource: {fileID: 1016954125}
+  volume: 0.7
 --- !u!61 &1801332488
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7160,7 +7165,7 @@ GameObject:
   - component: {fileID: 1824062643}
   m_Layer: 6
   m_Name: TopWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7681,7 +7686,7 @@ GameObject:
   - component: {fileID: 1916414551}
   m_Layer: 6
   m_Name: BottomWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

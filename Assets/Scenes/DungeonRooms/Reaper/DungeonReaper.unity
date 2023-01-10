@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 241595414}
   m_Layer: 6
   m_Name: LeftWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -871,7 +871,7 @@ GameObject:
   - component: {fileID: 369230148}
   m_Layer: 6
   m_Name: TopWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2361,8 +2361,8 @@ MonoBehaviour:
   doorType: 1
   doorWall: {fileID: 1756929109}
   isDeleted: 0
-  audioSource: {fileID: 0}
-  volume: 0
+  audioSource: {fileID: 625151598}
+  volume: 0.7
 --- !u!61 &625151597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2389,6 +2389,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!82 &625151598 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2758905448326490877, guid: 495ac41d57530034494001069f3faea7, type: 3}
+  m_PrefabInstance: {fileID: 625151593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &652655307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,8 +2613,8 @@ MonoBehaviour:
   doorType: 2
   doorWall: {fileID: 887270498}
   isDeleted: 0
-  audioSource: {fileID: 0}
-  volume: 0
+  audioSource: {fileID: 625151598}
+  volume: 0.7
 --- !u!61 &701375817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5173,8 +5178,8 @@ MonoBehaviour:
   doorType: 0
   doorWall: {fileID: 474741536}
   isDeleted: 0
-  audioSource: {fileID: 0}
-  volume: 0
+  audioSource: {fileID: 625151598}
+  volume: 0.7
 --- !u!61 &1272901370
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6813,7 +6818,7 @@ GameObject:
   - component: {fileID: 1734955058}
   m_Layer: 6
   m_Name: RightWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7039,7 +7044,7 @@ GameObject:
   - component: {fileID: 1779062831}
   m_Layer: 6
   m_Name: BottomWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7323,8 +7328,8 @@ MonoBehaviour:
   doorType: 3
   doorWall: {fileID: 1424277520}
   isDeleted: 0
-  audioSource: {fileID: 0}
-  volume: 0
+  audioSource: {fileID: 625151598}
+  volume: 0.7
 --- !u!61 &1795570600
 BoxCollider2D:
   m_ObjectHideFlags: 0

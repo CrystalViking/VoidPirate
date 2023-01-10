@@ -675,6 +675,8 @@ MonoBehaviour:
   doorType: 0
   doorWall: {fileID: 1340931483}
   isDeleted: 0
+  audioSource: {fileID: 153340768}
+  volume: 0.7
 --- !u!61 &153340767
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -701,6 +703,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!82 &153340768 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2758905448326490877, guid: 495ac41d57530034494001069f3faea7, type: 3}
+  m_PrefabInstance: {fileID: 153340763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &167534691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1124,8 @@ MonoBehaviour:
   doorType: 2
   doorWall: {fileID: 2065671316}
   isDeleted: 0
+  audioSource: {fileID: 153340768}
+  volume: 0.7
 --- !u!61 &219352899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2254,6 +2263,8 @@ MonoBehaviour:
   doorType: 1
   doorWall: {fileID: 1999700501}
   isDeleted: 0
+  audioSource: {fileID: 153340768}
+  volume: 0.7
 --- !u!61 &501421726
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2403,7 +2414,7 @@ GameObject:
   - component: {fileID: 530452611}
   m_Layer: 6
   m_Name: LeftWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3471,7 +3482,7 @@ GameObject:
   - component: {fileID: 884430038}
   m_Layer: 6
   m_Name: TopWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3927,7 +3938,7 @@ GameObject:
   - component: {fileID: 982853751}
   m_Layer: 6
   m_Name: RightWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7777,6 +7788,8 @@ MonoBehaviour:
   doorType: 3
   doorWall: {fileID: 941077300}
   isDeleted: 0
+  audioSource: {fileID: 153340768}
+  volume: 0.7
 --- !u!61 &1851721974
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8083,7 +8096,7 @@ GameObject:
   - component: {fileID: 2035592571}
   m_Layer: 6
   m_Name: BottomWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

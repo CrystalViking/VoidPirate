@@ -577,6 +577,7 @@ MonoBehaviour:
   activeBehaviour: 0
   currState: 0
   isUndestructible: 0
+  useAStar: 0
   health: 0
   speed: 1
   attackRange: 2
@@ -586,7 +587,7 @@ MonoBehaviour:
   maxHealth: 12000
   minion: {fileID: 6594579410092307034, guid: 4b798ec2b5abc4a49b33c26a9b254b8b, type: 3}
   minion_list: []
-  portal: {fileID: 6225709882075278008, guid: d6569d81f3b1d9e4984da0b5b053ac30, type: 3}
+  portal: {fileID: 5999364567034251692, guid: 12951736121dc6643880ffdd0eec02e7, type: 3}
   audioSources:
   - {fileID: 968632803700085008}
   - {fileID: 4851038116707478342}

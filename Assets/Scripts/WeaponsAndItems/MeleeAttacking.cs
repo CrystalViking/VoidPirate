@@ -44,7 +44,11 @@ public class MeleeAttacking : MonoBehaviour, IWeaponData
             return;
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            Attack();
+            if (GetComponentInParent<PlayerMovement>().IsMovementActive())
+            {
+                Attack();
+            }
+            
         }
     }
 
@@ -59,6 +63,7 @@ public class MeleeAttacking : MonoBehaviour, IWeaponData
         animator.SetTrigger("Attack");
         IsAttacking = true;
         attackBlocked = true;
+        DetectColliders();
         StartCoroutine(DelayAttack());
 
     }

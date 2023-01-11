@@ -16,7 +16,7 @@ public class PlayerCurrency : MonoBehaviour, IDataPersistence
     void Start()
     {
         onPlayerCurrencyChange?.Invoke(total.ToString());
-        total = PlayerPrefs.GetInt("coinAmount", 0);
+        //total = PlayerPrefs.GetInt("coinAmount", 0);
         total = 0;
     }
 
@@ -29,7 +29,8 @@ public class PlayerCurrency : MonoBehaviour, IDataPersistence
     public void AddCoins(int coinAmount)
     {
         total = total + coinAmount * singleCoinValue;
-        PlayerPrefs.SetInt("coinAmount", total);
+        //PlayerPrefs.SetInt("coinAmount", total);
+        onPlayerCurrencyChange?.Invoke(total.ToString());
     }
 
     public void SpendCoins(int amount)
@@ -52,6 +53,7 @@ public class PlayerCurrency : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
-        data.coinCount = total;
+        //data.totalCoinCount = total;
+        data.coinCount = this.total;
     }
 }

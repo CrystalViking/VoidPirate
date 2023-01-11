@@ -6,6 +6,7 @@ public class MarkBoss : MonoBehaviour
 {
     private GameObject boss;
     private GameObject player;
+    private GameObject teleportClassic;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +17,15 @@ public class MarkBoss : MonoBehaviour
     {
 
         boss = GameObject.FindGameObjectWithTag("Boss");
+        teleportClassic = GameObject.FindGameObjectWithTag("TeleportClassic");
+
         if (boss != null)
         {
             TargetIndicator.instance.MarkTarget(boss.transform);
+        }
+        if (teleportClassic != null)
+        {
+            TargetIndicator.instance.MarkTarget(teleportClassic.transform);
         }
     }
     public GameObject FindPlayerRoom()
@@ -65,6 +72,31 @@ public class MarkBoss : MonoBehaviour
         }
         return closest;
     }
+
+    public GameObject FindTeleportClassic()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("TeleportClassic");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject go in gos)
+        {
+            try
+            {
+                Vector3 diff = go.transform.position - position;
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance && curDistance > 0.0f)
+                {
+                    closest = go;
+                    distance = curDistance;
+                }
+            }
+            catch { }
+
+        }
+        return closest;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -72,6 +104,7 @@ public class MarkBoss : MonoBehaviour
         try
         {
             if (FindPlayerRoom() == FindBoss().GetComponent<IEnemy>().GetParent().transform.parent.gameObject)
+                
             {
                 gameObject.SetActive(false);
             }

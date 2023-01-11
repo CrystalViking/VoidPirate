@@ -11,8 +11,9 @@ public class Teleport : MonoBehaviour
 
     [Header("Slider")]
     [SerializeField] private Slider loadingSlider;
+    public GameObject teleport;
     private bool isInRange;
-    private bool isActive = false;
+    public bool isActive = false;
     public Animator anim;
     public string levelToLoad;
     // Start is called before the first frame update
@@ -30,6 +31,7 @@ public class Teleport : MonoBehaviour
         //}
         if (isActive)
         {
+            TargetIndicator.instance.MarkTarget(teleport.transform);
             anim.SetTrigger("Active");
             if (isInRange)
             {

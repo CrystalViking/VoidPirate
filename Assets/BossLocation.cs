@@ -7,13 +7,14 @@ using TMPro;
 public class BossLocation : MonoBehaviour
 {
     bool isInRange;
-    bool isActive = true;
+    bool isActive = false;
     private float startTime = 0f;
     private float timer = 0f;
     public float endTime = 10f;
     public Slider slider;
     private bool timerIsActive = true;
     public TMP_Text successText;
+    private GameObject anyObject;
 
     [SerializeField] protected KeyCode itemInteractionCode = KeyCode.E;
 
@@ -21,7 +22,7 @@ public class BossLocation : MonoBehaviour
 
     void Start()
     {
-
+        anyObject = FindObjectOfType<FindMe>(true).gameObject;
     }
 
     void Update()
@@ -33,7 +34,7 @@ public class BossLocation : MonoBehaviour
     {
         if (isInRange)
         {
-            if (Input.GetKeyDown(itemInteractionCode) && isActive)
+            if (Input.GetKeyDown(itemInteractionCode))
             {
                 terminalMenu.SetActive(true);
             }
@@ -41,6 +42,10 @@ public class BossLocation : MonoBehaviour
             {
                 SliderManager();
             }
+        }
+        if (anyObject != null && isActive)
+        {
+            MarkObject(anyObject);
         }
     }
     void SliderManager()
@@ -54,10 +59,14 @@ public class BossLocation : MonoBehaviour
             {
                 timerIsActive = false;
                 successText.gameObject.SetActive(true);
+                //if (anyObject != null)
+                //{
+                    Debug.Log("yeah");
+                    anyObject.SetActive(true);
+                    isActive = true;
+                //}
             }
         }
-
-            
     }
     void StartSlider()
     {
@@ -83,5 +92,9 @@ public class BossLocation : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
             isInRange = false;
+    }
+    public void MarkObject(GameObject anyObject)
+    {
+        TargetIndicator.instance.MarkTarget(anyObject.transform);
     }
 }

@@ -13,11 +13,12 @@ GameObject:
   - component: {fileID: 1797425212780666488}
   - component: {fileID: 1797425212780666490}
   - component: {fileID: 1797425212780666468}
-  - component: {fileID: 2792667153211625434}
-  - component: {fileID: 5381546070804410737}
+  - component: {fileID: 3208087402199247539}
+  - component: {fileID: 7777711682101035948}
+  - component: {fileID: 6968761615425245105}
   m_Layer: 0
   m_Name: TutorialTerminal
-  m_TagString: Untagged
+  m_TagString: TutorialTerminal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +30,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797425212780666493}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -91,7 +92,7 @@ SpriteRenderer:
   m_SortingLayerID: 1030165769
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: -503309186, guid: 3ecacd09ee0120549a374baacf90d35d, type: 3}
+  m_Sprite: {fileID: -1177425187, guid: 3ecacd09ee0120549a374baacf90d35d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,10 +137,10 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.014904916, y: -0.003726244}
   serializedVersion: 2
-  m_Radius: 0.8
---- !u!61 &2792667153211625434
+  m_Radius: 0.60996187
+--- !u!61 &3208087402199247539
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,16 +157,16 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.69}
+    oldSize: {x: 0.36, y: 0.81}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.69}
+  m_Size: {x: 0.36, y: 0.81}
   m_EdgeRadius: 0
---- !u!114 &5381546070804410737
+--- !u!114 &7777711682101035948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,9 +175,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1797425212780666493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e584027634417b4bb990f8e49a6e59b, type: 3}
+  m_Script: {fileID: 11500000, guid: 53b6c15417de80042b9e0d6c10145c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemInteractionCode: 101
-  terminalMenu: {fileID: 0}
-  tutorialCanvas: {fileID: 0}
+  terminalMenu: {fileID: 8191170013988602149, guid: 2409c6427af409f4fa1788d069ae4cb6, type: 3}
+--- !u!114 &6968761615425245105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797425212780666493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa09328e77fdaf4e92c059bdde5bbd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

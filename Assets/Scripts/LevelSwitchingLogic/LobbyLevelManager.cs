@@ -5,8 +5,21 @@ using UnityEngine;
 public class LobbyLevelManager : MonoBehaviour, IDataPersistence
 {
 
-    private LobbyTravelState travelState;
-    private LobbyBossState bossState;
+    [SerializeField]
+    private GameObject travelTerminal;
+
+    private static string ESTRELLA_REALM = "Estrella";
+    private static string REAPER_REALM = "Reaper";
+    private static string ATAROS_REALM = "Ataros";
+
+    private static string IS_BOSS_LEVEL = "Yes";
+    private static string IS_EMPTY_LEVEL = "No";
+
+    private static string DUNGEON_ROOMS = "DungeonMain";
+    private static string SHIP_ROOMS = "MainGameScene";
+
+    public LobbyTravelState travelState;
+    public LobbyBossState bossState;
     public LevelRealm levelRealm;
 
     public bool estrellaCoordinatesUnlocked;
@@ -62,6 +75,8 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
 
         levelFinished = data.levelFinished;
         currentLevel = data.currentLevel;
+
+        SetLevelOnTerminal();
     }
 
     public void SaveData(GameData data)
@@ -93,7 +108,45 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
     {
         if (bossState == LobbyBossState.bossLocationUnknown)
         {
-            
+            if(travelState != LobbyTravelState.ReadyToTravel)
+            {
+                if(travelState == LobbyTravelState.OnDungeonLevel)
+                {
+                    switch (levelRealm)
+                    {
+                        case (LevelRealm.EstrellaRealm):
+                            FindObjectOfType<TerminalLevelLogic>(true)
+                                .GetComponent<TerminalLevelLogic>()
+                                .SetTerminalLevelToLoad(DUNGEON_ROOMS,
+                                                        ESTRELLA_REALM,
+                                                        IS_EMPTY_LEVEL);
+
+                            break;
+                        case (LevelRealm.ReaperRealm):
+                            FindObjectOfType<TerminalLevelLogic>(true)
+                                .GetComponent<TerminalLevelLogic>()
+                                .SetTerminalLevelToLoad(DUNGEON_ROOMS,
+                                                        REAPER_REALM,
+                                                        IS_EMPTY_LEVEL);
+                            break;
+                        case (LevelRealm.AtarosRealm):
+                            FindObjectOfType<TerminalLevelLogic>(true)
+                                .GetComponent<TerminalLevelLogic>()
+                                .SetTerminalLevelToLoad(DUNGEON_ROOMS,
+                                                        ATAROS_REALM,
+                                                        IS_EMPTY_LEVEL);
+                            break;
+                    }                   
+                }
+                else if(travelState == LobbyTravelState.OnSpaceshipLevel)
+                {
+                    FindObjectOfType<TerminalLevelLogic>(true)
+                                .GetComponent<TerminalLevelLogic>()
+                                .SetTerminalLevelToLoad(SHIP_ROOMS,
+                                                        "",
+                                                        "");
+                }
+            }
         }
         else if(bossState == LobbyBossState.bossLocationUnlocked)
         {

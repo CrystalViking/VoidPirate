@@ -76,25 +76,25 @@ public class SavableSelectOption
 
 public enum LobbyTravelState
 {
-    OnDungeonLevel = 100,
-    OnSpaceshipLevel = 200,
-    ReadyToTravel = 300,
-    OnBossLevel = 400
+    OnDungeonLevel,
+    OnSpaceshipLevel,
+    ReadyToTravel,
+    OnBossLevel
 }
 
 public enum LobbyBossState
 {
-    bossLocationUnknown = 100,
-    bossLocationUnlocked = 200,
-    bossLocationSet = 300,
-    bossDefeated = 400
+    bossLocationUnknown,
+    bossLocationUnlocked,
+    bossLocationSet,
+    bossDefeated
 }
 
 public enum LevelRealm
 {
-    EstrellaRealm = 100,
-    ReaperRealm = 200,
-    AtarosRealm = 300,
+    EstrellaRealm,
+    ReaperRealm,
+    AtarosRealm,
 }
 
 

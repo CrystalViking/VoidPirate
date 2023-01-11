@@ -786,7 +786,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 87052025
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -937402572, guid: caeb487adde859f4a876723f9ed154a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -837,6 +837,7 @@ MonoBehaviour:
   activeBehaviour: 0
   currState: 0
   isUndestructible: 0
+  useAStar: 0
   health: 0
   speed: 2
   attackRange: 1.5
@@ -855,7 +856,7 @@ MonoBehaviour:
   - {fileID: 7239200905989371613}
   - {fileID: 3768992843746157670}
   - {fileID: 7287940488713693}
-  portal: {fileID: 6225709882075278008, guid: d6569d81f3b1d9e4984da0b5b053ac30, type: 3}
+  portal: {fileID: 5999364567034251692, guid: 12951736121dc6643880ffdd0eec02e7, type: 3}
   audioSources:
   - {fileID: 6273795884684474842}
   - {fileID: 5491643659686729414}

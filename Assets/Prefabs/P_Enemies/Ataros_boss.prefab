@@ -884,6 +884,7 @@ MonoBehaviour:
   activeBehaviour: 0
   currState: 0
   isUndestructible: 0
+  useAStar: 0
   health: 0
   speed: 2
   attackRange: 1.6
@@ -891,7 +892,7 @@ MonoBehaviour:
   timeBetweenAttacks: 2
   maxHealth: 5000
   isDead: 0
-  portal: {fileID: 6225709882075278008, guid: d6569d81f3b1d9e4984da0b5b053ac30, type: 3}
+  portal: {fileID: 5999364567034251692, guid: 12951736121dc6643880ffdd0eec02e7, type: 3}
   orbLocators:
   - {fileID: 1645088838866489025}
   - {fileID: 2706244748466725371}

@@ -78,7 +78,8 @@ public enum LobbyTravelState
 {
     OnDungeonLevel = 100,
     OnSpaceshipLevel = 200,
-    ReadyToTravel = 300
+    ReadyToTravel = 300,
+    OnBossLevel = 400
 }
 
 public enum LobbyBossState

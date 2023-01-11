@@ -93,30 +93,102 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
     {
         if (bossState == LobbyBossState.bossLocationUnknown)
         {
-            if (travelState == LobbyTravelState.OnDungeonLevel)
-            {
-                switch (levelRealm)
-                {
-                    case (LevelRealm.EstrellaRealm):
-                        //set teleport to estrella dungeon
-                        break;
-                    case (LevelRealm.ReaperRealm):
-                        //set teleport to reaper realm
-                        break;
-                    case (LevelRealm.AtarosRealm):
-                        //set teleport to ataros realm
-                        break;
-                }
-            }
-            else if (travelState == LobbyTravelState.OnSpaceshipLevel)
-            {
-                // set teleport point to Spaceship
+            
+        }
+        else if(bossState == LobbyBossState.bossLocationUnlocked)
+        {
+            //activate minigame
+        }
+        else if (bossState == LobbyBossState.bossLocationSet)
+        {
+            //deactivate minigame
+        }
+        else if (bossState == LobbyBossState.bossDefeated)
+        {
 
-            }
-            else if (travelState == LobbyTravelState.ReadyToTravel)
-            {
-                // calculate probability of spaceship and set travel point to next level
-            }
+        }
+
+    }
+
+    public void LevelFinishedCheck()
+    {
+        if(levelFinished)
+        {
+            travelState = LobbyTravelState.ReadyToTravel;
         }
     }
+
+
+    public void TravelStateLogic()
+    {
+        if (travelState == LobbyTravelState.OnDungeonLevel)
+        {
+            switch (levelRealm)
+            {
+                case (LevelRealm.EstrellaRealm):
+                    //set teleport to estrella realm (no boss)
+                    break;
+                case (LevelRealm.ReaperRealm):
+                    //set teleport to reaper realm (no boss)
+                    break;
+                case (LevelRealm.AtarosRealm):
+                    //set teleport to ataros realm (no boss)
+                    break;
+            }
+        }
+        //else if (travelState == LobbyTravelState.OnBossLevel)
+        //{
+        //    switch (levelRealm)
+        //    {
+        //        case (LevelRealm.EstrellaRealm):
+        //            //set teleport to estrella realm (BOSS)
+        //            break;
+        //        case (LevelRealm.ReaperRealm):
+        //            //set teleport to reaper realm (BOSS)
+        //            break;
+        //        case (LevelRealm.AtarosRealm):
+        //            //set teleport to ataros realm (BOSS)
+        //            break;
+        //    }
+        //}
+        else if (travelState == LobbyTravelState.OnSpaceshipLevel)
+        {
+            // set teleport point to Spaceship
+
+        }
+        else if (travelState == LobbyTravelState.ReadyToTravel)
+        {
+            // calculate probability of spaceship and set travel point to next level
+        }
+       
+    }
+
+    public void BossCoordinatesScreen()
+    {
+        if(bossState == LobbyBossState.bossLocationUnlocked)
+        {
+            //activate minigame
+        }
+        if(bossState == LobbyBossState.bossLocationSet)
+        {
+            //deactivate minigame
+        }
+    }
+
+
+    public void SetLobbyTravelState(LobbyTravelState lobbyTravelState)
+    {
+        travelState = lobbyTravelState;
+    }
+
+    public void SetLobbyBossState(LobbyBossState lobbyBossState)
+    {
+        bossState = lobbyBossState;
+    }
+
+    public void SetLevelRealm(LevelRealm levelRealm)
+    {
+        this.levelRealm = levelRealm;
+    }
+
 }

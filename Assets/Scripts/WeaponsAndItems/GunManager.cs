@@ -92,11 +92,11 @@ public class GunManager : MonoBehaviour, IDataPersistence
         {
             SelectWeaponSlot(WeaponSlot.Primary);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 2)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 1)
         {
             SelectWeaponSlot(WeaponSlot.Secondary);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 3)
+        if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 1)
         {
             SelectWeaponSlot(WeaponSlot.Melee);
         }

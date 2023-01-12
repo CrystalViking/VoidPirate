@@ -33,6 +33,10 @@ public class GameData
     public LevelRealm levelRealm;
 
 
+    public List<SavableBuyOption> buyOptionsPrimary;
+    public List<SavableBuyOption> buyOptionsSecondary;
+
+
     public GameData()
     {
         //this.coinCount = 0;
@@ -57,7 +61,7 @@ public class SavableBuyOption
 
 public class SavableSelectOption
 {
-
+    public string id;
 }
 
 

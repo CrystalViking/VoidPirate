@@ -29,7 +29,12 @@ public class SceneTransition : MonoBehaviour, IDataPersistence
             if (Input.GetKeyDown(itemInteractionCode) && isActive)
             {
                 sceneInfo.isEventOn = false;
+
+                FindObjectOfType<DeadBossChecker>().SetLevelFinished();
+
                 DataPersistenceManager.instance.SaveGame();
+
+
                 StartCoroutine(SceneLoader.instance.LoadScene(location_name));
             }
         }

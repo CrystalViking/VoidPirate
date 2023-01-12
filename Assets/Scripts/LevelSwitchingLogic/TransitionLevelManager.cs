@@ -54,7 +54,7 @@ public class TransitionLevelManager : MonoBehaviour, IDataPersistence
         int bulletHellRandValue;
 
         //test code
-        newGame = false;
+        //newGame = false;
         //bossState = LobbyBossState.bossLocationUnknown;
         //end test code
 

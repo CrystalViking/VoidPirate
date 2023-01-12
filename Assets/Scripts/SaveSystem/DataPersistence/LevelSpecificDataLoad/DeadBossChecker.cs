@@ -28,6 +28,11 @@ public class DeadBossChecker : MonoBehaviour, IDataPersistence
         bossState = LobbyBossState.bossDefeated;
     }
 
+    public void SetLevelFinished()
+    {
+        levelFinished = true;
+    }
+
     public void LoadData(GameData data)
     {
         

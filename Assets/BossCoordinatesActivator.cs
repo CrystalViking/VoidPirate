@@ -6,6 +6,9 @@ public class BossCoordinatesActivator : MonoBehaviour
 {
     public bool coordinatesScanned = false;
     public GameObject bossGame;
+    public GameObject terminal;
+    public BossLocationLoad bossLocationLoad;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +21,16 @@ public class BossCoordinatesActivator : MonoBehaviour
         if (coordinatesScanned)
         {
             bossGame.SetActive(true);
-            TargetIndicator.instance.MarkTarget(bossGame.transform);
+            if (!bossLocationLoad.coordinatesLoaded)
+            {
+                TargetIndicator.instance.MarkTarget(bossGame.transform);
+            }
+            if (bossLocationLoad.coordinatesLoaded)
+            {
+                TargetIndicator.instance.MarkTarget(terminal.transform);
+            }
         }
+        
     }
 
     public void SetCoordinatesScanned()

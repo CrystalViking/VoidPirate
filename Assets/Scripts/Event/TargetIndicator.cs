@@ -68,4 +68,8 @@ public class TargetIndicator : MonoBehaviour
             child.gameObject.SetActive(value);
         }
     }
+    public void DeactivateIndicator()
+    {
+        SetChildren(false);
+    }
 }

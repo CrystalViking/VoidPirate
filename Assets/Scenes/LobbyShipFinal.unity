@@ -1373,6 +1373,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2633191511003325063, guid: e40a95115e2f40d4b9971b4b767fc888, type: 3}
   m_PrefabInstance: {fileID: 5213228803996640352}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &510965377 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2633191511003325062, guid: e40a95115e2f40d4b9971b4b767fc888, type: 3}
+  m_PrefabInstance: {fileID: 5213228803996640352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510965375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdca8ef15b629b345bc88521bc814a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &525538198
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,6 +2177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coordinatesScanned: 0
   bossGame: {fileID: 510965375}
+  terminal: {fileID: 838931184}
+  bossLocationLoad: {fileID: 510965377}
 --- !u!1001 &835851607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14319,6 +14332,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2633191511003325062, guid: e40a95115e2f40d4b9971b4b767fc888, type: 3}
+      propertyPath: terminal
+      value: 
+      objectReference: {fileID: 838931184}
     - target: {fileID: 2633191511003325063, guid: e40a95115e2f40d4b9971b4b767fc888, type: 3}
       propertyPath: m_IsActive
       value: 0

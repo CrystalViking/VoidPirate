@@ -40,6 +40,13 @@ public class AsyncLoader : MonoBehaviour
         StartCoroutine(LoadLevelASync(levelToLoad));
     }
 
+    public void LoadLevel(string levelToLoad)
+    {
+        loadingScreen.SetActive(true);
+
+        StartCoroutine(LoadLevelASync(levelToLoad));
+    }
+
 
     // defining realm presumably in lobby ship
     public void DefineRealm(string name = "Estrella")

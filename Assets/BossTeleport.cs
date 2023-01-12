@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossTeleport : MonoBehaviour
+public class BossTeleport : MonoBehaviour 
 {
     bool isInRange;
     bool isActive = true;
@@ -28,8 +28,13 @@ public class BossTeleport : MonoBehaviour
             if (Input.GetKeyDown(itemInteractionCode) && isActive)
             {
                 sceneInfo.isEventOn = false;
+                //DataPersistenceManager.instance.SaveGame();
+
+                FindObjectOfType<DeadBossChecker>(true).SetBossDead();
                 DataPersistenceManager.instance.SaveGame();
+
                 StartCoroutine(SceneLoader.instance.LoadScene(location_name));
+                //isActive = false;
             }
         }
         else if (!isInRange)
@@ -51,4 +56,6 @@ public class BossTeleport : MonoBehaviour
         if (collision.CompareTag("Player"))
             isInRange = false;
     }
+
+    
 }

@@ -11,10 +11,17 @@ public class Teleport : MonoBehaviour
 
     [Header("Slider")]
     [SerializeField] private Slider loadingSlider;
+
+    [Header("AsyncManager")]
+    [SerializeField] private GameObject loader;
+
+    public GameObject teleport;
     private bool isInRange;
-    private bool isActive = false;
+    public bool isActive = false;
     public Animator anim;
     public string levelToLoad;
+    public string realm;
+    public string willBeBoss;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +37,13 @@ public class Teleport : MonoBehaviour
         //}
         if (isActive)
         {
+            TargetIndicator.instance.MarkTarget(teleport.transform);
             anim.SetTrigger("Active");
             if (isInRange)
             {
-                LoadLevelButton(levelToLoad);
+                isActive = false;
+                //LoadLevelButton(levelToLoad);
+                LoadDefinedLevel();
             }
         }
     }
@@ -68,5 +78,22 @@ public class Teleport : MonoBehaviour
     public void SetActive()
     {
         isActive = true;
+    }
+
+    public void SetLevelToLoad(string levelToLoad, string realm, string willBeBoss)
+    {
+        this.levelToLoad = levelToLoad;
+        this.realm = realm;
+        this.willBeBoss = willBeBoss;
+
+        loader.GetComponent<AsyncLoader>().DefineRealm(realm);
+        loader.GetComponent<AsyncLoader>().WillBeBossRoom(willBeBoss);
+    }
+
+    public void LoadDefinedLevel()
+    {
+        loader.GetComponent<AsyncLoader>().DefineRealm(realm);
+        loader.GetComponent<AsyncLoader>().WillBeBossRoom(willBeBoss);
+        loader.GetComponent<AsyncLoader>().LoadLevel(levelToLoad);
     }
 }

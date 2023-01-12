@@ -11,7 +11,7 @@ public class TransitionSceneTimer : MonoBehaviour
     {
         sceneInfo.isEventOn = false;
         loader = GetComponent<SceneLoader>();
-        StartCoroutine(Transit());
+        //StartCoroutine(Transit());
     }
 
 

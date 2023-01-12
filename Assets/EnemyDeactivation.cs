@@ -23,11 +23,15 @@ public class EnemyDeactivation : MonoBehaviour
 
 
     void Update()
-    {   
-        if (Input.GetKeyDown(KeyCode.Space) && canEMP)
+    {
+        if (GetComponentInParent<PlayerMovement>().IsMovementActive())
         {
-            EMP();
+            if (Input.GetKeyDown(KeyCode.Space) && canEMP)
+            {
+                EMP();
+            }
         }
+        
     }
 
     private void EMP()

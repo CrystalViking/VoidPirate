@@ -41,6 +41,7 @@ public class Teleport : MonoBehaviour
             anim.SetTrigger("Active");
             if (isInRange)
             {
+                isActive = false;
                 //LoadLevelButton(levelToLoad);
                 LoadDefinedLevel();
             }
@@ -85,8 +86,8 @@ public class Teleport : MonoBehaviour
         this.realm = realm;
         this.willBeBoss = willBeBoss;
 
-        //loader.GetComponent<AsyncLoader>().DefineRealm(realm);
-        //loader.GetComponent<AsyncLoader>().WillBeBossRoom(willBeBoss);
+        loader.GetComponent<AsyncLoader>().DefineRealm(realm);
+        loader.GetComponent<AsyncLoader>().WillBeBossRoom(willBeBoss);
     }
 
     public void LoadDefinedLevel()

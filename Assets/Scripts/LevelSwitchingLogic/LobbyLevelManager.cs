@@ -270,7 +270,7 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
     public void SetBossLocation(LobbyBossState bossState)
     {
         this.bossState = bossState;
-        
+        DataPersistenceManager.instance.SaveGame();
         SetLevelOnTerminal();
     }
 

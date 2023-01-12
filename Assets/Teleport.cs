@@ -15,8 +15,9 @@ public class Teleport : MonoBehaviour
     [Header("AsyncManager")]
     [SerializeField] private GameObject loader;
 
+    public GameObject teleport;
     private bool isInRange;
-    private bool isActive = false;
+    public bool isActive = false;
     public Animator anim;
     public string levelToLoad;
     public string realm;
@@ -36,6 +37,7 @@ public class Teleport : MonoBehaviour
         //}
         if (isActive)
         {
+            TargetIndicator.instance.MarkTarget(teleport.transform);
             anim.SetTrigger("Active");
             if (isInRange)
             {

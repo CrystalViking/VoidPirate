@@ -1452,9 +1452,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.08020834
+    x: 0.08516484
     y: 0
-    width: 0.83981484
+    width: 0.83028084
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -3173,3 +3173,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6461975300185591271, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
   m_PrefabInstance: {fileID: 291525894}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7296388751904453305
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825625, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825639, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: m_Name
+      value: Music
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}

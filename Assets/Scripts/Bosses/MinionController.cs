@@ -25,6 +25,8 @@ public class MinionController : MonoBehaviour, IEnemy
     public Slider healthBarSlider;
     public EnemyState currState = EnemyState.Wander;
     public AudioSource audioSource;
+    public GameObject[] locators;
+    public GameObject orb;
 
     void Start()
     {
@@ -93,6 +95,13 @@ public class MinionController : MonoBehaviour, IEnemy
     {
         healthBar.SetActive(false);
         anim.SetBool("IsSacrificed", true);
+
+        GameObject[] orbs = new GameObject[locators.Length];
+        for (int i = 0; i < locators.Length; i++)
+        {
+            orbs[i] = Instantiate(orb, transform.position, Quaternion.identity);
+            orbs[i].GetComponent<EstrellaSaws_v1_1>().SetGameObject(locators[i]);
+        }
 
         this.enabled = false;
         currState = EnemyState.Sacrifice;

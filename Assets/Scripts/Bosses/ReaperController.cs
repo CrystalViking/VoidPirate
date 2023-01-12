@@ -17,6 +17,7 @@ public class ReaperController : Enemy, IEnemy
     private bool attackedPlayer = false;
     private bool spawnedMinion = false;
     private bool sacrificedMinion = false;
+    private bool attacked = false;
     float distanceFromPlayer;
     public GameObject minion;
     public List<GameObject> minion_list;
@@ -26,6 +27,9 @@ public class ReaperController : Enemy, IEnemy
     public ParticleSystem particles;
     public GameObject cashParticles;
     private bool moneySpawned;
+    private bool destroyed = false;
+    public GameObject[] locators_cross;
+    public GameObject[] locators_inverse_cross;
 
     void Start()
     {
@@ -70,6 +74,10 @@ public class ReaperController : Enemy, IEnemy
                 break;
         }
 
+        if(minion_list.Count > 5 && !destroyed)
+        {
+            DestroyThemAll();
+        }
         foreach(GameObject m in minion_list)
         {
             if (!m)
@@ -101,6 +109,23 @@ public class ReaperController : Enemy, IEnemy
     private bool IsInAttackRange()
     {
         return distanceFromPlayer < attackRange;
+    }
+
+    private void DestroyThemAll()
+    {
+        destroyed = true;
+        audioSources[3].Play();
+        foreach (GameObject m in minion_list)
+        {
+            try
+            {
+                m.GetComponent<MinionController>().Sacrifice();              
+            }
+            catch { }
+        }
+        minion_list.Clear();
+        TakeDamage(-4000.0f);
+        destroyed = false;
     }
 
     public new void TakeDamage(float damage)
@@ -153,27 +178,29 @@ public class ReaperController : Enemy, IEnemy
                 int r = 0;
                 r = Random.Range(1, 10);
 
-                if (r == 2 || r == 7 || r == 1)
+                if (r == 2 || r == 7)
                 {
                     attackedPlayer = false;
                     currState = EnemyState.RangeAttack;
                 }
-                else if (r == 3 || r == 8)
+                else if (r == 3 || r == 8 || r == 6)
                 {
                     spawnedMinion = false;
                     currState = EnemyState.Spawn;
                 }
-                else if (r == 4 || r == 9 || r == 6)
+                else if (r == 4 || r == 9)
                 {
                     sacrificedMinion = false;
                     currState = EnemyState.Consume;
                 }
-                else if (r == 5)
-                {                 
+                else if (r == 5 || r == 1)
+                {
+                    attacked = false;
                     currState = EnemyState.Teleport;
                 }
                 else
                 {
+                    attacked = false;
                     currState = EnemyState.Teleport;
                 }
 
@@ -290,6 +317,29 @@ public class ReaperController : Enemy, IEnemy
     {
         anim.SetBool("IsTeleporting", true);
         audioSources[4].Play();
+        if (!attacked)
+        {
+            float g = Random.Range(0, 2);
+            if (g == 0)
+            {
+                GameObject[] orbs = new GameObject[locators_cross.Length];
+                for (int i = 0; i < locators_cross.Length; i++)
+                {
+                    orbs[i] = Instantiate(bullet[1], transform.position, Quaternion.identity);
+                    orbs[i].GetComponent<EstrellaSaws_v1_1>().SetGameObject(locators_cross[i]);
+                }
+            }
+            else
+            {
+                GameObject[] orbs = new GameObject[locators_inverse_cross.Length];
+                for (int i = 0; i < locators_inverse_cross.Length; i++)
+                {
+                    orbs[i] = Instantiate(bullet[1], transform.position, Quaternion.identity);
+                    orbs[i].GetComponent<EstrellaSaws_v1_1>().SetGameObject(locators_inverse_cross[i]);
+                }
+            }
+            attacked = true;
+        }
 
         yield return new WaitForSeconds(0.2f);
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransition : MonoBehaviour
+public class SceneTransition : MonoBehaviour, IDataPersistence
 {
     bool isInRange;
     bool isActive = true;
@@ -51,5 +51,15 @@ public class SceneTransition : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
             isInRange = false;
+    }
+
+    public void LoadData(GameData data)
+    {
+        
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.levelFinished = true;
     }
 }

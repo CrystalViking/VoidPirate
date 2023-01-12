@@ -19,7 +19,7 @@ public class TerminalLevelLogic : MonoBehaviour
     [SerializeField]
     private GameObject goToAtarosButton;
 
-    LobbyLevelManager lobbyLevelManager;
+    //LobbyLevelManager lobbyLevelManager;
 
 
     public string levelToLoad;
@@ -71,6 +71,13 @@ public class TerminalLevelLogic : MonoBehaviour
         this.willBeBoss = willBeBoss;
 
         ActivateTeleportButton();
+    }
+
+    public void ActivateAllBosses()
+    {
+        goToEstrellaButton.SetActive(true);
+        goToReaperButton.SetActive(true);
+        goToAtarosButton.SetActive(true);
     }
 
 

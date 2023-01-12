@@ -21,4 +21,15 @@ public class BossCoordinatesActivator : MonoBehaviour
             TargetIndicator.instance.MarkTarget(bossGame.transform);
         }
     }
+
+    public void SetCoordinatesScanned()
+    {
+        coordinatesScanned = true;
+    }
+
+    public void UnsetCoordinatesScanned()
+    {
+        //TargetIndicator.instance.MarkTarget()
+        coordinatesScanned = false;
+    }
 }

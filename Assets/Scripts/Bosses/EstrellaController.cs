@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EstrellaController : Enemy, IEnemy
+public class EstrellaController : Enemy, IEnemy, IDataPersistence
 {
 
     public float speed;
@@ -102,6 +102,9 @@ public class EstrellaController : Enemy, IEnemy
                 Instantiate(cashParticles, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
                 moneySpawned = true;
             }
+
+            //DataPersistenceManager.instance.LoadGame();
+            //DataPersistenceManager.instance.SaveGame();
 
             Destroy(gameObject, 1.0f); // TODO: consider using scriptable object
         }
@@ -306,4 +309,14 @@ public class EstrellaController : Enemy, IEnemy
         }
     }
 
+    public void LoadData(GameData data)
+    {
+        
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.levelFinished = true;
+        data.lobbyBossState = LobbyBossState.bossDefeated;
+    }
 }

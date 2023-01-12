@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using TMPro;
 
-public class PShipHealth : MonoBehaviour
+public class PShipHealth : MonoBehaviour, IDataPersistence
 {
     [SerializeField]
     private SceneInfo sceneInfo;
@@ -120,7 +120,22 @@ public class PShipHealth : MonoBehaviour
         sceneInfo.isEventOn = false;
         PlayerPrefs.SetInt("coinAmount", 0);
         Debug.Log("is Dead");
+
+        DataPersistenceManager.instance.LoadGame();
+        DataPersistenceManager.instance.SaveGame();
+
         StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
 
+    }
+
+    public void LoadData(GameData data)
+    {
+        
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.lobbyTravelState = LobbyTravelState.ReadyToTravel;
+        data.lobbyBossState = LobbyBossState.bossLocationUnknown;
     }
 }

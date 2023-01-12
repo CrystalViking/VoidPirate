@@ -17,6 +17,7 @@ public class Timer : SingletonMonobehaviour<Timer>
 
     public bool isEnergyShortage = false;
     public float lightLevel = 1f;
+    public bool hideBoxCoordMessage = false;
 
     void Start()
     {
@@ -51,6 +52,13 @@ public class Timer : SingletonMonobehaviour<Timer>
         }
 
         GameResources.Instance.litMaterial.SetFloat("Alpha_Slider", lightLevel);
+
+        //Event MESSAGE WHEN EVENTS ARE DONE
+
+        if (!hideBoxCoordMessage & !timerIsRunning & didEnergyEventSucceed & didOxygenEventSucceed)
+        {
+            DisplayEventMessage("Find bridge control terminal");
+        }
     }
 
     void ProcessOxygenShortageEvent()
@@ -88,21 +96,18 @@ public class Timer : SingletonMonobehaviour<Timer>
 
         if (!didOxygenEventSucceed)
         {
-            if (timerIsRunning)
+            if (timeRemaining > 0)
             {
-                if (timeRemaining > 0)
-                {
-                    timeRemaining -= Time.deltaTime;
-                    DisplayTime(timeRemaining, "Energy & Oxygen shortage");
-                }
-                else
-                {
-                    Debug.Log("Time has run out!");
-                    DisplayEventMessage("Critically low oxygen level");
-                    timeRemaining = 0;
-                    timerIsRunning = false;
-                    // start suffocating player
-                }
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining, "Energy & Oxygen shortage");
+            }
+            else
+            {
+                Debug.Log("Time has run out!");
+                DisplayEventMessage("Critically low oxygen level");
+                timeRemaining = 0;
+                timerIsRunning = false;
+                // start suffocating player
             }
         }
 

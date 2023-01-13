@@ -255,7 +255,7 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
                 //DataPersistenceManager.instance.LoadGame();
             }
         }
-        else
+        else if(travelState == LobbyTravelState.EndGame)
         {
             travelTerminal
                 .GetComponent<TerminalLevelLogic>()

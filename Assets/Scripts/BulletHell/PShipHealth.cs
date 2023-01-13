@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using TMPro;
 using System;
 
+
 public class PShipHealth : MonoBehaviour, IDataPersistence
 {
     [SerializeField]
@@ -17,6 +18,8 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
     private float dmgTaken;
     public TMP_Text warningText;
     public string levelToLoad;
+    GameObject[] enemies;
+    GameObject[] projectiles;
 
     private int healthSetOnStart = 0;
 
@@ -77,7 +80,9 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
         if (dmgTaken >= 300)
         {
             dmgTaken = 0;
-            ScreenShakeController.instance.StartShake(3f, 3f);
+            ScreenShakeController.instance.StartShake(2f, 3f);
+            DestroyAllComponents();
+
 
             sceneInfo.isEventOn = true;
             //LoadLevelButton(levelToLoad);
@@ -176,4 +181,22 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
     {
         yield return new WaitForSeconds(time);
     }
+    void DestroyAllComponents()
+    {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        projectiles = GameObject.FindGameObjectsWithTag("EnemyProjectile");
+        if ((gameObject.GetComponent("BulletHellEnemySpawner") as BulletHellEnemySpawner) != null)
+        {
+            GetComponent<BulletHellEnemySpawner>().enabled = false;
+        }
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+        foreach (GameObject projectile in projectiles)
+        {
+            Destroy(projectile);
+        }
+    }
+
 }

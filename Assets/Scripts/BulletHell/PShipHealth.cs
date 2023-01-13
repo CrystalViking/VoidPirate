@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using TMPro;
+using System;
 
 public class PShipHealth : MonoBehaviour, IDataPersistence
 {
@@ -57,6 +58,13 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
         }
         textOnHealthChanged?.Invoke(health.ToString());
         sliderOnHealthChanged.Invoke(CalculateHealthPercentage());
+
+        FindObjectOfType<ScreenShakeController>().ShakeFinished += OnShakeFinished;
+    }
+
+    private void OnShakeFinished(object sender, EventArgs e)
+    {
+        LoadLevelButton(levelToLoad);
     }
 
     private void Update()
@@ -64,15 +72,15 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
         if (dmgTaken >= 250)
         {
             warningText.gameObject.SetActive(true);
-            ScreenShakeController.instance.StartShake(2f, 3f);
+            //ScreenShakeController.instance.StartShake(2f, 3f);
         }
         if (dmgTaken >= 300)
         {
             dmgTaken = 0;
-            //ScreenShakeController.instance.StartShake(2f, 3f);
+            ScreenShakeController.instance.StartShake(3f, 3f);
 
             sceneInfo.isEventOn = true;
-            LoadLevelButton(levelToLoad);
+            //LoadLevelButton(levelToLoad);
         }
     }
 
@@ -133,7 +141,8 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
         DataPersistenceManager.instance.LoadGame();
         DataPersistenceManager.instance.SaveGame();
 
-        LoadLevelButton(levelToLoad);
+        //LoadLevelButton(levelToLoad);
+        FindObjectOfType<AsyncLoader>().LoadLevel(levelToLoad);
 
     }
 

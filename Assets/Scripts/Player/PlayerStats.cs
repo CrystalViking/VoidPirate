@@ -11,6 +11,8 @@ public class PlayerStats : ActorStats
 
     PlayerRenderer playerRenderer;
 
+    bool onDeathLevelLoad = false;
+
     [SerializeField]
     private PlayerStatsSO playerStatsSO;
 
@@ -66,8 +68,11 @@ public class PlayerStats : ActorStats
     public override void Die()
     {
         base.Die();
-        PlayerPrefs.SetInt("coinAmount", 0);
-        StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
+        //PlayerPrefs.SetInt("coinAmount", 0);
+        //StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
+        FindObjectOfType<AsyncLoader>().LoadLevel("LobbyShipFinal");
+        
+        
     }
 
     private void Update()

@@ -14,6 +14,8 @@ public class AsyncLoader : MonoBehaviour
     [Header("Slider")]
     [SerializeField] private Slider loadingSlider;
 
+    bool onLevelLoadCalled = false;
+
     public void LoadNewGameButton(string levelToLoad)
     {
         if(currentScreen != null)
@@ -33,18 +35,28 @@ public class AsyncLoader : MonoBehaviour
 
     public void LoadLevelButton(string levelToLoad)
     {
-        if (currentScreen != null)
-            currentScreen.SetActive(false);
-        loadingScreen.SetActive(true);
+        if(!onLevelLoadCalled)
+        {
+            if (currentScreen != null)
+                currentScreen.SetActive(false);
+            loadingScreen.SetActive(true);
 
-        StartCoroutine(LoadLevelASync(levelToLoad));
+            onLevelLoadCalled = true;
+            StartCoroutine(LoadLevelASync(levelToLoad));
+        }
+        
     }
 
     public void LoadLevel(string levelToLoad)
     {
-        loadingScreen.SetActive(true);
+        if(!onLevelLoadCalled)
+        {
+            loadingScreen.SetActive(true);
 
-        StartCoroutine(LoadLevelASync(levelToLoad));
+            onLevelLoadCalled = true;
+            StartCoroutine(LoadLevelASync(levelToLoad));
+        }
+        
     }
 
 

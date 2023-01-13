@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,11 @@ public class ScreenShakeController : MonoBehaviour
     public static ScreenShakeController instance;
     private float shakeTimeRemaining, shakePower, shakeFadeTime, shakeRotation;
     public float rotationMultiplier = 7.5f;
+
+    public event EventHandler ShakeFinished;
+
+    bool shakeStarted = false;
+    bool shakeFinished = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +26,11 @@ public class ScreenShakeController : MonoBehaviour
     {
         if (shakeTimeRemaining > 0 )
         {
+            shakeStarted = true;
             shakeTimeRemaining -= Time.deltaTime;
 
-            float xAmount = Random.Range(-1f, 1f) * shakePower;
-            float yAmount = Random.Range(-1f, 1f) * shakePower;
+            float xAmount = UnityEngine.Random.Range(-1f, 1f) * shakePower;
+            float yAmount = UnityEngine.Random.Range(-1f, 1f) * shakePower;
 
             transform.position += new Vector3(xAmount, yAmount, 0f);
 
@@ -31,8 +38,18 @@ public class ScreenShakeController : MonoBehaviour
 
             shakeRotation = Mathf.MoveTowards(shakeRotation, 0f, shakeFadeTime * rotationMultiplier * Time.deltaTime);
         }
+        else if(shakeTimeRemaining <= 0 && shakeStarted)
+        {
+            shakeFinished = true;
+        }
+        transform.rotation = Quaternion.Euler(0f, 0f, shakeRotation * UnityEngine.Random.Range(-1f, 1f));
 
-        transform.rotation = Quaternion.Euler(0f, 0f, shakeRotation * Random.Range(-1f, 1f));
+        if (shakeFinished)
+        {
+            ShakeFinished?.Invoke(this, EventArgs.Empty);
+        }
+
+        
     }
 
     public void StartShake(float length, float power)
@@ -43,5 +60,6 @@ public class ScreenShakeController : MonoBehaviour
         shakeFadeTime = power / length;
 
         shakeRotation = power * rotationMultiplier;
+
     }
 }

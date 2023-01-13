@@ -22,7 +22,7 @@ public class TestProjectile : MonoBehaviour, IProjectile
 
     public virtual void CollisionBehavior(Collider2D collision)
     {
-        if (collision.tag == "Wall" || collision.tag == "Door")
+        if (collision.tag == "Wall" || collision.tag == "Door" || collision.tag == "CollisionTilemap")
         {
             Destroy(gameObject);
         }

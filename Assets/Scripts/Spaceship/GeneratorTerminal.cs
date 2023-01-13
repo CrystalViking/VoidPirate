@@ -17,11 +17,11 @@ public class GeneratorTerminal : MonoBehaviour
 
     void Update()
     {
-        if (Timer.Instance.isOxygenShortage && Timer.Instance.timerIsRunning)
+        if (Timer.Instance.isOxygenShortage)
         {
             UngreyOutObjects();
         }
-        else if (Timer.Instance.isEnergyShortage && Timer.Instance.timerIsRunning)
+        else if (Timer.Instance.isEnergyShortage)
         {
             InteractOnAction();
             if (isActive)

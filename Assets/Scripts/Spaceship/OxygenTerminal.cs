@@ -21,9 +21,13 @@ public class OxygenTerminal : MonoBehaviour
     {
         if (!Timer.Instance.didOxygenEventSucceed)
         {
-            if (Timer.Instance.isOxygenShortage && Timer.Instance.timerIsRunning)
+            if (Timer.Instance.isOxygenShortage)
             {
-                InteractOnActionForOxygenShortage();
+                if (Timer.Instance.didEnergyEventSucceed)
+                {
+                    InteractOnActionForOxygenShortage();
+                }
+
                 if (isActive)
                 {
                     GreyOutObjects();
@@ -33,9 +37,13 @@ public class OxygenTerminal : MonoBehaviour
                     UngreyOutObjects();
                 }
             }
-            else if (Timer.Instance.isEnergyShortage && Timer.Instance.timerIsRunning)
+            else if (Timer.Instance.isEnergyShortage)
             {
-                InteractOnActionForEnergyShortage();
+                if (Timer.Instance.didEnergyEventSucceed)
+                {
+                    InteractOnActionForEnergyShortage();
+                }
+
                 if (isActive && !Timer.Instance.isOxygenStationInGoodCondition)
                 {
                     BlackOutObjects();

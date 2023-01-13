@@ -74,6 +74,7 @@ public class ShopCoinManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
+
         totalCoins = data.totalCoinCount;
         if(!coinsAdded)
         {

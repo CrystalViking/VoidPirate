@@ -54,7 +54,6 @@ public class BloodyBombEnemy : MeleeEnemy
 
     public override void Follow()
     {
-        animator.SetIsMovingTrue();
         if (!audioSource.isPlaying)
             audioSource.Play();
 

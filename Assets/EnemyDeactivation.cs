@@ -90,7 +90,7 @@ public class EnemyDeactivation : MonoBehaviour
             {
                 Vector3 diff = go.transform.position - position;
                 float curDistance = diff.sqrMagnitude;
-                if (curDistance < distance && curDistance > 0.0f && FindPlayerRoom() == go.GetComponent<IEnemy>().GetParent().transform.parent.gameObject)
+                if (!go.GetComponent<BloodyBombEnemy>() && curDistance < distance && curDistance > 0.0f && FindPlayerRoom() == go.GetComponent<IEnemy>().GetParent().transform.parent.gameObject)
                 {
                     closest = go;
                     distance = curDistance;
@@ -118,7 +118,7 @@ public class EnemyDeactivation : MonoBehaviour
             {
                 try
                 {
-                    if (closest.transform == go.GetComponent<IEnemy>().GetParent().transform.parent)
+                    if (!go.GetComponent<BloodyBombEnemy>() && closest.transform == go.GetComponent<IEnemy>().GetParent().transform.parent)
                     {
                         if(go.GetComponent<SpawnerEnemy>())
                         {
@@ -151,7 +151,7 @@ public class EnemyDeactivation : MonoBehaviour
             try
             {
 
-                if (go.GetComponent<SpawnerEnemy>())
+                if (!go.GetComponent<BloodyBombEnemy>() && go.GetComponent<SpawnerEnemy>())
                 {
                     List<GameObject> list = go.GetComponent<SpawnerEnemy>().GetMinionList();
                     foreach (GameObject g in list)

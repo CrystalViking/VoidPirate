@@ -17,6 +17,8 @@ public class ShopCoinManager : MonoBehaviour, IDataPersistence
 
     bool coinsAdded = false;
 
+    bool dataLoaded = false;
+
     public event EventHandler<ItemPurchasedEventArgs> PurchaseFinished;
     
     void Start()
@@ -80,19 +82,23 @@ public class ShopCoinManager : MonoBehaviour, IDataPersistence
         {
             totalCoins += data.coinCount;
             coinsAdded = true;
+            dataLoaded = true;
             DataPersistenceManager.instance.SaveGame();
         }
-            
+        dataLoaded = true;    
         
         OnCoinAmountChange?.Invoke(totalCoins.ToString());
     }
 
     public void SaveData(GameData data)
     {
-
-        data.totalCoinCount = totalCoins;
-        if(coinsAdded)
-            data.coinCount = 0;
+        if(dataLoaded)
+        {
+            data.totalCoinCount = totalCoins;
+            if (coinsAdded)
+                data.coinCount = 0;
+        }
+        
         //data.coinCount = 0;
     }
 }

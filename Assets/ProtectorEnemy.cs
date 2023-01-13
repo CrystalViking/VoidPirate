@@ -89,7 +89,8 @@ public class ProtectorEnemy : MeleeEnemy
 
   public new void PassiveBehaviour()
   {
-    currState = EnemyState.Idle;
+        audioSource.Stop();
+        currState = EnemyState.Idle;
   }
 
   public override void Idle()
@@ -174,9 +175,9 @@ public class ProtectorEnemy : MeleeEnemy
             if (ally)
             {
                 ReturnHP();
-                audioSource.Stop();
             }
-    }
+            audioSource.Stop();
+        }
         base.CheckDeath(healthBar, animator, gameObject);
   }
 }

@@ -1416,6 +1416,7 @@ GameObject:
   - component: {fileID: 529052239}
   - component: {fileID: 529052238}
   - component: {fileID: 529052243}
+  - component: {fileID: 529052244}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1517,10 +1518,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.048076924
-    width: 1
-    height: 0.90216345
+    x: 0.35422343
+    y: 0
+    width: 0.6232718
+    height: 0.743738
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1579,6 +1580,23 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!114 &529052244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529052237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 56a0eb7ca0c1d8143bd6eba71feaf381, type: 2}
 --- !u!1 &576153991
 GameObject:
   m_ObjectHideFlags: 0
@@ -2473,6 +2491,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7296388751856825638, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7296388751856825639, guid: 54db55236e9a7594e99c5e322a4f6cb8, type: 3}
       propertyPath: m_Name
       value: Music
@@ -2498,7 +2520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   analogGlitch: {fileID: 0}
   isOnBulletHell: 0
-  volume: {fileID: 0}
+  volume: {fileID: 529052244}
   scanLineJiterLowValue: 0.2
   verticalJumpLowValue: 0.02
   scanLineJiterHighValue: 0.5

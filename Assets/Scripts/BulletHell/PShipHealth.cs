@@ -64,7 +64,7 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
 
     private void OnShakeFinished(object sender, EventArgs e)
     {
-        LoadLevelButton(levelToLoad);
+        FindObjectOfType<AsyncLoader>().LoadLevel(levelToLoad);
     }
 
     private void Update()

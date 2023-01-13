@@ -61,7 +61,8 @@ public class CountdownTimer : MonoBehaviour
             DestroyAllComponents();
             sceneInfo.isEventOn = false;
             PlayerPrefs.DeleteKey("shipHealth");
-            LoadLevelButton(levelToLoad);
+            //LoadLevelButton(levelToLoad);
+            FindObjectOfType<AsyncLoader>().LoadLevel(levelToLoad);
         }
     }
     public void LoadLevelButton(string levelToLoad)

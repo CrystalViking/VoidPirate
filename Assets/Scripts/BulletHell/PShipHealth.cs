@@ -20,6 +20,7 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
     public string levelToLoad;
     GameObject[] enemies;
     GameObject[] projectiles;
+    public bool canBeAttacked = true;
 
     private int healthSetOnStart = 0;
 
@@ -79,6 +80,7 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
         }
         if (dmgTaken >= 300)
         {
+            canBeAttacked = false;
             dmgTaken = 0;
             ScreenShakeController.instance.StartShake(2f, 3f);
             DestroyAllComponents();
@@ -117,7 +119,7 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
 
     public void TakeDamage(float damage)
     {
-        if(!isDead)
+        if(!isDead && canBeAttacked)
         {
             audioSource.Play();
             health -= damage;

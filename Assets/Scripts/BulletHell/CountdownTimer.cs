@@ -17,6 +17,7 @@ public class CountdownTimer : MonoBehaviour
     GameObject[] enemies;
     GameObject[] projectiles;
     [SerializeField] private GameObject loadingScreen;
+    PShipHealth healthScript;
 
     [Header("Slider")]
     [SerializeField] private Slider loadingSlider;
@@ -42,6 +43,7 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdownText;
     void Start()
     {
+        healthScript = GetComponent<PShipHealth>();
         if (sceneInfo.isEventOn == false)
         {
             timerSO.Value = startingTime;
@@ -58,6 +60,7 @@ public class CountdownTimer : MonoBehaviour
         if (timerSO.Value <= 0f)
         {
             timerSO.Value = 0f;
+            healthScript.canBeAttacked = false;
             DestroyAllComponents();
             sceneInfo.isEventOn = false;
             PlayerPrefs.DeleteKey("shipHealth");

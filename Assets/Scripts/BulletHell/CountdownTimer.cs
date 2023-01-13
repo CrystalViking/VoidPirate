@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class CountdownTimer : MonoBehaviour
@@ -15,6 +16,12 @@ public class CountdownTimer : MonoBehaviour
     private float increasingTimer;
     GameObject[] enemies;
     GameObject[] projectiles;
+    [SerializeField] private GameObject loadingScreen;
+
+    [Header("Slider")]
+    [SerializeField] private Slider loadingSlider;
+
+    public string levelToLoad;
     void DestroyAllComponents()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -35,12 +42,13 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdownText;
     void Start()
     {
-        if(sceneInfo.isEventOn == false)
+        if (sceneInfo.isEventOn == false)
         {
             timerSO.Value = startingTime;
         }
-        
+
     }
+
     private void Update()
     {
         increasingTimer += Time.deltaTime;
@@ -53,8 +61,24 @@ public class CountdownTimer : MonoBehaviour
             DestroyAllComponents();
             sceneInfo.isEventOn = false;
             PlayerPrefs.DeleteKey("shipHealth");
-            StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
+            LoadLevelButton(levelToLoad);
         }
     }
+    public void LoadLevelButton(string levelToLoad)
+    {
+        loadingScreen.SetActive(true);
+        StartCoroutine(LoadLevelASync(levelToLoad));
+    }
+    IEnumerator LoadLevelASync(string levelToLoad)
+    {
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);
 
+        while (!loadOperation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(loadOperation.progress / 0.9f);
+            loadingSlider.value = progressValue;
+            yield return null;
+        }
+
+    }
 }

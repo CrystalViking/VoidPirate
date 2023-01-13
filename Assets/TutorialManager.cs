@@ -10,7 +10,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] tutorialCanvasList;
     public GameObject helpCanvas;
     public bool teleportActivated = false;
-    public Teleport teleportScript;
+    public TutorialTeleport teleportScript;
 
     private bool firstVisited = false;
     private bool secondVisited;
@@ -48,7 +48,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (firstVisited == true && secondVisited == true)
         {
-            teleportScript.GetComponent<Teleport>().SetActive();
+            teleportScript.GetComponent<TutorialTeleport>().SetActive();
             teleportActivated = true;
             helpCanvas.SetActive(true);
         }

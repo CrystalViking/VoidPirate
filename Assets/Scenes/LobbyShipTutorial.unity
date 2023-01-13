@@ -5485,17 +5485,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1508602527808665936, guid: 4258a3a647a647b44a5c1ebacb4417ad, type: 3}
   m_PrefabInstance: {fileID: 2062995686}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &817896611 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1508602527808665967, guid: 4258a3a647a647b44a5c1ebacb4417ad, type: 3}
-  m_PrefabInstance: {fileID: 2062995686}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817896602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96699b8c34d1759419820255df9997c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &831804693 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5168497777406385688, guid: 996e6f85ff926ab49b27c20bafee7c47, type: 3}
@@ -13330,7 +13319,7 @@ MonoBehaviour:
   - {fileID: 1105030085}
   helpCanvas: {fileID: 978028669}
   teleportActivated: 0
-  teleportScript: {fileID: 817896611}
+  teleportScript: {fileID: 2062995688}
 --- !u!4 &1820690359
 Transform:
   m_ObjectHideFlags: 0
@@ -13865,8 +13854,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportParent
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1508602527808665967, guid: 4258a3a647a647b44a5c1ebacb4417ad, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4258a3a647a647b44a5c1ebacb4417ad, type: 3}
+--- !u!95 &2062995687 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1508602527808665964, guid: 4258a3a647a647b44a5c1ebacb4417ad, type: 3}
+  m_PrefabInstance: {fileID: 2062995686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2062995688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817896602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d3af1725eca5c42bd63dd27846c13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 308666610}
+  loadingSlider: {fileID: 1846413046}
+  loader: {fileID: 850487282}
+  teleport: {fileID: 817896602}
+  isActive: 0
+  anim: {fileID: 2062995687}
+  levelToLoad: MenuScene
 --- !u!1 &2065366615 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8799956309495370730, guid: 6d7535ba4deee134a8238c3f543e0c2a, type: 3}

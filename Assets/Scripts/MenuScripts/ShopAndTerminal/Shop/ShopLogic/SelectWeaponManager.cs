@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectWeaponManager : MonoBehaviour
+public class SelectWeaponManager : MonoBehaviour, IDataPersistence
 {
 
     [SerializeField]
@@ -10,6 +10,9 @@ public class SelectWeaponManager : MonoBehaviour
 
     [SerializeField]
     public GameObject selectWeaponButtonPrefab;
+
+    [SerializeField]
+    private WeaponSO[] weaponSaveLoadList;
 
 
     public List<WeaponSO> weaponData = new List<WeaponSO>();
@@ -72,6 +75,43 @@ public class SelectWeaponManager : MonoBehaviour
         PopulateList();
     }
 
+    public void LoadData(GameData data)
+    {
+        string id;
+        bool purchased;
 
+        if(data.primaryWeaponsPurchased.Count > 0)
+        {
+            for(int i = 0; i < weaponSaveLoadList.Length; i++)
+            {
+                id = weaponSaveLoadList[i].ItemName;
 
+                data.primaryWeaponsPurchased.TryGetValue(id, out purchased);
+
+                if(purchased)
+                {
+                    AddWeaponToList(weaponSaveLoadList[i]);
+                }
+            }
+        }
+        if (data.secondaryWeaponsPurchased.Count > 0)
+        {
+            for (int i = 0; i < weaponSaveLoadList.Length; i++)
+            {
+                id = weaponSaveLoadList[i].ItemName;
+
+                data.secondaryWeaponsPurchased.TryGetValue(id, out purchased);
+
+                if (purchased)
+                {
+                    AddWeaponToList(weaponSaveLoadList[i]);
+                }
+            }
+        }
+    }
+
+    public void SaveData(GameData data)
+    {
+        
+    }
 }

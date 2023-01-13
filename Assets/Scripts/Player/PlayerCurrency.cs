@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerCurrency : MonoBehaviour, IDataPersistence
 {
@@ -53,7 +54,12 @@ public class PlayerCurrency : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
-        //data.totalCoinCount = total;
-        data.coinCount = this.total;
+        
+        if (SceneManager.GetActiveScene().name != "LobbyShipFinal" && SceneManager.GetActiveScene().name != "LobbyShipEvent")
+        {
+            data.coinCount = total;
+        }
+        
+
     }
 }

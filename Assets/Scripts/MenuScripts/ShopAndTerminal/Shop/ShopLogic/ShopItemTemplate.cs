@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
+public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IDataPersistence
 {
     [SerializeField]
     public ShopWeaponSO shopOptionData;
@@ -19,6 +19,7 @@ public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler, IPointerCli
     [SerializeField]
     public Image descriptionImage;
 
+    bool purchased = false;
 
     private void Start()
     {
@@ -56,12 +57,64 @@ public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler, IPointerCli
                 .AddGun(gameObject.GetComponent<ShopItemTemplate>().shopOptionData.weaponSO.prefab);
 
             //GameObject.FindGameObjectWithTag("SelectWeaponListHolder").GetComponent<SelectWeaponManager>().AddWeaponToList(shopOptionData.weaponSO);
+            purchased = true;
+
             DataPersistenceManager.instance.SaveGame();
         }
 
     }
 
+    public void LoadData(GameData data)
+    {
+        
 
+        if (shopOptionData != null)
+        {
+            string id = shopOptionData.weaponSO.ItemName;
+
+            if (shopOptionData.weaponSO.weaponSlot == WeaponSlot.Primary && data.primaryWeaponsPurchased.Count > 0)
+            {
+                data.primaryWeaponsPurchased.TryGetValue(id, out purchased);
+
+            }
+            if (shopOptionData.weaponSO.weaponSlot == WeaponSlot.Secondary && data.secondaryWeaponsPurchased.Count > 0)
+            {
+                data.secondaryWeaponsPurchased.TryGetValue(id, out purchased);
+            }
+
+            if (purchased)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void SaveData(GameData data)
+    {
+        if(shopOptionData != null)
+        {
+            string id = shopOptionData.weaponSO.ItemName;
+
+            if (shopOptionData.weaponSO.weaponSlot == WeaponSlot.Primary)
+            {
+                if (data.primaryWeaponsPurchased.ContainsKey(id))
+                {
+                    data.primaryWeaponsPurchased.Remove(id);
+                }
+                data.primaryWeaponsPurchased.Add(id, purchased);
+            }
+            if (shopOptionData.weaponSO.weaponSlot == WeaponSlot.Secondary)
+            {
+                if (data.secondaryWeaponsPurchased.ContainsKey(id))
+                {
+                    data.secondaryWeaponsPurchased.Remove(id);
+                }
+                data.secondaryWeaponsPurchased.Add(id, purchased);
+            }
+        }
+
+        
+    }
 }
 
 

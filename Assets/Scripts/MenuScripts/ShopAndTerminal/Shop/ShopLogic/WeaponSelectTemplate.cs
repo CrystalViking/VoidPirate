@@ -12,6 +12,8 @@ public class WeaponSelectTemplate : MonoBehaviour, IPointerClickHandler
 
     public TMP_Text titleText;
 
+    
+
     public void OnPointerClick(PointerEventData eventData)
     {
         var player = GameObject.FindGameObjectWithTag("Player");
@@ -38,6 +40,8 @@ public class WeaponSelectTemplate : MonoBehaviour, IPointerClickHandler
 
         
     }
+
+    
 
     void Start()
     {

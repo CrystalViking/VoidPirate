@@ -2226,6 +2226,14 @@ PrefabInstance:
       propertyPath: onMedkitStackChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5200156605508631884, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
+      propertyPath: onPlayerCurrencyChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1168168538}
+    - target: {fileID: 5200156605508631884, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
+      propertyPath: onPlayerCurrencyChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
     - target: {fileID: 6715612363950059216, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
       propertyPath: hudCanvas
       value: 

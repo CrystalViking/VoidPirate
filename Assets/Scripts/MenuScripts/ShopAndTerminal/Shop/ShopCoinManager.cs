@@ -15,11 +15,13 @@ public class ShopCoinManager : MonoBehaviour, IDataPersistence
 
     public UnityEvent<string> OnCoinAmountChange;
 
+    bool coinsAdded = false;
+
     public event EventHandler<ItemPurchasedEventArgs> PurchaseFinished;
     
     void Start()
     {
-        totalCoins = 10000;
+        //totalCoins = 10000;
         OnCoinAmountChange?.Invoke(totalCoins.ToString());
     }
 
@@ -73,13 +75,24 @@ public class ShopCoinManager : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         totalCoins = data.totalCoinCount;
-        totalCoins += data.coinCount;
-        data.coinCount = 0;
+        if(!coinsAdded)
+        {
+            totalCoins += data.coinCount;
+            coinsAdded = true;
+            DataPersistenceManager.instance.SaveGame();
+        }
+            
+        
+        OnCoinAmountChange?.Invoke(totalCoins.ToString());
     }
 
     public void SaveData(GameData data)
     {
+
         data.totalCoinCount = totalCoins;
+        if(coinsAdded)
+            data.coinCount = 0;
+        //data.coinCount = 0;
     }
 }
 

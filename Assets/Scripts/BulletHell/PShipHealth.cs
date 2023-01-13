@@ -15,6 +15,7 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
     private bool isDead;
     private float dmgTaken;
     public TMP_Text warningText;
+    public string levelToLoad;
 
     private int healthSetOnStart = 0;
 
@@ -22,6 +23,12 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
     private UnityEvent<float> sliderOnHealthChanged;
     [SerializeField]
     private UnityEvent<string> textOnHealthChanged;
+
+    [SerializeField] private GameObject loadingScreen;
+
+    [Header("Slider")]
+    [SerializeField] private Slider loadingSlider;
+
 
     [Header("Sound Effects")]
     public AudioSource audioSource;
@@ -57,13 +64,15 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
         if (dmgTaken >= 250)
         {
             warningText.gameObject.SetActive(true);
+            ScreenShakeController.instance.StartShake(2f, 3f);
         }
         if (dmgTaken >= 300)
         {
             dmgTaken = 0;
-            ScreenShakeController.instance.StartShake(2f, 3f);
+            //ScreenShakeController.instance.StartShake(2f, 3f);
+
             sceneInfo.isEventOn = true;
-            StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
+            LoadLevelButton(levelToLoad);
         }
     }
 
@@ -124,7 +133,7 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
         DataPersistenceManager.instance.LoadGame();
         DataPersistenceManager.instance.SaveGame();
 
-        StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
+        LoadLevelButton(levelToLoad);
 
     }
 
@@ -137,5 +146,25 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
     {
         data.lobbyTravelState = LobbyTravelState.ReadyToTravel;
         data.lobbyBossState = LobbyBossState.bossLocationUnknown;
+    }
+    public void LoadLevelButton(string levelToLoad)
+    {
+        loadingScreen.SetActive(true);
+        StartCoroutine(LoadLevelASync(levelToLoad));
+    }
+    IEnumerator LoadLevelASync(string levelToLoad)
+    {
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);
+
+        while (!loadOperation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(loadOperation.progress / 0.9f);
+            loadingSlider.value = progressValue;
+            yield return null;
+        }
+    }
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }

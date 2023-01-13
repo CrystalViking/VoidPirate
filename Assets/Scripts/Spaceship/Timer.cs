@@ -14,13 +14,16 @@ public class Timer : SingletonMonobehaviour<Timer>
     public Text timeText;
     public bool isOxygenShortage = false;
     public bool isOxygenStationInGoodCondition;
-
+    private float nextAttackTime;
     public bool isEnergyShortage = false;
     public float lightLevel = 1f;
     public bool hideBoxCoordMessage = false;
+    public float tick;
+    public float damage;
 
     void Start()
     {
+        nextAttackTime = tick;
         timerIsRunning = true;
 
         int number = Random.Range(0, 2);
@@ -75,7 +78,8 @@ public class Timer : SingletonMonobehaviour<Timer>
                 Debug.Log("Time has run out!");
                 DisplayEventMessage("Critically low oxygen level");
                 timeRemaining = 0;
-                timerIsRunning = false;
+                //timerIsRunning = false;
+                DmgPlayer();
             }
         }
     }
@@ -107,7 +111,9 @@ public class Timer : SingletonMonobehaviour<Timer>
                 DisplayEventMessage("Critically low oxygen level");
                 timeRemaining = 0;
                 timerIsRunning = false;
+
                 // start suffocating player
+                DmgPlayer();
             }
         }
 
@@ -161,6 +167,14 @@ public class Timer : SingletonMonobehaviour<Timer>
                 room.instantiatedRoom.EventOpenDoors();
 
             }
+        }
+    }
+    private void DmgPlayer()
+    {
+        if (Time.time > nextAttackTime)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(damage);
+            nextAttackTime = Time.time + tick;
         }
     }
 }

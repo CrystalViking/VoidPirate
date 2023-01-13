@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spaceshipLevelList:
-  - {fileID: 11400000, guid: 3e3a6ae8554011542941ce335944d940, type: 2}
+  - {fileID: 11400000, guid: 5f96372a2a925ce42a9a6a114f34ca3b, type: 2}
   - {fileID: 11400000, guid: 4f043e90033f61b4da3474631fa669f9, type: 2}
   currentSpaceshipListIndex: 0
   gameState: 0
@@ -352,6 +352,8 @@ MonoBehaviour:
   isEnergyShortage: 0
   lightLevel: 1
   hideBoxCoordMessage: 0
+  tick: 3
+  damage: 10
 --- !u!1 &130726536
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +880,10 @@ PrefabInstance:
     - target: {fileID: 9071709076533217867, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
       propertyPath: canvasEMP
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071709076533217867, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
+      propertyPath: isTutorialOrShipLevel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1447205113408390653, guid: d65cc915e66869340bffecd8adbea07e, type: 3}
@@ -1511,10 +1517,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.041442823
-    width: 1
-    height: 0.91627496
+    x: 0.07348838
+    y: 0
+    width: 0.85333335
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -2649,6 +2655,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1470770106
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456720, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948644711316456722, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
+      propertyPath: m_Name
+      value: cross0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 566d7a89d861b12459fb041c01b1c454, type: 3}
 --- !u!1 &1475499674
 GameObject:
   m_ObjectHideFlags: 0

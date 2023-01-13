@@ -7,10 +7,11 @@ public class ShopLoadManager : MonoBehaviour, IDataPersistence
 
     [SerializeField]
     private GameObject primaryShopContent;
+    [SerializeField]
     private GameObject secondaryShopContent;
     
-    List<SavableBuyOption> optionsPrimary = new List<SavableBuyOption>();
-    List<SavableBuyOption> optionsSecondary = new List<SavableBuyOption>();
+    //List<SavableBuyOption> optionsPrimary = new List<SavableBuyOption>();
+    //List<SavableBuyOption> optionsSecondary = new List<SavableBuyOption>();
 
 
 
@@ -28,8 +29,9 @@ public class ShopLoadManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        optionsPrimary = data.buyOptionsPrimary;
-        optionsSecondary = data.buyOptionsSecondary;
+        //if(data.buyOptionsPrimary.Count > 0 && data.buyOptionsSecondary.Count > 0)
+        //optionsPrimary = data.buyOptionsPrimary;
+        //optionsSecondary = data.buyOptionsSecondary;
 
         //for loop enabling/disabling buy options
 

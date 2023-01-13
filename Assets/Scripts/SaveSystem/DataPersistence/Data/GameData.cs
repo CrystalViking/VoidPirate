@@ -33,13 +33,18 @@ public class GameData
     public LevelRealm levelRealm;
 
 
-    public List<SavableBuyOption> buyOptionsPrimary;
-    public List<SavableBuyOption> buyOptionsSecondary;
+    //public List<SavableBuyOption> buyOptionsPrimary;
+    //public List<SavableBuyOption> buyOptionsSecondary;
+
+    public Dictionary<string, bool> primaryWeaponsPurchased;
+    public Dictionary<string, bool> secondaryWeaponsPurchased;
 
 
     public GameData()
     {
         //this.coinCount = 0;
+        primaryWeaponsPurchased = new Dictionary<string, bool>();
+        secondaryWeaponsPurchased = new Dictionary<string, bool>();
     }
 }
 

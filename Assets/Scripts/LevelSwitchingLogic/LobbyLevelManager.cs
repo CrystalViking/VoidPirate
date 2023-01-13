@@ -277,9 +277,9 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
    
     private void NewGameStarter()
     {
-        newGame = false;
-        DataPersistenceManager.instance.SaveGame();
+        newGame = false;  
         playerWeaponParent.GetComponent<GunManager>().AddGun(firstWeapon);
+        DataPersistenceManager.instance.SaveGame();
 
     }
 

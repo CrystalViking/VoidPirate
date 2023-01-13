@@ -23,6 +23,7 @@ public class ShopWeaponManager : MonoBehaviour
     {
         LoadPanels();
         ActivatePanels();
+        DataPersistenceManager.instance.LoadGame();
     }
 
     

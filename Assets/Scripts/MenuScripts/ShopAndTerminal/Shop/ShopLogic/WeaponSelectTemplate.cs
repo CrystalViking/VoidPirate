@@ -34,9 +34,10 @@ public class WeaponSelectTemplate : MonoBehaviour, IPointerClickHandler
                 GetComponentInParent<GeneralShopManager>()
                     .UpdateSelectWeaponSecondary(weaponData.ItemName.ToUpper());
             }
-                
 
+            DataPersistenceManager.instance.SaveGame();
         }
+
 
         
     }

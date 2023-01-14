@@ -229,8 +229,8 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
             }
             else if (bossState == LobbyBossState.bossDefeated)
             {
-                //bossState = LobbyBossState.bossLocationUnknown;
-                //travelState = LobbyTravelState.ReadyToTravel;
+                bossState = LobbyBossState.bossLocationUnknown;
+                travelState = LobbyTravelState.ReadyToTravel;
 
                 travelTerminal
                                 .GetComponent<TerminalLevelLogic>()

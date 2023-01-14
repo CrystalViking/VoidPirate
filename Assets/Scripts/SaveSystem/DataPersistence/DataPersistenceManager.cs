@@ -84,26 +84,32 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void LoadGame()
     {
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-
-        this.gameData = fileDataHandler.Load();
-
-        if(this.gameData == null && initializeDataIfNull)
+        if(SceneManager.GetActiveScene().name != "TutorialMapMainGameScene" &&
+            SceneManager.GetActiveScene().name != "LobbyShipTutorial")
         {
-            NewGame();
+            this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+
+            this.gameData = fileDataHandler.Load();
+
+            if (this.gameData == null && initializeDataIfNull)
+            {
+                NewGame();
+            }
+
+            if (this.gameData == null)
+            {
+                Debug.Log("No data was found. A New Game needs to be started before data can be loaded.");
+                //NewGame();
+            }
+
+
+            foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+            {
+                dataPersistenceObj.LoadData(gameData);
+            }
         }
 
-        if(this.gameData == null)
-        {
-            Debug.Log("No data was found. A New Game needs to be started before data can be loaded.");
-            //NewGame();
-        }
-
-
-        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
-        {
-            dataPersistenceObj.LoadData(gameData);
-        }
+        
     }
 
     //public void LobbyShipSave()
@@ -118,25 +124,30 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
-        if (this.gameData == null && initializeDataIfNull)
+        if (SceneManager.GetActiveScene().name != "TutorialMapMainGameScene" &&
+            SceneManager.GetActiveScene().name != "LobbyShipTutorial")
         {
-            NewGame();
+
+            if (this.gameData == null && initializeDataIfNull)
+            {
+                NewGame();
+            }
+
+            if (this.gameData == null)
+            {
+                Debug.LogWarning("No data was found. A New Game needs to be started before data can be saved.");
+                return;
+            }
+
+            foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+            {
+                dataPersistenceObj.SaveData(gameData);
+            }
+
+            //Debug.Log("Saved coin count = " + gameData.coinCount);
+
+            fileDataHandler.Save(gameData);
         }
-
-        if (this.gameData == null)
-        {
-            Debug.LogWarning("No data was found. A New Game needs to be started before data can be saved.");
-            return;
-        }
-
-        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
-        {
-            dataPersistenceObj.SaveData(gameData);
-        }
-
-        //Debug.Log("Saved coin count = " + gameData.coinCount);
-
-        fileDataHandler.Save(gameData);
     }
 
     private void OnApplicationQuit()

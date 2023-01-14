@@ -107,6 +107,7 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
 
         data.newGame = newGame;
 
+        
     }
 
 
@@ -279,6 +280,9 @@ public class LobbyLevelManager : MonoBehaviour, IDataPersistence
     {
         newGame = false;  
         playerWeaponParent.GetComponent<GunManager>().AddGun(firstWeapon);
+
+        
+
         DataPersistenceManager.instance.SaveGame();
 
     }

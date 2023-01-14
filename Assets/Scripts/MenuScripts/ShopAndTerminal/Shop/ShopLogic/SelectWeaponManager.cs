@@ -20,7 +20,32 @@ public class SelectWeaponManager : MonoBehaviour, IDataPersistence
     // Start is called before the first frame update
     void Start()
     {
-        //PopulateList(); 
+        //PopulateList();
+        if (contentGO.transform.childCount > 0)
+        {
+            foreach (Transform option in contentGO.transform)
+            {
+                Destroy(option.gameObject);
+            }
+        }
+        DataPersistenceManager.instance.LoadGame();
+    }
+
+    void OnEnable()
+    {
+        if (contentGO.transform.childCount > 0)
+        {
+            foreach (Transform option in contentGO.transform)
+            {
+                Destroy(option.gameObject);
+            }
+        }
+        DataPersistenceManager.instance.LoadGame();
+    }
+
+    void OnDisable()
+    {
+        
     }
 
     // Update is called once per frame
@@ -80,7 +105,11 @@ public class SelectWeaponManager : MonoBehaviour, IDataPersistence
         string id;
         bool purchased;
 
-        if(data.primaryWeaponsPurchased.Count > 0)
+
+        
+        
+
+        if (data.primaryWeaponsPurchased.Count > 0)
         {
             for(int i = 0; i < weaponSaveLoadList.Length; i++)
             {

@@ -91,7 +91,7 @@ public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler, IPointerCli
 
     public void SaveData(GameData data)
     {
-        if(shopOptionData != null)
+        if (shopOptionData != null)
         {
             string id = shopOptionData.weaponSO.ItemName;
 
@@ -100,6 +100,7 @@ public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler, IPointerCli
                 if (data.primaryWeaponsPurchased.ContainsKey(id))
                 {
                     data.primaryWeaponsPurchased.Remove(id);
+                    //data.primaryWeaponsPurchased.Add(id, purchased);
                 }
                 data.primaryWeaponsPurchased.Add(id, purchased);
             }
@@ -108,6 +109,7 @@ public class ShopItemTemplate : MonoBehaviour, IPointerEnterHandler, IPointerCli
                 if (data.secondaryWeaponsPurchased.ContainsKey(id))
                 {
                     data.secondaryWeaponsPurchased.Remove(id);
+                    //data.secondaryWeaponsPurchased.Add(id, purchased);
                 }
                 data.secondaryWeaponsPurchased.Add(id, purchased);
             }

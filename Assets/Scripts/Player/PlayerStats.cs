@@ -70,6 +70,12 @@ public class PlayerStats : ActorStats
         base.Die();
         //PlayerPrefs.SetInt("coinAmount", 0);
         //StartCoroutine(SceneLoader.instance.LoadScene("LobbyShipFinal"));
+
+        if(SceneManager.GetActiveScene().name == "TutorialMapMainGameScene")
+        {
+            FindObjectOfType<AsyncLoader>().LoadLevel("TutorialMapMainGameScene");
+        }
+
         FindObjectOfType<AsyncLoader>().LoadLevel("LobbyShipFinal");
         
         

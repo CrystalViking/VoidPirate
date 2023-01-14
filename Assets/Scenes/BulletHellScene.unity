@@ -2657,6 +2657,7 @@ MonoBehaviour:
   sceneInfo: {fileID: 11400000, guid: e5158c6023e46d2479c606c722fedfc0, type: 2}
   startingTime: 60
   loadingScreen: {fileID: 1344966703}
+  keepTiming: 1
   loadingSlider: {fileID: 2983429}
   levelToLoad: LobbyShipFinal
   countdownText: {fileID: 893541841}
@@ -3082,6 +3083,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BulletHellEnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 6314608187346855086, guid: 8bbf0bbb9fb2a0e44be9add560a7c201, type: 3}
+      propertyPath: m_TagString
+      value: Spawner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bbf0bbb9fb2a0e44be9add560a7c201, type: 3}
 --- !u!1001 &8474554743603399997
@@ -3103,6 +3108,10 @@ PrefabInstance:
       propertyPath: levelToLoad
       value: LobbyShipFinal
       objectReference: {fileID: 0}
+    - target: {fileID: -4518976098215357024, guid: 1ef1839edc4588f43b5ec33367e8b6f3, type: 3}
+      propertyPath: timerObject
+      value: 
+      objectReference: {fileID: 1955503226}
     - target: {fileID: -4518976098215357024, guid: 1ef1839edc4588f43b5ec33367e8b6f3, type: 3}
       propertyPath: warningText
       value: 

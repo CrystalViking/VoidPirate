@@ -38,8 +38,11 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
     [Header("Sound Effects")]
     public AudioSource audioSource;
 
+    CountdownTimer timerScript;
+
     private void Start()
     {
+        timerScript = FindObjectOfType<CountdownTimer>();
         dmgTaken = 0;
         isDead = false;
         if (sceneInfo.isEventOn == false)
@@ -80,6 +83,7 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
         }
         if (dmgTaken >= 300)
         {
+            timerScript.keepTiming = false;
             canBeAttacked = false;
             dmgTaken = 0;
             ScreenShakeController.instance.StartShake(2f, 3f);
@@ -187,9 +191,9 @@ public class PShipHealth : MonoBehaviour, IDataPersistence
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         projectiles = GameObject.FindGameObjectsWithTag("EnemyProjectile");
-        if ((gameObject.GetComponent("BulletHellEnemySpawner") as BulletHellEnemySpawner) != null)
+        if (GameObject.FindGameObjectWithTag("Spawner").gameObject != null)
         {
-            GetComponent<BulletHellEnemySpawner>().enabled = false;
+            GameObject.FindGameObjectWithTag("Spawner").gameObject.SetActive(false);
         }
         foreach (GameObject enemy in enemies)
         {

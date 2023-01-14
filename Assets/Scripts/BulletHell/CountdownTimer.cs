@@ -18,6 +18,7 @@ public class CountdownTimer : MonoBehaviour
     GameObject[] projectiles;
     [SerializeField] private GameObject loadingScreen;
     PShipHealth healthScript;
+    public bool keepTiming = true;
 
     [Header("Slider")]
     [SerializeField] private Slider loadingSlider;
@@ -27,9 +28,9 @@ public class CountdownTimer : MonoBehaviour
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         projectiles = GameObject.FindGameObjectsWithTag("EnemyProjectile");
-        if ((gameObject.GetComponent("BulletHellEnemySpawner") as BulletHellEnemySpawner) != null)
+        if (GameObject.FindGameObjectWithTag("Spawner").gameObject != null)
         {
-            GetComponent<BulletHellEnemySpawner>().enabled = false;
+            GameObject.FindGameObjectWithTag("Spawner").gameObject.SetActive(false);
         }
         foreach (GameObject enemy in enemies)
         {
@@ -43,7 +44,7 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdownText;
     void Start()
     {
-        healthScript = GetComponent<PShipHealth>();
+        healthScript = FindObjectOfType<PShipHealth>();
         if (sceneInfo.isEventOn == false)
         {
             timerSO.Value = startingTime;
@@ -53,9 +54,12 @@ public class CountdownTimer : MonoBehaviour
 
     private void Update()
     {
-        increasingTimer += Time.deltaTime;
-        timerSO.Value -= Time.deltaTime;
-        countdownText.text = timerSO.Value.ToString("F0");
+        if (keepTiming)
+        {
+            increasingTimer += Time.deltaTime;
+            timerSO.Value -= Time.deltaTime;
+            countdownText.text = timerSO.Value.ToString("F0");
+        }
 
         if (timerSO.Value <= 0f)
         {
